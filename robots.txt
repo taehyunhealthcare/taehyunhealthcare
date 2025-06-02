@@ -1,3 +1,4 @@
 User-agent: *
-Allow: /
-Sitemap: https://vu1tur2.github.io/taehyunhealthcare/sitemap.xml
+Disallow:
+
+Sitemap: https://taehyunhealthcare.github.io/sitemap.xml
