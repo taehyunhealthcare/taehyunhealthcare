@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uslset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://vu1tur2.github.io/taehyunhealthcare/</loc>
     <changefreq>weekly</changefreq>
@@ -84,4 +84,4 @@
     <priority>1.0</priority>
   <url>
 <!--     다른페이지도 추가 가능 -->
-</uslset>
+</urlset>
