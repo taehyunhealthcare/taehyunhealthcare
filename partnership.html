@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>태현헬스케어</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/banner.js"></script>
+    <script src="js/form-validation.js"></script>
+    <script src="js/rank.js"></script>
+    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+</head>
+<body>
+    <!-- 시작 -->
+    <div id="wrap">
+        <div class="chat">
+            <div class="chat1">
+                <li><a href="index.html">홈케어 전문회사 <span> 태현헬스케어</span></a></li>
+            </div>
+        </div>
+    </div>
+    <!-- 끝 -->
+
+     <!-- 헤더 시작 -->
+    <header>
+    <div class="logo">
+        <a href="index.html">
+        <img src="img/logo.png" alt="태현헬스케어 로고 이미지">
+        </a>
+    </div>
+
+    <div class="search">
+        <div class="search-box">
+        <input type="text" placeholder="검색어를 입력하세요" style="border: none;">
+        <img src="img/Search.png" alt="서치 이미지">
+        </div>
+    </div>
+
+    <div class="popular-keywords style1">
+    <div id="keyword-display">
+        <span class="rank-number">1</span>
+        <span class="rank-keyword">태아 도플러</span>
+        <span class="rank-icon" id="toggle-icon" style="cursor: pointer;">▼</span>
+    </div>
+        <ul id="keyword-list" class="keyword-dropdown">
+            <li><span class="rank-number">1. <span class="text">태아 도플러</span></span></li>
+            <li><span class="rank-number">2. <span class="text">네블라이저</span></span></li>
+            <li><span class="rank-number">3. <span class="text">찜질기</span></span></li>
+            <li><span class="rank-number">4. <span class="text">산모벨트</span></span></li>
+            <li><span class="rank-number">5. <span class="text">반도메딕스</span></span></li>
+        </ul>
+    </div>
+    </header>
+    <!-- 헤더 끝 -->
+
+    <!-- 메뉴 시작 -->
+    <nav>
+        <ul class="menu">
+            <li>
+                <a href="#">회사소개</a>
+                <ul class="submenu">
+                    <li><a href="about.html">회사소개</a></li>
+                    <li><a href="03_about.html">오시는길</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">제품소개</a>
+                <ul class="submenu">
+                    <li><a href="01_products.html">Fetal Doppler</a></li>
+                    <li><a href="02_products.html">Nebulizer</a></li>
+                    <li><a href="03_products.html">Pulse Oximeter</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="partnership.html">B2B</a>
+            </li>
+        </ul>
+    </nav>
+    <!-- 메뉴 끝 -->
+
+    <!-- 파트너 문의 시작 -->
+<div class="partner-form-container">
+<div class="inquiry-header">
+  <h2>B2B 문의</h2>
+  <p>당신의 소중한 제휴문의에 성실히 응답드리기 위해 아래 양식을 작성해주세요. <br>
+     <span>* 표시되어 있는 란은 필수 입력란입니다.</span>
+</p>
+</div>
+
+
+  <form class="partner-form" action="01_partnership.html" method="GET">
+    <fieldset>
+        <div class="section-divider"></div>
+     <div class="form-label-box"><p>사업자정보</p></div>
+        <div class="form-divider"></div>
+      <div class="form-row">
+        <label for="company">* 상호명</label>
+        <input type="text" id="company" name="company" autocomplete="organization" required >
+        <span class="error-message"></span>
+      </div>
+
+      <div class="form-row">
+        <label for="name">* 대표자명</label>
+        <input type="text" id="name" name="name" autocomplete="name" required>
+      </div>
+
+      <div class="form-row">
+        <label for="phone">* 연락처</label>
+        <input type="text" id="phone" name="phone" autocomplete="tel" required>
+      </div>
+
+      <div class="form-row">
+        <label for="email">* 이메일</label>
+        <input type="email" id="email" name="email" autocomplete="email" required>
+      </div>
+
+      <div class="form-row">
+        <label for="category">제휴분야선택</label>
+        <select id="category" name="category" autocomplete="on">
+          <option value="">선택해주세요.</option>
+          <option value="product">제품 제휴</option>
+          <option value="marketing">마케팅 제휴</option>
+          <option value="distribution">유통 협력</option>
+          <option value="other">기타</option>
+        </select>
+      </div>
+
+     <!-- 문의내용 -->
+   <div class="form-row vertical">
+  <label for="message">문의 내용</label>
+  <div class="textarea-wrapper">
+    <textarea id="message" name="message" autocomplete="on"></textarea>
+  </div>
+</div>
+
+    <div class="form-row">
+      <label for="file-upload">첨부 파일</label>
+      <div class="file-upload-wrapper">
+        <input type="file" id="file-upload" name="files[]" multiple>
+        <label class="custom-file-label" for="file-upload">파일 선택</label>
+        
+        <!-- 🔽 여기에 배치 -->
+        <ul id="file-list" class="file-list">
+          <li class="empty-msg">선택된 파일 없음</li>
+        </ul>
+      </div>
+    </div>
+    <!-- 첨부파일 밑에 추가 -->
+    <div class="section-divider"></div>
+    <div class="form-label-box"><p>부가정보</p></div>
+    <div class="form-divider"></div>
+
+    <!-- 팩스번호 -->
+    <div class="form-row">
+      <label for="fax">* 팩스번호</label>
+      <input type="text" id="fax" name="fax"  autocomplete="off" required>
+    </div>
+
+
+    <!-- 회사주소 -->
+    <div class="form-row address-row">
+      <label for="address">* 회사주소</label>
+      <div class="address-group">
+        <div class="address-top">
+          <input type="text" id="address" name="address" placeholder="기본 주소" required>
+          <button type="button" onclick="execDaumPostcode()">주소검색</button>
+        </div>
+        <input type="text" id="detailAddress" name="detailAddress" placeholder="상세 주소 입력">
+      </div>
+    </div>
+
+
+    <!-- 세금계산서 발행메일 -->
+    <div class="form-row">
+      <label for="tax-email">세금계산서 발행메일</label>
+      <input type="email" id="tax-email" name="tax-email" autocomplete="email">
+    </div>
+        
+      <div class="agree-row">
+        <label for="agree">* 개인정보수집 동의</label>
+         <input type="checkbox" id="agree" name="agree" autocomplete="on" required>
+         <span class="error-message" id="agree-error"></span>
+      </div>
+
+
+      <div class="submit-wrap">
+        <button type="submit">문의하기</button>
+      </div>
+    </fieldset>
+  </form>
+</div>
+
+  <!-- 파트너 문의 끝 -->
+
+
+    <!-- 콘텐츠 시작 -->
+    <div id="contents">
+        <div class="notice">
+            <ul class="tab">
+             <img src="img/notice1.png" alt="공지사항 이미지">
+              <h5>NOTICE</h5>
+            </ul>
+            <ol>
+                <li><a href="#">(주) 반도메딕스 홈페이지 제작 </a></li>
+                <li><a href="#">(주) 반도메딕스 홈페이지 제작 </a></li>
+                <li><a href="#">(주) 반도메딕스 홈페이지 제작 </a></li>
+            </ol>
+        </div>
+        <div class="download">
+            <h5>DOWNLOAD</h5>
+            <ol>
+                <li><a href="#">Fetal Doppler 제품 설명서</a></li>
+                <li><a href="#">Nebulizer 제품 설명서</a></li>
+                <li><a href="#"> Pulse Oxmeter 제품 설명서</a></li>
+            </ol>
+        </div>
+        <div class="cbox">
+            <h5>COMMUNITY</h5>
+            <div id="cbox">
+                <a href="1v1_call.html" class="user">
+                    <p>문의하기</p>
+                    <img src="img/User.png" alt="이미지">
+                </a>
+                <a href="talk.html" class="talk">
+                    <p>질문과답변</p>
+                    <img src="img/talk.png" alt="이미지">
+                </a>
+            </div>
+            <div id="cbox1">
+                <a href="partnership.html" class="partnership">
+                    <p>B2B</p>
+                    <img src="img/hand.svg" alt="이미지">
+                </a>
+                <a href="memo.html" class="memo">
+                    <p>자료실</p>
+                    <img src="img/memo.png" alt="이미지">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 콘텐츠 끝 -->
+
+    <!-- 푸터 시작 -->
+    <footer>
+        <div class="fmenu">
+            <a href="#">회사소개</a>
+            <a href="#">이용약관</a>
+            <a href="#"><span>개인정보처리방침</span></a>
+            <a href="#">이용안내</a>
+            <a href="#">광고/제휴 문의</a>
+        </div>
+        <div class="fbox">
+            <div class="flogo"><a href="#"><img src="img/flogo.png" alt="로고이미지"></a></div>
+            <div class="copy">
+                <p>
+                    태현헬스케어 광주광역시 xxxxxx xx <br>
+                    대표: xxx 사업자등록번호: xxx-xx-xxxxx <br>
+                    대표번호: xx-xxx-xxxx AS번호: XXXX-XXXX 팩스번호: XX-XXX-XXXX 메일:home@xxxx.xx.xx <br>
+                    copyright www.taehyun.kr all rights reserved
+                </p>
+            </div>
+            <div class="call">
+             <span>CALL CENTER</span>
+              <a href="#"><h5>062-000-0000</h5></a>
+              <p>평일 오전 09:30 ~ 오후 05:30</p>
+              <p>점심시간 12:00 ~ 오후 01:00</p>
+              <p>주말 및 공휴일 휴무</p>
+            </div>
+        </div>
+    </footer>
+    <!-- 푸터 끝 -->
+    
+    <!-- 오른쪽 배너 시작 -->
+    <div id="banner">
+         <div id="banner1">
+             <a href="javascript:void(0)" id="fixedicon"><img src="img/down.png" alt="다운 이미지"></a>
+         </div>
+         <div class="close">
+              <a href="javascript:void(0)" id="fixedicon"><img src="img/close.png" alt="닫기"></a>
+         </div>
+         <div id="banner3">
+               <a href="1v1_call.html" id="fixedicon">
+                 <img src="img/text.png" alt="문자">
+                 <p>문의하기</p>
+               </a>
+         </div>
+          <div id="banner4">
+               <a href="notice.html" id="fixedicon">
+                <img src="img/notice.png" alt="공지사항">
+                <p>공지사항</p>
+               </a>
+         </div>
+         <div id="banner5">
+             <a href="partnership.html" id="fixedicon">
+                 <img src="img/B2B.png" alt="b2b">
+                <p>B2B</p>
+            </a>
+         </div>
+    </div>
+    <!-- 오른쪽 배너 끝 -->
+
+    <!-- 목록에 파일명 표시 ( 첨부파일 쓸때 사용했음 ) -->
+<script>
+  const fileInput = document.getElementById("file-upload");
+  const fileList = document.getElementById("file-list");
+
+  let selectedFiles = [];
+
+  fileInput.addEventListener("change", () => {
+    const newFiles = Array.from(fileInput.files);
+
+    selectedFiles = selectedFiles.concat(newFiles);
+
+    renderFileList();
+
+    fileInput.value = "";
+  });
+
+  function renderFileList() {
+    fileList.innerHTML = "";
+
+    if (selectedFiles.length === 0) {
+      fileList.innerHTML = "<li class='empty-msg'>선택된 파일 없음</li>";
+      return;
+    }
+
+    selectedFiles.forEach((file, index) => {
+      const li = document.createElement("li");
+
+      li.innerHTML = `
+        ${index + 1}. ${file.name}
+        <button class="delete-btn" data-index="${index}">  🗑️</button>
+      `;
+
+      fileList.appendChild(li);
+    });
+
+    
+    const deleteButtons = document.querySelectorAll(".delete-btn");
+    deleteButtons.forEach(button => {
+      button.addEventListener("click", (e) => {
+        const index = parseInt(e.target.getAttribute("data-index"));
+        selectedFiles.splice(index, 1); 
+        renderFileList(); 
+      });
+    });
+  }
+</script>
+  <!-- 주소검색 스크립트 -->
+  <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+  <script>
+    function execDaumPostcode() {
+      new daum.Postcode({
+        oncomplete: function(data) {
+          document.getElementById('address').value = data.roadAddress;
+          document.getElementById('detailAddress').focus();
+        }
+      }).open();
+    }
+  </script>
+    <!-- 주소 검색 함수 정의 -->
+  <script>
+    function execDaumPostcode() {
+      new daum.Postcode({
+        oncomplete: function(data) {
+          document.getElementById('address').value = data.address;
+          document.getElementById('detailAddress').focus();
+        }
+      }).open();
+    }
+  </script>
+</body>
+</html>
