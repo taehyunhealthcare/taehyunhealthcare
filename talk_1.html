@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
+   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>태현헬스케어</title>
+    <title>태현헬스케어 - 홈케어 의료기기 전문 브랜드</title>
 
     <!-- SEO 핵심 메타태그 -->
-    <meta name="description" content="태현헬스케어는 도플러, 흡입기, 산소포화도 측정기 등 가정용 의료기기를 전문으로 취급하는 회사입니다.">
-    <meta name="keywords" content="태현헬스케어, 도플러, 산소포화도, 흡입기, 의료기기, B2B, 홈케어">
+    <meta name="description" content="태현헬스케어는 도플러, 흡입기, 산소포화도 측정기 등 가정용 의료기기를 전문으로 취급하는 브랜드입니다.">
+    <meta name="keywords" content="태현헬스케어, 도플러, 산소포화도, 흡입기, 의료기기, 홈케어, 건강">
     <meta name="author" content="태현헬스케어">
+    <meta name="robots" content="index, follow">
 
     <!-- Open Graph (SNS 공유 시 정보) -->
     <meta property="og:title" content="태현헬스케어 - 홈케어 전문 기업">
@@ -16,12 +17,13 @@
     <meta property="og:image" content="https://vu1tur2.github.io/taehyunhealthcare/img/logo.png">
     <meta property="og:url" content="https://vu1tur2.github.io/taehyunhealthcare/">
     <meta property="og:type" content="website">
-    
-    <!--  구글 연결  -->
-    <meta name="google-site-verification" content="0UGIN-4-UxQ22XoXpMqVQQr8Ns0h8XXDVIXI4RViAiE" />
 
-    <!-- 네이버 연결 -->
+    <!-- 구글 서치콘솔 -->
+    <meta name="google-site-verification" content="0UGIN-4-UxQ22XoXpMqVQQr8Ns0h8XXDVIXI4RViAiE" />
+    
+    <!-- 네이버 서치어드바이저 -->
     <meta name="naver-site-verification" content="0cd68edc7a0e5ab742e7038c1182c6ac30f1973c" />
+    
     
     <!-- css,js 연결 코드 -->
     <link rel="stylesheet" href="css/style.css" />
@@ -30,6 +32,7 @@
     <script src="js/banner.js"></script>
     <script src="js/form-validation.js"></script>
     <script src="js/rank.js"></script>
+    <script src="js/talk.js"></script>
   </head>
   <body>
     <!-- 상단 채팅 링크 -->
@@ -99,9 +102,9 @@
     </nav>
 
     <!-- 글쓰기 영역 -->
-    <div class="write-container1">
-      <h2 class="heading1">문의 작성</h2>
-
+  <div class="write-container1">
+    <h2 class="heading1">문의 작성</h2>
+    <form id="inquiryForm">
       <div class="form-group1">
         <label for="category1">카테고리</label>
         <select id="category1">
@@ -109,13 +112,11 @@
           <option value="기타">기타</option>
         </select>
       </div>
-
       <div class="form-group1">
         <label for="title1">제목</label>
         <input type="text" id="title1" placeholder="제목을 입력해주세요" />
         <span class="error-msg" style="color: red; font-size: 0.9em;"></span>
       </div>
-
       <div class="form-group1">
         <label for="content1">내용 입력</label>
         <textarea id="content1" placeholder="내용을 입력해주세요."></textarea>
@@ -132,9 +133,10 @@
         </div>
       </div>
       <div class="form-group2">
-        <button class="submit-btn1"><a href="01_partnership.html">문의 등록</a></button>
+        <button type="submit" class="submit-btn1">문의 등록</button>
       </div>
-    </div>
+    </form>
+  </div>
     <!-- 글쓰기 끝 -->
     <!-- 콘텐츠 시작 -->
     <div id="contents">
@@ -150,11 +152,11 @@
             </ol>
         </div>
         <div class="download">
-            <h5>DOWNLOAD</h5>
+            <h5><a href="download.html">DOWNLOAD</a></h5>
             <ol>
-                <li><a href="#">Fetal Doppler 제품 설명서</a></li>
-                <li><a href="#">Nebulizer 제품 설명서</a></li>
-                <li><a href="#"> Pulse Oxmeter 제품 설명서</a></li>
+                <li><a href="download1.html">Fetal Doppler 제품 설명서</a></li>
+                <li><a href="download2.html">Nebulizer 제품 설명서</a></li>
+                <li><a href="download3.html"> Pulse Oxmeter 제품 설명서</a></li>
             </ol>
         </div>
         <div class="cbox">
@@ -324,5 +326,41 @@
       }
     });
     </script>
+      <script>
+
+      document.getElementById('inquiryForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const title = document.getElementById('title1');
+        const content = document.getElementById('content1');
+        const category = document.getElementById('category1').value;
+        const titleError = title.nextElementSibling;
+        const contentError = content.nextElementSibling;
+
+        let isValid = true;
+        if (!title.value.trim()) {
+          titleError.textContent = '제목을 입력해주세요.';
+          isValid = false;
+        } else titleError.textContent = '';
+        if (!content.value.trim()) {
+          contentError.textContent = '내용을 입력해주세요.';
+          isValid = false;
+        } else contentError.textContent = '';
+        if (!isValid) return;
+
+        const posts = JSON.parse(localStorage.getItem('posts') || '[]');
+        posts.push({
+          category,
+          title: title.value,
+          content: content.value,
+          date: new Date().toLocaleDateString(),
+          author: '작성자',
+          views: 0,
+          answer: 0
+        });
+        localStorage.setItem('posts', JSON.stringify(posts));
+        location.href = '01_partnership.html';
+      });
+      </script>
   </body>
 </html>
+
