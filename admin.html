@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>관리자 설정</title>
+</head>
+<body>
+  <h2>관리자 모드 설정 페이지 🔐</h2>
+  <button onclick="setAdmin(true)">관리자 로그인</button>
+  <button onclick="setAdmin(false)">관리자 로그아웃</button>
+
+  <script>
+    function setAdmin(flag) {
+      localStorage.setItem('isAdmin', flag ? 'true' : 'false');
+      alert(flag ? '관리자 모드 활성화됨' : '관리자 모드 해제됨');
+    }
+  </script>
+</body>
+</html>
