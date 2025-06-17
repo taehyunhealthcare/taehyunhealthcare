@@ -2,18 +2,30 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>관리자 설정</title>
+  <title>관리자 로그인</title>
 </head>
 <body>
-  <h2>관리자 모드 설정 페이지 🔐</h2>
-  <button onclick="setAdmin(true)">관리자 로그인</button>
-  <button onclick="setAdmin(false)">관리자 로그아웃</button>
+  <h2>관리자 로그인</h2>
+  <form id="loginForm">
+    <input type="text" id="adminId" placeholder="ID"><br>
+    <input type="password" id="adminPw" placeholder="PW"><br>
+    <button type="submit">로그인</button>
+  </form>
 
   <script>
-    function setAdmin(flag) {
-      localStorage.setItem('isAdmin', flag ? 'true' : 'false');
-      alert(flag ? '관리자 모드 활성화됨' : '관리자 모드 해제됨');
-    }
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const id = document.getElementById("adminId").value;
+      const pw = document.getElementById("adminPw").value;
+
+      if (id === "vu1tur2" && pw === "dlatmsgur1") {
+        localStorage.setItem("isAdmin", "true");
+        alert("로그인 성공");
+        location.href = "index.html";
+      } else {
+        alert("아이디 또는 비밀번호 틀림");
+      }
+    });
   </script>
 </body>
 </html>
