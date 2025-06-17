@@ -25,13 +25,14 @@
     <meta name="naver-site-verification" content="0cd68edc7a0e5ab742e7038c1182c6ac30f1973c" />
     
     
-    <!-- css,js 연결 코드 -->
-    <link rel="stylesheet" href="css/style.css">
+    <!-- css,js 연결 코드 --> 
+    <link rel="stylesheet" href="css/style.css" />
     <script src="js/jquery-1.12.4.min.js"></script>
     <script src="js/common.js"></script>
     <script src="js/banner.js"></script>
+    <script src="js/form-validation.js"></script>
     <script src="js/rank.js"></script>
-</head>
+  </head>
 <body>
     <!-- 시작 -->
     <div id="wrap">
@@ -44,7 +45,7 @@
     <!-- 끝 -->
 
 
-    <!-- 헤더 시작 -->
+     <!-- 헤더 시작 -->
     <header>
     <div class="logo">
         <a href="index.html">
@@ -67,15 +68,16 @@
     </div>
         <ul id="keyword-list" class="keyword-dropdown">
             <li><span class="rank-number">1. <span class="text">태아 도플러</span></span></li>
-            <li><span class="rank-number">2. <span class="text">네블라이저</span></span></li>
-            <li><span class="rank-number">3. <span class="text">찜질기</span></span></li>
-            <li><span class="rank-number">4. <span class="text">산모벨트</span></span></li>
-            <li><span class="rank-number">5. <span class="text">반도메딕스</span></span></li>
+            <li><span class="rank-number">2. <span class="text">흡입기</span></span></li>
+            <li><span class="rank-number">3. <span class="text">산소포화도 측정기</span></span></li>
+            <li><span class="rank-number">4. <span class="text">문의하기</span></span></li>
+            <li><span class="rank-number">5. <span class="text">파트너 신청</span></span></li>
         </ul>
     </div>
-    </header>
+</header>
+
     <!-- 헤더 끝 -->
-     
+
     <!-- 메뉴 시작 -->
     <nav>
         <ul class="menu">
@@ -100,36 +102,29 @@
         </ul>
     </nav>
     <!-- 메뉴 끝 -->
-    
-    <!-- content 시작 -->
-<div class="n_contents">
-  <div class="qna-header">
-    <h2>QnA</h2>
-    <span class="m_span"><a href="talk_1.html">글쓰기</a></span>
-</div>
-    <table class="board">
-      <colgroup>
-        <col style="width: 10%;" />  <!-- 글번호 -->
-        <col style="width: 50%;" />  <!-- 제목 -->
-        <col style="width: 20%;" />  <!-- 날짜 -->
-        <col style="width: 20%;" />  <!-- 작성자 -->
-      </colgroup>
-      <thead>
-        <tr>
-          <th>번호</th>
-          <th>제목</th>
-          <th>날짜</th>
-          <th>작성자</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-  <div class="content-wrapper"><!-- 페이지 번호 nav 삽입됨 --></div>
-</div>
-<div class="pagination-container">
-  <div class="pagination"></div>
-</div>
-    <!-- content 끝  -->
+
+    <!-- 제품 소개 1 시작 -->
+    <div id="n_contents">
+        <div id="qna-header">
+            <h2>QnA</h2>
+        </div>
+        <div class="dbox">
+            <div class="dbox1"><p id="titleArea">제목:</p></div>
+            <div class="dbox2"><p id="authorArea">작성자:</p></div>
+            <div class="dbox3">
+                <div class="date-wrap">
+                    <span id="dateArea">작성날짜:</span>
+                </div>
+            </div>
+        </div>
+        <div class="d">
+            <p id="contentArea">작성내용</p>
+        </div>
+        <div class="dboxbtn">
+          <a href="talk.html">목록</a>
+        </div>
+    </div>
+    <!-- 제품 소개 1 끝 -->
 
 
 
@@ -210,9 +205,8 @@
         </div>
     </footer>
     <!-- 푸터 끝 -->
-
-
-    <!-- 오른쪽 배너 시작 -->
+    
+     <!-- 오른쪽 배너 시작 -->
     <div id="banner">
          <div id="banner1">
              <a href="javascript:void(0)" id="fixedicon"><img src="img/down.png" alt="다운 이미지"></a>
@@ -242,81 +236,20 @@
     <!-- 오른쪽 배너 끝 -->
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-    const isAdmin = localStorage.getItem('isAdmin') === 'true';
-    let posts = JSON.parse(localStorage.getItem('posts') || '[]');
+    const params = new URLSearchParams(location.search);
+    const id = Number(params.get('id'));
+    const posts = JSON.parse(localStorage.getItem('posts') || '[]');
+    const post = posts.find(item => item.id === id);
 
-    posts = posts.map((post, index) => {
-        if (!post.id) post.id = index + 1;
-        return post;
-    });
-    localStorage.setItem('posts', JSON.stringify(posts));
-    posts = posts.reverse();
-
-    const tbody = document.querySelector("table.board tbody");
-    const nav = document.querySelector(".pagination");
-    const pageSize = 7;
-    const params = new URLSearchParams(window.location.search);
-    const currentPage = Number(params.get('page')) || 1;
-    const totalPages = Math.ceil(posts.length / pageSize);
-    const start = (currentPage - 1) * pageSize;
-    const pageItems = posts.slice(start, start + pageSize);
-
-tbody.innerHTML = "";
-pageItems.forEach((post, index) => {
-    const displayNumber = start + index + 1;  // 번호: 1, 2, 3, ... 최신글이 항상 1번
-
-    const tr = document.createElement("tr");
-    tr.innerHTML = `
-        <td>${displayNumber}</td>
-        <td><a href="view.html?id=${post.id}">${post.title}</a></td>
-        <td>${post.date}</td>
-        <td>${post.author}</td>
-    `;
-    tbody.appendChild(tr);
-    
-    // 삭제 버튼 (이 부분 그대로 유지)
-    if (isAdmin) {
-        const deleteBox = document.createElement('div');
-        deleteBox.style.position = 'absolute';
-        deleteBox.style.right = '10px';
-        deleteBox.style.top = '50%';
-        deleteBox.style.transform = 'translateY(-50%)';
-        deleteBox.style.display = 'flex';
-        deleteBox.style.alignItems = 'center';
-        
-        const delBtn = document.createElement('button');
-        delBtn.textContent = '삭제';
-        delBtn.style.padding = '0 8px';
-        delBtn.style.fontSize = '14px';
-        delBtn.style.border = '1px solid #333';
-        delBtn.style.backgroundColor = '#f0f0f0';
-        delBtn.style.cursor = 'pointer';
-
-        delBtn.onclick = () => {
-            if (confirm('삭제하시겠습니까?')) {
-                const idx = posts.findIndex(p => p.id === post.id);
-                if (idx > -1) {
-                    posts.splice(idx, 1);
-                    localStorage.setItem('posts', JSON.stringify(posts.reverse()));
-                    location.reload();
-                }
-            }
-        };
-
-        deleteBox.appendChild(delBtn);
-        tr.style.position = 'relative';
-        tr.appendChild(deleteBox);
+    if (!post) {
+        alert("게시글을 찾을 수 없습니다.");
+        location.href = "talk.html";
     }
-});
 
-    nav.innerHTML = "";
-    for (let p = 1; p <= totalPages; p++) {
-        const a = document.createElement("a");
-        a.href = `talk.html?page=${p}`;
-        a.textContent = p;
-        if (p === currentPage) a.classList.add("active");
-        nav.appendChild(a);
-    }
+    document.getElementById("titleArea").textContent = `제목: ${post.title}`;
+    document.getElementById("authorArea").textContent = `작성자: ${post.author}`;
+    document.getElementById("dateArea").textContent = `작성날짜: ${post.date}`;
+    document.getElementById("contentArea").textContent = post.content;
 });
 </script>
 </body>
