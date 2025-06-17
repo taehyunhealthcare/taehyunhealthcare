@@ -30,7 +30,6 @@
     <script src="js/jquery-1.12.4.min.js"></script>
     <script src="js/common.js"></script>
     <script src="js/banner.js"></script>
-    <script src="js/slide.js"></script>
     <script src="js/rank.js"></script>
 </head>
 <body>
@@ -44,6 +43,8 @@
     </div>
     <!-- 끝 -->
 
+ 
+    
      <!-- 헤더 시작 -->
     <header>
     <div class="logo">
@@ -100,59 +101,19 @@
         </ul>
     </nav>
     <!-- 메뉴 끝 -->
-    <!-- 네비게이터  시작 -->
-    <div class="nav">
-          <span>HOME</span>
-          <span class="separator">&gt;</span>
-
-          <select>
-           <option>제품소개</option>
-           <option>B2B</option>
-           <option>상품문의</option>
-          </select>
-
-          <span class="separator">&gt;</span>
-
-         <select onchange="if(this.value) window.location.href=this.value;">
-             <option value="03_products.html">Pulse Oximerter</option>
-             <option value="01_products.html">Fetal Doppler</option>
-             <option value="02_products.html">Nebulizer</option>
-      </select>
-     </div>
-     <!-- 네비게이터 끝 -->
-     <!-- 네비게이터 2 시작  -->
-      <div class="nav1">
-        <li>상품 개수</li>
-        <select>
-           <option>추천순</option>
-           <option>판매인기순</option>
-           <option>낮은가격순</option>
-           <option>높은가격순</option>
-           <option>등록일순</option>
-        </select>
+     <!-- 지도 시작 -->
+      <div class="map">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d288.37409831268866!2d126.91732829686686!3d35.14214110017884!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35718c82115ce01d%3A0x9d42acb11ae6b7b6!2z7IS47KKF7JqU7JaR67OR7JuQ!5e0!3m2!1sko!2skr!4v1747899838995!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <div class="mapp">
+            <h3>태현헬스케어</h3>
+            <li>주소 <span class="sp">광주광역시 동구 천변우로 453 4층 413호</span></li>
+            <li>전화 <span class="sp">062-000-0000</span></li>
+            <li>팩스 <span class="sp">062-000-0000</span></li>
+            <li>이메일 <span class="span">gjh268@naver.com</span></li>
+          </div>
       </div>
-     <!-- 상품 시작  -->
-      <div class="contents01">
-        <div class="cbox01">
-            <a href="#">
-                <img src="img/pulse1.png" alt="제품 이미지">
-                <p>Pulse Oximeter</p>
-            </a>
-            <a href="#">
-                <img src="img/pulse2.jpg" alt="제품이미지">
-                <p>Pulse Oximeter</p>
-            </a>
-        </div>
-      </div>
-    <!-- 상품 끝 -->
-      
-    <!-- PAGE NUMBER 시작 -->
-      <div class="pagenumber">
-        <a href="#">1</a>
-      </div>
-    <!-- PAGE NUMBER 끝  -->
-     
-    <!-- 콘텐츠 시작 -->
+
+   <!-- 콘텐츠 시작 -->
     <div id="contents">
         <div class="notice">
             <ul class="tab">
@@ -200,8 +161,6 @@
 
     <!-- 콘텐츠 끝 -->
 
-
-
     <!-- 푸터 시작 -->
     <footer>
         <div class="fmenu">
@@ -231,9 +190,9 @@
         </div>
     </footer>
     <!-- 푸터 끝 -->
-
-    <!-- 오른쪽 배너 시작 -->
-    <div id="banner">
+    
+     <!-- 오른쪽 배너 시작 -->
+     <div id="banner">
          <div id="banner1">
              <a href="javascript:void(0)" id="fixedicon"><img src="img/down.png" alt="다운 이미지"></a>
          </div>
@@ -260,7 +219,6 @@
          </div>
     </div>
     <!-- 오른쪽 배너 끝 -->
-  </body>
- </html>
-
-     
+ 
+ </body>
+</html>
