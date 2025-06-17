@@ -31,7 +31,6 @@
     <script src="js/common.js"></script>
     <script src="js/banner.js"></script>
     <script src="js/rank.js"></script>
-    
 </head>
 <body>
     <!-- 시작 -->
@@ -43,7 +42,8 @@
         </div>
     </div>
     <!-- 끝 -->
-     
+
+
     <!-- 헤더 시작 -->
     <header>
     <div class="logo">
@@ -104,26 +104,26 @@
     <!-- content 시작 -->
 <div class="n_contents">
   <div class="qna-header">
-    <h2>질문과답변</h2>
+    <h2>QnA</h2>
     <span class="m_span"><a href="talk_1.html">글쓰기</a></span>
 </div>
-  <table class="board">
+    <table class="board">
       <colgroup>
-    <col style="width: 15%;">
-    <col style="width: 50%;">
-    <col style="width: 20%;">
-    <col style="width: 15%;">
-  </colgroup>
-    <thead>
-      <tr>
-        <th>날짜</th>
-        <th>제목</th>
-        <th>작성자</th>
-        <th>답변상태</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
+        <col style="width: 10%;" />  <!-- 글번호 -->
+        <col style="width: 50%;" />  <!-- 제목 -->
+        <col style="width: 20%;" />  <!-- 날짜 -->
+        <col style="width: 20%;" />  <!-- 작성자 -->
+      </colgroup>
+      <thead>
+        <tr>
+          <th>번호</th>
+          <th>제목</th>
+          <th>날짜</th>
+          <th>작성자</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
   <div class="content-wrapper"><!-- 페이지 번호 nav 삽입됨 --></div>
 </div>
 <div class="pagination-container">
@@ -240,46 +240,85 @@
          </div>
     </div>
     <!-- 오른쪽 배너 끝 -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-        // ✅ 최신글 기준으로 정렬하도록 'posts' 변수 let 선언 및 reverse() 추가
-        let posts = JSON.parse(localStorage.getItem('posts') || '[]');
-        posts = posts.reverse(); // 저장된 순서를 뒤집어서 최신 글이 배열 앞에 오도록 설정
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const isAdmin = localStorage.getItem('isAdmin') === 'true';
+    let posts = JSON.parse(localStorage.getItem('posts') || '[]');
 
-        const pageSize = 7;
-        const params = new URLSearchParams(window.location.search);
-        const currentPage = Number(params.get('page')) || 1;
-        const totalPages = Math.ceil(posts.length / pageSize);
+    posts = posts.map((post, index) => {
+        if (!post.id) post.id = index + 1;
+        return post;
+    });
+    localStorage.setItem('posts', JSON.stringify(posts));
+    posts = posts.reverse();
 
-        const start = (currentPage - 1) * pageSize;
-        const pageItems = posts.slice(start, start + pageSize);
+    const tbody = document.querySelector("table.board tbody");
+    const nav = document.querySelector(".pagination");
+    const pageSize = 7;
+    const params = new URLSearchParams(window.location.search);
+    const currentPage = Number(params.get('page')) || 1;
+    const totalPages = Math.ceil(posts.length / pageSize);
+    const start = (currentPage - 1) * pageSize;
+    const pageItems = posts.slice(start, start + pageSize);
 
-        const tbody = document.querySelector("table.board tbody");
-        tbody.innerHTML = "";
-        pageItems.forEach((post, idx) => {
-            const realIndex = start + idx;
-            const tr = document.createElement("tr");
-            tr.innerHTML = `
-            <td>${post.date}</td>
-            <td><a href="view.html?index=${realIndex}">${post.title}</a></td>
-            <td>${post.author}</td>
-            <td>${post.answer ?? 0}</td>
-            `;
-            tbody.appendChild(tr);
-        });
+tbody.innerHTML = "";
+pageItems.forEach((post, index) => {
+    const displayNumber = start + index + 1;  // 번호: 1, 2, 3, ... 최신글이 항상 1번
 
-        const nav = document.querySelector(".pagination");
-        nav.innerHTML = "";
-        for (let p = 1; p <= totalPages; p++) {
-            const a = document.createElement("a");
-            a.href = `talk.html?page=${p}`;
-            a.textContent = p;
-            if (p === currentPage) a.classList.add("active");
-            nav.appendChild(a);
-        }
-        });
-    </script>
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+        <td>${displayNumber}</td>
+        <td><a href="view.html?id=${post.id}">${post.title}</a></td>
+        <td>${post.date}</td>
+        <td>${post.author}</td>
+    `;
+    tbody.appendChild(tr);
     
+    // 삭제 버튼 (이 부분 그대로 유지)
+    if (isAdmin) {
+        const deleteBox = document.createElement('div');
+        deleteBox.style.position = 'absolute';
+        deleteBox.style.right = '10px';
+        deleteBox.style.top = '50%';
+        deleteBox.style.transform = 'translateY(-50%)';
+        deleteBox.style.display = 'flex';
+        deleteBox.style.alignItems = 'center';
+        
+        const delBtn = document.createElement('button');
+        delBtn.textContent = '삭제';
+        delBtn.style.padding = '0 8px';
+        delBtn.style.fontSize = '14px';
+        delBtn.style.border = '1px solid #333';
+        delBtn.style.backgroundColor = '#f0f0f0';
+        delBtn.style.cursor = 'pointer';
+
+        delBtn.onclick = () => {
+            if (confirm('삭제하시겠습니까?')) {
+                const idx = posts.findIndex(p => p.id === post.id);
+                if (idx > -1) {
+                    posts.splice(idx, 1);
+                    localStorage.setItem('posts', JSON.stringify(posts.reverse()));
+                    location.reload();
+                }
+            }
+        };
+
+        deleteBox.appendChild(delBtn);
+        tr.style.position = 'relative';
+        tr.appendChild(deleteBox);
+    }
+});
+
+    nav.innerHTML = "";
+    for (let p = 1; p <= totalPages; p++) {
+        const a = document.createElement("a");
+        a.href = `talk.html?page=${p}`;
+        a.textContent = p;
+        if (p === currentPage) a.classList.add("active");
+        nav.appendChild(a);
+    }
+});
+</script>
 </body>
 </html>
 
