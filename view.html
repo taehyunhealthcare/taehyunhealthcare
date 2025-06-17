@@ -44,6 +44,7 @@
     </div>
     <!-- 끝 -->
 
+
      <!-- 헤더 시작 -->
     <header>
     <div class="logo">
@@ -105,7 +106,7 @@
     <!-- 제품 소개 1 시작 -->
     <div id="n_contents">
         <div id="qna-header">
-            <h2>질문과답변</h2>
+            <h2>QnA</h2>
         </div>
         <div class="dbox">
             <div class="dbox1"><p id="titleArea">제목:</p></div>
@@ -120,7 +121,7 @@
             <p id="contentArea">작성내용</p>
         </div>
         <div class="dboxbtn">
-            <a href="talk.html">목록</a>
+          <a href="talk.html">목록</a>
         </div>
     </div>
     <!-- 제품 소개 1 끝 -->
@@ -233,22 +234,23 @@
          </div>
     </div>
     <!-- 오른쪽 배너 끝 -->
-    <script>
-      const params = new URLSearchParams(location.search);
-      const index = params.get('index');
-      const posts = JSON.parse(localStorage.getItem('posts') || '[]');
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const params = new URLSearchParams(location.search);
+    const id = Number(params.get('id'));
+    const posts = JSON.parse(localStorage.getItem('posts') || '[]');
+    const post = posts.find(item => item.id === id);
 
-      if (!posts[index]) { 
-        alert('게시글을 찾을 수 없습니다.'); 
-        location.href='talk.html'; 
-      }
+    if (!post) {
+        alert("게시글을 찾을 수 없습니다.");
+        location.href = "talk.html";
+    }
 
-      const post = posts[index];
-
-      document.getElementById("titleArea").textContent = `제목: ${post.title}`;
-      document.getElementById("authorArea").textContent = `작성자: ${post.author}`;
-      document.getElementById("dateArea").textContent = `작성날짜: ${post.date}`;
-      document.getElementById("contentArea").textContent = post.content;
-    </script>
+    document.getElementById("titleArea").textContent = `제목: ${post.title}`;
+    document.getElementById("authorArea").textContent = `작성자: ${post.author}`;
+    document.getElementById("dateArea").textContent = `작성날짜: ${post.date}`;
+    document.getElementById("contentArea").textContent = post.content;
+});
+</script>
 </body>
 </html>
