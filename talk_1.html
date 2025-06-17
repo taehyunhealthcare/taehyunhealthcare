@@ -35,18 +35,16 @@
     <script src="js/talk.js"></script>
   </head>
   <body>
-    <!-- 상단 채팅 링크 -->
+    <!-- 시작 -->
     <div id="wrap">
-      <div class="chat">
-        <div class="chat1">
-        <ul>
-            <li>
-            <a href="index.html">홈케어 전문회사 <span>태현헬스케어</span></a>
-            </li>
-        </ul>
+        <div class="chat">
+            <div class="chat1">
+                <li><a href="index.html">홈케어 전문회사 <span> 태현헬스케어</span></a></li>
+            </div>
         </div>
-      </div>
     </div>
+    <!-- 끝 -->
+
 
     <!-- 헤더 -->
     <header>
@@ -325,10 +323,7 @@
         // 예) e.target.form.submit();  또는 location.href=...
       }
     });
-    </script>
-      <script>
-
-      document.getElementById('inquiryForm').addEventListener('submit', function(e) {
+          document.getElementById('inquiryForm').addEventListener('submit', function(e) {
         e.preventDefault();
         const title = document.getElementById('title1');
         const content = document.getElementById('content1');
@@ -360,7 +355,7 @@
         localStorage.setItem('posts', JSON.stringify(posts));
         location.href = '01_partnership.html';
       });
-      </script>
+    </script>
   </body>
 </html>
 
