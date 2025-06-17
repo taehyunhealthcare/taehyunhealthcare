@@ -42,7 +42,7 @@
         </div>
     </div>
     <!-- 끝 -->
-
+ 
      <!-- 헤더 시작 -->
     <header>
     <div class="logo">
@@ -100,117 +100,36 @@
     </nav>
     <!-- 메뉴 끝 -->
 
-    <!-- content 시작 -->
-     <div class="n_contents">
-        <div class="qna-header">
-         <h2>문의하기</h2>
-         <span class="m_span"><a href="talk_1.html">글쓰기</a></span>
-       </div>
-       <table class="board">
-         <thead>
-           <tr class="tr">
-             <th>문의날짜</th>
-             <th>카테고리</th>
-              <th>제목</th>
-              <th>작성자</th>
-              <th>문의상태</th>
-          </tr>
-         </thead>
-         <tbody>
-             <tr>
-               <td>2025-05-23</td>
-               <td>상품</td>
-               <td><a href="#">문의하기 페이지입니다.</a></td>
-               <td>소비자</td>
-               <td>접수</td>
-              </tr> 
-         </tbody>
-         <tbody>
-             <tr>
-               <td>2025-05-23</td>
-               <td>상품</td>
-               <td><a href="#">문의하기 페이지입니다.</a></td>
-               <td>소비자</td>
-               <td>접수</td>
-              </tr> 
-         </tbody>
-         <tbody>
-             <tr>
-               <td>2025-05-23</td>
-               <td>상품</td>
-               <td><a href="#">문의하기 페이지입니다.</a></td>
-               <td>소비자</td>
-               <td>답변완료</td>
-              </tr> 
-         </tbody>
-         <tbody>
-             <tr>
-               <td>2025-05-23</td>
-               <td>상품</td>
-               <td><a href="#">문의하기 페이지입니다.</a></td>
-               <td>소비자</td>
-               <td>답변완료</td>
-              </tr> 
-         </tbody>
-         <tbody>
-             <tr>
-               <td>2025-05-23</td>
-               <td>상품</td>
-               <td><a href="#">문의하기 페이지입니다.</a></td>
-               <td>소비자</td>
-               <td>답변완료</td>
-              </tr> 
-         </tbody>
-         <tbody>
-             <tr>
-               <td>2025-05-23</td>
-               <td>상품</td>
-               <td><a href="#">문의하기 페이지입니다.</a></td>
-               <td>소비자</td>
-               <td>답변완료</td>
-              </tr> 
-         </tbody>
-         <tbody>
-             <tr>
-               <td>2025-05-23</td>
-               <td>상품</td>
-               <td><a href="#">문의하기 페이지입니다.</a></td>
-               <td>소비자</td>
-               <td>답변완료</td>
-              </tr> 
-         </tbody>
-         <tbody>
-             <tr>
-               <td>2025-05-23</td>
-               <td>상품</td>
-               <td><a href="#">문의하기 페이지입니다.</a></td>
-               <td>소비자</td>
-               <td>답변완료</td>
-              </tr> 
-         </tbody>
-
-        </table>
-     </div>
+ <div class="n_contents">
+  <div class="qna-header">
+    <h2>문의하기</h2>
+    <span class="m_span"><a href="1v1_call1.html">글쓰기</a></span>
+</div>
+    <table class="board">
+      <colgroup>
+        <col style="width: 10%;" />  <!-- 번호 -->
+        <col style="width: 50%;" />  <!-- 제목 -->
+        <col style="width: 20%;" />  <!-- 문의날짜 -->
+        <col style="width: 20%;" />  <!-- 작성자 -->
+      </colgroup>
+      <thead>
+        <tr>
+          <th>번호</th>
+          <th>제목</th>
+          <th>문의날짜</th>
+          <th>작성자</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  <div class="content-wrapper"><!-- 페이지 번호 nav 삽입됨 --></div>
+</div>
+<div class="pagination-container">
+  <div class="pagination"></div>
+</div>
     <!-- content 끝  -->
-     
-    <!-- page next 시작 -->
-     <div class="content-wrapper">
-        <div class="top-bar">
-         <div class="page-number"><a href="#">1</a></div>
-         <div class="search-container">
-            <select class="page_next">
-              <option>제목</option>
-              <option>제목</option>
-              <option>제목</option>
-            </select>
-             <input type="text" placeholder="">
-             <button class="page-next">찾기</button>
-         </div>
-        </div>
-     </div> 
-    <!-- page next 끝 -->
 
-           <!-- 콘텐츠 시작 -->
+    <!-- 콘텐츠 시작 -->
     <div id="contents">
         <div class="notice">
             <ul class="tab">
@@ -287,7 +206,6 @@
         </div>
     </footer>
     <!-- 푸터 끝 -->
-    
     <!-- 오른쪽 배너 시작 -->
      <div id="banner">
          <div id="banner1">
@@ -317,5 +235,74 @@
     </div>
     <!-- 오른쪽 배너 끝 -->
 
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    const isAdmin = localStorage.getItem('isAdmin') === 'true';
+    const inquiries = JSON.parse(localStorage.getItem('inquiries') || '[]').reverse();
+
+    const tbody = document.querySelector('table.board tbody');
+    const nav = document.querySelector('.pagination');
+    const pageSize = 7;
+    const params = new URLSearchParams(location.search);
+    const currentPage = Number(params.get('page')) || 1;
+    const totalPages = Math.ceil(inquiries.length / pageSize);
+    const start = (currentPage - 1) * pageSize;
+    const slice = inquiries.slice(start, start + pageSize);
+
+    tbody.innerHTML = '';
+    slice.forEach((item, index) => {
+        const number = start + index + 1;
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+            <td>${number}</td>
+            <td><a href="view1.html?id=${item.id}">${item.title}</a></td>
+            <td>${item.date}</td>
+            <td>${item.author}</td>
+        `;
+        tbody.appendChild(tr);
+
+        if (isAdmin) {
+            const deleteBox = document.createElement('div');
+            deleteBox.style.position = 'absolute';
+            deleteBox.style.right = '10px';
+            deleteBox.style.top = '50%';
+            deleteBox.style.transform = 'translateY(-50%)';
+            deleteBox.style.display = 'flex';
+            deleteBox.style.alignItems = 'center';
+            
+            const delBtn = document.createElement('button');
+            delBtn.textContent = '삭제';
+            delBtn.style.padding = '0 8px';
+            delBtn.style.fontSize = '14px';
+            delBtn.style.border = '1px solid #333';
+            delBtn.style.backgroundColor = '#f0f0f0';
+            delBtn.style.cursor = 'pointer';
+
+            delBtn.onclick = () => {
+                if (confirm('삭제하시겠습니까?')) {
+                    const originalInquiries = JSON.parse(localStorage.getItem('inquiries') || '[]');
+                    const updatedInquiries = originalInquiries.filter(p => p.id !== item.id);
+                    localStorage.setItem('inquiries', JSON.stringify(updatedInquiries));
+                    location.reload();
+                }
+            };
+
+            deleteBox.appendChild(delBtn);
+            tr.style.position = 'relative';
+            tr.appendChild(deleteBox);
+        }
+    });
+
+    nav.innerHTML = '';
+    for (let i = 1; i <= totalPages; i++) {
+        const a = document.createElement('a');
+        a.href = `1v1_call.html?page=${i}`;
+        a.textContent = i;
+        if (i === currentPage) a.classList.add('active');
+        nav.appendChild(a);
+    }
+});
+</script>
 </body>
 </html>
