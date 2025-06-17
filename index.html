@@ -44,6 +44,15 @@
         </div>
     </div>
     <!-- 끝 -->
+          <div id="admin-logout" style="
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 9999;
+        display: none;">
+        <button id="logoutBtn">관리자 로그아웃</button>
+    </div>
+
 
     <!-- 헤더 시작 -->
     <header>
@@ -222,5 +231,24 @@
          </div>
     </div>
     <!-- 오른쪽 배너 끝 -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const isAdmin = localStorage.getItem("isAdmin") === "true";
+    if (isAdmin) {
+      const logoutBtn = document.createElement("button");
+      logoutBtn.textContent = "관리자 로그아웃";
+      logoutBtn.style.position = "absolute";
+      logoutBtn.style.top = "10px";
+      logoutBtn.style.right = "10px";
+      document.body.appendChild(logoutBtn);
+
+      logoutBtn.addEventListener("click", () => {
+        localStorage.removeItem("isAdmin");
+        alert("로그아웃 되었습니다.");
+        location.href = "index.html";
+      });
+    }
+  });
+</script>
 </body>
 </html>
