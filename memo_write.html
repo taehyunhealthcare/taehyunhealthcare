@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <title>자료 등록 - 관리자 전용</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            font-family: '맑은 고딕', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 800px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 40px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            margin-top: 250px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        td {
+            padding: 12px;
+            vertical-align: top;
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        textarea {
+            resize: vertical;
+        }
+        .btn-box {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .btn-box button {
+            padding: 2px 30px;
+            font-size: 16px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn-box button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>자료 등록 (관리자 전용)</h2>
+    <form id="memoForm">
+        <table>
+            <tr>
+                <td>제목</td>
+                <td><input type="text" id="title" required></td>
+            </tr>
+            <tr>
+                <td>작성자</td>
+                <td><input type="text" id="author" required></td>
+            </tr>
+            <tr>
+                <td>내용</td>
+                <td><textarea id="content" rows="10" required></textarea></td>
+            </tr>
+        </table>
+
+        <div class="btn-box">
+            <button type="submit">등록</button>
+        </div>
+    </form>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+    const isAdmin = localStorage.getItem('isAdmin') === 'true';
+    if (!isAdmin) {
+        alert('접근 권한이 없습니다.');
+        location.href = 'memo.html';
+        return;
+    }
+
+    document.getElementById('memoForm').onsubmit = function(e) {
+        e.preventDefault();
+        const memos = JSON.parse(localStorage.getItem('memos') || '[]');
+        const newMemo = {
+            id: Date.now(),
+            title: document.getElementById('title').value,
+            author: document.getElementById('author').value,
+            content: document.getElementById('content').value,
+            date: new Date().toISOString().split('T')[0],
+            views: 0
+        };
+        memos.push(newMemo);
+        localStorage.setItem('memos', JSON.stringify(memos));
+        alert('등록 완료');
+        location.href = 'memo.html';
+    };
+});
+const newMemo = {
+    id: Date.now(),  // 고유 ID 생성
+    title: document.getElementById('title').value,
+    author: document.getElementById('author').value,
+    content: document.getElementById('content').value,
+    date: new Date().toISOString().split('T')[0],
+    views: 0
+};
+</script>
+
+</body>
+</html>
