@@ -241,7 +241,7 @@
     </div>
     <!-- 오른쪽 배너 끝 -->
 <script>
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function(){
     const isAdmin = localStorage.getItem('isAdmin') === 'true';
     let posts = JSON.parse(localStorage.getItem('posts') || '[]');
 
@@ -252,75 +252,76 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.setItem('posts', JSON.stringify(posts));
     posts = posts.reverse();
 
-    const tbody = document.querySelector("table.board tbody");
-    const nav = document.querySelector(".pagination");
+    const tbody = document.querySelector('table.board tbody');
+    const nav = document.querySelector('.pagination');
     const pageSize = 7;
-    const params = new URLSearchParams(window.location.search);
+    const params = new URLSearchParams(location.search);
     const currentPage = Number(params.get('page')) || 1;
     const totalPages = Math.ceil(posts.length / pageSize);
     const start = (currentPage - 1) * pageSize;
-    const pageItems = posts.slice(start, start + pageSize);
+    const slice = posts.slice(start, start + pageSize);
 
-tbody.innerHTML = "";
-pageItems.forEach((post, index) => {
-    const displayNumber = start + index + 1;  // 번호: 1, 2, 3, ... 최신글이 항상 1번
+    tbody.innerHTML = '';
+    slice.forEach((post, index) => {
+        const number = start + index + 1;
 
-    const tr = document.createElement("tr");
-    tr.innerHTML = `
-        <td>${displayNumber}</td>
-        <td><a href="view.html?id=${post.id}">${post.title}</a></td>
-        <td>${post.date}</td>
-        <td>${post.author}</td>
-    `;
-    tbody.appendChild(tr);
-    
-    // 삭제 버튼 (이 부분 그대로 유지)
-    if (isAdmin) {
-        const deleteBox = document.createElement('div');
-        deleteBox.style.position = 'absolute';
-        deleteBox.style.right = '10px';
-        deleteBox.style.top = '50%';
-        deleteBox.style.transform = 'translateY(-50%)';
-        deleteBox.style.display = 'flex';
-        deleteBox.style.alignItems = 'center';
-        
-        const delBtn = document.createElement('button');
-        delBtn.textContent = '삭제';
-        delBtn.style.padding = '0 8px';
-        delBtn.style.fontSize = '14px';
-        delBtn.style.border = '1px solid #333';
-        delBtn.style.backgroundColor = '#f0f0f0';
-        delBtn.style.cursor = 'pointer';
+        let formattedDate = post.date;
+        if (post.date.includes('.')) {
+            const dateParts = post.date.split('.');
+            if (dateParts.length >= 3) {
+                const year = dateParts[0].trim();
+                const month = dateParts[1].trim().padStart(2, '0');
+                const day = dateParts[2].trim().padStart(2, '0');
+                formattedDate = `${year}-${month}-${day}`;
+            }
+        }
 
-        delBtn.onclick = () => {
-            if (confirm('삭제하시겠습니까?')) {
-                const idx = posts.findIndex(p => p.id === post.id);
-                if (idx > -1) {
-                    posts.splice(idx, 1);
-                    localStorage.setItem('posts', JSON.stringify(posts.reverse()));
+        const tr = document.createElement('tr');
+        tr.style.position = 'relative';
+        tr.innerHTML = `
+            <td>${number}</td>
+            <td><a href="view.html?id=${post.id}">${post.title}</a></td>
+            <td>${formattedDate}</td>
+            <td>${post.author}</td>
+        `;
+
+        if (isAdmin) {
+            const deleteBtn = document.createElement('button');
+            deleteBtn.textContent = "삭제";
+            deleteBtn.style.position = "absolute";
+            deleteBtn.style.right = "-80px";
+            deleteBtn.style.top = "50%";
+            deleteBtn.style.transform = "translateY(-50%)";
+            deleteBtn.style.padding = "0 10px";
+            deleteBtn.style.backgroundColor = "#eee";
+            deleteBtn.style.border = "1px solid #aaa";
+            deleteBtn.style.cursor = "pointer";
+
+            deleteBtn.onclick = () => {
+                if (confirm("삭제하시겠습니까?")) {
+                    const originalPosts = JSON.parse(localStorage.getItem('posts') || '[]');
+                    const updatedPosts = originalPosts.filter(p => p.id !== post.id);
+                    localStorage.setItem('posts', JSON.stringify(updatedPosts));
                     location.reload();
                 }
-            }
-        };
+            };
+            tr.appendChild(deleteBtn);
+        }
 
-        deleteBox.appendChild(delBtn);
-        tr.style.position = 'relative';
-        tr.appendChild(deleteBox);
-    }
-});
+        tbody.appendChild(tr);
+    });
 
-    nav.innerHTML = "";
-    for (let p = 1; p <= totalPages; p++) {
-        const a = document.createElement("a");
-        a.href = `talk.html?page=${p}`;
-        a.textContent = p;
-        if (p === currentPage) a.classList.add("active");
+    nav.innerHTML = '';
+    for (let i = 1; i <= totalPages; i++) {
+        const a = document.createElement('a');
+        a.href = `talk.html?page=${i}`;
+        a.textContent = i;
+        if (i === currentPage) a.classList.add('active');
         nav.appendChild(a);
     }
 });
 </script>
+
+
 </body>
 </html>
-
-
-
