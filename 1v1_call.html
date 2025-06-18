@@ -237,7 +237,7 @@
 
 
 <script>
-    document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", function(){
     const isAdmin = localStorage.getItem('isAdmin') === 'true';
     const inquiries = JSON.parse(localStorage.getItem('inquiries') || '[]').reverse();
 
@@ -253,45 +253,51 @@
     tbody.innerHTML = '';
     slice.forEach((item, index) => {
         const number = start + index + 1;
+
+        let formattedDate = item.date;
+        if (item.date.includes('.')) {
+            const dateParts = item.date.split('.');
+            if (dateParts.length >= 3) {
+                const year = dateParts[0].trim();
+                const month = dateParts[1].trim().padStart(2, '0');
+                const day = dateParts[2].trim().padStart(2, '0');
+                formattedDate = `${year}-${month}-${day}`;
+            }
+        }
+
         const tr = document.createElement('tr');
+        tr.style.position = 'relative';
         tr.innerHTML = `
             <td>${number}</td>
             <td><a href="view1.html?id=${item.id}">${item.title}</a></td>
-            <td>${item.date}</td>
+            <td>${formattedDate}</td>
             <td>${item.author}</td>
         `;
-        tbody.appendChild(tr);
 
         if (isAdmin) {
-            const deleteBox = document.createElement('div');
-            deleteBox.style.position = 'absolute';
-            deleteBox.style.right = '10px';
-            deleteBox.style.top = '50%';
-            deleteBox.style.transform = 'translateY(-50%)';
-            deleteBox.style.display = 'flex';
-            deleteBox.style.alignItems = 'center';
-            
-            const delBtn = document.createElement('button');
-            delBtn.textContent = '삭제';
-            delBtn.style.padding = '0 8px';
-            delBtn.style.fontSize = '14px';
-            delBtn.style.border = '1px solid #333';
-            delBtn.style.backgroundColor = '#f0f0f0';
-            delBtn.style.cursor = 'pointer';
+            const deleteBtn = document.createElement('button');
+            deleteBtn.textContent = "삭제";
+            deleteBtn.style.position = "absolute";
+            deleteBtn.style.right = "-80px";
+            deleteBtn.style.top = "50%";
+            deleteBtn.style.transform = "translateY(-50%)";
+            deleteBtn.style.padding = "0 10px";
+            deleteBtn.style.backgroundColor = "#eee";
+            deleteBtn.style.border = "1px solid #aaa";
+            deleteBtn.style.cursor = "pointer";
 
-            delBtn.onclick = () => {
-                if (confirm('삭제하시겠습니까?')) {
+            deleteBtn.onclick = () => {
+                if (confirm("삭제하시겠습니까?")) {
                     const originalInquiries = JSON.parse(localStorage.getItem('inquiries') || '[]');
                     const updatedInquiries = originalInquiries.filter(p => p.id !== item.id);
                     localStorage.setItem('inquiries', JSON.stringify(updatedInquiries));
                     location.reload();
                 }
             };
-
-            deleteBox.appendChild(delBtn);
-            tr.style.position = 'relative';
-            tr.appendChild(deleteBox);
+            tr.appendChild(deleteBtn);
         }
+
+        tbody.appendChild(tr);
     });
 
     nav.innerHTML = '';
@@ -304,5 +310,6 @@
     }
 });
 </script>
+
 </body>
 </html>
