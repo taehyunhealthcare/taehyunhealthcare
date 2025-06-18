@@ -104,8 +104,19 @@
         <!-- content 시작 -->
      <div class="n_contents">
        <h2>자료실</h2>
-       <div id="write-btn" style="text-align:right; margin-bottom:10px;">
-       <button id="go-write" style="padding:0 10px;">글쓰기</button>
+    <div id="write-btn" style="text-align:right; margin-bottom: 20px;">
+        <button id="go-write" style="
+            background-color: #aaa;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 2px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        ">글쓰기</button>
     </div>
     <table class="board">
     <colgroup>
@@ -293,7 +304,7 @@ document.addEventListener("DOMContentLoaded", function(){
             deleteBtn.style.right = "-80px";  // 테이블 오른쪽 바깥으로 분리
             deleteBtn.style.top = "50%";
             deleteBtn.style.transform = "translateY(-50%)";
-            deleteBtn.style.padding = "2px 10px";
+            deleteBtn.style.padding = "0 10px";
             deleteBtn.style.backgroundColor = "#eee";
             deleteBtn.style.border = "1px solid #aaa";
             deleteBtn.style.cursor = "pointer";
