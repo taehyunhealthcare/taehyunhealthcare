@@ -242,86 +242,145 @@
     <!-- 오른쪽 배너 끝 -->
 <script>
 document.addEventListener("DOMContentLoaded", function(){
-    const isAdmin = localStorage.getItem('isAdmin') === 'true';
-    let posts = JSON.parse(localStorage.getItem('posts') || '[]');
+  const isAdmin = localStorage.getItem('isAdmin') === 'true';
+  let allPosts = JSON.parse(localStorage.getItem('posts') || '[]');
 
-    posts = posts.map((post, index) => {
-        if (!post.id) post.id = index + 1;
-        return post;
-    });
-    localStorage.setItem('posts', JSON.stringify(posts));
-    posts = posts.reverse();
+  // talk 타입 없으면 기본 지정
+  allPosts = allPosts.map(post => {
+    if (!post.type) post.type = 'talk';
+    return post;
+  });
+  localStorage.setItem('posts', JSON.stringify(allPosts));
 
-    const tbody = document.querySelector('table.board tbody');
-    const nav = document.querySelector('.pagination');
-    const pageSize = 7;
-    const params = new URLSearchParams(location.search);
-    const currentPage = Number(params.get('page')) || 1;
-    const totalPages = Math.ceil(posts.length / pageSize);
-    const start = (currentPage - 1) * pageSize;
-    const slice = posts.slice(start, start + pageSize);
+  // talk 타입만 골라서 보여주기
+  allPosts.reverse();
+  let posts = allPosts.filter(p => p.type === 'talk');
+  posts.forEach((post,i) => {
+    if (post.id == null) post.id = i;
+  });
 
+  const tbody = document.querySelector('table.board tbody');
+  const nav = document.querySelector('.pagination');
+  const pageSize = 7, pagesToShow = 4;
+  let currentPage = 1, groupStart = 1;
+
+  function refreshPosts() {
+    const cur = JSON.parse(localStorage.getItem('posts')||'[]').reverse();
+    posts = cur.filter(p => p.type === 'talk');
+  }
+
+  function getTotalPages() {
+    return Math.ceil(posts.length / pageSize) || 1;
+  }
+
+  function renderPosts(page=1) {
+    refreshPosts();
+    currentPage = page;
+    const totalPages = getTotalPages();
+    if (currentPage > totalPages) currentPage = totalPages;
+    if (groupStart > totalPages) groupStart = Math.max(1, totalPages - pagesToShow + 1);
+
+    const startIdx = (currentPage -1)*pageSize;
+    const slice = posts.slice(startIdx, startIdx + pageSize);
     tbody.innerHTML = '';
-    slice.forEach((post, index) => {
-        const number = start + index + 1;
 
-        let formattedDate = post.date;
-        if (post.date.includes('.')) {
-            const dateParts = post.date.split('.');
-            if (dateParts.length >= 3) {
-                const year = dateParts[0].trim();
-                const month = dateParts[1].trim().padStart(2, '0');
-                const day = dateParts[2].trim().padStart(2, '0');
-                formattedDate = `${year}-${month}-${day}`;
-            }
+    slice.forEach((post, idx) => {
+      const number = startIdx + idx + 1;
+      let formatted = post.date;
+      if (formatted.includes('.')) {
+        const [y,m,d] = formatted.split('.');
+        formatted = `${y.trim()}-${m.trim().padStart(2,'0')}-${d.trim().padStart(2,'0')}`;
+      }
+      const displayTitle = post.visibility === 'private' ? '비공개' : post.title;
+      const tr = document.createElement('tr');
+      tr.style.position = 'relative';
+      const link = document.createElement('a');
+      link.href = `view.html?id=${post.id}`;
+      link.textContent = displayTitle;
+      link.onclick = (e) => {
+        if (post.visibility==='private' && !isAdmin) {
+          e.preventDefault();
+          showCredentialModal(post);
         }
+      };
+      tr.innerHTML = `<td>${number}</td><td></td><td>${formatted}</td><td>${post.maskedName || post.author || '익명'}</td>`;
+      tr.querySelector('td:nth-child(2)').appendChild(link);
 
-        const tr = document.createElement('tr');
-        tr.style.position = 'relative';
-        tr.innerHTML = `
-            <td>${number}</td>
-            <td><a href="view.html?id=${post.id}">${post.title}</a></td>
-            <td>${formattedDate}</td>
-            <td>${post.author}</td>
-        `;
+      if (isAdmin) {
+        const btn = document.createElement('button');
+        btn.textContent = '삭제';
+        btn.style.cssText = 'position:absolute; right:-80px; top:50%; transform:translateY(-50%); padding:0 10px; background:#eee; border:1px solid #aaa; cursor:pointer;';
+        btn.onclick = () => {
+          if (confirm('삭제하시겠습니까?')) {
+            const original = JSON.parse(localStorage.getItem('posts') || '[]');
+            const updated = original.filter(p => !(p.type === 'talk' && p.id === post.id));
+            localStorage.setItem('posts', JSON.stringify(updated));
+            renderPosts(currentPage);
+          }
+        };
+        tr.appendChild(btn);
+      }
 
-        if (isAdmin) {
-            const deleteBtn = document.createElement('button');
-            deleteBtn.textContent = "삭제";
-            deleteBtn.style.position = "absolute";
-            deleteBtn.style.right = "-80px";
-            deleteBtn.style.top = "50%";
-            deleteBtn.style.transform = "translateY(-50%)";
-            deleteBtn.style.padding = "0 10px";
-            deleteBtn.style.backgroundColor = "#eee";
-            deleteBtn.style.border = "1px solid #aaa";
-            deleteBtn.style.cursor = "pointer";
-
-            deleteBtn.onclick = () => {
-                if (confirm("삭제하시겠습니까?")) {
-                    const originalPosts = JSON.parse(localStorage.getItem('posts') || '[]');
-                    const updatedPosts = originalPosts.filter(p => p.id !== post.id);
-                    localStorage.setItem('posts', JSON.stringify(updatedPosts));
-                    location.reload();
-                }
-            };
-            tr.appendChild(deleteBtn);
-        }
-
-        tbody.appendChild(tr);
+      tbody.appendChild(tr);
     });
 
+    renderPagination();
+  }
+
+  function renderPagination() {
+    const totalPages = getTotalPages();
     nav.innerHTML = '';
-    for (let i = 1; i <= totalPages; i++) {
-        const a = document.createElement('a');
-        a.href = `talk.html?page=${i}`;
-        a.textContent = i;
-        if (i === currentPage) a.classList.add('active');
-        nav.appendChild(a);
+    if (groupStart > 1) {
+      const prev = document.createElement('button');
+      prev.textContent = '◀';
+      prev.classList.add('nav-group');
+      prev.onclick = () => { groupStart = Math.max(1, groupStart - pagesToShow); renderPosts(groupStart); };
+      nav.appendChild(prev);
     }
+    const end = Math.min(groupStart + pagesToShow -1, totalPages);
+    for (let i=groupStart; i<=end; i++) {
+      const btn = document.createElement('button');
+      btn.textContent = i;
+      if (i === currentPage) btn.classList.add('active');
+      btn.onclick = () => renderPosts(i);
+      nav.appendChild(btn);
+    }
+    if (end < totalPages) {
+      const nxt = document.createElement('button');
+      nxt.textContent = '▶';
+      nxt.classList.add('nav-group');
+      nxt.onclick = () => { groupStart += pagesToShow; renderPosts(groupStart); };
+      nav.appendChild(nxt);
+    }
+  }
+
+  function showCredentialModal(post) {
+    const modal = document.createElement('div');
+    Object.assign(modal.style, { position:'fixed',top:0,left:0,width:'100%',height:'100%',background:'rgba(0,0,0,0.5)', display:'flex',alignItems:'center',justifyContent:'center',zIndex:9999 });
+    modal.innerHTML = `
+      <div style="background:#fff;padding:30px;border-radius:10px;max-width:400px">
+        <h3>비공개 글입니다</h3>
+        <input id="modalName" placeholder="이름" style="width:100%;margin-bottom:10px;margin-top:10px;border:1px solid #ccc;padding:10px;">
+        <input id="modalEmail" placeholder="이메일" style="width:100%;margin-bottom:20px;border:1px solid #ccc;padding:10px;">
+        <div style="text-align: center;">
+        <button id="confirmBtn" style="background:#2a8;color:#fff;cursor:pointer; padding: 0 15px;">확인</button>
+        <button id="cancelBtn" style="margin-left:10px;cursor:pointer; padding: 0 15px;">취소</button>
+        </div>
+      </div>`;
+    document.body.appendChild(modal);
+    modal.querySelector('#cancelBtn').onclick = () => document.body.removeChild(modal);
+    modal.querySelector('#confirmBtn').onclick = () => {
+      const n=modal.querySelector('#modalName').value.trim();
+      const e=modal.querySelector('#modalEmail').value.trim();
+      if (n===post.name && e===post.email) {
+        window.location.href = `view.html?id=${post.id}`;
+      } else alert('정보가 일치하지 않습니다.');
+    };
+  }
+
+  renderPosts(1);
 });
 </script>
-
-
 </body>
 </html>
+
