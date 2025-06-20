@@ -771,12 +771,15 @@ iframe {
 }
 
 .m_span a {
-  background: #aaa;
-  color: #fff;
-  padding: 2px 12px;
-  border-radius: 6px;
-  text-decoration: none;
+  background-color: #aaa;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 0 20px;
+  font-size: 16px;
   font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);      cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 .nhaeder {
   height: 40px;
@@ -1531,7 +1534,7 @@ label {
   border-bottom: 1px solid rgba(0, 0, 0, 0.17);
 }
 .dbox2>p, .dbox3>p {
-  padding: 7px 10px;
+  padding: 9px 10px;
   font-size: 14px;
 }
 .dimg {
@@ -1700,7 +1703,7 @@ label {
 
 .date-wrap {
   font-size: 14px;
-  padding: 7px 10px;
+  padding: 9px 10px;
 }
 
 
@@ -1786,6 +1789,50 @@ label {
     position: relative;
 }
 
-.submit-btn1:hover {
-  background-color: #0056b3;
+
+
+/* 페이지 버튼 전체 스타일 */
+.pagination button {
+  background: #f0f0f0;
+  border: 1px solid #ccc;
+  color: #333;
+  padding: 4px 8px;           /* 버튼 크기를 줄임 */
+  margin: 0 2px;
+  font-size: 14px;
+  border-radius: 50%;         /* 완전한 원형처럼 둥글게 */
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color .3s;
+}
+
+/* 활성 페이지 버튼 강조 */
+.pagination button.active {
+  background: #4CAF50;
+  color: white;
+  font-weight: bold;
+}
+
+/* 호버 효과 */
+.pagination button:hover:not(.active) {
+  background: #ddd;
+}
+
+p#emailArea {
+  font-size: 14px;
+  padding: 9px 10px;
+  height: 40px;
+  border-top: 1px solid #ccc;
+}
+
+#name1, #email1 {
+  width: 100%;
+  height: 40px;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  box-sizing: border-box;
 }
