@@ -101,26 +101,40 @@
 
     <!-- 글쓰기 영역 -->
   <div class="write-container1">
-    <h2 class="heading1">문의 작성</h2>
+    <h2 class="heading1">문의 작성 (질문과답변)</h2>
     <form id="inquiryForm">
+      <!-- 이름 -->
       <div class="form-group1">
-        <label for="category1">카테고리</label>
-        <select id="category1">
-          <option value="질문">질문</option>
-          <option value="기타">기타</option>
-        </select>
-      </div>
-      <div class="form-group1">
-        <label for="title1">제목</label>
-        <input type="text" id="title1" placeholder="제목을 입력해주세요" />
-        <span class="error-msg" style="color: red; font-size: 0.9em;"></span>
-      </div>
-      <div class="form-group1">
-        <label for="content1">내용 입력</label>
-        <textarea id="content1" placeholder="내용을 입력해주세요."></textarea>
-        <span class="error-msg" style="color: red; font-size: 0.9em;"></span>
+        <label for="name1">이름</label>
+        <input type="text" id="name1" placeholder="이름을 입력해주세요" required />
       </div>
 
+      <!-- 이메일 -->
+      <div class="form-group1">
+        <label for="email1">이메일</label>
+        <input type="email" id="email1" placeholder="이메일을 입력해주세요" required />
+      </div>
+
+      <!-- 공개/비공개 -->
+      <div class="form-group1">
+        <label>공개 여부</label>
+        <label><input type="radio" name="visibility" value="public" checked /> 공개</label>
+        <label><input type="radio" name="visibility" value="private" /> 비공개</label>
+      </div>
+
+      <!-- 제목 -->
+      <div class="form-group1">
+        <label for="title1">제목</label>
+        <input type="text" id="title1" placeholder="제목을 입력해주세요" required />
+      </div>
+
+      <!-- 내용 -->
+      <div class="form-group1">
+        <label for="content1">내용 입력</label>
+        <textarea id="content1" placeholder="내용을 입력해주세요." required></textarea>
+      </div>
+
+      <!-- 첨부파일 -->
       <div class="form-group1">
         <label>첨부 파일</label>
         <div class="file-upload-box1">
@@ -130,6 +144,8 @@
           <div id="file-list1">선택된 파일 없음</div>
         </div>
       </div>
+
+      <!-- 제출 -->
       <div class="form-group2">
         <button type="submit" class="submit-btn1">문의 등록</button>
       </div>
@@ -244,118 +260,90 @@
     <!-- 오른쪽 배너 끝 -->
 
 
-    <!-- 첨부파일 스크립트 -->
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const fileInput = document.getElementById("file1");
-        const fileList = document.getElementById("file-list1");
-        if (!fileInput || !fileList) return;
 
-        let selectedFiles = [];
+<script>
+  const fileInput = document.getElementById('file1');
+  const fileListDiv = document.getElementById('file-list1');
+  const selectedFiles = [];
 
-        fileInput.addEventListener("change", function () {
-          const newFiles = Array.from(fileInput.files);
-          newFiles.forEach((file) => {
-            if (!selectedFiles.find((f) => f.name === file.name)) {
-              selectedFiles.push(file);
-            }
-          });
-          renderFileList();
-          fileInput.value = "";
-        });
-
-        function renderFileList() {
-          if (selectedFiles.length === 0) {
-            fileList.textContent = "선택된 파일 없음";
-            return;
-          }
-          fileList.innerHTML = "";
-          selectedFiles.forEach((file, index) => {
-            const fileItem = document.createElement("div");
-            fileItem.className = "file-item1";
-            fileItem.innerHTML = `
-              <span>${index + 1}. ${file.name}</span>
-              <button type="button" class="delete-btn1" data-index="${index}">&times;</button>
-            `;
-            fileList.appendChild(fileItem);
-          });
-
-          document.querySelectorAll(".delete-btn1").forEach((button) => {
-            button.addEventListener("click", function () {
-              const idx = parseInt(this.getAttribute("data-index"));
-              selectedFiles.splice(idx, 1);
-              renderFileList();
-            });
-          });
-        }
-      });
-    </script>
-
-    <!-- 필수입력란 미작성시 다음페이지로 안넘어가게끔 하는 스크립트 -->
-    <script>
-    document.querySelector('.submit-btn1').addEventListener('click', function(e) {
-      const titleInput = document.getElementById('title1');
-      const contentInput = document.getElementById('content1');
-
-      const titleError = titleInput.nextElementSibling;
-      const contentError = contentInput.nextElementSibling;
-
-      let isValid = true;
-
-      if (!titleInput.value.trim()) {
-        titleError.textContent = '제목을 입력해주세요.';
-        isValid = false;
-      } else {
-        titleError.textContent = '';
-      }
-
-      if (!contentInput.value.trim()) {
-        contentError.textContent = '내용을 입력해주세요.';
-        isValid = false;
-      } else {
-        contentError.textContent = '';
-      }
-
-      if (!isValid) {
-        e.preventDefault(); // 제출 막기
-      } else {
-        // 여기서 실제 제출 처리 또는 페이지 이동 처리
-        // 예) e.target.form.submit();  또는 location.href=...
-      }
+  // 파일 선택 시 리스트에 추가 및 렌더링
+  fileInput.addEventListener('change', () => {
+    Array.from(fileInput.files).forEach(file => {
+      selectedFiles.push(file);
     });
-          document.getElementById('inquiryForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const title = document.getElementById('title1');
-        const content = document.getElementById('content1');
-        const category = document.getElementById('category1').value;
-        const titleError = title.nextElementSibling;
-        const contentError = content.nextElementSibling;
+    renderFileList();
+    fileInput.value = ""; // 같은 파일 다시 선택 가능하도록 초기화
+  });
 
-        let isValid = true;
-        if (!title.value.trim()) {
-          titleError.textContent = '제목을 입력해주세요.';
-          isValid = false;
-        } else titleError.textContent = '';
-        if (!content.value.trim()) {
-          contentError.textContent = '내용을 입력해주세요.';
-          isValid = false;
-        } else contentError.textContent = '';
-        if (!isValid) return;
+  // 파일 리스트 렌더링 함수
+  function renderFileList() {
+    if (selectedFiles.length === 0) {
+      fileListDiv.textContent = "선택된 파일 없음";
+      return;
+    }
 
-        const posts = JSON.parse(localStorage.getItem('posts') || '[]');
-        posts.push({
-          category,
-          title: title.value,
-          content: content.value,
-          date: new Date().toLocaleDateString(),
-          author: '작성자',
-          views: 0,
-          answer: 0
-        });
-        localStorage.setItem('posts', JSON.stringify(posts));
-        location.href = '01_partnership.html';
-      });
-    </script>
-  </body>
+    fileListDiv.innerHTML = "";
+    selectedFiles.forEach((file, idx) => {
+      const item = document.createElement("div");
+      item.className = "file-item1";
+      item.innerHTML = `
+        <span>${idx + 1}. ${file.name}</span>
+        <button type="button" class="delete-btn1" data-index="${idx}">&times;</button>
+      `;
+      fileListDiv.appendChild(item);
+    });
+
+    // 삭제 버튼 이벤트 등록
+    document.querySelectorAll(".delete-btn1").forEach(btn =>
+      btn.addEventListener("click", () => {
+        selectedFiles.splice(parseInt(btn.dataset.index), 1);
+        renderFileList();
+      })
+    );
+  }
+
+  // 문의 등록 제출
+  document.getElementById('inquiryForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById('name1').value.trim();
+    const email = document.getElementById('email1').value.trim();
+    const title = document.getElementById('title1').value.trim();
+    const content = document.getElementById('content1').value.trim();
+    const visibility = document.querySelector('input[name="visibility"]:checked').value;
+
+    if (!name || !email || !title || !content) {
+      alert('모든 항목을 입력해주세요.');
+      return;
+    }
+
+    const maskedName = name.length >= 2
+      ? name[0] + '*'.repeat(name.length - 2) + name[name.length - 1]
+      : name;
+
+    const fileNames = selectedFiles.map(f => f.name);
+
+    const posts = JSON.parse(localStorage.getItem('posts') || '[]');
+
+    posts.push({
+      id: posts.length,
+      type: 'talk',
+      name,
+      email,
+      maskedName,
+      title,
+      content,
+      visibility,
+      fileNames,
+      date: new Date().toLocaleDateString(),
+      answer: ''
+    });
+
+    localStorage.setItem('posts', JSON.stringify(posts));
+
+    window.location.href = '01_partnership.html';
+  });
+</script>
+ </body>
 </html>
 
