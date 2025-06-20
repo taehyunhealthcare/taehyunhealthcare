@@ -106,26 +106,27 @@
 
     <!-- 제품 소개 1 시작 -->
     <div id="n_contents">
-        <div id="qna-header">
-            <h2>문의하기</h2>
+    <div id="qna-header">
+        <h2>문의하기</h2>
+    </div>
+    <div class="dbox">
+        <div class="dbox1"><p id="titleArea">제목:</p></div>
+        <div class="dbox2"><p id="authorArea">작성자:</p></div>
+        <!-- 이메일 박스 추가 -->
+        <div class="dboxEmail"><p id="emailArea">이메일:</p></div>
+        <div class="dbox3">
+        <div class="date-wrap">
+            <span id="dateArea">작성날짜:</span>
         </div>
-        <div class="dbox">
-            <div class="dbox1"><p id="titleArea">제목:</p></div>
-            <div class="dbox2"><p id="authorArea">작성자:</p></div>
-            <div class="dbox3">
-                <div class="date-wrap">
-                    <span id="dateArea">작성날짜:</span>
-                </div>
-            </div>
-        </div>
-        <div class="d">
-            <p id="contentArea">작성내용</p>
-        </div>
-        <div class="dboxbtn">
-          <a href="1v1_call.html">목록</a>
         </div>
     </div>
-    <!-- 제품 소개 1 끝 -->
+    <div class="d">
+        <p id="contentArea">작성내용</p>
+    </div>
+    <div class="dboxbtn">
+        <a href="1v1_call.html">목록</a>
+    </div>
+    </div>
 
 
 
@@ -235,24 +236,82 @@
          </div>
     </div>
     <!-- 오른쪽 배너 끝 -->
-<script>
+ <script>
 document.addEventListener("DOMContentLoaded", function(){
-    const params = new URLSearchParams(location.search);
-    const inquiryId = params.get('id');
+  const params = new URLSearchParams(location.search);
+  const id = Number(params.get('id'));
+  const posts = JSON.parse(localStorage.getItem('posts') || '[]');
+  const post = posts[id];
+  if (!post) {
+    alert("게시글을 찾을 수 없습니다.");
+    location.href = "1v1_call.html";
+    return;
+  }
 
-    const inquiries = JSON.parse(localStorage.getItem('inquiries') || '[]');
-    const inquiry = inquiries.find(item => item.id == inquiryId);
+  document.getElementById("titleArea").textContent = `제목: ${post.title}`;
+  document.getElementById("authorArea").textContent = `작성자: ${post.name}`;
+  document.getElementById("emailArea").textContent = `이메일: ${post.email}`;
+  document.getElementById("dateArea").textContent = `작성날짜: ${post.date}`;
+  document.getElementById("contentArea").textContent = post.content;
 
-    if (!inquiry) {
-        alert('존재하지 않는 문의글입니다.');
-        location.href = '1v1_call.html';
-        return;
-    }
+  const contentBox = document.querySelector("#n_contents");
 
-    document.getElementById("titleArea").textContent = `제목: ${inquiry.title}`;
-    document.getElementById("authorArea").textContent = `작성자: ${inquiry.author}`;
-    document.getElementById("dateArea").textContent = `작성날짜: ${inquiry.date}`;
-    document.getElementById("contentArea").textContent = inquiry.content;
+  if (post.attachments?.length) {
+    const hr = document.createElement('hr');
+    hr.style.margin = "20px 0";
+    contentBox.appendChild(hr);
+
+    const fileBox = document.createElement('div');
+    fileBox.style.margin = "10px 0";
+    fileBox.innerHTML = `<strong>첨부파일:</strong><div style="margin-top:10px;"></div>`;
+    const container = fileBox.querySelector('div');
+
+    post.attachments.forEach(item => {
+      const isImage = /^data:image\/.+;base64,/.test(item.data);
+      if (isImage) {
+        container.innerHTML += `<img src="${item.data}" alt="${item.name}" style="max-width:300px; display:block; margin-bottom:15px;">`;
+      } else {
+        container.innerHTML += `
+          <div style="margin-bottom:10px;">
+            <a href="${item.data}" download="${item.name}">${item.name}</a>
+          </div>`;
+      }
+    });
+    contentBox.appendChild(fileBox);
+  }
+
+  if (post.answer?.trim()) {
+    const answerBox = document.createElement('div');
+    answerBox.style.margin = "30px 0";
+    answerBox.style.padding = "10px 0";
+    answerBox.style.borderTop = answerBox.style.borderBottom = "1px solid #ccc";
+    answerBox.innerHTML = `
+      <h4 style="margin-bottom:15px;">관리자 답변</h4>
+      <p style="margin-bottom:15px;">${post.answer}</p>`;
+    contentBox.appendChild(answerBox);
+  }
+
+  if (localStorage.getItem('isAdmin') === 'true') {
+    const formBox = document.createElement('div');
+    formBox.style.margin = "30px 0";
+    formBox.innerHTML = `
+      <h4 style="margin-bottom:10px;">답변 작성</h4>
+      <textarea id="adminAnswer" style="width:100%; height:100px; margin-bottom:10px;"></textarea><br>
+      <button id="saveAnswerBtn" style="padding:6px 20px; font-weight:bold; cursor:pointer;">저장</button>`;
+    contentBox.appendChild(formBox);
+
+    document.getElementById("saveAnswerBtn").addEventListener("click", () => {
+      const answer = document.getElementById("adminAnswer").value.trim();
+      if (!answer) { alert("답변 내용을 입력해주세요."); return; }
+      posts[id].answer = answer;
+      localStorage.setItem('posts', JSON.stringify(posts));
+      alert("답변이 저장되었습니다.");
+      location.reload();
+    });
+  }
+
+  const backBtn = document.querySelector(".dboxbtn");
+  contentBox.appendChild(backBtn);
 });
 </script>
 </body>
