@@ -135,7 +135,7 @@
      <!-- 상품 시작  -->
       <div class="contents01">
         <div class="cbox01">
-            <a href="#">
+            <a href="jaepum2.html">
                 <img src="img/nebulizer.jpg" alt="제품 이미지">
                 <p>Nebulizer</p>
             </a>
@@ -148,26 +148,24 @@
     <!-- 상품 끝 -->
       
     <!-- PAGE NUMBER 시작 -->
-      <div class="pagenumber">
-        <a href="#">1</a>
-      </div>
+    <div class="pagination-container">
+    <div class="pagination"></div>
+    </div>
     <!-- PAGE NUMBER 끝  -->
      
-    <!-- 콘텐츠 시작 -->
+   <!-- 콘텐츠 시작 -->
     <div id="contents">
-        <div class="notice">
-            <ul class="tab">
-             <img src="img/notice1.png" alt="공지사항 이미지">
-              <h5>NOTICE</h5>
-            </ul>
-            <ol>
-                <li><a href="#">(주) 반도메딕스 홈페이지 제작 </a></li>
-                <li><a href="#">(주) 반도메딕스 홈페이지 제작 </a></li>
-                <li><a href="#">(주) 반도메딕스 홈페이지 제작 </a></li>
-            </ol>
+        <div class="callcenter">
+              <h4>Call Center</h4>
+              <div class="call1">
+                <a href="#"><span>062-000-0000</span></a>
+                <li><p>평일 오전 09:30 ~ 오후 05:30</p></li>
+                <li><p>점심시간 12:00 ~ 오후 01:00</p></li>
+                <li><p>주말 및 공휴일 휴무</p></li>
+              </div>
         </div>
         <div class="download">
-            <h5><a href="download.html">DOWNLOAD</a></h5>
+            <h4><a href="download.html">DOWNLOAD</a></h4>
             <ol>
                 <li><a href="download1.html">Fetal Doppler 제품 설명서</a></li>
                 <li><a href="download2.html">Nebulizer 제품 설명서</a></li>
@@ -175,11 +173,11 @@
             </ol>
         </div>
         <div class="cbox">
-            <h5>COMMUNITY</h5>
+            <h4>COMMUNITY</h4>
             <div id="cbox">
-                <a href="1v1_call.html" class="user">
-                    <p>문의하기</p>
-                    <img src="img/User.png" alt="이미지">
+                <a href="notice.html" class="user">
+                    <p>공지사항</p>
+                    <img src="img/notice.png" alt="이미지">
                 </a>
                 <a href="talk.html" class="talk">
                     <p>질문과답변</p>
@@ -201,8 +199,9 @@
 
     <!-- 콘텐츠 끝 -->
 
+
     <!-- 푸터 시작 -->
-     <footer>
+    <footer>       
         <div class="fmenu">
             <a href="#">회사소개</a>
             <a href="#">이용약관</a>
@@ -211,58 +210,76 @@
             <a href="#">광고/제휴 문의</a>
         </div>
         <div class="fbox">
-            <div class="flogo"><a href="#"><img src="img/flogo.png" alt="로고이미지"></a></div>
             <div class="copy">
                 <p>
-                    태현헬스케어 광주광역시 xxxxxx xx <br>
-                    대표: xxx 사업자등록번호: xxx-xx-xxxxx <br>
-                    대표번호: xx-xxx-xxxx AS번호: XXXX-XXXX 팩스번호: XX-XXX-XXXX 메일:home@xxxx.xx.xx <br>
-                    copyright www.taehyun.kr all rights reserved
+                    태현헬스케어 광주광역시 xxxxxx xx 
+                    대표: xxx 사업자등록번호: xxx-xx-xxxxx 대표번호: xx-xxx-xxxx <br> 
+                    AS번호: XXXX-XXXX 팩스번호: XX-XXX-XXXX 메일:home@xxxx.xx.xx <br>
+                    copyright www.taehyun.kr all rights reserved.
                 </p>
             </div>
-            <div class="call">
-             <span>CALL CENTER</span>
-              <a href="#"><h5>062-000-0000</h5></a>
-              <p>평일 오전 09:30 ~ 오후 05:30</p>
-              <p>점심시간 12:00 ~ 오후 01:00</p>
-              <p>주말 및 공휴일 휴무</p>
-            </div>
         </div>
-    </footer>    
+    </footer>
     <!-- 푸터 끝 -->
+     
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+        const pageSize = 8; // 한 페이지에 보일 상품 수
+        const pagesToShow = 4;
+        let currentPage = 1;
+        let groupStart = 1;
 
+        const products = document.querySelectorAll(".cbox01 a"); // 상품 요소들
+        const nav = document.querySelector(".pagination");
 
-    <!-- 오른쪽 배너 시작 -->
-    <div id="banner">
-         <div id="banner1">
-             <a href="javascript:void(0)" id="fixedicon"><img src="img/down.png" alt="다운 이미지"></a>
-         </div>
-         <div class="close">
-              <a href="javascript:void(0)" id="fixedicon"><img src="img/close.png" alt="닫기"></a>
-         </div>
-         <div id="banner3">
-               <a href="#" id="fixedicon">
-                 <img src="img/text.png" alt="문자">
-                 <p>문의하기</p>
-               </a>
-         </div>
-          <div id="banner4">
-               <a href="notice.html" id="fixedicon">
-                <img src="img/notice.png" alt="공지사항">
-                <p>공지사항</p>
-               </a>
-         </div>
-         <div id="banner5">
-             <a href="partnership.html" id="fixedicon">
-                 <img src="img/B2B.png" alt="b2b">
-                <p>B2B</p>
-            </a>
-         </div>
-    </div>
-    <!-- 오른쪽 배너 끝 -->
+        function calculateTotalPages() {
+            return Math.ceil(products.length / pageSize) || 1;
+        }
 
+        function showProducts(page) {
+            currentPage = page;
+            const totalPages = calculateTotalPages();
+            if (currentPage > totalPages) currentPage = totalPages;
+            if (groupStart > totalPages) groupStart = Math.max(1, totalPages - pagesToShow + 1);
+
+            products.forEach((p, idx) => {
+            p.style.display = idx >= (currentPage-1)*pageSize && idx < currentPage*pageSize ? "inline-block" : "none";
+            });
+
+            renderPagination();
+        }
+
+        function renderPagination() {
+            const totalPages = calculateTotalPages();
+            nav.innerHTML = "";
+            if (groupStart > 1) {
+            const prev = document.createElement('button');
+            prev.textContent = '◀';
+            prev.onclick = () => { groupStart = Math.max(1, groupStart - pagesToShow); showProducts(groupStart); };
+            nav.appendChild(prev);
+            }
+
+            const end = Math.min(groupStart + pagesToShow - 1, totalPages);
+            for (let i = groupStart; i <= end; i++) {
+            const btn = document.createElement('button');
+            btn.textContent = i;
+            if (i === currentPage) btn.classList.add('active');
+            btn.onclick = () => showProducts(i);
+            nav.appendChild(btn);
+            }
+
+            if (end < totalPages) {
+            const next = document.createElement('button');
+            next.textContent = '▶';
+            next.onclick = () => { groupStart += pagesToShow; showProducts(groupStart); };
+            nav.appendChild(next);
+            }
+        }
+
+        showProducts(1); // 초기 호출
+        });
+    </script>
 
  </body>
 </html>
-     
      
