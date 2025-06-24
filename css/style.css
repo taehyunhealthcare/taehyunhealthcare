@@ -212,7 +212,7 @@ nav {
   line-height: 50px;
 }
 .menu>li>a {
-   border-bottom: 1px solid #b4b2b2;
+   border-bottom: 1px solid #000;
 }
 .menu>li>a:hover {
   font-size: 20px;
@@ -276,42 +276,36 @@ nav {
   padding-bottom: 200px;
 }
 
-/* 공지사항 */
-.notice {
+/* 콜 센터  */
+.callcenter {
   width: 400px;
   height: 300px;
   padding: 45px 20px;
   text-align: center;
 }
-.tab {
-  display: flex;
-  margin-left: 140px;
-}
-.notice img {
-  width: 14px;
-  height: 14px;
-  margin: 0 5px;
-  margin-top: 4px;
-}
-.notice>ol {
-  list-style: none;
+.call1 {
+  width: 360px;
+  height: 160px;
   padding: 20px 0;
 }
-.notice>ol>li {
+.call1>li {
+  list-style: none;
   width: 150px;
   margin-left: 100px;
 }
-
-.notice>ol>li>a {
-  line-height: 40px;
+.call1 p {
   font-size: 11px;
+  line-height: 40px;
   opacity: 0.7;
 }
-.notice>ol>li:hover {
+.call1 span {
+  font-size: 14px;
   font-weight: bold;
-  border-bottom: 1px dotted #000;
 }
-
+.call1 span:hover {
+  font-weight: bold;
+  font-size: 16px;
+}
 /* 다운로드 */
 .download {
   width: 400px;
@@ -346,7 +340,7 @@ nav {
 }
 #cbox {
   display: flex;
-  margin-top: 40px;
+  margin-top: 25px;
   padding: 0 0 20px 0;
   margin-left: 120px;
 }
@@ -374,7 +368,6 @@ nav {
 }
 #cbox1 {
   display: flex;
-  margin-top: 10px;
   margin-left: 120px;
 }
 #cbox1>a {
@@ -446,19 +439,19 @@ nav {
   padding: 30px 20px;
   display: flex;
   flex-wrap: wrap;
-  gap: 195px;
+}
+.copy {
+  width: 800px;
+  margin: 0 auto;
+}
+.copy p{
+  width: 800px;
+  font-size: 13px;
+  opacity: 0.7;
+  padding-top: 20px;
+  text-align: center;
 }
 
-.flogo, .copy, .call {
-  flex: 1;
-  min-width: 250px;
-}
-
-.copy > p, .call p {
-  font-size: 12px;
-  opacity: 0.6;
-  margin: 4px 0;
-}
 /* 푸터 끝 */
 
 
@@ -675,29 +668,6 @@ nav {
   opacity: 0.7;
 }
  /* nav1 끝 */
-
-/* 다음페이지 선택 시작 */
-.pagenumber {
-  width: 100%; 
-  height: 50px;
-  margin: 0 auto;
-  padding-top: 8px;
-  margin: 40px auto 100px;
-
-  display: flex;          
-  justify-content: center; 
-  align-items: center;    
-}
-
-.pagenumber > a {
-  width: 35px;
-  height: 35px;
-  line-height: 35px; 
-  text-align: center;
-  background-color: rgba(0, 0, 0, 0.3);
-  border-radius: 50%;
-  color: #fff;
-}
 
 /* 다음페이지 선택 끝 */
 
@@ -1835,4 +1805,263 @@ p#emailArea {
   border: 1px solid #ccc;
   font-size: 16px;
   box-sizing: border-box;
+}
+
+
+
+
+.file-list {
+  width: 1200px;
+  background-color: #f9f9f9; /* 연한 회색 배경 */
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.file-item {
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* 다운로드 아이콘 오른쪽 정렬 */
+}
+
+.file-item:last-child {
+  border-bottom: none; /* 마지막 아이템은 선 없음 */
+}
+
+.file-item span {
+  font-size: 14px;
+}
+
+.file-item a img {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+#j-contents {
+  width: 1200px;
+  margin: 0 auto;
+  margin-top: 50px;
+  margin-bottom: 100px;
+  padding: 40px 60px;
+  display: flex;
+  gap: 60px;
+}
+#jbox1 {
+  position: relative;
+  width: 510px; /* 적당한 크기로 조정 가능 */
+  height: 510px;
+  margin: 0 auto;
+  border: 1px solid #999;
+}
+.slider-container {
+  position: relative;
+  overflow: hidden;
+  height: 510px; /* 이미지 높이에 맞춰 조정 */
+  display: flex;
+  align-items: center;
+}
+
+.slider-wrapper {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.slider-wrapper img {
+  width: 510px;
+  height: 510px;
+  object-fit: cover;
+  padding: 5px;
+}
+
+.prev-btn,
+.next-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; /* 원형 */
+  background: rgba(0, 0, 0, 0.4); /* 반투명한 어두운 배경 */
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+}
+
+.prev-btn { left: 10px; }
+.next-btn { right: 10px; }
+
+.prev-btn:hover,
+.next-btn:hover {
+  background: rgba(0, 0, 0, 0.8); /* 호버 시 조금 더 짙은 배경 */
+}
+
+/* 방향키 스타일 */
+.prev-btn::before,
+.next-btn::before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+}
+
+/* 이전(왼쪽) 화살표 */
+.prev-btn::before {
+  border-right: 8px solid white;
+}
+
+/* 다음(오른쪽) 화살표 */
+.next-btn::before {
+  border-left: 8px solid white;
+}
+/* 미리보기 인디케이터 */
+.indicator-container {
+  position: absolute;
+  bottom: 10px;     /* 이미지 안쪽 하단에서 10px 위 */
+  left: 50%;
+  transform: translateX(-50%); /* 수평 가운데 정렬 */
+  display: flex;
+  gap: 8px;
+  z-index: 10;       /* 이미지 위에 오도록 */
+}
+
+.indicator {
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  padding: 5px;
+}
+
+.indicator img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.3; /* 비활성 상태일 때 */
+  transition: opacity 0.3s;
+}
+
+.indicator.active img {
+  opacity: 1; /* 현재 슬라이드일 경우 */
+}
+
+#jbox2 {
+  width: 510px;
+  border: 1px solid #999;
+  padding: 20px;              
+  display: flex;              
+  flex-direction: column;      
+  min-height: 510px;           
+  box-sizing: border-box;
+  position: relative;
+}
+#jbox2 h3 {
+  height: 100px;
+  padding-top: 55px;
+  padding-left: 25px;
+}
+/* 제품 설명 박스 */
+.product-description {
+  padding: 24px;
+  border-radius: 4px;
+}
+
+/* 요약 텍스트 */
+.product-description .summary {
+  max-height: 6.9em;     /* 약 4줄 */
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  border-radius: 4px;
+  background-color: #fff;
+  margin-bottom: 8px;
+}
+
+.product-description .summary.expanded {
+  max-height: none; /* 전체 펼치기 */
+}
+
+/* 추가 텍스트 박스 */
+.more-text {
+  display: none;
+  background-color: #fff;
+  padding: 16px;
+  border-radius: 4px;
+  margin: 12px 0;
+  line-height: 2;
+  font-size: 12px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+.purchase-btn {
+  align-self: center;  
+  margin-top: auto;     
+  width: 200px;        
+  text-align: center;
+  padding: 10px 0;
+  background-color: #333;
+  color: #fff;
+  border-radius: 20px;
+  text-decoration: none;
+}
+
+
+.title {
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  border-radius: 4px;
+  background-color: #fff;
+  margin-bottom: 20px;
+}
+.summary {
+  border: 1px solid #ccc;
+  padding: 8px 12px 24px 12px; /* 아래쪽 여백을 넉넉히 */
+  border-radius: 4px;
+  background-color: #fff;
+  margin-bottom: 20px;
+  line-height: 1.9;
+  max-height: 6em; /* 3줄 높이 */
+  overflow: hidden;
+  font-size: 14px;
+}
+
+.toggle-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: block;
+  margin: 0 auto;
+}
+
+.toggle-btn .toggle-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.toggle-btn {
+  transform: rotate(0deg);
+}
+.toggle-btn.rotated {
+  transform: rotate(180deg);
+}
+.toggle-btn:hover {
+  background: transparent;
+}
+
+
+.dimg {
+  width: 1200px;
+}
+.dimg img {
+  width: 1200px;
 }
