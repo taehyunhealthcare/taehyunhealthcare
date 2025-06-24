@@ -234,23 +234,23 @@
     </div>
     <!-- 오른쪽 배너 끝 -->
      <script>
-document.addEventListener("DOMContentLoaded", function () {
-    const params = new URLSearchParams(location.search);
-    const id = Number(params.get('id'));
-    const memos = JSON.parse(localStorage.getItem('memos') || '[]');
-    const memo = memos.find(item => item.id === id);
+     document.addEventListener("DOMContentLoaded", function () {
+        const params = new URLSearchParams(location.search);
+        const id = Number(params.get('id'));
+        const memos = JSON.parse(localStorage.getItem('memos') || '[]');
+        const memo = memos.find(item => item.id === id);
 
-    if (!memo) {
-        alert("게시글을 찾을 수 없습니다.");
-        location.href = "memo.html";
-        return;
-    }
+        if (!memo) {
+            alert("게시글을 찾을 수 없습니다.");
+            location.href = "memo.html";
+            return;
+        }
 
-    document.getElementById("titleArea").textContent = `제목: ${memo.title}`;
-    document.getElementById("authorArea").textContent = `작성자: ${memo.author}`;
-    document.getElementById("dateArea").textContent = `작성날짜: ${memo.date}`;
-    document.getElementById("contentArea").textContent = memo.content;
-});
-</script>
+        document.getElementById("titleArea").textContent = `제목: ${memo.title}`;
+        document.getElementById("authorArea").textContent = `작성자: ${memo.author}`;
+        document.getElementById("dateArea").textContent = `작성날짜: ${memo.date}`;
+        document.getElementById("contentArea").textContent = memo.content;
+    });
+    </script>
     </body>
 </html>
