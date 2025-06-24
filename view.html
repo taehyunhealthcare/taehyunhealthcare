@@ -127,23 +127,19 @@
     </div>
     <!-- 제품 소개 1 끝 -->
 
-
-
-    <!-- 콘텐츠 시작 -->
+   <!-- 콘텐츠 시작 -->
     <div id="contents">
-        <div class="notice">
-            <ul class="tab">
-             <img src="img/notice1.png" alt="공지사항 이미지">
-              <h5>NOTICE</h5>
-            </ul>
-            <ol>
-                <li><a href="#">(주) 반도메딕스 홈페이지 제작 </a></li>
-                <li><a href="#">(주) 반도메딕스 홈페이지 제작 </a></li>
-                <li><a href="#">(주) 반도메딕스 홈페이지 제작 </a></li>
-            </ol>
+        <div class="callcenter">
+              <h4>Call Center</h4>
+              <div class="call1">
+                <a href="#"><span>062-000-0000</span></a>
+                <li><p>평일 오전 09:30 ~ 오후 05:30</p></li>
+                <li><p>점심시간 12:00 ~ 오후 01:00</p></li>
+                <li><p>주말 및 공휴일 휴무</p></li>
+              </div>
         </div>
         <div class="download">
-            <h5><a href="download.html">DOWNLOAD</a></h5>
+            <h4><a href="download.html">DOWNLOAD</a></h4>
             <ol>
                 <li><a href="download1.html">Fetal Doppler 제품 설명서</a></li>
                 <li><a href="download2.html">Nebulizer 제품 설명서</a></li>
@@ -151,11 +147,11 @@
             </ol>
         </div>
         <div class="cbox">
-            <h5>COMMUNITY</h5>
+            <h4>COMMUNITY</h4>
             <div id="cbox">
-                <a href="1v1_call.html" class="user">
-                    <p>문의하기</p>
-                    <img src="img/User.png" alt="이미지">
+                <a href="notice.html" class="user">
+                    <p>공지사항</p>
+                    <img src="img/notice.png" alt="이미지">
                 </a>
                 <a href="talk.html" class="talk">
                     <p>질문과답변</p>
@@ -177,8 +173,9 @@
 
     <!-- 콘텐츠 끝 -->
 
+
     <!-- 푸터 시작 -->
-    <footer>
+    <footer>       
         <div class="fmenu">
             <a href="#">회사소개</a>
             <a href="#">이용약관</a>
@@ -187,144 +184,106 @@
             <a href="#">광고/제휴 문의</a>
         </div>
         <div class="fbox">
-            <div class="flogo"><a href="#"><img src="img/flogo.png" alt="로고이미지"></a></div>
             <div class="copy">
                 <p>
-                    태현헬스케어 광주광역시 xxxxxx xx <br>
-                    대표: xxx 사업자등록번호: xxx-xx-xxxxx <br>
-                    대표번호: xx-xxx-xxxx AS번호: XXXX-XXXX 팩스번호: XX-XXX-XXXX 메일:home@xxxx.xx.xx <br>
-                    copyright www.taehyun.kr all rights reserved
+                    태현헬스케어 광주광역시 xxxxxx xx 
+                    대표: xxx 사업자등록번호: xxx-xx-xxxxx 대표번호: xx-xxx-xxxx <br> 
+                    AS번호: XXXX-XXXX 팩스번호: XX-XXX-XXXX 메일:home@xxxx.xx.xx <br>
+                    copyright www.taehyun.kr all rights reserved.
                 </p>
-            </div>
-            <div class="call">
-             <span>CALL CENTER</span>
-              <a href="#"><h5>062-000-0000</h5></a>
-              <p>평일 오전 09:30 ~ 오후 05:30</p>
-              <p>점심시간 12:00 ~ 오후 01:00</p>
-              <p>주말 및 공휴일 휴무</p>
             </div>
         </div>
     </footer>
     <!-- 푸터 끝 -->
-    
-     <!-- 오른쪽 배너 시작 -->
-    <div id="banner">
-         <div id="banner1">
-             <a href="javascript:void(0)" id="fixedicon"><img src="img/down.png" alt="다운 이미지"></a>
-         </div>
-         <div class="close">
-              <a href="javascript:void(0)" id="fixedicon"><img src="img/close.png" alt="닫기"></a>
-         </div>
-         <div id="banner3">
-               <a href="1v1_call.html" id="fixedicon">
-                 <img src="img/text.png" alt="문자">
-                 <p>문의하기</p>
-               </a>
-         </div>
-          <div id="banner4">
-               <a href="notice.html" id="fixedicon">
-                <img src="img/notice.png" alt="공지사항">
-                <p>공지사항</p>
-               </a>
-         </div>
-         <div id="banner5">
-             <a href="partnership.html" id="fixedicon">
-                 <img src="img/B2B.png" alt="b2b">
-                <p>B2B</p>
-            </a>
-         </div>
-    </div>
-    <!-- 오른쪽 배너 끝 -->
 
-<!-- 상세보기 페이지 수정된 스크립트 부분 -->
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const params = new URLSearchParams(location.search);
-    const id = Number(params.get('id'));
-    const posts = JSON.parse(localStorage.getItem('posts') || '[]');
-    const post = posts[id];
+    <!-- 상세보기 페이지 수정된 스크립트 부분 -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const params = new URLSearchParams(location.search);
+        const id = Number(params.get('id'));
+        const posts = JSON.parse(localStorage.getItem('posts') || '[]');
+        const post = posts[id];
 
-    if (!post) {
-        alert("게시글을 찾을 수 없습니다.");
-        location.href = "1v1_call.html";
-        return;
-    }
+        if (!post) {
+            alert("게시글을 찾을 수 없습니다.");
+            location.href = "1v1_call.html";
+            return;
+        }
 
-    document.getElementById("titleArea").textContent = `제목: ${post.title}`;
-    document.getElementById("authorArea").textContent = `작성자: ${post.name}`;
-    document.getElementById("emailArea").textContent = `이메일: ${post.email}`;
-    document.getElementById("dateArea").textContent = `작성날짜: ${post.date}`;
-    document.getElementById("contentArea").textContent = post.content;
+        document.getElementById("titleArea").textContent = `제목: ${post.title}`;
+        document.getElementById("authorArea").textContent = `작성자: ${post.name}`;
+        document.getElementById("emailArea").textContent = `이메일: ${post.email}`;
+        document.getElementById("dateArea").textContent = `작성날짜: ${post.date}`;
+        document.getElementById("contentArea").textContent = post.content;
 
-    const contentBox = document.querySelector("#n_contents");
+        const contentBox = document.querySelector("#n_contents");
 
-    // 첨부파일 출력 (이미지는 이미지로, 그 외 파일은 링크로)
-    if (post.fileNames && post.fileNames.length > 0) {
-        // 구분선 추가
-        const hr = document.createElement('hr');
-        hr.style.margin = "20px 0";
-        contentBox.appendChild(hr);
+        // 첨부파일 출력 (파일 리스트 형태)
+        if (post.fileNames && post.fileNames.length > 0) {
+            const hr = document.createElement('hr');
+            hr.style.margin = "20px 0";
+            contentBox.appendChild(hr);
 
-        const fileBox = document.createElement('div');
-        fileBox.style.margin = "10px 0";
-        fileBox.innerHTML = `<strong>첨부파일:</strong><div style="margin-top:10px;"></div>`;
-        const container = fileBox.querySelector('div');
+            const fileBox = document.createElement('div');
+            fileBox.innerHTML = `<strong>첨부파일:</strong><div class="file-list"></div>`;
+            const listContainer = fileBox.querySelector('.file-list');
 
-        post.fileNames.forEach(name => {
-            const isImage = /\.(png|jpe?g|gif|webp)$/i.test(name);
-            if (isImage) {
-                container.innerHTML += `<img src="img/${name}" alt="첨부 이미지" style="max-width:300px; display:block; margin-bottom:15px;">`;
-            } else {
-                container.innerHTML += `<div style="margin-bottom: 10px;"><a href="files/${name}" target="_blank" style="text-decoration:underline;">${name}</a></div>`;
-            }
-        });
+            post.fileNames.forEach((name, index) => {
+                listContainer.innerHTML += `
+                    <div class="file-item" style="display:flex; align-items:center; justify-content:space-between; padding:8px 0; border-bottom:1px solid #eee;">
+                        <span>${index+1}. ${name}</span>
+                        <a href="files/${name}" download>
+                            <img src="img/download.png" alt="다운로드" style="width:24px; height:24px; cursor:pointer;" />
+                        </a>
+                    </div>
+                `;
+            });
 
-        contentBox.appendChild(fileBox);
-    }
+            contentBox.appendChild(fileBox);
+        }
 
-    // 관리자 답변 표시
-    if (post.answer && post.answer.trim()) {
-        const answerBox = document.createElement('div');
-        answerBox.style.margin = "30px 0";
-        answerBox.style.padding = "10px 0";
-        answerBox.style.borderTop = "1px solid #ccc";
-        answerBox.style.borderBottom = "1px solid #ccc";
-        answerBox.innerHTML = `
-          <h4 style="margin-bottom: 15px;">관리자 답변</h4>
-          <p style="margin-bottom: 15px;">${post.answer}</p>
-        `;
-        contentBox.appendChild(answerBox);
-    }
+        // 관리자 답변 표시
+        if (post.answer && post.answer.trim()) {
+            const answerBox = document.createElement('div');
+            answerBox.style.margin = "30px 0";
+            answerBox.style.padding = "10px 0";
+            answerBox.style.borderTop = "1px solid #ccc";
+            answerBox.style.borderBottom = "1px solid #ccc";
+            answerBox.innerHTML = `
+                <h4 style="margin-bottom: 15px;">관리자 답변</h4>
+                <p style="margin-bottom: 15px;">${post.answer}</p>
+            `;
+            contentBox.appendChild(answerBox);
+        }
 
-    // 관리자 답변 작성 폼 (관리자만 보이게)
-    const isAdmin = localStorage.getItem('isAdmin') === 'true';
-    if (isAdmin) {
-        const formBox = document.createElement('div');
-        formBox.style.margin = '30px 0';
-        formBox.innerHTML = `
-            <h4 style="margin-bottom: 10px;">답변 작성</h4>
-            <textarea id="adminAnswer" placeholder="답변을 입력하세요" style="width:100%; height:100px; margin-bottom:10px;"></textarea><br>
-            <button id="saveAnswerBtn" style="padding: 6px 20px; font-weight:bold; cursor:pointer;">저장</button>
-        `;
-        contentBox.appendChild(formBox);
+        // 관리자 답변 작성 폼
+        const isAdmin = localStorage.getItem('isAdmin') === 'true';
+        if (isAdmin) {
+            const formBox = document.createElement('div');
+            formBox.style.margin = '30px 0';
+            formBox.innerHTML = `
+                <h4 style="margin-bottom: 10px;">답변 작성</h4>
+                <textarea id="adminAnswer" placeholder="답변을 입력하세요" style="width:100%; height:100px; margin-bottom:10px;"></textarea><br>
+                <button id="saveAnswerBtn" style="padding: 6px 20px; font-weight:bold; cursor:pointer;">저장</button>
+            `;
+            contentBox.appendChild(formBox);
 
-        document.getElementById("saveAnswerBtn").addEventListener("click", function () {
-            const answer = document.getElementById("adminAnswer").value.trim();
-            if (!answer) {
-                alert("답변 내용을 입력해주세요.");
-                return;
-            }
-            posts[id].answer = answer;
-            localStorage.setItem('posts', JSON.stringify(posts));
-            alert("답변이 저장되었습니다.");
-            location.reload();
-        });
-    }
+            document.getElementById("saveAnswerBtn").addEventListener("click", function () {
+                const answer = document.getElementById("adminAnswer").value.trim();
+                if (!answer) {
+                    alert("답변 내용을 입력해주세요.");
+                    return;
+                }
+                posts[id].answer = answer;
+                localStorage.setItem('posts', JSON.stringify(posts));
+                alert("답변이 저장되었습니다.");
+                location.reload();
+            });
+        }
 
-    // 목록 버튼 위치 재배치
-    const backBtn = document.querySelector(".dboxbtn");
-    contentBox.appendChild(backBtn);
-});
-</script>
+        const backBtn = document.querySelector(".dboxbtn");
+        contentBox.appendChild(backBtn);
+    });
+    </script>
 </body>
 </html>
