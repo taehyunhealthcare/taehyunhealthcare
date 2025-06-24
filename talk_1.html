@@ -152,21 +152,20 @@
     </form>
   </div>
     <!-- 글쓰기 끝 -->
-    <!-- 콘텐츠 시작 -->
+
+   <!-- 콘텐츠 시작 -->
     <div id="contents">
-        <div class="notice">
-            <ul class="tab">
-             <img src="img/notice1.png" alt="공지사항 이미지">
-              <h5>NOTICE</h5>
-            </ul>
-            <ol>
-                <li><a href="#">(주) 반도메딕스 홈페이지 제작 </a></li>
-                <li><a href="#">(주) 반도메딕스 홈페이지 제작 </a></li>
-                <li><a href="#">(주) 반도메딕스 홈페이지 제작 </a></li>
-            </ol>
+        <div class="callcenter">
+              <h4>Call Center</h4>
+              <div class="call1">
+                <a href="#"><span>062-000-0000</span></a>
+                <li><p>평일 오전 09:30 ~ 오후 05:30</p></li>
+                <li><p>점심시간 12:00 ~ 오후 01:00</p></li>
+                <li><p>주말 및 공휴일 휴무</p></li>
+              </div>
         </div>
         <div class="download">
-            <h5><a href="download.html">DOWNLOAD</a></h5>
+            <h4><a href="download.html">DOWNLOAD</a></h4>
             <ol>
                 <li><a href="download1.html">Fetal Doppler 제품 설명서</a></li>
                 <li><a href="download2.html">Nebulizer 제품 설명서</a></li>
@@ -174,11 +173,11 @@
             </ol>
         </div>
         <div class="cbox">
-            <h5>COMMUNITY</h5>
+            <h4>COMMUNITY</h4>
             <div id="cbox">
-                <a href="1v1_call.html" class="user">
-                    <p>문의하기</p>
-                    <img src="img/User.png" alt="이미지">
+                <a href="notice.html" class="user">
+                    <p>공지사항</p>
+                    <img src="img/notice.png" alt="이미지">
                 </a>
                 <a href="talk.html" class="talk">
                     <p>질문과답변</p>
@@ -200,8 +199,9 @@
 
     <!-- 콘텐츠 끝 -->
 
+
     <!-- 푸터 시작 -->
-    <footer>
+    <footer>       
         <div class="fmenu">
             <a href="#">회사소개</a>
             <a href="#">이용약관</a>
@@ -210,140 +210,100 @@
             <a href="#">광고/제휴 문의</a>
         </div>
         <div class="fbox">
-            <div class="flogo"><a href="#"><img src="img/flogo.png" alt="로고이미지"></a></div>
             <div class="copy">
                 <p>
-                    태현헬스케어 광주광역시 xxxxxx xx <br>
-                    대표: xxx 사업자등록번호: xxx-xx-xxxxx <br>
-                    대표번호: xx-xxx-xxxx AS번호: XXXX-XXXX 팩스번호: XX-XXX-XXXX 메일:home@xxxx.xx.xx <br>
-                    copyright www.taehyun.kr all rights reserved
+                    태현헬스케어 광주광역시 xxxxxx xx 
+                    대표: xxx 사업자등록번호: xxx-xx-xxxxx 대표번호: xx-xxx-xxxx <br> 
+                    AS번호: XXXX-XXXX 팩스번호: XX-XXX-XXXX 메일:home@xxxx.xx.xx <br>
+                    copyright www.taehyun.kr all rights reserved.
                 </p>
-            </div>
-            <div class="call">
-             <span>CALL CENTER</span>
-              <a href="#"><h5>062-000-0000</h5></a>
-              <p>평일 오전 09:30 ~ 오후 05:30</p>
-              <p>점심시간 12:00 ~ 오후 01:00</p>
-              <p>주말 및 공휴일 휴무</p>
             </div>
         </div>
     </footer>
     <!-- 푸터 끝 -->
-    
-    <!-- 오른쪽 배너 시작 -->
-    <div id="banner">
-         <div id="banner1">
-             <a href="javascript:void(0)" id="fixedicon"><img src="img/down.png" alt="다운 이미지"></a>
-         </div>
-         <div class="close">
-              <a href="javascript:void(0)" id="fixedicon"><img src="img/close.png" alt="닫기"></a>
-         </div>
-         <div id="banner3">
-               <a href="1v1_call.html" id="fixedicon">
-                 <img src="img/text.png" alt="문자">
-                 <p>문의하기</p>
-               </a>
-         </div>
-          <div id="banner4">
-               <a href="notice.html" id="fixedicon">
-                <img src="img/notice.png" alt="공지사항">
-                <p>공지사항</p>
-               </a>
-         </div>
-         <div id="banner5">
-             <a href="partnership.html" id="fixedicon">
-                 <img src="img/B2B.png" alt="b2b">
-                <p>B2B</p>
-            </a>
-         </div>
-    </div>
-    <!-- 오른쪽 배너 끝 -->
 
+  <script>
+    const fileInput = document.getElementById('file1');
+    const fileListDiv = document.getElementById('file-list1');
+    const selectedFiles = [];
 
-
-<script>
-  const fileInput = document.getElementById('file1');
-  const fileListDiv = document.getElementById('file-list1');
-  const selectedFiles = [];
-
-  // 파일 선택 시 리스트에 추가 및 렌더링
-  fileInput.addEventListener('change', () => {
-    Array.from(fileInput.files).forEach(file => {
-      selectedFiles.push(file);
+    // 파일 선택 시 리스트에 추가 및 렌더링
+    fileInput.addEventListener('change', () => {
+      Array.from(fileInput.files).forEach(file => {
+        selectedFiles.push(file);
+      });
+      renderFileList();
+      fileInput.value = ""; // 같은 파일 다시 선택 가능하도록 초기화
     });
-    renderFileList();
-    fileInput.value = ""; // 같은 파일 다시 선택 가능하도록 초기화
-  });
 
-  // 파일 리스트 렌더링 함수
-  function renderFileList() {
-    if (selectedFiles.length === 0) {
-      fileListDiv.textContent = "선택된 파일 없음";
-      return;
+    // 파일 리스트 렌더링 함수
+    function renderFileList() {
+      if (selectedFiles.length === 0) {
+        fileListDiv.textContent = "선택된 파일 없음";
+        return;
+      }
+
+      fileListDiv.innerHTML = "";
+      selectedFiles.forEach((file, idx) => {
+        const item = document.createElement("div");
+        item.className = "file-item1";
+        item.innerHTML = `
+          <span>${idx + 1}. ${file.name}</span>
+          <button type="button" class="delete-btn1" data-index="${idx}">&times;</button>
+        `;
+        fileListDiv.appendChild(item);
+      });
+
+      // 삭제 버튼 이벤트 등록
+      document.querySelectorAll(".delete-btn1").forEach(btn =>
+        btn.addEventListener("click", () => {
+          selectedFiles.splice(parseInt(btn.dataset.index), 1);
+          renderFileList();
+        })
+      );
     }
 
-    fileListDiv.innerHTML = "";
-    selectedFiles.forEach((file, idx) => {
-      const item = document.createElement("div");
-      item.className = "file-item1";
-      item.innerHTML = `
-        <span>${idx + 1}. ${file.name}</span>
-        <button type="button" class="delete-btn1" data-index="${idx}">&times;</button>
-      `;
-      fileListDiv.appendChild(item);
+    // 문의 등록 제출
+    document.getElementById('inquiryForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name1').value.trim();
+      const email = document.getElementById('email1').value.trim();
+      const title = document.getElementById('title1').value.trim();
+      const content = document.getElementById('content1').value.trim();
+      const visibility = document.querySelector('input[name="visibility"]:checked').value;
+
+      if (!name || !email || !title || !content) {
+        alert('모든 항목을 입력해주세요.');
+        return;
+      }
+
+      const maskedName = name.length >= 2
+        ? name[0] + '*'.repeat(name.length - 2) + name[name.length - 1]
+        : name;
+
+      const fileNames = selectedFiles.map(f => f.name);
+
+      const posts = JSON.parse(localStorage.getItem('posts') || '[]');
+
+      posts.push({
+        id: posts.length,
+        type: 'talk',
+        name,
+        email,
+        maskedName,
+        title,
+        content,
+        visibility,
+        fileNames,
+        date: new Date().toLocaleDateString(),
+        answer: ''
+      });
+
+      localStorage.setItem('posts', JSON.stringify(posts));
+
+      window.location.href = '01_partnership.html';
     });
-
-    // 삭제 버튼 이벤트 등록
-    document.querySelectorAll(".delete-btn1").forEach(btn =>
-      btn.addEventListener("click", () => {
-        selectedFiles.splice(parseInt(btn.dataset.index), 1);
-        renderFileList();
-      })
-    );
-  }
-
-  // 문의 등록 제출
-  document.getElementById('inquiryForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    const name = document.getElementById('name1').value.trim();
-    const email = document.getElementById('email1').value.trim();
-    const title = document.getElementById('title1').value.trim();
-    const content = document.getElementById('content1').value.trim();
-    const visibility = document.querySelector('input[name="visibility"]:checked').value;
-
-    if (!name || !email || !title || !content) {
-      alert('모든 항목을 입력해주세요.');
-      return;
-    }
-
-    const maskedName = name.length >= 2
-      ? name[0] + '*'.repeat(name.length - 2) + name[name.length - 1]
-      : name;
-
-    const fileNames = selectedFiles.map(f => f.name);
-
-    const posts = JSON.parse(localStorage.getItem('posts') || '[]');
-
-    posts.push({
-      id: posts.length,
-      type: 'talk',
-      name,
-      email,
-      maskedName,
-      title,
-      content,
-      visibility,
-      fileNames,
-      date: new Date().toLocaleDateString(),
-      answer: ''
-    });
-
-    localStorage.setItem('posts', JSON.stringify(posts));
-
-    window.location.href = '01_partnership.html';
-  });
-</script>
+  </script>
  </body>
 </html>
-
