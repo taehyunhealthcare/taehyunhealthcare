@@ -53,12 +53,15 @@
         </a>
     </div>
 
-    <div class="search">
-        <div class="search-box">
-        <input type="text" placeholder="검색어를 입력하세요" style="border: none;">
-        <img src="img/Search.png" alt="서치 이미지">
-        </div>
-    </div>
+    <form action="searchResult.html" method="get" class="search-form" autocomplete="off">
+    <input
+        type="text"
+        name="query"
+        class="search-input"
+        placeholder="검색어를 입력하세요"
+        autocomplete="off"
+    />
+    </form>
 
     <div class="popular-keywords style1">
     <div id="keyword-display">
@@ -103,31 +106,35 @@
     </nav>
     <!-- 메뉴 끝 -->
 
-    <!-- 제품 소개 1 시작 -->
-    <div id="n_contents">
-        <div id="qna-header">
-          <h2>DOWNLOAD</h2>
+
+    <!-- 게시물 보기 시작 -->
+    <div id="download-view" style="width:1200px; margin: 30px auto; padding:20px; border:1px solid #ddd; border-radius:8px;">
+        <!-- 제목 -->
+        <h2 style="margin-bottom:10px;">[다운로드] Fetal Doppler 제품 설명서</h2>
+        <!-- 조회수, 등록일 -->
+        <div style="font-size:14px; color:#555; border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
+            작성자: 관리자 &nbsp;|&nbsp; 등록일: 2025-06-26
         </div>
-        <div class="dbox">
-            <div class="dbox1"><p>제목</p></div>
-            <div class="dbox2"><p>작성자, 작성날짜</p></div>
-            <div class="dbox3">
-                <div class="download-wrap">
-                 <span>설명서 다운로드</span>
-                 <a href="파일경로/설명서.pdf" download class="download-btn">[PDF 다운로드]</a>
-                </div>
-            </div>
+        <!-- 파일 다운로드 -->
+        <div style="margin-bottom:10px;">
+            <strong>첨부파일:</strong>
+            <a href="pdf/FetalDoppler_제품설명서.pdf" download style="padding-top: 10px; color:#007BFF; text-decoration:none;">Fetal_Doppler_설명서.pdf ⬇️</a>
         </div>
-        <div class="dimg">
-            <img src="img/파일이름.jpg" alt="이미지">
+        <!-- 게시글 내용 -->
+        <div style="line-height:1.8; padding:10px 0;">
+            <p>이 문서는 Fetal Doppler 제품의 자세한 사용설명서를 포함하고 있습니다.  
+            다운로드 후 확인해 주세요.</p>
         </div>
+    </div>
+    <div class="d-btn">
         <div class="dboxbtn">
             <a href="download.html">목록</a>
         </div>
     </div>
-    <!-- 제품 소개 1 끝 -->
+    <!-- 게시물 보기 끝 -->
 
-   <!-- 콘텐츠 시작 -->
+
+    <!-- 콘텐츠 시작 -->
     <div id="contents">
         <div class="callcenter">
               <h4>Call Center</h4>
@@ -195,6 +202,14 @@
         </div>
     </footer>
     <!-- 푸터 끝 -->
-
+    <script>
+    // ✅ 페이지 돌아올 때 검색창 비우기
+        window.addEventListener('pageshow', function (event) {
+        if (event.persisted) {
+        const searchInput = document.querySelector('input[name="query"]');
+        if (searchInput) searchInput.value = '';
+        }
+    });
+    </script>
 </body>
 </html>
