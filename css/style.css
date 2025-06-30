@@ -77,37 +77,30 @@ body {
 /* 로고 css */
 
 /* search css */
-.search {
-  width: 100%;
-  max-width: 600px;
-  opacity: 0.3;
-  padding: 0 20px;
+.search-form {
+  flex: 1;             /* 남은 공간을 채우도록 */
+  max-width: 500px;     /* 최대 500px까지만 */
+  margin: 0 auto;       /* 가운데 정렬 */
+  flex-shrink: 0;       /* 줄지 않도록 고정 */
 }
 
-.search-box {
+.search-form .search-input {
   width: 100%;
-  height: 50px;
-  border: 1px solid rgba(0, 0, 0, 0.67);
-  border-radius: 70px;
-  background-color: #eee;
-  display: flex;
-  align-items: center;
-  padding: 0 20px;
-  box-sizing: border-box;
-}
-
-.search-box input {
-  flex: 1;
-  height: 100%;
-  background: transparent;
+  padding: 12px 16px;
   font-size: 16px;
-  border: none;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 9999px;
+  background-color: #eee;
   outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  height: 35px;
 }
 
-.search-box img {
-  width: 24px;
-  height: 24px;
+.search-input::placeholder {
+  color: #aaa;
 }
 /* search css */
 
@@ -658,7 +651,7 @@ nav {
 .nav1 li {
   list-style: none;
   padding-left: 17px;
-  padding-top: 2px;
+  padding-top: 8px;
 
 }
 .nav1 select {
@@ -1091,8 +1084,8 @@ button {
   line-height: 40px; 
   padding: 0 20px; 
   font-size: 14px;
-  border: 1px solid #000;
-  background-color: rgba(0, 0, 0, 0.3);
+  border: 1px solid #999;
+  background-color: #fff;
   color: #000;
   cursor: pointer;
   display: inline-block;
@@ -1488,22 +1481,56 @@ label {
   background-color: rgba(0, 0, 0, 0.1);
 }
 .dbox1>p {
-  padding: 10px 10px;
+  padding: 12px 10px;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 16px;
 }
 .dbox2 {
   width: 100%;
   height: 40px;
   border-top: 1px solid rgba(0, 0, 0, 0.17);
-}
-.dbox3 {
-  width: 100%;
-  height: 40px;
-  border-top: 1px solid rgba(0, 0, 0, 0.17);
   border-bottom: 1px solid rgba(0, 0, 0, 0.17);
 }
-.dbox2>p, .dbox3>p {
+.bigbox {
+  width: 1200px;
+  margin: 0 auto;
+  background-color: #eee;
+  padding: 10px 50px 30px 50px;
+  margin-top: 10px;
+}
+.bigbox1 p {
+  padding: 10px 5px;
+}
+.dbox3 {
+  padding: 5px 0;
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dbox3 .file-name {
+  font-weight: bold;
+}
+
+.dbox3 .download-btn {
+  margin-left: auto;
+  padding: 0.2rem 0.5rem;
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.dbox3 .download-btn:hover {
+  color: #007BFF;
+}
+.dbox2>p {
   padding: 9px 10px;
   font-size: 14px;
 }
@@ -1513,17 +1540,7 @@ label {
   background-color: tan;
   margin-bottom: 25px;
 }
-/* 다운로드 버튼 스타일 */
-.download-btn {
-  font-size: 14px;
-  color: #007bff;
-  text-decoration: none;
-  margin-left: 10px;
-}
 
-.download-btn:hover {
-  text-decoration: underline;
-}
 
 /* 목록 버튼 스타일 */
 .dboxbtn {
@@ -1538,16 +1555,18 @@ label {
 .dboxbtn > a {
   width: 50px;
   height: 30px;
-  background-color: rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
-  padding: 2px 10px;
+  background-color: #fff;
+  padding: 5px 10px;
   text-align: center;
-  color: black;
+  color: #333;
   font-weight: bold;
   text-decoration: none;
+  border: 1px solid #999;
+  font-size: 12px;
 }
 .dboxbtn>a:hover {
-  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid #000;
+  color: #000;
 }
 
 .download-wrap {
@@ -1566,7 +1585,10 @@ label {
 .download-btn:hover {
   text-decoration: underline;
 }
-
+.d-btn {
+  width: 1200px;
+  margin:0 auto;
+}
 
 /* 회사소개 css */
 .n_contents1 {
@@ -1700,7 +1722,13 @@ label {
 }
 
 .pagination {
-  display: inline-flex;
+  display: flex;           /* 가로 정렬 */
+  justify-content: center; /* 가운데 정렬 */
+  align-items: center;     /* 세로 정렬 */
+  gap: 8px;                /* 버튼 사이 여백 */
+  overflow: visible;       /* 오버플로우 안나오도록 */
+  height: auto;            /* 높이를 컨텐츠에 맞춤 */
+  padding: 10px 0;         /* 위아래 여백 */
 }
 
 .pagination a {
@@ -1865,15 +1893,23 @@ p#emailArea {
 }
 
 .slider-wrapper {
-  display: flex;
-  transition: transform 0.5s ease;
+  position: relative;
+  width: 510px;
+  height: 510px;
+  overflow: hidden;
 }
 
 .slider-wrapper img {
-  width: 510px;
-  height: 510px;
-  object-fit: cover;
-  padding: 5px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.slider-wrapper img.active {
+  opacity: 1;
 }
 
 .prev-btn,
@@ -2065,3 +2101,41 @@ p#emailArea {
 .dimg img {
   width: 1200px;
 }
+
+.result-item {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  display: inline-block;
+  width: 200px;
+  text-align: center;
+  margin: 10px;
+}
+
+.result-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.result-item h2 {
+  font-size: 16px;
+  margin: 4px 0;
+}
+
+.result-item p {
+  font-size: 14px;
+  color: #555;
+}
+#result {
+  width: 1200px;
+  margin: 0 auto;
+  height: 300px;
+}
+
+
+
+
+
+
