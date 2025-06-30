@@ -53,12 +53,15 @@
         </a>
     </div>
 
-    <div class="search">
-        <div class="search-box">
-        <input type="text" placeholder="검색어를 입력하세요" style="border: none;">
-        <img src="img/Search.png" alt="서치 이미지">
-        </div>
-    </div>
+    <form action="searchResult.html" method="get" class="search-form" autocomplete="off">
+    <input
+        type="text"
+        name="query"
+        class="search-input"
+        placeholder="검색어를 입력하세요"
+        autocomplete="off"
+    />
+    </form>
 
     <div class="popular-keywords style1">
     <div id="keyword-display">
@@ -103,7 +106,7 @@
     <!-- 메뉴 끝 -->
     <div class="n_contents1">
       <div class="qna-header1">
-        <h2>Fatal Doppler</h2>
+        <h2>Nebulizer</h2>
       </div>
     </div>
 
@@ -115,7 +118,7 @@
 
                 <!-- 슬라이더 래퍼 -->
                 <div class="slider-wrapper">
-                <img src="img/nebulizer.png" alt="제품 이미지 1" >
+                <img src="img/nebulizer.png" class="active" alt="제품 이미지 1" >
                 <img src="img/nebulizer.jpg" alt="제품 이미지 2">
                 <img src="img/2nebulizer.png" alt="제품 이미지 3">
                 </div>
@@ -236,65 +239,66 @@
     <!-- 푸터 끝 -->
 
     <script>
-    const toggleButton = document.querySelector('.toggle-btn');
-    const summary = document.querySelector('.summary');
-    const moreText = document.querySelector('.more-text');
+        // 슬라이드 이미지들
+        const slides = document.querySelectorAll('#jbox1 .slider-wrapper img');
+        // 미리보기 인디케이터들
+        const indicators = document.querySelectorAll('#jbox1 .indicator-container .indicator');
 
-    toggleButton.addEventListener('click', function() {
-    const isExpanded = summary.classList.toggle('expanded');
-    moreText.style.display = isExpanded ? 'block' : 'none';
-    toggleButton.classList.toggle('rotated', isExpanded);
-    });
-    // 슬라이드 JS
-    const sliderWrapper = document.querySelector('#jbox1 .slider-wrapper');
-    const slides = document.querySelectorAll('#jbox1 .slider-wrapper img');
-    const indicators = document.querySelectorAll('#jbox1 .indicator-container .indicator');
+        let currentIndex = 0;
 
-    let currentIndex = 0;
-    const slideWidth = 510; // 한 슬라이드의 너비
-    sliderWrapper.style.width = `${slides.length * slideWidth}px`; // 트랙 넓이 계산
+        // 슬라이드를 업데이트
+        function updateSlide() {
+        slides.forEach((img, idx) => {
+            img.classList.toggle('active', idx === currentIndex);
+        });
+        // 인디케이터 상태 업데이트
+        indicators.forEach((indicator, idx) => {
+            indicator.classList.toggle('active', idx === currentIndex);
+        });
+        }
 
-    // 슬라이드 상태 갱신
-    function updateSlide() {
-    const offset = currentIndex * slideWidth;
-    sliderWrapper.style.transform = `translateX(-${offset}px)`;
-    indicators.forEach((ind, idx) => ind.classList.toggle('active', idx === currentIndex));
-    }
-
-    // 화살표 버튼 이벤트
-    document.querySelector('#jbox1 .prev-btn').addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-    updateSlide();
-    });
-
-    document.querySelector('#jbox1 .next-btn').addEventListener('click', () => {
-    if (currentIndex === slides.length - 1) {
-        // 트랜지션 끄기
-        sliderWrapper.style.transition = 'none';
-        currentIndex = 0;
-        sliderWrapper.style.transform = `translateX(0px)`;
-        // 트랜지션 다시 켜기 (한 틱 뒤)
-        setTimeout(() => {
-        sliderWrapper.style.transition = 'transform 0.5s ease';
+        // 이전 버튼
+        document.querySelector('#jbox1 .prev-btn').addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
         updateSlide();
-        }, 50);
-    } else {
-        currentIndex = currentIndex + 1;
-        updateSlide();
-    }
-    });
+        });
 
-    // 미리보기(인디케이터) 클릭 이벤트
-    indicators.forEach((indicator, idx) => {
-    indicator.addEventListener('click', () => {
-        currentIndex = idx;
+        // 다음 버튼
+        document.querySelector('#jbox1 .next-btn').addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % slides.length;
         updateSlide();
-    });
-    });
+        });
 
-    // 초기 상태 호출
-    updateSlide();
+        // 미리보기 인디케이터 클릭
+        indicators.forEach((indicator, idx) => {
+        indicator.addEventListener('click', () => {
+            currentIndex = idx;
+            updateSlide();
+        });
+        });
+
+        // 초기 상태 호출
+        updateSlide();
+
+        // jbox2 내용 펼치기 부분 스크립트 
+        const toggleButton = document.querySelector('.toggle-btn');
+        const summary = document.querySelector('.summary');
+        const moreText = document.querySelector('.more-text');
+
+        toggleButton.addEventListener('click', function() {
+        const isExpanded = summary.classList.toggle('expanded');
+        moreText.style.display = isExpanded ? 'block' : 'none';
+        toggleButton.classList.toggle('rotated', isExpanded);
+        });
     </script>
-
+    <script>
+       // ✅ 페이지 돌아올 때 검색창 비우기
+       window.addEventListener('pageshow', function (event) {
+       if (event.persisted) {
+       const searchInput = document.querySelector('input[name="query"]');
+       if (searchInput) searchInput.value = '';
+        }
+     });
+    </script>
     </body>
     </html>
