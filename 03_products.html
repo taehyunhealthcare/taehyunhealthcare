@@ -53,12 +53,15 @@
         </a>
     </div>
 
-    <div class="search">
-        <div class="search-box">
-        <input type="text" placeholder="검색어를 입력하세요" style="border: none;">
-        <img src="img/Search.png" alt="서치 이미지">
-        </div>
-    </div>
+    <form action="searchResult.html" method="get" class="search-form" autocomplete="off">
+    <input
+        type="text"
+        name="query"
+        class="search-input"
+        placeholder="검색어를 입력하세요"
+        autocomplete="off"
+    />
+    </form>
 
     <div class="popular-keywords style1">
     <div id="keyword-display">
@@ -278,6 +281,15 @@
 
         showProducts(1); // 초기 호출
         });
+    </script>
+    <script>
+       // ✅ 페이지 돌아올 때 검색창 비우기
+       window.addEventListener('pageshow', function (event) {
+       if (event.persisted) {
+       const searchInput = document.querySelector('input[name="query"]');
+       if (searchInput) searchInput.value = '';
+        }
+     });
     </script>
   </body>
  </html>
