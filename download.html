@@ -52,12 +52,15 @@
         </a>
     </div>
 
-    <div class="search">
-        <div class="search-box">
-        <input type="text" placeholder="검색어를 입력하세요" style="border: none;">
-        <img src="img/Search.png" alt="서치 이미지">
-        </div>
-    </div>
+    <form action="searchResult.html" method="get" class="search-form" autocomplete="off">
+    <input
+        type="text"
+        name="query"
+        class="search-input"
+        placeholder="검색어를 입력하세요"
+        autocomplete="off"
+    />
+    </form>
 
     <div class="popular-keywords style1">
     <div id="keyword-display">
@@ -110,15 +113,15 @@
        <table id="board">
          <thead>
            <tr id="tr">
-             <th class="th">번호</th>
-             <th class="th1">제목</th>
-              <th class="th2">날짜</th>
-              <th class="th3">작성자</th>
+             <th class="th" style="width: 120px;">번호</th>
+             <th class="th1" style="width: 600px;">제목</th>
+              <th class="th2" style="width: 240px;">날짜</th>
+              <th class="th3" style="width: 240px;">작성자</th>
           </tr>
          </thead>
          <tbody>
              <tr>
-               <td>01</td>
+               <td>1</td>
                <td><a href="download1.html">Fatal Doppler 제품 설명서</a></td>
                <td>2025.06.04</td>
                <td>관리자</td>
@@ -126,7 +129,7 @@
          </tbody>
          <tbody>
              <tr>
-               <td>02</td>
+               <td>2</td>
                <td><a href="download2.html">Nebulizer 제품 설명서</a></td>
                <td>2025.06.04</td>
                <td>관리자</td>
@@ -134,22 +137,18 @@
          </tbody>
          <tbody>
              <tr>
-               <td>03</td>
+               <td>3</td>
                <td><a href="download3.html">Pulse Oximeter 제품 설명서</a></td>
                <td>2025.06.04</td>
                <td>관리자</td>
               </tr> 
          </tbody>
         </table>
+            <div class="pagination-container">
+      <div class="pagination"></div>
+    </div>
      </div>
     <!-- content 끝  -->
-         <!-- page next 시작 -->
-     <div class="content-wrapper">
-        <div class="top-bar">
-         <div class="page-number"><a href="#">1</a></div>
-        </div>
-     </div>
-    <!-- page next 끝 -->
 
    <!-- 콘텐츠 시작 -->
     <div id="contents">
@@ -219,5 +218,64 @@
         </div>
     </footer>
     <!-- 푸터 끝 -->
+    <script>
+       // ✅ 페이지 돌아올 때 검색창 비우기
+       window.addEventListener('pageshow', function (event) {
+       if (event.persisted) {
+       const searchInput = document.querySelector('input[name="query"]');
+       if (searchInput) searchInput.value = '';
+        }
+     });
+    </script>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+  const allRows = Array.from(document.querySelectorAll('#board tbody tr')); // 현재 tbody들
+  const pageSize = 7;
+  const pagesToShow = 4;
+  let currentPage = 1;
+  let groupStart = 1;
+  const nav = document.querySelector('.pagination');
+
+  function renderPage(page = 1) {
+    currentPage = page;
+    const totalPages = Math.ceil(allRows.length / pageSize) || 1;
+    if (currentPage > totalPages) currentPage = totalPages;
+    if (groupStart > totalPages) groupStart = Math.max(1, totalPages - pagesToShow + 1);
+
+    // ✅ 행 표시/숨기기
+    allRows.forEach((row, index) => {
+      row.style.display = (index >= (currentPage - 1) * pageSize && index < currentPage * pageSize) ? '' : 'none';
+    });
+
+    // ✅ 페이지네이션 렌더
+    nav.innerHTML = '';
+    if (groupStart > 1) {
+      const prev = document.createElement('button');
+      prev.textContent = '◀';
+      prev.onclick = () => { groupStart -= pagesToShow; renderPage(groupStart); };
+      nav.appendChild(prev);
+    }
+
+    const end = Math.min(groupStart + pagesToShow - 1, totalPages);
+    for (let i = groupStart; i <= end; i++) {
+      const btn = document.createElement('button');
+      btn.textContent = i;
+      if (i === currentPage) btn.classList.add('active');
+      btn.onclick = () => renderPage(i);
+      nav.appendChild(btn);
+    }
+
+    if (end < totalPages) {
+      const next = document.createElement('button');
+      next.textContent = '▶';
+      next.onclick = () => { groupStart += pagesToShow; renderPage(groupStart); };
+      nav.appendChild(next);
+    }
+  }
+
+  renderPage(1); // 최초 호출
+});
+</script>
+
 </body>
 </html>
