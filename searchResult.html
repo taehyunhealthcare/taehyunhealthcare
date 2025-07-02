@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>태현헬스케어 - 홈케어 의료기기 전문 브랜드</title>
-
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>검색 결과</title>
     <!-- SEO 핵심 메타태그 -->
     <meta name="description" content="태현헬스케어는 도플러, 흡입기, 산소포화도 측정기 등 가정용 의료기기를 전문으로 취급하는 브랜드입니다.">
     <meta name="keywords" content="태현헬스케어, 도플러, 산소포화도, 흡입기, 의료기기, 홈케어, 건강">
@@ -23,17 +22,25 @@
     
     <!-- 네이버 서치어드바이저 -->
     <meta name="naver-site-verification" content="0cd68edc7a0e5ab742e7038c1182c6ac30f1973c" />
-    
-    
-    <!-- css,js 연결 코드 --> 
+
+    <!-- CSS 및 JS 연결 -->
     <link rel="stylesheet" href="css/style.css" />
     <script src="js/jquery-1.12.4.min.js"></script>
     <script src="js/common.js"></script>
     <script src="js/banner.js"></script>
+    <script src="js/form-validation.js"></script>
     <script src="js/rank.js"></script>
-  </head>
+    <script src="js/slide.js"></script>
+
+    <style>
+      body { font-family: Arial,sans-serif; padding: 20px; }
+      h1 { font-size: 24px; margin-bottom: 20px; }
+     .no-results { color: #777; font-size: 16px; padding: 10px 0; }
+     h2 {padding: 20px 0;}
+    </style>
+</head>
 <body>
-    <!-- 시작 -->
+        <!-- 시작 -->
     <div id="wrap">
         <div class="chat">
             <div class="chat1">
@@ -42,8 +49,16 @@
         </div>
     </div>
     <!-- 끝 -->
-     
- 
+          <div id="admin-logout" style="
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 9999;
+        display: none;">
+        <button id="logoutBtn">관리자 로그아웃</button>
+    </div>
+
+
     <!-- 헤더 시작 -->
     <header>
     <div class="header-left"></div>
@@ -97,52 +112,14 @@
     </nav>
     <!-- 메뉴 끝 -->
 
-    <!-- content 시작 -->
-     <div id="n_contents">
-       <div id="qna-header">
-         <h2>DOWNLOAD</h2>
-       </div>
-       <table id="board">
-         <thead>
-           <tr id="tr">
-             <th class="th" style="width: 120px;">번호</th>
-             <th class="th1" style="width: 600px;">제목</th>
-              <th class="th2" style="width: 240px;">날짜</th>
-              <th class="th3" style="width: 240px;">작성자</th>
-          </tr>
-         </thead>
-         <tbody>
-             <tr>
-               <td>1</td>
-               <td><a href="download1.html">Fatal Doppler 제품 설명서</a></td>
-               <td>2025.06.04</td>
-               <td>관리자</td>
-              </tr> 
-         </tbody>
-         <tbody>
-             <tr>
-               <td>2</td>
-               <td><a href="download2.html">Nebulizer 제품 설명서</a></td>
-               <td>2025.06.04</td>
-               <td>관리자</td>
-              </tr> 
-         </tbody>
-         <tbody>
-             <tr>
-               <td>3</td>
-               <td><a href="download3.html">Pulse Oximeter 제품 설명서</a></td>
-               <td>2025.06.04</td>
-               <td>관리자</td>
-              </tr> 
-         </tbody>
-        </table>
-            <div class="pagination-container">
-      <div class="pagination"></div>
-    </div>
-     </div>
-    <!-- content 끝  -->
+    <div class="n_contents1">
+      <div class="qna-header1">
+        <h2>검색 결과</h2>
+      </div>
+    </div>  
+    <div id="result"></div>
 
-   <!-- 콘텐츠 시작 -->
+    <!-- 콘텐츠 시작 -->
     <div id="contents">
         <div class="notice-card">
         <div class="notice-card-header">
@@ -168,6 +145,42 @@
     <!-- 콘텐츠 끝 -->
 
     <script>
+    const params = new URLSearchParams(window.location.search);
+    const query = params.get('query') ? params.get('query').trim().toLowerCase() : '';
+
+    // 검색어와 페이지 연결
+    const keywordPages = {
+        '네뷸라이저': '02_products.html',
+        '네블라이저': '02_products.html',
+        'Nebulizer': '02_products.html',
+        'nebulizer': '02_products.html',
+        '산소포화도측정기': '03_products.html',
+        '산소포화도': '03_products.html',
+        '펄스옥시미터': '03_products.html',
+        'Pulse Oximeter': '03_products.html',
+        'PULSE OXIMETER': '03_products.html',
+        'pulse oximeter': '03_products.html',
+        '펄스 옥시미터': '03_products.html',
+        '옥시미터': '03_products.html',
+        '태아 초음파 측정기' : '01_products.html',
+        'fetal doppler' : '01_products.html',
+        'fetal doppler' : '01_products.html',
+        'Fetal Doppler' : '01_products.html',
+        'FETAL DOPPLER' : '01_products.html',
+    };
+
+    const resultDiv = document.getElementById('result');
+
+    if (query === '') {
+        resultDiv.innerHTML = '<p class="no-results">검색어를 입력해 주세요.</p>';
+    } else if (keywordPages[query.toLowerCase()]) {
+        // 등록된 키워드면 해당 페이지로 바로 이동
+        window.location.href = keywordPages[query.toLowerCase()];
+    } else {
+        resultDiv.innerHTML = '<h2>"' + query + '" 에 대한 검색결과</h2><p class="no-results">"' + query + '" 에 해당되는 항목이 없습니다. 다시 입력해 주세요.</p>';
+    }
+    </script>
+    <script>
        // ✅ 페이지 돌아올 때 검색창 비우기
        window.addEventListener('pageshow', function (event) {
        if (event.persisted) {
@@ -175,55 +188,6 @@
        if (searchInput) searchInput.value = '';
         }
      });
-    </script>
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const allRows = Array.from(document.querySelectorAll('#board tbody tr')); // 현재 tbody들
-      const pageSize = 7;
-      const pagesToShow = 4;
-      let currentPage = 1;
-      let groupStart = 1;
-      const nav = document.querySelector('.pagination');
-
-      function renderPage(page = 1) {
-        currentPage = page;
-        const totalPages = Math.ceil(allRows.length / pageSize) || 1;
-        if (currentPage > totalPages) currentPage = totalPages;
-        if (groupStart > totalPages) groupStart = Math.max(1, totalPages - pagesToShow + 1);
-
-        // ✅ 행 표시/숨기기
-        allRows.forEach((row, index) => {
-          row.style.display = (index >= (currentPage - 1) * pageSize && index < currentPage * pageSize) ? '' : 'none';
-        });
-
-        // ✅ 페이지네이션 렌더
-        nav.innerHTML = '';
-        if (groupStart > 1) {
-          const prev = document.createElement('button');
-          prev.textContent = '◀';
-          prev.onclick = () => { groupStart -= pagesToShow; renderPage(groupStart); };
-          nav.appendChild(prev);
-        }
-
-        const end = Math.min(groupStart + pagesToShow - 1, totalPages);
-        for (let i = groupStart; i <= end; i++) {
-          const btn = document.createElement('button');
-          btn.textContent = i;
-          if (i === currentPage) btn.classList.add('active');
-          btn.onclick = () => renderPage(i);
-          nav.appendChild(btn);
-        }
-
-        if (end < totalPages) {
-          const next = document.createElement('button');
-          next.textContent = '▶';
-          next.onclick = () => { groupStart += pagesToShow; renderPage(groupStart); };
-          nav.appendChild(next);
-        }
-      }
-
-      renderPage(1); // 최초 호출
-    });
     </script>
 
     <script>

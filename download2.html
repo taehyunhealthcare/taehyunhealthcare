@@ -30,6 +30,7 @@
     <script src="js/jquery-1.12.4.min.js"></script>
     <script src="js/common.js"></script>
     <script src="js/banner.js"></script>
+    <script src="js/form-validation.js"></script>
     <script src="js/rank.js"></script>
   </head>
 <body>
@@ -42,8 +43,8 @@
         </div>
     </div>
     <!-- 끝 -->
-     
- 
+
+
     <!-- 헤더 시작 -->
     <header>
     <div class="header-left"></div>
@@ -97,50 +98,32 @@
     </nav>
     <!-- 메뉴 끝 -->
 
-    <!-- content 시작 -->
-     <div id="n_contents">
-       <div id="qna-header">
-         <h2>DOWNLOAD</h2>
-       </div>
-       <table id="board">
-         <thead>
-           <tr id="tr">
-             <th class="th" style="width: 120px;">번호</th>
-             <th class="th1" style="width: 600px;">제목</th>
-              <th class="th2" style="width: 240px;">날짜</th>
-              <th class="th3" style="width: 240px;">작성자</th>
-          </tr>
-         </thead>
-         <tbody>
-             <tr>
-               <td>1</td>
-               <td><a href="download1.html">Fatal Doppler 제품 설명서</a></td>
-               <td>2025.06.04</td>
-               <td>관리자</td>
-              </tr> 
-         </tbody>
-         <tbody>
-             <tr>
-               <td>2</td>
-               <td><a href="download2.html">Nebulizer 제품 설명서</a></td>
-               <td>2025.06.04</td>
-               <td>관리자</td>
-              </tr> 
-         </tbody>
-         <tbody>
-             <tr>
-               <td>3</td>
-               <td><a href="download3.html">Pulse Oximeter 제품 설명서</a></td>
-               <td>2025.06.04</td>
-               <td>관리자</td>
-              </tr> 
-         </tbody>
-        </table>
-            <div class="pagination-container">
-      <div class="pagination"></div>
+    <!-- 게시물 보기 시작 -->
+    <div id="download-view" style="width:1200px; margin: 30px auto; padding:20px; border:1px solid #ddd; border-radius:8px;">
+        <!-- 제목 -->
+        <h2 style="margin-bottom:10px;">[다운로드] Nebulizer 제품 설명서</h2>
+        <!-- 조회수, 등록일 -->
+        <div style="font-size:14px; color:#555; border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
+            작성자: 관리자 &nbsp;|&nbsp; 등록일: 2025-06-26
+        </div>
+        <!-- 파일 다운로드 -->
+        <div style="margin-bottom:10px;">
+            <strong>첨부파일:</strong>
+            <a href="pdf/Nebulizer_제품설명서.pdf" download style="padding-top: 10px; color:#007BFF; text-decoration:none;">Nebulizer_설명서.pdf ⬇️</a>
+        </div>
+        <!-- 게시글 내용 -->
+        <div style="line-height:1.8; padding:10px 0;">
+            <p>이 문서는 Nebulizer 제품의 자세한 사용설명서를 포함하고 있습니다.  
+            다운로드 후 확인해 주세요.</p>
+        </div>
     </div>
-     </div>
-    <!-- content 끝  -->
+    <div class="d-btn">
+        <div class="dboxbtn">
+            <a href="download.html">목록</a>
+        </div>
+    </div>
+    <!-- 게시물 보기 끝 -->
+
 
    <!-- 콘텐츠 시작 -->
     <div id="contents">
@@ -168,61 +151,12 @@
     <!-- 콘텐츠 끝 -->
 
     <script>
-       // ✅ 페이지 돌아올 때 검색창 비우기
-       window.addEventListener('pageshow', function (event) {
-       if (event.persisted) {
-       const searchInput = document.querySelector('input[name="query"]');
-       if (searchInput) searchInput.value = '';
+    // ✅ 페이지 돌아올 때 검색창 비우기
+        window.addEventListener('pageshow', function (event) {
+        if (event.persisted) {
+        const searchInput = document.querySelector('input[name="query"]');
+        if (searchInput) searchInput.value = '';
         }
-     });
-    </script>
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const allRows = Array.from(document.querySelectorAll('#board tbody tr')); // 현재 tbody들
-      const pageSize = 7;
-      const pagesToShow = 4;
-      let currentPage = 1;
-      let groupStart = 1;
-      const nav = document.querySelector('.pagination');
-
-      function renderPage(page = 1) {
-        currentPage = page;
-        const totalPages = Math.ceil(allRows.length / pageSize) || 1;
-        if (currentPage > totalPages) currentPage = totalPages;
-        if (groupStart > totalPages) groupStart = Math.max(1, totalPages - pagesToShow + 1);
-
-        // ✅ 행 표시/숨기기
-        allRows.forEach((row, index) => {
-          row.style.display = (index >= (currentPage - 1) * pageSize && index < currentPage * pageSize) ? '' : 'none';
-        });
-
-        // ✅ 페이지네이션 렌더
-        nav.innerHTML = '';
-        if (groupStart > 1) {
-          const prev = document.createElement('button');
-          prev.textContent = '◀';
-          prev.onclick = () => { groupStart -= pagesToShow; renderPage(groupStart); };
-          nav.appendChild(prev);
-        }
-
-        const end = Math.min(groupStart + pagesToShow - 1, totalPages);
-        for (let i = groupStart; i <= end; i++) {
-          const btn = document.createElement('button');
-          btn.textContent = i;
-          if (i === currentPage) btn.classList.add('active');
-          btn.onclick = () => renderPage(i);
-          nav.appendChild(btn);
-        }
-
-        if (end < totalPages) {
-          const next = document.createElement('button');
-          next.textContent = '▶';
-          next.onclick = () => { groupStart += pagesToShow; renderPage(groupStart); };
-          nav.appendChild(next);
-        }
-      }
-
-      renderPage(1); // 최초 호출
     });
     </script>
 
