@@ -59,129 +59,51 @@ body {
 /* wrap 끝  */
 
 /* 헤더 시작 */
-  header {
-    width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-  }
-
-  /* 로고 css */
-.logo {
-  width: 200px;
+header {
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   height: 100px;
-  background-color: #eee;
-}
-/* 로고 css */
-
-/* search css */
-.search-form {
-  flex: 1;             /* 남은 공간을 채우도록 */
-  max-width: 500px;     /* 최대 500px까지만 */
-  margin: 0 auto;       /* 가운데 정렬 */
-  flex-shrink: 0;       /* 줄지 않도록 고정 */
-}
-
-.search-form .search-input {
-  width: 100%;
-  padding: 12px 16px;
-  font-size: 16px;
-  color: #333;
-  border: 1px solid #ccc;
-  border-radius: 9999px;
-  background-color: #eee;
-  outline: none;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  height: 35px;
-}
-
-.search-input::placeholder {
-  color: #aaa;
-}
-/* search css */
-
-/* 실시간 검색어 css */
-.popular-keywords.style1 {
-  width: 200px;
-  font-family: 'Arial', sans-serif;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 8px;
   position: relative;
 }
 
-#keyword-display {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
+/* 왼쪽 빈 공간 (검색창 너비만큼 확보) */
+.header-left {
+  width: 400px;
+}
+
+/* 로고는 가운데 */
+.logo-wrapper {
+  width: 200px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  padding: 8px 0 0 0;
-  font-size: 16px;
+  background-color: #eee;
 }
 
-.rank-number {
-  color: #000000;
-  font-weight: bold;
-  text-align: left;
-  padding: 8px 0 0 0;
-}
-
-.rank-keyword {
-  text-align: center;
-  font-weight: bold;
-}
-
-.rank-icon {
-  text-align: right;
-}
-#keyword-display .rank-number {
-  color: #000000;
-  font-weight: bold;
-  margin-right: 4px;
-}
-
-#keyword-display .rank-keyword {
-  color: #000000;;
-  flex: 1;
-}
-
-#keyword-display .rank-icon {
-  font-size: 14px;
-  color: #000;
-}
-
-/* 실시간 검색어 서브 리스트 */
-#keyword-list {
-  display: none;
-  position: absolute;
-  top: 100%; /* h4 밑으로 바로 붙도록 */
-  left: 0;
+/* 실제 이미지 */
+.logo-wrapper img {
   width: 100%;
-  background-color: #fff;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  z-index: 10;
-  list-style: none;
-  padding: 8px 0;
-  margin: 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  height: 100%;
+  object-fit: contain;
 }
 
-#keyword-list li {
-  padding: 4px 8px;
-  font-size: 14px;
-  cursor: pointer;
+/* 검색창은 오른쪽 */
+.search-form {
+  width: 400px !important;
+  display: block;
 }
 
-#keyword-list li:hover {
-  background-color: #f0f0f0;
+.search-input {
+  width: 100% !important;
+  padding: 8px 10px;
+  font-size: 15px;
+  box-sizing: border-box;
 }
-span.text {
-  padding-left: 37px;
-}
-/* 실시간 검색어 css */
+
 
 /* 헤더 끝 */
 
@@ -200,7 +122,7 @@ nav {
   font-weight: bold;
 }
 .menu>li {
-  width: 400px;
+  width: 300px;
   height: 50px;
   line-height: 50px;
 }
@@ -211,14 +133,14 @@ nav {
   font-size: 20px;
 }
 .submenu {
-  width: 400px;
+  width: 300px;
   position: relative;
   z-index: 3;
   display: none;
   background-color: #eee;
 }
 .submenu>li {
-  width: 400px;
+  width: 300px;
 }
 .submenu>li>a:hover {
   background-color: rgba(255, 255, 255, 0.6);
@@ -253,7 +175,7 @@ nav {
 
 /* 중간여백 시작 */
 .bb{
-  width: 1200px;
+  width: 100%;
   height: 150px;
   background-color: #fff;
 }
@@ -268,320 +190,78 @@ nav {
   border-top: 1px solid #706e6e;
   padding-bottom: 200px;
 }
+.notice-card {
+  width: 100%;
+  max-width: 600px;
+  height: 250px;
+  margin: 20px auto;               /* 위 여백 줄이기 */
+  padding: 20px;
+  background-color: snow;       /* 박스 전체 배경 적용 */
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  font-family: 'Pretendard', sans-serif;
+  box-shadow: 2px #000;
+}
 
-/* 콜 센터  */
-.callcenter {
-  width: 400px;
-  height: 300px;
-  padding: 45px 20px;
-  text-align: center;
+/* 상단 제목과 버튼 */
+.notice-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  background: transparent; /* 헤더에는 배경 제거 */
 }
-.call1 {
-  width: 360px;
-  height: 160px;
-  padding: 20px 0;
+
+.notice-card-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: #111;
 }
-.call1>li {
-  list-style: none;
-  width: 150px;
-  margin-left: 100px;
-}
-.call1 p {
-  font-size: 11px;
+.notice-card a {
   line-height: 40px;
-  opacity: 0.7;
-}
-.call1 span {
+  border-bottom: 1px dotted #333;
   font-size: 14px;
-  font-weight: bold;
 }
-.call1 span:hover {
-  font-weight: bold;
-  font-size: 16px;
+.notice-date {
+  float: right;
 }
-/* 다운로드 */
-.download {
-  width: 400px;
-  height: 300px;
-  padding: 45px 20px;
-  text-align: center;
-}
-.download>ol {
-  list-style: none;
-  padding: 20px 0;
-}
-.download>ol>li {
-  width: 150px;
-  margin-left: 100px;
-}
-.download>ol>li>a {
-  line-height: 40px;
-  font-size: 11px;
-  opacity: 0.7;
-}
-.download>ol>li:hover {
-  font-weight: bold;
-  border-bottom: 1px dotted #000;
+.notice-more-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #333;
+  transition: color 0.2s ease;
+  border-radius: 50px;
 }
 
-/* 커뮤니티  */
-.cbox {
-  width: 400px;
+
+.footer {
+  width: 50%;
   height: 300px;
-  padding: 45px 20px;
+  padding: 20px;
+}
+.flogo {
+  width: 100%;
+  height: 110px;
+  background-color: yellow;
+}
+.copy {
+  width: 100%;
+  height: 140px;
+}
+.copy p {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.8);
+  padding: 35px 0;
   text-align: center;
 }
-#cbox {
-  display: flex;
-  margin-top: 25px;
-  padding: 0 0 20px 0;
-  margin-left: 120px;
-}
-#cbox>a {
-  width: 50px;
-  height: 50px;
-  text-align: center;
-  padding-top: 12px;
-  background-color: antiquewhite;
-  margin: 0 5px;
-  border-radius: 50px;
-}
-#cbox img {
-  width: 24px;
-  height: 24px;
-}
-#cbox p {
-  font-size: 10px;
-  padding-top: 5px;
-  color: #fff;
-  display: none;
-}
-#cbox>a:hover {
-  background-color: rgba(0, 0, 0, 0.67);
-}
-#cbox1 {
-  display: flex;
-  margin-left: 120px;
-}
-#cbox1>a {
-  width: 50px;
-  height: 50px;
-  text-align: center;
-  padding-top: 12px;
-  background-color: antiquewhite;
-  margin: 0 5px;
-  border-radius: 50px;
-}
-#cbox1 img {
-  width: 24px;
-  height: 24px;
-}
-#cbox1 p {
-  font-size: 10px;
-  padding-top: 5px;
-  color: #fff;
-  display: none;
-}
-#cbox1>a:hover {
-  background-color: rgba(0, 0, 0, 0.67);
-}
+
+
 
 /* 콘텐츠 끝 */
 
-/* 푸터 시작 */
-
- footer {
-  width: 100%;
-  background-color: #fff;
-}
-
-/* 회사소개 및 다양 */
-.fmenu {
-  width: 100%;
-  height: 50px;
-  border-top: 1px solid rgba(0, 0, 0, 0.17);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.17);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
-}
-
-.fmenu > a {
-  font-size: 12px;
-  height: 50px;
-  line-height: 50px;
-  color: #706e6e;
-}
-.fmenu span {
-  font-weight: bold;
-  color: #706e6e;
-}
-.fmenu>a:hover {
-  font-weight: bold;
-  color: #000;
-}
-.fmenu span:hover {
-  color: #000;
-}
-
-/* 맨 아래 푸터 */
-.fbox {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 30px 20px;
-  display: flex;
-  flex-wrap: wrap;
-}
-.copy {
-  width: 800px;
-  margin: 0 auto;
-}
-.copy p{
-  width: 800px;
-  font-size: 13px;
-  opacity: 0.7;
-  padding-top: 20px;
-  text-align: center;
-}
-
-/* 푸터 끝 */
-
-
-/* 배너 시작 */
-#banner {
-  width: 60px;
-  height: 300px;
-  text-align: center;
-  position: fixed;
-  top: 400px;
-  right: 30px;
-}
-#banner1 {
-  width: 60px;
-  height: 60px;
-  text-align: center;
-  background-color: #000;
-  border-radius: 50px;
-}
-#banner1>a {
-  width: 60px;
-  height: 60px;
-  padding-top: 18px;
-  border-radius: 50px;
-}
-#banner1 img {
-  width: 24px;
-  height: 24px;
-  object-fit: contain;
-  object-position: center;
-}
-#banner1>a:hover {
-  opacity: 0.6;
-}
-.close {
-  width: 60px;
-  height: 60px;
-  text-align: center;
-  background-color: #000;
-  border-radius: 50px;
-  display: none;
-}
-.close>a {
-  width: 60px;
-  height: 60px;
-  padding-top: 18px;
-  border-radius: 50px;
-}
-.close img {
-  width: 24px;
-  height: 24px;
-   object-fit: contain;
-  object-position: center;
-}
-.close>a:hover {
-  opacity: 0.6;
-}
-
-#banner3 {
-  width: 60px;
-  height: 60px;
-  text-align: center;
-  background-color: #000;
-  border-radius: 50px;
-  font-size: 10px;
-  margin-top: 5px;
-   display: none;
-}
-#banner3>a {
-  width: 60px;
-  height: 60px;
-  border-radius: 50px;
-  padding-top: 10px;
-  color: #fff;
-}
-#banner3 img {
-  width: 24px;
-  height: 24px;
-   object-fit: contain;
-  object-position: center;
-}
-#banner3>a:hover {
-  opacity: 0.6;
-}
-#banner4 {
-  width: 60px;
-  height: 60px;
-  text-align: center;
-  background-color: #000;
-  border-radius: 50px;
-  font-size: 10px;
-  margin-top: 5px;
-   display: none;
-}
-#banner4>a {
-  width: 60px;
-  height: 60px;
-  padding-top: 10px;
-  border-radius: 50px;
-  color: #fff;
-}
-#banner4 img {
-  width: 24px;
-  height: 24px;
-   object-fit: contain;
-  object-position: center;
-}
-#banner4>a:hover {
-  opacity: 0.6;
-}
-#banner5 {
-  width: 60px;
-  height: 60px;
-  text-align: center;
-  background-color: #000;
-  border-radius: 50px;
-  font-size: 10px;
-  margin-top: 5px;
-   display: none;
-}
-#banner5>a {
-  width: 60px;
-  height: 60px;
-  padding-top: 10px;
-  border-radius: 50px;
-  color: #fff;
-}
-#banner5 img {
-  width: 24px;
-  height: 24px;
-   object-fit: contain;
-  object-position: center;
-}
-#banner5>a:hover {
-  opacity: 0.6;
-}
-/* 배너 끝 */
 
 
 
@@ -1504,7 +1184,6 @@ label {
 .dbox3 {
   padding: 5px 0;
   background-color: #fff;
-  border-top: 1px solid #ccc;
   border-radius: 4px;
   font-size: 0.9rem;
   color: #333;
@@ -1704,7 +1383,6 @@ label {
   min-height: 400px;  /* 원하는 높이 지정 (예: 400px) */
   padding: 20px;
   border: 1px solid #ddd;
-  background-color: #f9f9f9; /* 가독성 높이려고 살짝 배경 */
   white-space: pre-wrap; /* 줄바꿈 유지 */
 }
 
@@ -1824,6 +1502,7 @@ p#emailArea {
   padding: 9px 10px;
   height: 40px;
   border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
 }
 
 #name1, #email1 {
@@ -2135,7 +1814,10 @@ p#emailArea {
 }
 
 
+.n {
+  font-weight: bold;
+}
 
-
-
-
+#titleArea {
+  font-weight: 500;
+}
