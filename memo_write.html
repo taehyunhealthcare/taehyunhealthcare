@@ -86,41 +86,39 @@
         </form>
     </div>
 
+    <!-- 자료실 작성 및 저장 기능 스크립트 -->
     <script>
     document.addEventListener("DOMContentLoaded", function(){
         const isAdmin = localStorage.getItem('isAdmin') === 'true';
+
+        // 관리자가 아닌 경우 접근 차단
         if (!isAdmin) {
             alert('접근 권한이 없습니다.');
             location.href = 'memo.html';
             return;
         }
 
+        // 폼 제출 시 로컬스토리지에 저장
         document.getElementById('memoForm').onsubmit = function(e) {
             e.preventDefault();
+
             const memos = JSON.parse(localStorage.getItem('memos') || '[]');
+
             const newMemo = {
-                id: Date.now(),
+                id: Date.now(),  // 고유 ID
                 title: document.getElementById('title').value,
                 author: document.getElementById('author').value,
                 content: document.getElementById('content').value,
-                date: new Date().toISOString().split('T')[0],
+                date: new Date().toISOString().split('T')[0],  // yyyy-mm-dd 형식
                 views: 0
             };
+
             memos.push(newMemo);
             localStorage.setItem('memos', JSON.stringify(memos));
             alert('등록 완료');
             location.href = 'memo.html';
         };
     });
-    const newMemo = {
-        id: Date.now(),  // 고유 ID 생성
-        title: document.getElementById('title').value,
-        author: document.getElementById('author').value,
-        content: document.getElementById('content').value,
-        date: new Date().toISOString().split('T')[0],
-        views: 0
-    };
     </script>
-
 </body>
 </html>
