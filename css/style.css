@@ -26,39 +26,42 @@ body {
 }
 /* 기본 설정 끝 */
 
-/* wrap 시작  */
+/* 전체 공용 CSS */
+
 #wrap {
   width: 1200px;
   height: 50px;
   list-style: none;
   margin: 0 auto;
 }
+
 .chat {
   width: 100%;
   height: 100%;
   display: flex;
   border-bottom: 1px solid #eee;
 }
+
 .chat1 {
   width: 1000px;
   height: 50px;
-  color: rgb(104, 199, 104);
+  color: #666;
   opacity: 0.6;
   font-size: 13px;
   float: left;
 }
+
 .chat1 a{
   width: 100%;
   height: 50px;
   padding-top: 10px;
 }
+
 .chat1 span {
-  color: green;
+  color: #333;
   font-size: 18px;
 }
-/* wrap 끝  */
 
-/* 헤더 시작 */
 header {
   width: 1200px;
   margin: 0 auto;
@@ -69,12 +72,10 @@ header {
   position: relative;
 }
 
-/* 왼쪽 빈 공간 (검색창 너비만큼 확보) */
 .header-left {
   width: 400px;
 }
 
-/* 로고는 가운데 */
 .logo-wrapper {
   width: 200px;
   height: 100px;
@@ -84,14 +85,12 @@ header {
   background-color: #eee;
 }
 
-/* 실제 이미지 */
 .logo-wrapper img {
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
 
-/* 검색창은 오른쪽 */
 .search-form {
   width: 400px !important;
   display: block;
@@ -104,16 +103,13 @@ header {
   box-sizing: border-box;
 }
 
-
-/* 헤더 끝 */
-
-/* 메뉴 시작 */
 nav {
   width: 1200px;
   height: 120px;
   margin: 0 auto;
   padding-top: 50px;
 }
+
 .menu {
   display: flex;
   width: 1200px;
@@ -121,17 +117,21 @@ nav {
   text-align: center;
   font-weight: bold;
 }
+
 .menu>li {
   width: 300px;
   height: 50px;
   line-height: 50px;
 }
+
 .menu>li>a {
    border-bottom: 1px solid #000;
 }
+
 .menu>li>a:hover {
   font-size: 20px;
 }
+
 .submenu {
   width: 300px;
   position: relative;
@@ -139,49 +139,16 @@ nav {
   display: none;
   background-color: #eee;
 }
+
 .submenu>li {
   width: 300px;
 }
+
 .submenu>li>a:hover {
   background-color: rgba(255, 255, 255, 0.6);
   font-weight: bold;
 }
-/* 메뉴 끝 */
 
-/*  이미지 슬라이드 시작 */
-#slide {
-  width: 100%;
-  height: 550px;
-  overflow: hidden;
-  padding: 0 0 80px;
-  position: relative;
-  white-space: nowrap;
-}
-#slide a {
-  display: block;
-  width: 1920px;
-  height: 550px;
-  margin: 0 auto;
-}
-#slide img {
-  width: 1920px;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* 이미지 슬라이드 끝 */
-
-
-/* 중간여백 시작 */
-.bb{
-  width: 100%;
-  height: 150px;
-  background-color: #fff;
-}
-/* 중간여백 끝 */
-
-/* 콘텐츠 시작 */
 #contents {
   width: 1200px;
   height: 300px;
@@ -190,20 +157,21 @@ nav {
   border-top: 1px solid #706e6e;
   padding-bottom: 200px;
 }
+
 .notice-card {
   width: 100%;
   max-width: 600px;
   height: 250px;
   margin: 20px auto;               /* 위 여백 줄이기 */
   padding: 20px;
-  background-color: snow;       /* 박스 전체 배경 적용 */
+  background-color: #f1f1f1;       /* 박스 전체 배경 적용 */
+  color: #000;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.05);
   font-family: 'Pretendard', sans-serif;
   box-shadow: 2px #000;
 }
 
-/* 상단 제목과 버튼 */
 .notice-card-header {
   display: flex;
   align-items: center;
@@ -212,577 +180,111 @@ nav {
   background: transparent; /* 헤더에는 배경 제거 */
 }
 
-.notice-card-header h3 {
-  margin: 0;
+.notice-card-header>h3>a {
   font-size: 18px;
-  font-weight: bold;
-  color: #111;
+  border-bottom: none;
+  border-top: none;
 }
+
 .notice-card a {
   line-height: 40px;
-  border-bottom: 1px dotted #333;
+  border-bottom: 1px dotted #000;
   font-size: 14px;
 }
+
 .notice-date {
   float: right;
 }
+
 .notice-more-btn {
   background: none;
   border: none;
   font-size: 20px;
   cursor: pointer;
-  color: #333;
+  color: #000;
   transition: color 0.2s ease;
   border-radius: 50px;
 }
-
 
 .footer {
   width: 50%;
   height: 300px;
   padding: 20px;
 }
+
 .flogo {
   width: 100%;
   height: 110px;
   background-color: yellow;
+  margin-bottom: 20px;
 }
+
 .copy {
   width: 100%;
   height: 140px;
 }
+
 .copy p {
-  font-size: 13px;
-  color: rgba(0, 0, 0, 0.8);
-  padding: 35px 0;
-  text-align: center;
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.8);
+    text-align: center;
 }
 
+#copy>a {
+  padding-top: 15px;
+}
 
+.n {
+  font-weight: bold;
+  font-size: 13.5px;
+}
 
-/* 콘텐츠 끝 */
+/* index.html CSS */
 
-
-
-
-
-/*  상세페이지 products.html 시작 */
-
-/* 이미지 슬라이드 시작 */
-#slide01 {
+#slide {
   width: 100%;
   height: 550px;
   overflow: hidden;
   padding: 0 0 80px;
   position: relative;
   white-space: nowrap;
-  background-color: antiquewhite;
 }
-#slide01 a {
+
+#slide a {
   display: block;
   width: 1920px;
   height: 550px;
   margin: 0 auto;
 }
-#slide01 img {
+
+#slide img {
   width: 1920px;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
-/* 이미지 슬라이드 끝 */
-
-/* nav 시작 */
-.nav {
-  width: 1200px;
-  display: flex;
-  align-items: center;
-  font-family: sans-serif;
-  gap: 10px;
-  padding: 20px;   
-  margin: 0 auto;
-  margin-top: 20px;
-}
-
-.nav select {
-  padding: 5px 10px;
-  font-size: 14px;
-}
-
- .nav .separator {
-  font-size: 16px;
-  color: #888;
- }
- /* nav 끝  */
-
-
- /* nav1 시작  */
-.nav1 {
-  width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  margin-top: 20px;
-  border-top: 1px solid rgba(0, 0, 0, 0.2);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
-.nav1 li {
-  list-style: none;
-  padding-left: 17px;
-  padding-top: 8px;
-
-}
-.nav1 select {
-  padding: 5px 10px;
-  font-size: 14px;
-  margin-left: 1012.6px;
-  opacity: 0.7;
-}
- /* nav1 끝 */
-
-/* 다음페이지 선택 끝 */
-
- /* 제품 시작 */
- .contents01 {
-  width: 1200px;
-  height: 600px;
-  margin: 0 auto;
- }
- .cbox01 {
-  display: flex;
-  gap: 30px;
- }
- .cbox01>a{
-  height: 450px;
-  padding: 100px 120px;
-  position: relative;
- }
- .cbox01 img {
-  width: 300px;
-  height: 400px;
-  object-fit: cover;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 12px;
- }
- .cbox01 p {
-  position: absolute;
-  left: 220px;
-  top: 520px;
- }
-/* 제품 끝 */
-
-/* about 시작 */
-.map {
-  display: flex;
-  gap: 200px;
-  margin: 50px 0;
-}
-iframe {
-  width: 500px;
-  height: 350px;
-  margin-left: 350px;
-  border-radius: 10px;
-}
-.mapp {
-  padding: 20px;
-}
-.mapp li {
-  padding-top: 35px;
-}
-.sp {
-  padding: 20px;
-}
-.span {
-  padding: 5px;
-}
-
-/* NOTICE.HTML 서브페이지 CSS */
-.n_contents {
-  width: 1200px;
-  margin: 0 auto;
-}
-.n_contents h2 {
-  padding: 20px 0 40px 0;
-}
-.qna-header {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.m_span a {
-  background-color: #aaa;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 0 20px;
-  font-size: 16px;
-  font-weight: bold;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);      cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-.nhaeder {
-  height: 40px;
-}
-.board {
-  width: 100%;
-  border-collapse: collapse; 
-  text-align: center;
-  border-top: 1px solid #bbb;
-}
-.tr {
-  background-color: rgba(0, 0, 0, 0.1);
-}
-.board th, .board td {
-  border-bottom: 1px solid #bbb;
-  padding: 20px 8px;
-  font-size: 14px;
-}
-/* 콘텐츠 전체 영역 (1200px, 가운데 정렬) */
-.content-wrapper {
-  width: 1200px;
-  margin: 0 auto;
-}
-
-/* 상단 바 (페이지 번호 + 검색창) */
-.top-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;  
-  padding: 100px 0;
-  position: relative;
-  margin-bottom: 50px;
-}
-
-/* 페이지 번호 버튼 */
-.page-number {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: #aaa;
-  color: white;
-  text-align: center;
-  line-height: 40px;
-  font-weight: bold;
-  position: absolute;
-  left: 50%;
-}
-.search-container {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-family: sans-serif;
-  position: absolute;
-  right: 0;
-}
-
-.page_next,
-input[type="text"],
-button {
-  height: 30px;
-  box-sizing: border-box;
-  font-size: 14px;
-  line-height: 30px;
-  vertical-align: middle;
-}
-
-.page_next {
-  border: 1px solid #ccc;
-  padding: 0 8px;
-  appearance: none; 
-  background: url('data:image/svg+xml;utf8,<svg ... >') no-repeat right center; 
-  background-size: 12px;
-}
-
-input[type="text"] {
-  width: 180px;
-  border: 1px solid #ccc;
-  padding: 0 8px;
-}
-
-.page-next {
-  height: 30px;
+.bb{
+    width: 100%;
+  height: 150px;
   background-color: #fff;
-  color: #000;
-  border: 1px solid #ccc;
-  padding: 0 12px;
-  cursor: pointer;
-  line-height: 28px;
-}
-/* 문의하기 페이지 시작 */
-.n_contents h2 {
-  position: relative;
-}
-.n_contents span {
-  position: absolute;
-  font-size: 12px;
-  border-radius: 5px;
-  width: 100px;
-  height: 30px;
-  text-align: center;
-  padding-top: 4px;
-  right: 0;
-  top: 30px;
-  background-color: #aaa8a8;
-  color: #fff;
-  cursor: pointer;
-}
-.n_contents span:hover{
-  background-color: #777;
 }
 
+/* searchResult.html CSS */
 
-/* 파트너 문의 페이지  */
+#result {
+  width: 1200px;
+  margin: 0 auto;
+  height: 300px;
+}
+
+/* partnership.html CSS */
+
 .partner-form-container {
   width: 1200px;
   margin: 0 auto;
 }
 
-.partner-form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-fieldset {
-  border: none;
-  padding: 0;
-  margin-bottom: 100px;
-}
-
-legend {
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-.form-row {
-  display: flex;
-  align-items: center; 
-  padding: 20px 0;
-  border-bottom: 1px dotted #ccc;
-  max-width: 1200px;
-  margin: 0 auto;
-  gap: 10px;
-}
-
-.form-row label {
-  width: 150px; /* 원하는 너비로 조정 */
-  text-align: center; /* 라벨 텍스트를 오른쪽 정렬 */
-  padding-right: 10px; /* 라벨과 입력 필드 사이 간격 */  
-}
-.form-row input[type="text"],
-.form-row input[type="email"],
-.form-row select {
-  padding: 8px;
-  border: 1px solid #ccc;
-  outline: none;
-  box-shadow: none;
-  font-size: 14px;
-}
-/* b2b 문의 오른쪽 라벨 박스 넓이 조절 */
-.form-row input[type="text"]:not(#address):not(#detailAddress):not(#fax),
-.form-row input[type="email"]:not(#tax-email),
-.form-row select:not(#category) {
-  width: 1050px;
-}
-
-#fax,
-#tax-email {
-  width: 1050px;
-}
-.file-upload-wrapper {
-  width: 1040px;
-  display: flex;
-  flex-direction: column; /* 🔽 수직 정렬 */
-  align-items: flex-start; /* 왼쪽 정렬 */
-  gap: 10px;
-  flex: 1;
-  border: 1px solid #ccc;
-  padding: 10px;
-  box-sizing: border-box;
-}
-
-/* 파일 선택 버튼 숨기기 */
-input[type="file"] {
-  display: none;
-}
-
-
-/* 파일 선택 라벨 (버튼) */
-.custom-file-label {
-  width: 100px !important;
-  height: 40px !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  font-family: "Noto Sans KR", sans-serif;
-  background-color: #eee;
-  border: 1px solid #999;
-  cursor: pointer;
-  overflow: hidden;
-  white-space: nowrap;
-  box-sizing: border-box;
-  margin-left: 25px;
-}
-.custom-file-label:hover {
-  background-color: #cfcdcd;
-}
-
-.file-list {
-  width: 1000px;
-  font-size: 14px;
-  margin-top: 5px;
-  padding-left: 20px;
-}
-
-.file-list li {
-  width: 1040px;
-  margin-bottom: 4px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 100%;
-  padding-left: 30px;
-}
-
-.delete-btn {
-  background: none;
-  border: none;
-  color: #666;
-  font-size: 16px;
-  cursor: pointer;
-  font-weight: bold;
-}
-.file-list .empty-msg {
-  color: #999;
-}
-
-
-#file-list {
-  margin-left: 0; /* 기본값 제거 */
-  padding-left: 0; /* 목록 기본 들여쓰기 제거 */
-  list-style: none;
-}
-.file-box {
-  background: #f5f5f5;
-  border: 1px solid #ddd;
-  padding: 15px;
-  border-radius: 6px;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.custom-file-label {
-  display: inline-block;
-  background: #eee;
-  padding: 6px 12px;
-  border: 1px solid #ccc;
-  margin-bottom: 10px;
-  cursor: pointer;
-}
-
-.file-list-styled {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.file-list-styled li {
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 8px 12px;
-  margin-bottom: 8px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.file-list-styled li .remove-btn {
-  color: #888;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.file-list-styled li .remove-btn:hover {
-  color: red;
-}
-
-
-#empty-msg {
-  margin-left: 15px;
-  color: #666;
-  font-size: 14px;
-  line-height: 40px;
-}
-.textarea-wrapper {
-  width: 1050px;
-  max-height: 200px;
-  overflow-y: auto;
-  border: 1px dotted #ccc; 
-  box-sizing: border-box;
-  padding: 0;
-}
-
-textarea {
-  width: 100%;
-  height: 180px;
-  resize: none;
-  border: none;
-  padding: 10px;
-  line-height: 1.6;
-  font-size: 14px;
-  background: transparent;
-  box-sizing: border-box;
-}
-
-
-.agree-row {
-  display: flex;
-  align-items: center;
-  gap: 35px; 
-  font-size: 14px;
-  margin-top: 20px;
-  border-bottom: 1px dotted #ccc;
-  padding-bottom: 16px;
-}
-.agree-row input[type="checkbox"] {
-  width: 13px;
-  height: 13px;
-  transform: translateY(2px);
-}
-.submit-wrap {
-  text-align: center;
-  margin-top: 30px;
-}
-
-button {
-  height: 40px; 
-  line-height: 40px; 
-  padding: 0 20px; 
-  font-size: 14px;
-  border: 1px solid #999;
-  background-color: #fff;
-  color: #000;
-  cursor: pointer;
-  display: inline-block;
-  text-align: center;
-}
-button:hover {
-  background-color: rgba(0, 0, 0, 0.2);
-}
-select {
-  height: 40px; 
-  padding: 8px;
-  font-size: 14px;
-}
-
-
-
-/* 상단 안내 구역 */
 .inquiry-header {
   display: flex;
   align-items: center; 
@@ -810,6 +312,17 @@ select {
   float: right;
 }
 
+.partner-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+  margin-bottom: 100px;
+}
 
 .section-divider,
 .form-divider {
@@ -823,6 +336,7 @@ select {
   height: 60px;        
   padding-left: 10px;   
 }
+
 .form-label-box p {
   font-weight: bold;
 }
@@ -834,290 +348,148 @@ select {
   display: block;
 }
 
-
-.address-wrap {
-  align-items: flex-start;
-}
-
-.address-inputs {
-  flex: 1;
+.form-row {
   display: flex;
-  flex-direction: column;
-  gap: 6px;
+  align-items: center; 
+  padding: 20px 0;
+  border-bottom: 1px dotted #ccc;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 10px;
 }
 
-.address-line {
-  display: flex;
-  gap: 6px;
+.form-row label {
+  width: 150px; /* 원하는 너비로 조정 */
+  text-align: center; /* 라벨 텍스트를 오른쪽 정렬 */
+  padding-right: 10px; /* 라벨과 입력 필드 사이 간격 */  
+  font-size: 16px;
+  font-weight: bold;
 }
-
-#addr1,
-#addr2 {
-  width: 400px;
-  height: 40px;
+.form-row input[type="text"] {
   padding: 8px;
-  font-size: 14px;
-}
-
-#address,
-#detailAddress {
-  width: 400px;
-  height: 30px;
-  padding: 8px;
-  font-size: 14px;
-}
-
-#detailAddress {
-  margin-top: 4px;
-  padding: 10px;
   border: 1px solid #ccc;
+  outline: none;
+  box-shadow: none;
   font-size: 14px;
+}
+
+.form-row input[type="text"] { width: 1050px; }
+
+.textarea-wrapper {
+  width: 1050px;
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px dotted #ccc; 
+  box-sizing: border-box;
+  padding: 0;
+}
+
+textarea {
+  width: 100%;
+  height: 180px;
+  resize: none;
+  border: none;
+  padding: 10px;
+  line-height: 1.6;
+  font-size: 14px;
+  background: transparent;
   box-sizing: border-box;
 }
 
-#search-postcode {
-  padding: 8px 12px;
+.submit-wrap {
+  text-align: center;
+  margin-top: 30px;
+}
+
+button {
+  height: 40px; 
+  line-height: 40px; 
+  padding: 0 20px; 
   font-size: 14px;
-  height: 40px;
-  background: #eee;
   border: 1px solid #999;
+  background-color: #fff;
+  color: #000;
   cursor: pointer;
+  display: inline-block;
+  text-align: center;
+}
+button:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+select {
+    height: 40px; 
+    padding: 8px;
+    font-size: 14px;
 }
 
-/* 주소검색 버튼 스타일 통일 */
-.form-row button {
-  padding: 6px 10px;
-  font-size: 13px;
-  background-color: #ddd;
-  border: 1px solid #aaa;
-  cursor: pointer;
-  height: 30px;
-  line-height: 1;
-}
-.form-row button:hover {
-  background-color: #ccc;
-}
-
-
-
-
-
-
-
-
-/* 문의 완료 안내 페이지 */
+/* 01_partnership.html, 03_partnership.html CSS */
 
 .complete-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 .complete-box {
-  background-color: white;
-  border: 1px solid #ddd;
-  padding: 60px 40px;
-  border-radius: 12px;
-  text-align: center;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
-  max-width: 500px;
-  width: 90%;
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 60px 40px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+    max-width: 500px;
+    width: 90%;
 }
 
 .icon {
-  font-size: 48px;
-  margin-bottom: 20px;
+    font-size: 48px;
+    margin-bottom: 20px;
 }
 
 .complete-box h1 {
-  font-size: 22px;
-  margin-bottom: 12px;
+    font-size: 22px;
+    margin-bottom: 12px;
 }
 
 .complete-box p {
-  font-size: 15px;
-  color: #666;
-  line-height: 1.6;
-  margin-bottom: 30px;
+    font-size: 15px;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 30px;
 }
 
 .button-group {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
 }
 
 .btn {
-  display: inline-block;
-  padding: 12px 24px;
-  font-size: 14px;
-  background-color: #222;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-  transition: background-color 0.2s ease;
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 14px;
+    background-color: #222;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
 }
 
 .btn:hover {
-  background-color: #444;
+    background-color: #444;
 }
 
 .btn.gray {
-  background-color: #ddd;
-  color: #333;
+    background-color: #ddd;
+    color: #333;
 }
 
 .btn.gray:hover {
-  background-color: #bbb;
+    background-color: #bbb;
 }
 
-/* 글쓰기 작성 페이지 */
-
-
-.write-container1 {
-  width: 1200px;
-  margin: 0 auto;
-  background: #fff;
-  padding: 40px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  box-sizing: border-box;
-  margin-bottom: 150px;
-}
-
-.heading1 {
-  margin-bottom: 30px;
-  font-size: 24px;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 10px;
-}
-
-.form-group1 {
-  margin-bottom: 25px;
-}
-
-label {
-  display: block;
-  margin-bottom: 10px;
-  font-weight: bold;
-}
-
-#category1,
-#title1,
-#content1 {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  box-sizing: border-box;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-#content1 {
-  height: 200px;
-  resize: vertical;
-}
-
-/* 파일 업로드 영역 */
-.file-upload-box1 {
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #f3f3f3;
-  padding: 20px;
-}
-
-.file-label1 {
-  display: inline-block;
-  background-color: #eee;
-  padding: 8px 16px;
-  font-size: 14px;
-  border: 1px solid #aaa;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-bottom: 10px;
-}
-
-.file-label1 input {
-  display: none;
-}
-
-#file-list1 {
-  font-size: 14px;
-  color: #333;
-  margin-top: 10px;
-}
-
-.file-item1 {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 6px;
-  background-color: #fff;
-  padding: 4px 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.delete-btn {
-  background: none;
-  border: none;
-  font-size: 16px;
-  color: #888;
-  cursor: pointer;
-}
-
-
-/* 등록 버튼 */
-.form-group2 {
-  display: flex;
-  justify-content: center; /* 수평 가운데 정렬 */
-  margin-top: 20px; /* 여백은 필요에 따라 조절 */
-}
-
-.submit-btn1 {
-  width: 120px;
-  height: 45px;
-  background-color: #333;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  font-size: 16px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.submit-btn1:hover {
-  background-color: #0056b3;
-}
-
-
-
-/* 다운로드 홈페이지 */
-#n_contents {
-  width: 1200px;
-  margin: 0 auto;
-
-}
-#n_contents h2 {
-  padding: 20px 0 40px 0;
-}
-#qna-header {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-#m_span a {
-  background: #aaa;
-  color: #fff;
-  padding: 2px 12px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: bold;
-}
+/* download.html CSS */
 
 #board {
   width: 100%;
@@ -1126,268 +498,162 @@ label {
   border-top: 1px solid #bbb;
   table-layout: fixed;
 }
+
 #tr {
   background-color: rgba(0, 0, 0, 0.1);
 }
+
 #board th, #board td {
   border-bottom: 1px solid #bbb;
   padding: 20px 8px;
   font-size: 14px;
   word-break: break-word;
 }
+
 .th {
   width: 10%;
 }
+
 .th1 {
   width: 65%;
 }
+
 .th2 {
   width: 15%;
 }
+
 .th3 {
   width: 15%;
 }
 
 
-/* DOWNLORD 1 ,2 ,3 CSS */
-.dbox {
-  width: 100%;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+/* 03_about.html CSS */
+
+.map {
+  width: 1200px;
+  display: flex;
+  margin: 50px auto;
+  gap: 50px;
 }
-.dbox1 {
-  width: 100%;
-  height: 50px;
-  border-top: 1px solid #000;
-  background-color: rgba(0, 0, 0, 0.1);
+
+/* 우측 텍스트 정보 전체 박스 */
+.map1 {
+  width: 550px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
 }
-.dbox1>p {
-  padding: 12px 10px;
-  font-weight: bold;
-  font-size: 16px;
-}
-.dbox2 {
-  width: 100%;
+
+/* 각 행 */
+.map-1 {
+  display: flex;
   height: 40px;
-  border-top: 1px solid rgba(0, 0, 0, 0.17);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.17);
-}
-.bigbox {
-  width: 1200px;
-  margin: 0 auto;
-  background-color: #eee;
-  padding: 10px 50px 30px 50px;
-  margin-top: 10px;
-}
-.bigbox1 p {
-  padding: 10px 5px;
-}
-.dbox3 {
-  padding: 5px 0;
-  background-color: #fff;
-  border-radius: 4px;
-  font-size: 0.9rem;
-  color: #333;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.dbox3 .file-name {
-  font-weight: bold;
-}
-
-.dbox3 .download-btn {
-  margin-left: auto;
-  padding: 0.2rem 0.5rem;
-  text-decoration: none;
-  font-size: 1.2rem;
-  color: #333;
-  cursor: pointer;
-  transition: color 0.3s;
-}
-
-.dbox3 .download-btn:hover {
-  color: #007BFF;
-}
-.dbox2>p {
-  padding: 9px 10px;
+  line-height: 40px;
   font-size: 14px;
-}
-.dimg {
-  width: 100%;
-  height: 500px;
-  background-color: tan;
-  margin-bottom: 25px;
+  font-family: 'Pretendard', sans-serif;
 }
 
-
-/* 목록 버튼 스타일 */
-.dboxbtn {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end; /* 오른쪽 정렬 */
-  padding: 10px 0;
-  margin-top: 25px;
-  margin-bottom: 25px;
-}
-
-.dboxbtn > a {
-  width: 50px;
-  height: 30px;
-  background-color: #fff;
-  padding: 5px 10px;
+/* 왼쪽 라벨 박스 (회색 박스) */
+.map-label {
+  width: 130px;
+  background-color: #f1f1f1;
   text-align: center;
-  color: #333;
   font-weight: bold;
-  text-decoration: none;
-  border: 1px solid #999;
-  font-size: 12px;
-}
-.dboxbtn>a:hover {
-  border: 1px solid #000;
-  color: #000;
-}
-
-.download-wrap {
-  display: flex;
-  align-items: center;
-  padding: 7px 10px;
-  font-size: 14px;
-  gap: 10px; /* 아이템 간 여백 */
-}
-
-.download-btn {
-  color: #007bff;
-  text-decoration: none;
-}
-
-.download-btn:hover {
-  text-decoration: underline;
-}
-.d-btn {
-  width: 1200px;
-  margin:0 auto;
-}
-
-/* 회사소개 css */
-.n_contents1 {
-  width: 1200px;
-  margin: 0 auto;
-
-}
-.n_contents1 h2 {
-  padding: 20px 0 40px 0;
-    border-bottom: 1px solid #000;
-}
-#logo {
-  width: 1200px;
-  height: 200px;
-  background-color: yellowgreen;
-}
-
-/* 문의하기 답안 */
-#n1_contents {
-  width: 1200px;
-  margin: 0 auto;
-}
-#n1_contents h2 {
-  padding: 20px 0 40px 0;
-}
-#qna1-header {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.dbox- {
-  width: 100%;
-  height: 500px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-.dbox-1 {
-  width: 100%;
-  height: 50px;
-  border-top: 1px solid #000;
-  background-color: rgba(0, 0, 0, 0.1);
-}
-.dbox-1>p {
-  padding: 10px 10px;
-  font-weight: bold;
-  font-size: 18px;
-}
-.dbox-2 {
-  width: 100%;
-  height: 40px;
-  border-top: 1px solid rgba(0, 0, 0, 0.17);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.17);
-}
-.dbox-3 {
-  width: 100%;
-  height: 40px;
-  padding-top: 10px;
-}
-.dbox-2>p, .dbox-3>p {
-  padding: 7px 10px;
-  font-size: 14px;
-}
-.dbox-3>p {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.17);
-}
-
-.dboxbtn1 {
-  width: 50px;
-  margin-top: 300px;
-  padding: 2px 5px;
-  float: right;
-}
-.dboxbtn1 > a {
-  padding: 5px;
-  background-color: rgba(0, 0, 0, 0.1);
-  text-align: center;
-  color: black;
-  font-weight: bold;
-  text-decoration: none;
-  border-radius: 5px;
-}
-.dboxbtn1>a:hover {
-  background-color: rgba(0, 0, 0, 0.2);
-}
-
-
-
-
-.btn-wrap {
-  text-align: center;
-  padding:  10px 10px 40px 10px;
-}
-.back-btn {
-  padding: 4px 12px;
-  font-size: 13px;
-  background-color: #f5f5f5;
-}
-
-
-
-
-/* view html css */
-
-.date-wrap {
-  font-size: 14px;
-  padding: 9px 10px;
-}
-
-
-
-#contentArea {
-  min-height: 400px;  /* 원하는 높이 지정 (예: 400px) */
-  padding: 20px;
   border: 1px solid #ddd;
-  white-space: pre-wrap; /* 줄바꿈 유지 */
+  box-sizing: border-box;
+}
+
+/* 오른쪽 내용 박스 */
+.map-content {
+  flex: 1;
+  padding-left: 10px;
+  border: 1px solid #ddd;
+  border-left: none;
+  box-sizing: border-box;
 }
 
 
 
+/* 01, 02, 03_products.html 공용 CSS */
+
+.nav {
+  width: 1200px;
+  display: flex;
+  align-items: center;
+  font-family: sans-serif;
+  gap: 10px;
+  padding: 20px;   
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.nav select {
+  padding: 5px 10px;
+  font-size: 14px;
+}
+
+ .nav .separator {
+  font-size: 16px;
+  color: #888;
+ }
+
+.nav1 {
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  margin-top: 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.nav1 li {
+  list-style: none;
+  padding-left: 17px;
+  padding-top: 8px;
+}
+
+.nav1 select {
+  padding: 5px 10px;
+  font-size: 14px;
+  margin-left: 1012.6px;
+  opacity: 0.7;
+}
+
+ .contents01 {
+  width: 1200px;
+  height: 600px;
+  margin: 0 auto;
+ }
+
+ .cbox01 {
+  display: flex;
+  gap: 30px;
+ }
+
+ .cbox01>a{
+  height: 450px;
+  padding: 100px 120px;
+  position: relative;
+ }
+
+ .cbox01 img {
+  width: 300px;
+  height: 400px;
+  object-fit: cover;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+ }
+
+ .cbox01 p {
+  position: absolute;
+  left: 220px;
+  top: 520px;
+ }
+
+/* 01,02,03_products.html, download.html, memo.html, notice.html, talk.html 공용 CSS */
 
 .pagination-container {
   overflow-x: auto;
@@ -1406,7 +672,7 @@ label {
   gap: 8px;                /* 버튼 사이 여백 */
   overflow: visible;       /* 오버플로우 안나오도록 */
   height: auto;            /* 높이를 컨텐츠에 맞춤 */
-  padding: 10px 0;         /* 위아래 여백 */
+  padding: 10px 0;        
 }
 
 .pagination a {
@@ -1424,50 +690,6 @@ label {
   background-color: #eee;
 }
 
-
-
-.board thead th {
-  background-color: #f0f0f0;
-  color: #333;
-  font-weight: bold;
-  padding: 12px;
-  border-bottom: 1px solid #ccc;
-  height: 70px;
-}
-
-
-
-
-
-
-
-
-
-
-/* 삭제버튼 위치를 잡기 위한 스타일 */
-.delete-box {
-    position: absolute;
-    right: 30px;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.delete-btn {
-    padding: 5px 10px;
-    background-color: crimson;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 13px;
-}
-.position-wrap {
-    position: relative;
-}
-
-
-
-/* 페이지 버튼 전체 스타일 */
 .pagination button {
   background: #f0f0f0;
   border: 1px solid #ccc;
@@ -1475,7 +697,7 @@ label {
   padding: 4px 8px;           /* 버튼 크기를 줄임 */
   margin: 0 2px;
   font-size: 14px;
-  border-radius: 50%;         /* 완전한 원형처럼 둥글게 */
+  border-radius: 50%;      
   width: 32px;
   height: 32px;
   display: inline-flex;
@@ -1487,65 +709,11 @@ label {
 
 /* 활성 페이지 버튼 강조 */
 .pagination button.active {
-  background: #4CAF50;
+  background: #999;
   color: white;
   font-weight: bold;
 }
-
-/* 호버 효과 */
-.pagination button:hover:not(.active) {
-  background: #ddd;
-}
-
-p#emailArea {
-  font-size: 14px;
-  padding: 9px 10px;
-  height: 40px;
-  border-top: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
-}
-
-#name1, #email1 {
-  width: 100%;
-  height: 40px;
-  padding: 5px 10px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-  box-sizing: border-box;
-}
-
-
-
-
-.file-list {
-  width: 1200px;
-  background-color: #f9f9f9; /* 연한 회색 배경 */
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.file-item {
-  padding: 8px 0;
-  border-bottom: 1px solid #eee;
-  display: flex;
-  align-items: center;
-  justify-content: space-between; /* 다운로드 아이콘 오른쪽 정렬 */
-}
-
-.file-item:last-child {
-  border-bottom: none; /* 마지막 아이템은 선 없음 */
-}
-
-.file-item span {
-  font-size: 14px;
-}
-
-.file-item a img {
-  width: 24px;
-  height: 24px;
-  cursor: pointer;
-}
+/* jaepum1.html, jaepum2.html, jaepum3.html 공용 CSS */
 
 #j-contents {
   width: 1200px;
@@ -1556,6 +724,7 @@ p#emailArea {
   display: flex;
   gap: 60px;
 }
+
 #jbox1 {
   position: relative;
   width: 510px; /* 적당한 크기로 조정 가능 */
@@ -1563,6 +732,7 @@ p#emailArea {
   margin: 0 auto;
   border: 1px solid #999;
 }
+
 .slider-container {
   position: relative;
   overflow: hidden;
@@ -1636,7 +806,7 @@ p#emailArea {
 .next-btn::before {
   border-left: 8px solid white;
 }
-/* 미리보기 인디케이터 */
+
 .indicator-container {
   position: absolute;
   bottom: 10px;     /* 이미지 안쪽 하단에서 10px 위 */
@@ -1644,7 +814,7 @@ p#emailArea {
   transform: translateX(-50%); /* 수평 가운데 정렬 */
   display: flex;
   gap: 8px;
-  z-index: 10;       /* 이미지 위에 오도록 */
+  z-index: 10;       
 }
 
 .indicator {
@@ -1679,34 +849,45 @@ p#emailArea {
   box-sizing: border-box;
   position: relative;
 }
+
 #jbox2 h3 {
   height: 100px;
   padding-top: 55px;
   padding-left: 25px;
 }
+
 /* 제품 설명 박스 */
 .product-description {
   padding: 24px;
   border-radius: 4px;
 }
 
+.title {
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  border-radius: 4px;
+  background-color: #fff;
+  margin-bottom: 20px;
+}
+
 /* 요약 텍스트 */
 .product-description .summary {
   max-height: 6.9em;     /* 약 4줄 */
-  overflow: hidden;
-  transition: max-height 0.3s ease;
   border: 1px solid #ccc;
   padding: 8px 12px;
   border-radius: 4px;
   background-color: #fff;
   margin-bottom: 8px;
+  line-height: 1.7;
+  max-height: 6em; /* 3줄 높이 */
+  overflow: hidden;
+  font-size: 14px;
 }
 
 .product-description .summary.expanded {
   max-height: none; /* 전체 펼치기 */
 }
 
-/* 추가 텍스트 박스 */
 .more-text {
   display: none;
   background-color: #fff;
@@ -1716,37 +897,6 @@ p#emailArea {
   line-height: 2;
   font-size: 12px;
   box-shadow: 0 0 5px rgba(0,0,0,0.1);
-}
-.purchase-btn {
-  align-self: center;  
-  margin-top: auto;     
-  width: 200px;        
-  text-align: center;
-  padding: 10px 0;
-  background-color: #333;
-  color: #fff;
-  border-radius: 20px;
-  text-decoration: none;
-}
-
-
-.title {
-  border: 1px solid #ccc;
-  padding: 8px 12px;
-  border-radius: 4px;
-  background-color: #fff;
-  margin-bottom: 20px;
-}
-.summary {
-  border: 1px solid #ccc;
-  padding: 8px 12px 24px 12px; /* 아래쪽 여백을 넉넉히 */
-  border-radius: 4px;
-  background-color: #fff;
-  margin-bottom: 20px;
-  line-height: 1.9;
-  max-height: 6em; /* 3줄 높이 */
-  overflow: hidden;
-  font-size: 14px;
 }
 
 .toggle-btn {
@@ -1773,51 +923,338 @@ p#emailArea {
   background: transparent;
 }
 
-
-.dimg {
-  width: 1200px;
-}
-.dimg img {
-  width: 1200px;
-}
-
-.result-item {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  display: inline-block;
-  width: 200px;
+.purchase-btn {
+  align-self: center;  
+  margin-top: auto;     
+  width: 200px;        
   text-align: center;
-  margin: 10px;
+  padding: 10px 0;
+  background-color: #333;
+  color: #fff;
+  border-radius: 20px;
+  text-decoration: none;
 }
 
-.result-item img {
-  width: 100%;
-  height: auto;
-  border-radius: 4px;
-  margin-bottom: 8px;
-}
+/* about.html, jaepum1.html, jaepum2.html, jaepum3.html, searchResult.html 공용 CSS */
 
-.result-item h2 {
-  font-size: 16px;
-  margin: 4px 0;
-}
-
-.result-item p {
-  font-size: 14px;
-  color: #555;
-}
-#result {
+.n_contents1 {
   width: 1200px;
   margin: 0 auto;
-  height: 300px;
+
+}
+.n_contents1 h2 {
+  padding: 20px 0 40px 0;
+  border-bottom: 1px solid #000;
 }
 
 
-.n {
+
+/* memo.html, notice.html, talk.html 공용 CSS */
+
+.n_contents {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.n_contents h2 {
+  padding: 20px 0 40px 0;
+}
+
+.board {
+  width: 100%;
+  border-collapse: collapse; 
+  text-align: center;
+  border-top: 1px solid #bbb;
+}
+
+.board th, .board td {
+  border-bottom: 1px solid #bbb;
+  padding: 20px 8px;
+  font-size: 14px;
+}
+
+.content-wrapper {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.board thead th {
+  background-color: #f0f0f0;
+  color: #333;
+  font-weight: bold;
+  padding: 12px;
+  border-bottom: 1px solid #ccc;
+  height: 70px;
+}
+
+/* 고정글용 아이콘 스타일 */
+td.pin-icon {
+  font-size: 14px;         
+  text-align: center;
+  color: #e74c3c;         
+  line-height: 1;
+  vertical-align: middle;
+  padding: 6px 0;
+}
+
+
+/* talk.html CSS */
+
+.qna-header {
+  width: 1200px;
+  position: relative;
+}
+.m_span a {
+  width: 85px;
+  background-color: #aaa;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 0 20px;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);   
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  position: absolute;
+  top: 25px;
+  right: 5px;
+}
+
+/* talk_1.html CSS */
+
+.write-container1 {
+  width: 1200px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 40px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-sizing: border-box;
+  margin-bottom: 150px;
+}
+
+.heading1 {
+  margin-bottom: 30px;
+  font-size: 24px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.form-group1 {
+  margin-bottom: 25px;
+}
+
+#name1, #email1 {
+  width: 100%;
+  height: 40px;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+#title1,
+#content1 {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#content1 {
+  height: 200px;
+  resize: vertical;
+}
+
+.file-upload-box1 {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f3f3f3;
+  padding: 20px;
+}
+
+.file-label1 {
+  display: inline-block;
+  background-color: #eee;
+  padding: 8px 16px;
+  font-size: 14px;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.file-label1 input {
+  display: none;
+}
+
+#file-list1 {
+  font-size: 14px;
+  color: #333;
+  margin-top: 10px;
+}
+
+.form-group2 {
+  display: flex;
+  justify-content: center; /* 수평 가운데 정렬 */
+  margin-top: 20px;
+}
+
+.submit-btn1 {
+  width: 120px;
+  height: 45px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.submit-btn1:hover {
+  background-color: #0056b3;
+}
+
+
+
+/* download.html, veiw.html, notice_view.html, memo_view.html 공용 CSS */
+
+#n_contents {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+#n_contents h2 {
+  padding: 20px 0 40px 0;
+}
+
+#qna-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* download1.html, download2.html, download3.html, memo_view.html, notice_view.html, view.html 공용 CSS */
+
+.dboxbtn {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end; /* 오른쪽 정렬 */
+  padding: 10px 0;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.dboxbtn > a {
+  width: 50px;
+  height: 30px;
+  background-color: #fff;
+  padding: 5px 10px;
+  text-align: center;
+  color: #333;
+  font-weight: bold;
+  text-decoration: none;
+  border: 1px solid #999;
+  font-size: 12px;
+}
+
+.dboxbtn>a:hover {
+  border: 1px solid #000;
+  color: #000;
+}
+
+/* view.html, notice_view.html, memo_view.html 공용 CSS */
+
+.dbox {
+  width: 100%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.dbox1 {
+  width: 100%;
+  height: 50px;
+  border-top: 1px solid #000;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.dbox1>p {
+  padding: 12px 10px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.dbox2 {
+  width: 100%;
+  height: 40px;
+  border-top: 1px solid rgba(0, 0, 0, 0.17);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.17);
+}
+
+.dbox2>p {
+  padding: 9px 10px;
+  font-size: 14px;
+}
+
+.dbox3 {
+  padding: 5px 0;
+  background-color: #fff;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dbox3 .file-name {
   font-weight: bold;
 }
 
-#titleArea {
-  font-weight: 500;
+.dbox3 .download-btn {
+  margin-left: auto;
+  padding: 0.2rem 0.5rem;
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.dbox3 .download-btn:hover {
+  color: #007BFF;
+}
+
+.date-wrap {
+  font-size: 14px;
+  padding: 9px 10px;
+}
+
+#contentArea {
+  min-height: 400px;  
+  padding: 20px;
+  border: 1px solid #ddd;
+  white-space: pre-wrap; /* 줄바꿈 유지 */
+}
+
+/* view.html CSS */
+
+#emailArea {
+  width: 1200px;
+  height: 40px;
+  font-size: 14px;
+  border-bottom: 1px solid #ccc;
+  padding: 9px 10px;
+}
+
+/* download1,2,3.html 공용 css */
+
+.d-btn {
+  width: 1200px;
+  margin: 0 auto;
 }
