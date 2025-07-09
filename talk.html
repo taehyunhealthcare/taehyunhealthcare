@@ -24,7 +24,9 @@
     <!-- 네이버 서치어드바이저 -->
     <meta name="naver-site-verification" content="0cd68edc7a0e5ab742e7038c1182c6ac30f1973c" />
     
-    
+    <!-- 폰트어썸 연결 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <!-- css,js 연결 코드 -->
     <link rel="stylesheet" href="css/style.css">
     <script src="js/jquery-1.12.4.min.js"></script>
@@ -120,7 +122,7 @@
             </thead>
             <tbody></tbody>
           </table>
-        <div class="content-wrapper"><!-- 페이지 번호 nav 삽입됨 --></div>
+          <div class="content-wrapper"><!-- 페이지 번호 nav 삽입됨 --></div>
       </div>
       <div class="pagination-container">
         <div class="pagination"></div>
@@ -131,7 +133,7 @@
     <div id="contents">
         <div class="notice-card">
         <div class="notice-card-header">
-            <h3>공지사항</h3>
+            <h3><a href="notice.html">공지사항</a></h3>
             <button class="notice-more-btn" onclick="location.href='notice.html'">›</button>
         </div>
         <ul class="notice-list">
@@ -145,7 +147,9 @@
                     상호명: 태현헬스케어 본사: 광주광역시 동구 천변우로 453 (코밀빌딩) 4층 413호 <br>
                     사업자등록번호: 139-86-02746 <span class="n">대표번호: 062-233-6015</span>
                     이메일: thhealthcare@naver.com <br>
-                    평일: 09:00 ~ 17:30 / 점심시간: 12:00 ~ 13:00 / 휴무일" 주말 및 공휴일
+                    평일: 09:00 ~ 17:30 / 점심시간: 12:00 ~ 13:00 / 휴무일: 주말 및 공휴일 <br>
+                    <span id="copy"><a href="#">개인정보처리방침</a></span>
+                    ⓒ Taehyun Healthcare. All Rights Reserved.
                 </p>
             </div>
         </div>
@@ -153,19 +157,18 @@
     <!-- 콘텐츠 끝 -->
 
 
+    <!-- QnA 문의 리스트 출력 및 삭제 + 페이지 처리 스크립트 -->
     <script>
     document.addEventListener("DOMContentLoaded", function(){
       const isAdmin = localStorage.getItem('isAdmin') === 'true';
       let allPosts = JSON.parse(localStorage.getItem('posts') || '[]');
 
-      // talk 타입 없으면 기본 지정
       allPosts = allPosts.map(post => {
         if (!post.type) post.type = 'talk';
         return post;
       });
       localStorage.setItem('posts', JSON.stringify(allPosts));
 
-      // talk 타입만 골라서 보여주기
       allPosts.reverse();
       let posts = allPosts.filter(p => p.type === 'talk');
       posts.forEach((post,i) => {
@@ -204,12 +207,17 @@
             const [y,m,d] = formatted.split('.');
             formatted = `${y.trim()}-${m.trim().padStart(2,'0')}-${d.trim().padStart(2,'0')}`;
           }
-          const displayTitle = post.visibility === 'private' ? '비공개' : post.title;
+
+          // 🔒 자물쇠 아이콘 또는 제목 설정
+          const displayTitle = post.visibility === 'private'
+            ? '<i class="fas fa-lock" title="비공개 글" style="color: #555;"></i>'
+            : post.title;
+
           const tr = document.createElement('tr');
           tr.style.position = 'relative';
           const link = document.createElement('a');
           link.href = `view.html?id=${post.id}`;
-          link.textContent = displayTitle;
+          link.innerHTML = displayTitle;
           link.onclick = (e) => {
             if (post.visibility==='private' && !isAdmin) {
               e.preventDefault();
@@ -294,22 +302,13 @@
       renderPosts(1);
     });
     </script>
-    <script>
-       // ✅ 페이지 돌아올 때 검색창 비우기
-       window.addEventListener('pageshow', function (event) {
-       if (event.persisted) {
-       const searchInput = document.querySelector('input[name="query"]');
-       if (searchInput) searchInput.value = '';
-        }
-     });
-    </script>
 
+    <!-- 공지사항 리스트 자동 삽입 스크립트 -->
     <script>
     document.addEventListener("DOMContentLoaded", function () {
     const noticeList = document.querySelector(".notice-list");
     let noticePosts = JSON.parse(localStorage.getItem('noticePosts') || '[]');
 
-    // 날짜 + id 기준 최신 정렬
     noticePosts.sort((a, b) => {
         const dateCompare = new Date(b.date) - new Date(a.date);
         if (dateCompare !== 0) return dateCompare;
@@ -320,10 +319,10 @@
 
     noticeList.innerHTML = "";
 
-    latestNotices.forEach(item => {
+    latestNotices.forEach((item, index) => {
         const li = document.createElement("li");
         li.innerHTML = `
-        <a href="notice_view.html?id=${item.id}">
+        <a href="notice_view.html?id=${item.id}" style="${index === 0 ? 'border-top: 1px dotted #000;' : ''}">
             <span class="notice-title">${item.title}</span>
             <span class="notice-date">${item.date}</span>
         </a>
