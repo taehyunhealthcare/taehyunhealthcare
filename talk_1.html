@@ -63,24 +63,34 @@
 
     <!-- 내비게이션 메뉴 -->
     <nav>
-      <ul class="menu">
-        <li>
-          <a href="#">회사소개</a>
-          <ul class="submenu">
-            <li><a href="about.html">회사소개</a></li>
-            <li><a href="03_about.html">오시는길</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="#">제품소개</a>
-          <ul class="submenu">
-            <li><a href="01_products.html">Fetal Doppler</a></li>
-            <li><a href="02_products.html">Nebulizer</a></li>
-            <li><a href="03_products.html">Pulse Oximeter</a></li>
-          </ul>
-        </li>
-        <li><a href="partnership.html">B2B</a></li>
-      </ul>
+        <ul class="menu">
+            <li>
+                <a href="#">회사소개</a>
+                <ul class="submenu">
+                    <li><a href="about.html">회사소개</a></li>
+                    <li><a href="03_about.html">오시는길</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">제품소개</a>
+                <ul class="submenu">
+                    <li><a href="01_products.html">Fetal Doppler</a></li>
+                    <li><a href="02_products.html">Nebulizer</a></li>
+                    <li><a href="03_products.html">Pulse Oximeter</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="partnership.html">B2B</a>
+            </li>
+            <li>
+                <a href="#">COMMUNITY</a>
+                <ul class="submenu">
+                    <li><a href="talk.html">QnA</a></li>
+                    <li><a href="memo.html">자료실</a></li>
+                    <li><a href="notice.html">공지사항</a></li>
+                </ul>
+            </li>
+        </ul>
     </nav>
 
     <!-- 글쓰기 영역 -->
@@ -141,7 +151,7 @@
     <div id="contents">
         <div class="notice-card">
         <div class="notice-card-header">
-            <h3>공지사항</h3>
+            <h3><a href="notice.html">공지사항</a></h3>
             <button class="notice-more-btn" onclick="location.href='notice.html'">›</button>
         </div>
         <ul class="notice-list">
@@ -155,14 +165,17 @@
                     상호명: 태현헬스케어 본사: 광주광역시 동구 천변우로 453 (코밀빌딩) 4층 413호 <br>
                     사업자등록번호: 139-86-02746 <span class="n">대표번호: 062-233-6015</span>
                     이메일: thhealthcare@naver.com <br>
-                    평일: 09:00 ~ 17:30 / 점심시간: 12:00 ~ 13:00 / 휴무일" 주말 및 공휴일
+                    평일: 09:00 ~ 17:30 / 점심시간: 12:00 ~ 13:00 / 휴무일: 주말 및 공휴일 <br>
+                    <span id="copy"><a href="#">개인정보처리방침</a></span>
+                    ⓒ Taehyun Healthcare. All Rights Reserved.
                 </p>
             </div>
         </div>
     </div>
     <!-- 콘텐츠 끝 -->
 
-  <script>
+    <!-- 문의 작성 및 파일 업로드 + 등록 스크립트 -->
+    <script>
     const fileInput = document.getElementById('file1');
     const fileListDiv = document.getElementById('file-list1');
     const selectedFiles = [];
@@ -194,7 +207,7 @@
         fileListDiv.appendChild(item);
       });
 
-      // 삭제 버튼 이벤트 등록
+      // 삭제 버튼  등록
       document.querySelectorAll(".delete-btn1").forEach(btn =>
         btn.addEventListener("click", () => {
           selectedFiles.splice(parseInt(btn.dataset.index), 1);
@@ -223,7 +236,6 @@
         : name;
 
       const fileNames = selectedFiles.map(f => f.name);
-
       const posts = JSON.parse(localStorage.getItem('posts') || '[]');
 
       posts.push({
@@ -241,26 +253,16 @@
       });
 
       localStorage.setItem('posts', JSON.stringify(posts));
-
       window.location.href = '01_partnership.html';
     });
-  </script>
-      <script>
-       // ✅ 페이지 돌아올 때 검색창 비우기
-       window.addEventListener('pageshow', function (event) {
-       if (event.persisted) {
-       const searchInput = document.querySelector('input[name="query"]');
-       if (searchInput) searchInput.value = '';
-        }
-     });
     </script>
 
+    <!-- 공지사항 리스트 자동 삽입 스크립트 -->
     <script>
     document.addEventListener("DOMContentLoaded", function () {
     const noticeList = document.querySelector(".notice-list");
     let noticePosts = JSON.parse(localStorage.getItem('noticePosts') || '[]');
 
-    // 날짜 + id 기준 최신 정렬
     noticePosts.sort((a, b) => {
         const dateCompare = new Date(b.date) - new Date(a.date);
         if (dateCompare !== 0) return dateCompare;
@@ -271,10 +273,10 @@
 
     noticeList.innerHTML = "";
 
-    latestNotices.forEach(item => {
+    latestNotices.forEach((item, index) => {
         const li = document.createElement("li");
         li.innerHTML = `
-        <a href="notice_view.html?id=${item.id}">
+        <a href="notice_view.html?id=${item.id}" style="${index === 0 ? 'border-top: 1px dotted #000;' : ''}">
             <span class="notice-title">${item.title}</span>
             <span class="notice-date">${item.date}</span>
         </a>
