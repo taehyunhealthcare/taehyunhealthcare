@@ -62,64 +62,36 @@
 </head>
 <body>
 
-<div class="container">
-    <h2>공지 등록 (관리자 전용)</h2>
-    <form id="noticeForm">
-        <table>
-            <tr>
-                <td>제목</td>
-                <td><input type="text" id="title" required></td>
-            </tr>
-            <tr>
-                <td>작성자</td>
-                <td><input type="text" id="author" required></td>
-            </tr>
-            <tr>
-                <td>내용</td>
-                <td><textarea id="content" rows="10" required></textarea></td>
-            </tr>
-        </table>
+    <div class="container">
+        <h2>공지 등록 (관리자 전용)</h2>
+        <form id="noticeForm">
+            <table>
+                <tr>
+                    <td>제목</td>
+                    <td><input type="text" id="title" required></td>
+                </tr>
+                <tr>
+                    <td>작성자</td>
+                    <td><input type="text" id="author" required></td>
+                </tr>
+                <tr>
+                    <td>내용</td>
+                    <td><textarea id="content" rows="10" required></textarea></td>
+                </tr>
+            </table>
 
-        <div class="btn-box">
-            <button type="submit">등록</button>
-        </div>
-    </form>
-</div>
+            <div class="btn-box">
+                <button type="submit">등록</button>
+            </div>
+        </form>
+    </div>
 
-    <script>
-    document.addEventListener("DOMContentLoaded", function(){
-        const isAdmin = localStorage.getItem('isAdmin') === 'true';
-        if (!isAdmin) {
-            alert('접근 권한이 없습니다.');
-            location.href = 'notice.html';
-            return;
-        }
-
-        document.getElementById('noticeForm').onsubmit = function(e) {
-            e.preventDefault();
-            const notices = JSON.parse(localStorage.getItem('noticePosts') || '[]');
-            const newNotice = {
-                id: Date.now(),
-                title: document.getElementById('title').value,
-                author: document.getElementById('author').value,
-                content: document.getElementById('content').value,
-                date: new Date().toISOString().split('T')[0],
-                views: 0
-            };
-            notices.push(newNotice);
-            localStorage.setItem('noticePosts', JSON.stringify(notices));
-            alert('등록 완료');
-            location.href = 'notice.html';
-        };
-    });
-    </script>
-
+    <!-- 공지사항 작성 및 저장 기능 스크립트 -->
     <script>
     document.addEventListener("DOMContentLoaded", function () {
     const noticeList = document.querySelector(".notice-list");
     let noticePosts = JSON.parse(localStorage.getItem('noticePosts') || '[]');
 
-    // 날짜 + id 기준 최신 정렬
     noticePosts.sort((a, b) => {
         const dateCompare = new Date(b.date) - new Date(a.date);
         if (dateCompare !== 0) return dateCompare;
@@ -130,10 +102,10 @@
 
     noticeList.innerHTML = "";
 
-    latestNotices.forEach(item => {
+    latestNotices.forEach((item, index) => {
         const li = document.createElement("li");
         li.innerHTML = `
-        <a href="notice_view.html?id=${item.id}">
+        <a href="notice_view.html?id=${item.id}" style="${index === 0 ? 'border-top: 1px dotted #000;' : ''}">
             <span class="notice-title">${item.title}</span>
             <span class="notice-date">${item.date}</span>
         </a>
