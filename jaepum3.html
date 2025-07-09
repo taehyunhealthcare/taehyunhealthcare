@@ -87,7 +87,7 @@
                 <a href="partnership.html">B2B</a>
             </li>
             <li>
-                <a href="notice.html">COMMUNITY</a>
+                <a href="#">COMMUNITY</a>
                 <ul class="submenu">
                     <li><a href="talk.html">QnA</a></li>
                     <li><a href="memo.html">자료실</a></li>
@@ -170,7 +170,7 @@
     <div id="contents">
         <div class="notice-card">
         <div class="notice-card-header">
-            <h3>공지사항</h3>
+            <h3><a href="notice.html">공지사항</a></h3>
             <button class="notice-more-btn" onclick="location.href='notice.html'">›</button>
         </div>
         <ul class="notice-list">
@@ -184,7 +184,9 @@
                     상호명: 태현헬스케어 본사: 광주광역시 동구 천변우로 453 (코밀빌딩) 4층 413호 <br>
                     사업자등록번호: 139-86-02746 <span class="n">대표번호: 062-233-6015</span>
                     이메일: thhealthcare@naver.com <br>
-                    평일: 09:00 ~ 17:30 / 점심시간: 12:00 ~ 13:00 / 휴무일" 주말 및 공휴일
+                    평일: 09:00 ~ 17:30 / 점심시간: 12:00 ~ 13:00 / 휴무일: 주말 및 공휴일 <br>
+                    <span id="copy"><a href="#">개인정보처리방침</a></span>
+                    ⓒ Taehyun Healthcare. All Rights Reserved.
                 </p>
             </div>
         </div>
@@ -192,38 +194,32 @@
     <!-- 콘텐츠 끝 -->
 
 
+    <!-- 슬라이드 이미지, 인디케이터 통합하는 스크립트 -->
     <script>
-        // 슬라이드 이미지들
+    document.addEventListener("DOMContentLoaded", function () {
         const slides = document.querySelectorAll('#jbox1 .slider-wrapper img');
-        // 미리보기 인디케이터들
         const indicators = document.querySelectorAll('#jbox1 .indicator-container .indicator');
-
         let currentIndex = 0;
 
-        // 슬라이드를 업데이트
         function updateSlide() {
         slides.forEach((img, idx) => {
             img.classList.toggle('active', idx === currentIndex);
         });
-        // 인디케이터 상태 업데이트
         indicators.forEach((indicator, idx) => {
             indicator.classList.toggle('active', idx === currentIndex);
         });
         }
 
-        // 이전 버튼
         document.querySelector('#jbox1 .prev-btn').addEventListener('click', () => {
         currentIndex = (currentIndex - 1 + slides.length) % slides.length;
         updateSlide();
         });
 
-        // 다음 버튼
         document.querySelector('#jbox1 .next-btn').addEventListener('click', () => {
         currentIndex = (currentIndex + 1) % slides.length;
         updateSlide();
         });
 
-        // 미리보기 인디케이터 클릭
         indicators.forEach((indicator, idx) => {
         indicator.addEventListener('click', () => {
             currentIndex = idx;
@@ -231,36 +227,31 @@
         });
         });
 
-        // 초기 상태 호출
-        updateSlide();
+        updateSlide(); // 초기 호출
+    });
+    </script>
 
-        // jbox2 내용 펼치기 부분 스크립트 
+    <!-- 제품 상세내용 더보기 스크립트 -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
         const toggleButton = document.querySelector('.toggle-btn');
         const summary = document.querySelector('.summary');
         const moreText = document.querySelector('.more-text');
 
-        toggleButton.addEventListener('click', function() {
+        toggleButton.addEventListener('click', function () {
         const isExpanded = summary.classList.toggle('expanded');
         moreText.style.display = isExpanded ? 'block' : 'none';
         toggleButton.classList.toggle('rotated', isExpanded);
         });
-    </script>
-    <script>
-       // ✅ 페이지 돌아올 때 검색창 비우기
-       window.addEventListener('pageshow', function (event) {
-       if (event.persisted) {
-       const searchInput = document.querySelector('input[name="query"]');
-       if (searchInput) searchInput.value = '';
-        }
-     });
+    });
     </script>
 
+    <!-- 공지사항 리스트 자동 삽입 스크립트 -->
     <script>
     document.addEventListener("DOMContentLoaded", function () {
     const noticeList = document.querySelector(".notice-list");
     let noticePosts = JSON.parse(localStorage.getItem('noticePosts') || '[]');
 
-    // 날짜 + id 기준 최신 정렬
     noticePosts.sort((a, b) => {
         const dateCompare = new Date(b.date) - new Date(a.date);
         if (dateCompare !== 0) return dateCompare;
@@ -271,10 +262,10 @@
 
     noticeList.innerHTML = "";
 
-    latestNotices.forEach(item => {
+    latestNotices.forEach((item, index) => {
         const li = document.createElement("li");
         li.innerHTML = `
-        <a href="notice_view.html?id=${item.id}">
+        <a href="notice_view.html?id=${item.id}" style="${index === 0 ? 'border-top: 1px dotted #000;' : ''}">
             <span class="notice-title">${item.title}</span>
             <span class="notice-date">${item.date}</span>
         </a>
