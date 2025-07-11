@@ -229,15 +229,81 @@ nav {
     color: rgba(0, 0, 0, 0.8);
     text-align: center;
 }
-
-#copy>a {
-  padding-top: 15px;
+#openModalBtn>a {
+  font-weight: bold;
+  padding-top: 10px;
 }
+
 
 .n {
   font-weight: bold;
   font-size: 13.5px;
 }
+
+/* 전체 페이지 스크롤 비활성화용 클래스 */
+body.modal-open {
+  overflow: hidden;
+}
+
+/* 모달 배경 */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+}
+
+/* 모달 내용 박스 */
+.modal-content {
+  background-color: #fff;
+  margin: 5% auto;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 80vh; /* 화면 비율 기준 최대 높이 */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Pretendard', sans-serif;
+  position: relative;
+}
+
+.modal-content h2 {
+  padding: 10px;
+  font-size: 16px;
+  font-weight: 400;
+}
+/* 스크롤 되는 본문 영역 */
+.modal-body {
+  overflow-y: auto;
+  flex: 1;
+  margin-top: 10px;
+}
+
+.modal-body p{
+  font-size: 14px;
+  padding: 10px;
+}
+
+/* 닫기 버튼 */
+.close {
+  color: #aaa;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 22px;
+}
+.close:hover {
+  color: #000;
+}
+
 
 /* index.html CSS */
 
@@ -630,12 +696,12 @@ select {
 
  .cbox01 {
   display: flex;
-  gap: 30px;
+  gap: 360px;
+  padding: 100px 120px;
  }
 
  .cbox01>a{
   height: 450px;
-  padding: 100px 120px;
   position: relative;
  }
 
@@ -649,8 +715,10 @@ select {
 
  .cbox01 p {
   position: absolute;
-  left: 220px;
-  top: 520px;
+  left: 50%;
+  top: 100%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
  }
 
 /* 01,02,03_products.html, download.html, memo.html, notice.html, talk.html 공용 CSS */
@@ -1185,7 +1253,6 @@ td.pin-icon {
 
 .dbox1>p {
   padding: 12px 10px;
-  font-weight: bold;
   font-size: 16px;
 }
 
@@ -1204,12 +1271,13 @@ td.pin-icon {
 .dbox3 {
   padding: 5px 0;
   background-color: #fff;
-  border-radius: 4px;
   font-size: 0.9rem;
   color: #333;
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.17);
+  height: 40px;
 }
 
 .dbox3 .file-name {
