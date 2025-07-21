@@ -88,7 +88,7 @@
             <li>
                 <a href="#">COMMUNITY</a>
                 <ul class="submenu">
-                    <li><a href="talk.html">QnA</a></li>
+                    <li><a href="talk.html">Q&A</a></li>
                     <li><a href="memo.html">자료실</a></li>
                     <li><a href="notice.html">공지사항</a></li>
                 </ul>
@@ -126,23 +126,74 @@
                     사업자등록번호: 139-86-02746 <span class="n">대표번호: 062-233-6015</span>
                     이메일: thhealthcare@naver.com <br>
                     평일: 09:00 ~ 17:30 / 점심시간: 12:00 ~ 13:00 / 휴무일: 주말 및 공휴일 <br>
-                    <span id="copy"><a href="#">개인정보처리방침</a></span>
-                    ⓒ Taehyun Healthcare. All Rights Reserved.
+                    <span id="openModalBtn"><a href="#">개인정보처리방침</a></span>
+                     &copy; 2025 태현헬스케어. ALL rights reserved.
                 </p>
             </div>
         </div>
     </div>
     <!-- 콘텐츠 끝 -->
 
-    <script>
-       // ✅ 페이지 돌아올 때 검색창 비우기
-       window.addEventListener('pageshow', function (event) {
-       if (event.persisted) {
-       const searchInput = document.querySelector('input[name="query"]');
-       if (searchInput) searchInput.value = '';
-        }
-     });
-    </script>
+    <!-- 모달창 시작 -->
+    <div id="privacyModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>개인정보처리방침</h2>
+        <div class="modal-body">
+        <p>
+            본 방침은 태현헬스케어가 운영하는 홈페이지에서 수집하는 개인정보의 항목, 수집 목적, 보유 기간 등에 대한 내용을 포함하고 있습니다.<br><br>
+            1. 수집 항목: 이름, 이메일, 문의내용 등<br>
+            2. 수집 목적: 문의 응답 및 고객지원<br>
+            3. 보유 기간: 1년간 보관 후 삭제<br>
+            4. 이용자의 권리: 언제든지 열람, 정정, 삭제 요청 가능<br><br>
+            5. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt tempora odit fugiat repellendus architecto earum natus voluptatem ipsa autem molestiae cumque cum omnis, accusamus amet laborum similique minima qui quidem!<br><br>
+            6. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, ea. <br>
+            6. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, ea. <br>
+            6. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, ea. <br>
+            6. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, ea. <br>
+            6. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, ea. <br>
+            6. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, ea. <br>
+            6. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, ea. <br>
+            6. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, ea. <br>
+            6. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, ea. <br>
+            6. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, ea. <br>
+            6. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, ea. <br>
+            6. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, ea. <br>
+            6. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, ea. <br>
+            6. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, ea. <br>
+            6. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, ea. <br>
+            6. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, ea. <br>
+            6. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, ea. <br>
+            6. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, ea. <br>
+            6. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, ea. <br>
+            6. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, ea. <br>
+            6. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, ea. <br>
+            6. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, ea. <br>
+            6. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, ea. <br>
+            6. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, ea. <br>
+            6. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, ea. <br>
+            6. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, ea. <br>
+            6. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, ea. <br>
+            6. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, ea. <br>
+            6. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, ea. <br>
+            6. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, ea. <br>
+            6. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, ea. <br>
+            6. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, ea. <br>
+            6. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, ea. <br>
+            6. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, ea. <br>
+            6. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, ea. <br>
+            6. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, ea. <br>
+            6. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, ea. <br>
+            6. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, ea. <br>
+            6. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, ea. <br>
+            6. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, ea. <br>
+            
+        </p>
+        </div>
+    </div>
+    </div>
+    <!-- 모달창 끝 -->
+
 
     <!-- 공지사항 리스트 자동 삽입 스크립트 -->
     <script>
@@ -170,6 +221,37 @@
         `;
         noticeList.appendChild(li);
     });
+    });
+    </script>
+
+    <!-- 모달 스크립트 -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const modal = document.getElementById("privacyModal");
+    const openBtn = document.getElementById("openModalBtn");
+    const closeBtn = document.querySelector(".close");
+
+    // 모달 열기
+    openBtn.onclick = function (e) {
+        e.preventDefault();
+        modal.style.display = "block";
+        modal.scrollTop = 0; //  모달 자체 스크롤 초기화
+        document.body.classList.add("modal-open");
+    };
+
+    // 모달 닫기
+    closeBtn.onclick = function () {
+        modal.style.display = "none";
+        document.body.classList.remove("modal-open");
+    };
+
+    // 바깥 클릭 시 모달 닫기
+    window.onclick = function (event) {
+        if (event.target === modal) {
+        modal.style.display = "none";
+        document.body.classList.remove("modal-open");
+        }
+    };
     });
     </script>
  </body>
