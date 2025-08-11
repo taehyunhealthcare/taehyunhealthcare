@@ -236,25 +236,127 @@
     </div>
     <!-- 모달창 끝 -->
 
-    <!-- 이메일 전송 스크립트 -->
+
+    <!-- 쿠키동의 모달 시작 -->
+    <div id="cookieModal" class="cookie-consent">
+      <div class="cookie-content">
+        <h2>쿠키 수집 동의</h2>
+        <p>태현헬스케어는 문의 접수 기록 관리 및 통계 분석을 위해 쿠키를 사용합니다.<br>
+          쿠키 수집에 동의하셔야 문의 접수가 가능합니다.</p>
+        <p class="notice">※ 쿠키 수집을 거절하실 경우, 문의 내용을 제출할 수 없습니다.</p>
+        <div class="button-group">
+          <button id="cookieAgree">동의하기</button>
+          <button id="cookieDecline">거절하기</button>
+        </div>
+      </div>
+    </div>
+    <!-- 쿠키동의 모달 끝 -->
+
+
+    <!-- 쿠키 동의 모달 스크립트 & 이메일 전송 스크립트 -->
     <script>
-      emailjs.init('uQovuRqpho-BUgMSv'); // 발급받은 Public Key 사이트에서 배정받은 퍼블릭 키
+    document.addEventListener("DOMContentLoaded", function () {
+      emailjs.init('uQovuRqpho-BUgMSv'); // Public Key
+      const cookieModal   = document.getElementById("cookieModal");
+      const cookieAgree   = document.getElementById("cookieAgree");
+      const cookieDecline = document.getElementById("cookieDecline");
+      const partnerForm   = document.getElementById("partner-form");
+      const submitButton  = partnerForm.querySelector("button[type='submit']");
 
-      document.getElementById('partner-form').addEventListener('submit', function(e) {
+      // form submit 이벤트 제거 (중복 방지)
+      partnerForm.onsubmit = (e) => e.preventDefault();
+
+      // 문의하기 버튼 클릭 시 쿠키 동의 모달 열기
+      submitButton.addEventListener("click", function (e) {
         e.preventDefault();
-        const form = this;
+        cookieModal.style.display = "flex";
+      });
 
-        emailjs.sendForm('service_itd8j7i', 'template_fgmjz2y', form)
+      // 쿠키 동의 시 이메일 전송
+      cookieAgree.addEventListener("click", function () {
+        cookieModal.style.display = "none";
+
+        emailjs.sendForm('service_itd8j7i', 'template_fgmjz2y', partnerForm)
           .then(() => {
-            // 전송 성공시 → 별도 안내 없이 바로 이동
             window.location.href = '03_partnership.html';
           })
           .catch((error) => {
-            // 전송 실패시 → 오류 메시지 알람
-            alert('전송 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
-            console.error('EmailJS Error:', error); // 디버깅용 로그
+            showCustomAlert("전송 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.");
+            console.error('EmailJS Error:', error);
           });
       });
+
+      // 쿠키 거절 시
+      cookieDecline.addEventListener("click", function () {
+        cookieModal.style.display = "none";
+        showCustomAlert("쿠키 수집에 동의하지 않아 문의 접수가 제한됩니다.");
+      });
+
+      // 모달 바깥 클릭 시 닫기
+      window.addEventListener("click", function (e) {
+        if (e.target === cookieModal) {
+          cookieModal.style.display = "none";
+        }
+      });
+
+      // ===== 커스텀 확인 모달 =====
+      function showCustomAlert(message) {
+        // 오버레이
+        const overlay = document.createElement("div");
+        overlay.setAttribute("role", "dialog");
+        overlay.setAttribute("aria-modal", "true");
+        overlay.style.position = "fixed";
+        overlay.style.inset = "0";
+        overlay.style.background = "rgba(0,0,0,0.5)";
+        overlay.style.zIndex = "10000";
+        overlay.style.display = "flex";
+        overlay.style.alignItems = "center";
+        overlay.style.justifyContent = "center";
+
+        // 박스
+        const box = document.createElement("div");
+        box.style.background = "#fff";
+        box.style.width = "min(420px, 90vw)";
+        box.style.padding = "20px 22px";
+        box.style.borderRadius = "12px";
+        box.style.textAlign = "center";
+        box.style.boxShadow = "0 10px 30px rgba(0,0,0,0.2)";
+
+        const text = document.createElement("p");
+        text.textContent = message;
+        text.style.margin = "0 0 16px 0";
+        text.style.fontSize = "14px";
+        text.style.lineHeight = "1.5";
+        text.style.color = "#111";
+
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.textContent = "확인";
+        btn.style.padding = "0px 18px";
+        btn.style.border = "1px solid #bbb";
+        btn.style.borderRadius = "8px";
+        btn.style.background = "#fff";
+        btn.style.cursor = "pointer";
+
+        // 닫기
+        const closeModal = () => overlay.remove();
+
+        btn.addEventListener("click", closeModal);
+
+        // 버튼 클릭 시 닫기
+        overlay.addEventListener("click", (e) => {
+          if (e.target === overlay) closeModal();
+        });
+
+        box.appendChild(text);
+        box.appendChild(btn);
+        overlay.appendChild(box);
+        document.body.appendChild(overlay);
+
+        // 접근성: 버튼에 포커스
+        setTimeout(() => btn.focus(), 0);
+      }
+    });
     </script>
 
     <!-- 공지사항 리스트 자동 삽입 스크립트 -->
