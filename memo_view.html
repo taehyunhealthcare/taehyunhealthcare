@@ -38,6 +38,7 @@
     </div>
     <!-- 끝 -->
 
+
     <!-- 헤더 시작 -->
     <header>
     <div class="header-left"></div>
@@ -91,26 +92,29 @@
     </nav>
     <!-- 메뉴 끝 -->
 
-  <div id="n_contents">
-    <div id="qna-header">
-      <h2>공지사항</h2>
-    </div>
-    <div class="dbox">
-      <div class="dbox1"><p id="titleArea">제목</p></div>
-      <div class="dbox2"><p id="authorArea">작성자</p></div>
-      <div class="dbox3">
-        <div class="date-wrap">
-          <span id="dateArea">작성날짜</span>
+    <div id="n_contents">
+        <div id="qna-header">
+            <h2>자료실</h2>
         </div>
-      </div>
+            <div class="dbox">
+                <div class="dbox1"><p id="titleArea">제목</p></div>
+                <div class="dbox2"><p id="authorArea">작성자</p></div>
+                <div class="dbox3">
+                    <div class="date-wrap">
+                        <span id="dateArea">작성날짜</span>
+                    </div>
+                </div>
+            </div>
+        <div class="d">
+            <p id="contentArea"></p>
+        </div>
+        <div class="dboxbtn">
+            <a href="memo.html">목록</a>
+        </div>
     </div>
-    <div class="d">
-      <p id="contentArea"></p>
-    </div>
-    <div class="dboxbtn">
-      <a href="notice.html">목록</a>
-    </div>
-  </div>
+
+
+
 
 
    <!-- 콘텐츠 시작 -->
@@ -153,7 +157,7 @@
         <h2>&lt;태현헬스케어&gt; 개인정보 처리방침</h2>
         <div class="modal-body">
         <p>
-            태현헬스케어 (이하 "회사") 는 이용자의 개인정보를 중요하게 생각하며, 『 개인정보 보호법 』을 준수하고 있습니다. <br>
+            태현헬스케어 (이하 "회사") 는 이용자의 개인정보르 중요하게 생각하며, 『 개인정보 보호법 』을 준수하고 있습니다. <br>
             본 개인정보 처리방침은 회사가 운영하는 홈페이지를 통해 수집하는 개인정보 및 처리방침을 안내하기 위하여 마련되었습니다. <br><br>
 
             1. 수집하는 개인정보 항목 <br>
@@ -161,16 +165,16 @@
             - 문의하기 및 B2B 제휴문의 시: 이름, 이메일, 문의 내용 <br>
             - 서비스 이용과정에서 자동으로 생성되는 정보: 접속 IP, 쿠키, 방문 기록, 브라우저 정보 등 <br><br>
 
-            2. 개인정보의 수집 및 이용 목적 <br>
+            2. 개인정보의 수집 및 이용 목적 <br> 
             회사는 수집한 개인정보를 다음의 목적을 위해 사용합니다. <br>
             - 이용자 문의 응대 및 답변 처리 <br>
-            - 제품/서비스 제안 및 파트너십 응대 <br>
+            - 제품/ 서비스 제안 및 파트너십 응대 <br>
             - 홈페이지 운영의 통계 분석 (Google Analytics 등) <br><br>
 
             3. 개인정보 보유 및 이용 기간 <br>
             회사는 개인정보 수집 및 이용 목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다. <br>
             단, 관련 법령에 따라 일정 기간 보관이 필요한 경우는 해당 기간 동안 보관합니다. <br>
-            - 소비자 불만 또는 분쟁처리에 관한 기록: 3년 (전자상거래법) <br>
+            - 소비자 불만 또는 분쟁처리에 관한 기록: 3년 (전자상거래법) <br><br>
 
             4. 개인정보의 제3자 제공 <br>
             회사는 이용자의 개인정보를 원칙적으로 외부에 제공하지 않습니다. <br>
@@ -189,7 +193,7 @@
             7. 이용자의 권리 <br>
             이용자는 언제든지 자신의 개인정보 열람, 정정, 삭제를 요청할 수 있습니다. 개인정보 관련 문의는 아래 이메일로 연락해 주시기 바랍니다. <br><br>
 
-            8. 개인정보 보호 책임자 <br>
+            8. 개인정보 보호책임자 <br>
             - 성명: [관리자 이름] <br>
             - 연락처: [이메일 주소] <br>
             - 담당부서: [부서명] <br><br>
@@ -204,27 +208,26 @@
     </div>
     <!-- 모달창 끝 -->
 
-    <!-- notice 상세보기 페이지 내용 자동 삽입 스크립트 -->
+    <!-- memo 상세보기 페이지 내용 자동 삽입 스크립트 -->
     <script>
     document.addEventListener("DOMContentLoaded", function () {
-    const params = new URLSearchParams(location.search);
-    const id = Number(params.get('id'));
-    const notices = JSON.parse(localStorage.getItem('noticePosts') || '[]');
-    const notice = notices.find(item => item.id === id);
+        const params = new URLSearchParams(location.search);
+        const id = Number(params.get('id'));
+        const memos = JSON.parse(localStorage.getItem('memos') || '[]');
+        const memo = memos.find(item => item.id === id);
 
-    if (!notice) {
-        alert("게시글을 찾을 수 없습니다.");
-        location.href = "notice.html";
-        return;
-    }
-
-    document.getElementById("titleArea").textContent = `제목: ${notice.title}`;
-    document.getElementById("authorArea").textContent = `작성자: ${notice.author}`;
-    document.getElementById("dateArea").textContent = `작성날짜: ${notice.date}`;
-    document.getElementById("contentArea").textContent = notice.content;
+        if (!memo) {
+            alert("게시글을 찾을 수 없습니다.");
+            location.href = "memo.html";
+            return;
+        }
+        document.getElementById("titleArea").textContent = `제목: ${memo.title}`;
+        document.getElementById("authorArea").textContent = `작성자: ${memo.author}`;
+        document.getElementById("dateArea").textContent = `작성날짜: ${memo.date}`;
+        document.getElementById("contentArea").textContent = memo.content;
     });
     </script>
-
+    
     <!-- 공지사항 리스트 자동 삽입 스크립트 -->
     <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -252,7 +255,7 @@
         noticeList.appendChild(li);
     });
     });
-    </script>
+    </script> 
 
     <!-- 모달 스크립트 -->
     <script>
@@ -284,5 +287,5 @@
     };
     });
     </script>
-</body>
+ </body>
 </html>
