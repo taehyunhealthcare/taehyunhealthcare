@@ -14,16 +14,12 @@
     <!-- Open Graph (SNS 공유 시 정보) -->
     <meta property="og:title" content="태현헬스케어 - 홈케어 전문 기업">
     <meta property="og:description" content="가정에서 사용할 수 있는 의료기기 전문 브랜드">
-    <meta property="og:image" content="https://vu1tur2.github.io/taehyunhealthcare/img/logo.png">
-    <meta property="og:url" content="https://vu1tur2.github.io/taehyunhealthcare/">
+    <meta property="og:image" content="https://taehyunhealthcare.github.io/taehyunhealthcare/img/logo.png">
+    <meta property="og:url" content="https://taehyunhealthcare.github.io/taehyunhealthcare/">
     <meta property="og:type" content="website">
 
     <!-- 구글 서치콘솔 -->
     <meta name="google-site-verification" content="0UGIN-4-UxQ22XoXpMqVQQr8Ns0h8XXDVIXI4RViAiE" />
-    
-    <!-- 네이버 서치어드바이저 -->
-    <meta name="naver-site-verification" content="0cd68edc7a0e5ab742e7038c1182c6ac30f1973c" />
-    
     
     <!-- css,js 연결 코드 -->
     <link rel="stylesheet" href="css/style.css" />
@@ -186,7 +182,7 @@
     <div id="privacyModal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
-        <h2><태현헬스케어>개인정보처리방침</h2>
+        <h2>&lt;태현헬스케어&gt; 개인정보 처리방침</h2>
         <div class="modal-body">
         <p>
           태현헬스케어 (이하 "회사") 는 이용자의 개인정보를 중요하게 생각하며, 『 개인정보 보호법 』을 준수하고 있습니다. <br>
@@ -239,88 +235,165 @@
     </div>
     </div>
     <!-- 모달창 끝 -->
-  
-    <!-- 문의 작성 및 파일 업로드 + 등록 스크립트 -->
+
+    <!-- 쿠키 동의 모달 시작 -->
+    <div id="cookieModal">
+      <div class="cookie-content">
+        <h2>쿠키 수집 동의</h2>
+        <p>태현헬스케어는 문의 접수 기록 관리 및 통계 분석을 위해 쿠키를 사용합니다.<br>
+          쿠키 수집에 동의하셔야 문의 접수가 가능합니다.</p>
+        <p class="notice">※ 쿠키 수집을 거절하실 경우, 문의 내용을 제출할 수 없습니다.</p>
+        <div class="button-group">
+          <button id="cookieAgree" type="button">동의하기</button>
+          <button id="cookieDecline" type="button">거절하기</button>
+        </div>
+      </div>
+    </div>
+    <!--  쿠키 동의 모달 끝 -->
+
+    <!--  쿠키 동의 및 문의 제출 스크립트 -->
     <script>
-    const fileInput = document.getElementById('file1');
-    const fileListDiv = document.getElementById('file-list1');
-    const selectedFiles = [];
+      const fileInput   = document.getElementById('file1');
+      const fileListDiv = document.getElementById('file-list1');
+      const selectedFiles = [];
 
-    // 파일 선택 시 리스트에 추가 및 렌더링
-    fileInput.addEventListener('change', () => {
-      Array.from(fileInput.files).forEach(file => {
-        selectedFiles.push(file);
+      // 파일 선택
+      fileInput.addEventListener('change', () => {
+        Array.from(fileInput.files).forEach(file => selectedFiles.push(file));
+        renderFileList();
+        fileInput.value = "";
       });
-      renderFileList();
-      fileInput.value = ""; // 같은 파일 다시 선택 가능하도록 초기화
-    });
 
-    // 파일 리스트 렌더링 함수
-    function renderFileList() {
-      if (selectedFiles.length === 0) {
-        fileListDiv.textContent = "선택된 파일 없음";
-        return;
+      // 파일 리스트 렌더링
+      function renderFileList() {
+        if (selectedFiles.length === 0) {
+          fileListDiv.textContent = "선택된 파일 없음";
+          return;
+        }
+        fileListDiv.innerHTML = "";
+        selectedFiles.forEach((file, idx) => {
+          const item = document.createElement("div");
+          item.className = "file-item1";
+          item.innerHTML = `
+            <span class="file-name1">${idx + 1}. ${file.name}</span>
+            <button type="button" class="delete-btn1" data-index="${idx}">&times;</button>
+          `;
+          fileListDiv.appendChild(item);
+        });
+        document.querySelectorAll(".delete-btn1").forEach(btn =>
+          btn.addEventListener("click", () => {
+            selectedFiles.splice(parseInt(btn.dataset.index), 1);
+            renderFileList();
+          })
+        );
       }
 
-      fileListDiv.innerHTML = "";
-      selectedFiles.forEach((file, idx) => {
-        const item = document.createElement("div");
-        item.className = "file-item1";
-        item.innerHTML = `
-          <span>${idx + 1}. ${file.name}</span>
-          <button type="button" class="delete-btn1" data-index="${idx}">&times;</button>
-        `;
-        fileListDiv.appendChild(item);
+      // ===== 쿠키 모달 제어 & 제출 흐름 =====
+      const inquiryForm   = document.getElementById('inquiryForm');
+      const cookieModal   = document.getElementById('cookieModal');
+      const cookieAgree   = document.getElementById('cookieAgree');
+      const cookieDecline = document.getElementById('cookieDecline');
+
+      // 문의 등록 버튼 클릭 시: 모달만 띄움
+      inquiryForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        cookieModal.style.display = 'flex';
       });
 
-      // 삭제 버튼  등록
-      document.querySelectorAll(".delete-btn1").forEach(btn =>
-        btn.addEventListener("click", () => {
-          selectedFiles.splice(parseInt(btn.dataset.index), 1);
-          renderFileList();
-        })
-      );
-    }
+      // 동의 시: 실제 저장 실행
+      cookieAgree.addEventListener('click', function() {
+        cookieModal.style.display = 'none';
+        doSubmit();                           // ← 실제 저장 함수 호출
+      });
 
-    // 문의 등록 제출
-    document.getElementById('inquiryForm').addEventListener('submit', function(e) {
-      e.preventDefault();
+      // 거절 시: 안내 모달 (확인 또는 배경 클릭으로 닫힘)
+      cookieDecline.addEventListener('click', function() {
+        cookieModal.style.display = 'none';
+        showCustomAlert("쿠키 수집에 동의하지 않아 문의 접수가 제한됩니다.");
+      });
 
-      const name = document.getElementById('name1').value.trim();
-      const email = document.getElementById('email1').value.trim();
-      const title = document.getElementById('title1').value.trim();
-      const content = document.getElementById('content1').value.trim();
-      const visibility = document.querySelector('input[name="visibility"]:checked').value;
+      // 모달 바깥 클릭 시 닫기
+      window.addEventListener('click', function(e) {
+        if (e.target === cookieModal) cookieModal.style.display = 'none';
+      });
 
-      if (!name || !email || !title || !content) {
-        alert('모든 항목을 입력해주세요.');
-        return;
+      // 실제 저장/이동 로직 (원래 submit에서 하던 것 그대로)
+      function doSubmit() {
+        const name  = document.getElementById('name1').value.trim();
+        const email = document.getElementById('email1').value.trim();
+        const title = document.getElementById('title1').value.trim();
+        const content = document.getElementById('content1').value.trim();
+        const visibility = document.querySelector('input[name="visibility"]:checked').value;
+
+        if (!name || !email || !title || !content) {
+          showCustomAlert('모든 항목을 입력해주세요.');
+          return;
+        }
+
+        const maskedName = name.length >= 2
+          ? name[0] + '*'.repeat(name.length - 2) + name[name.length - 1]
+          : name;
+
+        const fileNames = selectedFiles.map(f => f.name);
+        const posts = JSON.parse(localStorage.getItem('posts') || '[]');
+
+        posts.push({
+          id: posts.length,
+          type: 'talk',
+          name,
+          email,
+          maskedName,
+          title,
+          content,
+          visibility,
+          fileNames,
+          date: new Date().toLocaleDateString(),
+          answer: ''
+        });
+
+        localStorage.setItem('posts', JSON.stringify(posts));
+        window.location.href = '01_partnership.html';
       }
 
-      const maskedName = name.length >= 2
-        ? name[0] + '*'.repeat(name.length - 2) + name[name.length - 1]
-        : name;
+      // ===== 커스텀 확인 모달 (확인/배경 클릭으로 닫힘) =====
+      function showCustomAlert(message) {
+        const overlay = document.createElement("div");
+        overlay.className = "custom-alert";
+        overlay.setAttribute("role","dialog");
+        overlay.setAttribute("aria-modal","true");
+        Object.assign(overlay.style, {
+          position:"fixed", inset:"0", background:"rgba(0,0,0,0.5)",
+          zIndex:"10000", display:"flex", alignItems:"center", justifyContent:"center"
+        });
 
-      const fileNames = selectedFiles.map(f => f.name);
-      const posts = JSON.parse(localStorage.getItem('posts') || '[]');
+        const box = document.createElement("div");
+        Object.assign(box.style, {
+          background:"#fff", width:"min(420px, 90vw)", padding:"20px 22px",
+          borderRadius:"12px", textAlign:"center", boxShadow:"0 10px 30px rgba(0,0,0,0.2)"
+        });
 
-      posts.push({
-        id: posts.length,
-        type: 'talk',
-        name,
-        email,
-        maskedName,
-        title,
-        content,
-        visibility,
-        fileNames,
-        date: new Date().toLocaleDateString(),
-        answer: ''
-      });
+        const text = document.createElement("p");
+        Object.assign(text.style, { margin:"0 0 16px 0", fontSize:"14px", lineHeight:"1.5", color:"#111" });
+        text.textContent = message;
 
-      localStorage.setItem('posts', JSON.stringify(posts));
-      window.location.href = '01_partnership.html';
-    });
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.textContent = "확인";
+        Object.assign(btn.style, {
+          padding:"0px 18px", border:"1px solid #bbb", borderRadius:"8px",
+          background:"#fff", cursor:"pointer"
+        });
+
+        const closeModal = () => overlay.remove();
+        btn.addEventListener("click", closeModal);
+        overlay.addEventListener("click", (e) => { if (e.target === overlay) closeModal(); });
+
+        box.appendChild(text);
+        box.appendChild(btn);
+        overlay.appendChild(box);
+        document.body.appendChild(overlay);
+        setTimeout(() => btn.focus(), 0);
+      }
     </script>
 
     <!-- 공지사항 리스트 자동 삽입 스크립트 -->
