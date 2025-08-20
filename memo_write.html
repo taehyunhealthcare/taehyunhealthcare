@@ -1,9 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8" />
-    <title>공지 등록 - 관리자 전용</title>
+    <title>자료 등록 - 관리자 전용</title>
     <link rel="stylesheet" href="css/style.css">
     <style>
         body {
@@ -64,8 +63,8 @@
 <body>
 
     <div class="container">
-        <h2>공지 등록 (관리자 전용)</h2>
-        <form id="noticeForm">
+        <h2>자료 등록 (관리자 전용)</h2>
+        <form id="memoForm">
             <table>
                 <tr>
                     <td>제목</td>
@@ -87,32 +86,38 @@
         </form>
     </div>
 
-    <!-- 공지사항 작성 및 저장 기능 스크립트 -->
+    <!-- 자료실 작성 및 저장 기능 스크립트 -->
     <script>
-    document.addEventListener("DOMContentLoaded", function () {
-    const noticeList = document.querySelector(".notice-list");
-    let noticePosts = JSON.parse(localStorage.getItem('noticePosts') || '[]');
+    document.addEventListener("DOMContentLoaded", function(){
+        const isAdmin = localStorage.getItem('isAdmin') === 'true';
 
-    noticePosts.sort((a, b) => {
-        const dateCompare = new Date(b.date) - new Date(a.date);
-        if (dateCompare !== 0) return dateCompare;
-        return b.id - a.id;
-    });
+        // 관리자가 아닌 경우 접근 차단
+        if (!isAdmin) {
+            alert('접근 권한이 없습니다.');
+            location.href = 'memo.html';
+            return;
+        }
 
-    const latestNotices = noticePosts.slice(0, 4); // 최대 4개
+        // 폼 제출 시 로컬스토리지에 저장
+        document.getElementById('memoForm').onsubmit = function(e) {
+            e.preventDefault();
 
-    noticeList.innerHTML = "";
+            const memos = JSON.parse(localStorage.getItem('memos') || '[]');
 
-    latestNotices.forEach((item, index) => {
-        const li = document.createElement("li");
-        li.innerHTML = `
-        <a href="notice_view.html?id=${item.id}" style="${index === 0 ? 'border-top: 1px dotted #000;' : ''}">
-            <span class="notice-title">${item.title}</span>
-            <span class="notice-date">${item.date}</span>
-        </a>
-        `;
-        noticeList.appendChild(li);
-    });
+            const newMemo = {
+                id: Date.now(),  // 고유 ID
+                title: document.getElementById('title').value,
+                author: document.getElementById('author').value,
+                content: document.getElementById('content').value,
+                date: new Date().toISOString().split('T')[0],  // yyyy-mm-dd 형식
+                views: 0
+            };
+
+            memos.push(newMemo);
+            localStorage.setItem('memos', JSON.stringify(memos));
+            alert('등록 완료');
+            location.href = 'memo.html';
+        };
     });
     </script>
 </body>
