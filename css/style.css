@@ -155,6 +155,7 @@ nav {
   display: flex;
   border-top: 1px solid #706e6e;
   padding-bottom: 200px;
+  gap: 10px;
 }
 
 .notice-card {
@@ -205,6 +206,54 @@ nav {
   border-radius: 50px;
 }
 
+.qna-card {
+  width: 100%;
+  max-width: 600px;
+  height: 250px;
+  margin: 20px auto;               /* 위 여백 줄이기 */
+  padding: 20px;
+  background-color: #f1f1f1;       /* 박스 전체 배경 적용 */
+  color: #000;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  font-family: 'Pretendard', sans-serif;
+  box-shadow: 2px #000;
+}
+
+.qna-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  background: transparent; /* 헤더에는 배경 제거 */
+}
+
+.qna-card-header>h3>a {
+  font-size: 18px;
+  border-bottom: none;
+  border-top: none;
+}
+
+.qna-card a {
+  line-height: 40px;
+  border-bottom: 1px dotted #000;
+  font-size: 14px;
+}
+
+.qna-date {
+  float: right;
+}
+
+.qna-more-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #000;
+  transition: color 0.2s ease;
+  border-radius: 50px;
+}
+
 footer {
   width: 1200px;
   height: 250px;
@@ -234,9 +283,9 @@ footer {
 }
 
 .copy p {
-    font-size: 13px;
-    color: rgba(0, 0, 0, 0.8);
-    text-align: center;
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.8);
+  text-align: center;
 }
 
 #copy>a {
@@ -248,9 +297,11 @@ footer {
   font-size: 13.5px;
 }
 
-#openModalBtn>a {
+#openModalBtn > a {
+  width: 100px;
   font-weight: bold;
-  padding-top: 10px;
+  padding-top: 5px;
+  margin: 0 auto;
 }
 
 body.modal-open {
@@ -493,80 +544,132 @@ button {
   display: inline-block;
   text-align: center;
 }
+
 button:hover {
-    background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.2);
 }
+
 select {
-    height: 40px; 
-    padding: 8px;
-    font-size: 14px;
+  height: 40px; 
+  padding: 8px;
+  font-size: 14px;
+}
+
+#cookieModal {
+  display: none;               
+  position: fixed;
+  inset: 0;                     
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+  align-items: center;          
+  justify-content: center;
+}
+
+
+#cookieModal .cookie-content {
+  box-sizing: border-box;
+  background: #fff;
+  width: 100%;
+  max-width: 500px;
+  max-height: 250px;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+
+#cookieModal h2,
+#cookieModal p {
+  color: #000;
+  text-align: center;
+  margin: 0;                    
+}
+
+.cookie-content > p {
+  font-size: 14px;
+  padding: 5px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+#cookieModal .notice {
+  font-weight: 700;
+  margin-bottom: 20px;           
+}
+
+
+#cookieModal .button-group {
+  display: flex;
+  justify-content: center;
+  gap: 50px;                      
+  margin-top: 15px;
 }
 
 /* 01_partnership.html, 03_partnership.html CSS */
 
 .complete-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 .complete-box {
-    background-color: white;
-    border: 1px solid #ddd;
-    padding: 60px 40px;
-    border-radius: 12px;
-    text-align: center;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.05);
-    max-width: 500px;
-    width: 90%;
+  background-color: white;
+  border: 1px solid #ddd;
+  padding: 60px 40px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+  max-width: 500px;
+  width: 90%;
 }
 
 .icon {
-    font-size: 48px;
-    margin-bottom: 20px;
+  font-size: 48px;
+  margin-bottom: 20px;
 }
 
 .complete-box h1 {
-    font-size: 22px;
-    margin-bottom: 12px;
+  font-size: 22px;
+  margin-bottom: 12px;
 }
 
 .complete-box p {
-    font-size: 15px;
-    color: #666;
-    line-height: 1.6;
-    margin-bottom: 30px;
+  font-size: 15px;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 30px;
 }
 
 .button-group {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
 }
 
 .btn {
-    display: inline-block;
-    padding: 12px 24px;
-    font-size: 14px;
-    background-color: #222;
-    color: white;
-    text-decoration: none;
-    border-radius: 6px;
-    transition: background-color 0.2s ease;
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 14px;
+  background-color: #222;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
 }
 
 .btn:hover {
-    background-color: #444;
+  background-color: #444;
 }
 
 .btn.gray {
-    background-color: #ddd;
-    color: #333;
+  background-color: #ddd;
+  color: #333;
 }
 
 .btn.gray:hover {
-    background-color: #bbb;
+  background-color: #bbb;
 }
 
 /* download.html CSS */
@@ -1214,6 +1317,38 @@ td.pin-icon {
   background-color: #0056b3;
 }
 
+.file-item1{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:8px 12px;
+  border:1px solid #e5e7eb;
+  border-radius:8px;
+  background:#fff;
+  margin-top:8px;
+}
+
+.file-name1{
+  flex:1;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.delete-btn1{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background-color: #f9fafb;
+  cursor: pointer;
+}
+.delete-btn1:hover{ background:#eef2f7; }
 
 
 /* download.html, veiw.html, notice_view.html, memo_view.html 공용 CSS */
