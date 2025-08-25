@@ -127,10 +127,6 @@ nav {
    border-bottom: 1px solid #000;
 }
 
-.menu>li>a:hover {
-  font-size: 20px;
-}
-
 .submenu {
   width: 300px;
   position: relative;
@@ -1487,3 +1483,4 @@ td.pin-icon {
   width: 1200px;
   margin: 0 auto;
 }
+
