@@ -1,4 +1,11 @@
 User-agent: *
-Disallow:
+Disallow: /notice_write.html
+Disallow: /memo_write.html
+Disallow: /talk_1.html
+Disallow: /memo_view.html
+Disallow: /notice_view.html
+Disallow: /searchResult.html
 
-Sitemap: https://taehyunhealthcare.github.io/sitemap.xml
+Allow: /
+
+Sitemap: https://taehyunhealthcare.github.io/taehyunhealthcare/sitemap.xml
