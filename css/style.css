@@ -127,6 +127,8 @@ nav {
    border-bottom: 1px solid #000;
 }
 
+
+
 .submenu {
   width: 300px;
   position: relative;
@@ -160,12 +162,11 @@ nav {
   height: 250px;
   margin: 20px auto;               /* 위 여백 줄이기 */
   padding: 20px;
-  background-color: #f1f1f1;       /* 박스 전체 배경 적용 */
-  color: #000;
+  background-color: #fff;       /* 박스 전체 배경 적용 */
+  color: rgba(0, 0, 0, 0.78);
   border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 8px 8px rgba(0,0,0,0.05);
   font-family: 'Pretendard', sans-serif;
-  box-shadow: 2px #000;
 }
 
 .notice-card-header {
@@ -184,7 +185,7 @@ nav {
 
 .notice-card a {
   line-height: 40px;
-  border-bottom: 1px dotted #000;
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.78);
   font-size: 14px;
 }
 
@@ -208,12 +209,11 @@ nav {
   height: 250px;
   margin: 20px auto;               /* 위 여백 줄이기 */
   padding: 20px;
-  background-color: #f1f1f1;       /* 박스 전체 배경 적용 */
+  background-color: #fff;       /* 박스 전체 배경 적용 */
   color: #000;
   border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 8px 8px rgba(0,0,0,0.05);
   font-family: 'Pretendard', sans-serif;
-  box-shadow: 2px #000;
 }
 
 .qna-card-header {
@@ -1483,4 +1483,3 @@ td.pin-icon {
   width: 1200px;
   margin: 0 auto;
 }
-
