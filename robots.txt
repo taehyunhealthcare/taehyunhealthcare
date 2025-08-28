@@ -5,7 +5,10 @@ Disallow: /talk_1.html
 Disallow: /memo_view.html
 Disallow: /notice_view.html
 Disallow: /searchResult.html
+Disallow: /01_partnership.html
+Disallow: /03_partnership.html
 
 Allow: /
 
 Sitemap: https://taehyunhealthcare.github.io/taehyunhealthcare/sitemap.xml
+
