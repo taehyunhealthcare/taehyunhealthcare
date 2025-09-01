@@ -7,8 +7,11 @@ Disallow: /notice_view.html
 Disallow: /searchResult.html
 Disallow: /01_partnership.html
 Disallow: /03_partnership.html
+Disallow: https://vu1tur2.github.io/taehyunhealthcare/
+
 
 Allow: /
 
 Sitemap: https://taehyunhealthcare.github.io/taehyunhealthcare/sitemap.xml
+
 
