@@ -4,6 +4,7 @@
   <!-- 메인 페이지 -->
   <url>
     <loc>https://taehyunhealthcare.github.io/taehyunhealthcare/</loc>
+    <lastmod>2025-09-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -11,11 +12,13 @@
   <!-- 회사 소개 -->
   <url>
     <loc>https://taehyunhealthcare.github.io/taehyunhealthcare/about.html</loc>
+    <lastmod>2025-09-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://taehyunhealthcare.github.io/taehyunhealthcare/03_about.html</loc>
+    <lastmod>2025-09-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -23,16 +26,19 @@
   <!-- 제품 소개 -->
   <url>
     <loc>https://taehyunhealthcare.github.io/taehyunhealthcare/01_products.html</loc>
+    <lastmod>2025-09-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://taehyunhealthcare.github.io/taehyunhealthcare/02_products.html</loc>
+    <lastmod>2025-09-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://taehyunhealthcare.github.io/taehyunhealthcare/03_products.html</loc>
+    <lastmod>2025-09-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -40,6 +46,7 @@
   <!-- B2B -->
   <url>
     <loc>https://taehyunhealthcare.github.io/taehyunhealthcare/partnership.html</loc>
+    <lastmod>2025-09-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -47,16 +54,19 @@
   <!-- 커뮤니티 -->
   <url>
     <loc>https://taehyunhealthcare.github.io/taehyunhealthcare/talk.html</loc>
+    <lastmod>2025-09-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://taehyunhealthcare.github.io/taehyunhealthcare/memo.html</loc>
+    <lastmod>2025-09-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://taehyunhealthcare.github.io/taehyunhealthcare/notice.html</loc>
+    <lastmod>2025-09-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -64,16 +74,19 @@
   <!-- 개별 제품 상세 페이지 -->
   <url>
     <loc>https://taehyunhealthcare.github.io/taehyunhealthcare/jaepum1.html</loc>
+    <lastmod>2025-09-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://taehyunhealthcare.github.io/taehyunhealthcare/jaepum2.html</loc>
+    <lastmod>2025-09-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://taehyunhealthcare.github.io/taehyunhealthcare/jaepum3.html</loc>
+    <lastmod>2025-09-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -81,18 +94,20 @@
   <!-- 다운로드 자료 -->
   <url>
     <loc>https://taehyunhealthcare.github.io/taehyunhealthcare/download1.html</loc>
+    <lastmod>2025-09-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://taehyunhealthcare.github.io/taehyunhealthcare/download2.html</loc>
+    <lastmod>2025-09-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://taehyunhealthcare.github.io/taehyunhealthcare/download3.html</loc>
+    <lastmod>2025-09-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-
 </urlset>
