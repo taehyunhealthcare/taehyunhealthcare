@@ -3,12 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>오시는길</title>
-    
+    <title>제품소개</title>
+
     <!-- css,js 연결 코드 -->
     <link rel="stylesheet" href="css/style.css">
     <script src="js/jquery-1.12.4.min.js"></script>
     <script src="js/common.js"></script>
+    <script src="js/slide.js"></script>
 </head>
 <body>
     <!-- 시작 -->
@@ -20,7 +21,6 @@
         </div>
     </div>
     <!-- 끝 -->
-
  
     
     <!-- 헤더 시작 -->
@@ -28,9 +28,7 @@
     <div class="header-left"></div>
 
     <div class="logo-wrapper">
-        <a href="./">
-            <img class="logo" src="logo.png" alt="태현 헬스케어 이미지" />
-        </a>
+        <img class="logo" src="logo.png" alt="태현 헬스케어 이미지" />
     </div>
 
     <form class="search-form" action="searchResult.html" method="get" autocomplete="off">
@@ -78,38 +76,57 @@
     </nav>
     <!-- 메뉴 끝 -->
 
-     <!-- 지도 시작 -->
-      <div class="map">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d288.37409831268866!2d126.91732829686686!3d35.14214110017884!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35718c82115ce01d%3A0x9d42acb11ae6b7b6!2z7IS47KKF7JqU7JaR67OR7JuQ!5e0!3m2!1sko!2skr!4v1747899838995!5m2!1sko!2skr"
-           width="600"
-           height="450"
-           style="border:0;"
-           allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-          </iframe>
-        <div class="map1">
-            <div class="map-1">
-            <div class="map-label">회사명</div>
-            <div class="map-content">태현헬스케어</div>
-            </div>
-            <div class="map-1">
-            <div class="map-label">본사주소</div>
-            <div class="map-content">광주광역시 동구 천변우로 453 4층 413호</div>
-            </div>
-            <div class="map-1">
-            <div class="map-label">TEL</div>
-            <div class="map-content">062-233-6015</div>
-            </div>
-            <div class="map-1">
-            <div class="map-label">E-MAIL</div>
-            <div class="map-content">thhealthcare@naver.com</div>
-            </div>
-            <div class="map-1">
-            <div class="map-label">운영 시간</div>
-            <div class="map-content">평일 09:00 ~ 18:00 ( 점심시간 12:00 ~ 13:00 ) 주말 공휴일 휴무</div>
-            </div>
-        </div>
-        </div>
+    <!-- 네비게이터  시작 -->
+    <div class="nav">
+          <span>HOME</span>
+          <span class="separator">&gt;</span>
 
+          <select>
+           <option>제품소개</option>
+          </select>
+
+          <span class="separator">&gt;</span>
+
+         <select onchange="if(this.value) window.location.href=this.value;">
+          <option value="02_products.html">Nebulizer</option>
+          <option value="01_products.html">Fetal Doppler</option>
+          <option value="03_products.html">Pulse Oximerter</option>
+      </select>
+     </div>
+     <!-- 네비게이터 끝 -->
+      
+     <!-- 네비게이터 2 시작  -->
+      <div class="nav1">
+        <li>상품 개수 </li>
+        <select>
+           <option>추천순</option>
+           <option>판매인기순</option>
+           <option>낮은가격순</option>
+           <option>높은가격순</option>
+           <option>등록일순</option>
+        </select>
+      </div>
+     <!-- 상품 시작  -->
+      <div class="contents01">
+        <div class="cbox01">
+            <a href="jaepum2.html">
+                <img src="img/nebulizer.jpg" alt="제품 이미지">
+                <p>Nebulizer</p>
+            </a>
+            <a href="#">
+                <img src="img/nebulizer.jpg" alt="제품이미지">
+                <p>Nebulizer</p>
+            </a>
+        </div>
+      </div>
+    <!-- 상품 끝 -->
+      
+    <!-- 페이지버튼 시작 -->
+    <div class="pagination-container">
+    <div class="pagination"></div>
+    </div>
+    <!-- 페이지버튼 끝  -->
+     
    <!-- 콘텐츠 시작 -->
     <div id="contents">
         <div class="notice-card">
@@ -156,33 +173,33 @@
         <h2>&lt;태현헬스케어&gt; 개인정보 처리방침</h2>
         <div class="modal-body">
         <p>
-            태현헬스케어 (이하 "회사") 는 이용자의 개인정보를 중요하게 생각하며, 『 개인정보 보호법 』을 준수하고 있습니다. <br>
+            태현헬스케어 (이하 "회사")는 이용자의 개인정보를 중요하게 생각하며, 『 개인정보 보호법 』을 준수하고 있습니다. <br>
             본 개인정보 처리방침은 회사가 운영하는 홈페이지를 통해 수집하는 개인정보 및 처리방침을 안내하기 위하여 마련되었습니다. <br><br>
-            
+
             1. 수집하는 개인정보 항목 <br>
             회사는 아래와 같은 항목을 수집할 수 있습니다. <br>
             - 문의하기 및 B2B 제휴문의 시: 이름, 이메일, 문의 내용 <br>
-            - 서비스 이용과정에서 자동으로 생성되는 정보: 접속 IP, 쿠키, 방문 기록, 브라우저 정보 등 <br><br>
+            - 서비스 이용과정에서 자동으로 생성되는 정보: 정보 IP, 쿠키, 방문 기록, 브라우저 정보 등 <br><br>
 
             2. 개인정보의 수집 및 이용 목적 <br>
             회사는 수집한 개인정보를 다음의 목적을 위해 사용합니다. <br>
             - 이용자 문의 응대 및 답변 처리 <br>
             - 제품/서비스 제안 및 파트너십 응대 <br>
-            - 홈페이지 운영의 통계 분석 (Google Analytics 등) <br><br>
+            - 홈페이지 운영의 통계 분석 (Google Analytics 등) <br> <br>
 
             3. 개인정보 보유 및 이용 기간 <br>
             회사는 개인정보 수집 및 이용 목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다. <br>
-            단, 관련 법령에 따라 일정 기간 보관이 필요한 경우는 해당 기간동안 보관합니다. <br>
+            단, 관련 법령에 따라 일정 기간 보관이 필요한 경우는 해당 기간 동안 보관합니다. <br>
             - 소비자 불만 또는 분쟁처리에 관한 기록: 3년 (전자상거래법) <br><br>
 
             4. 개인정보의 제3자 제공 <br>
-            회사는 이용자의 개인정보를 원칙적으로 외부에 제공하지 않습니다. <br>
+            회사는 이용자의 개인정보를 원칙적으로 외부에 제공하지않습니다. <br>
             다만, 아래의 경우에는 예외로 합니다. <br>
             - 이용자가 사전에 동의한 경우 <br>
-            - 법령에 의거하거나 수사기관의 요청이 있는 경우 <br> <br>
+            - 법령에 의거하거나 수사기관의 요청이 있는 경우 <br><br>
 
             5. 개인정보의 처리 위탁 <br>
-            회사는 서비스 향상을 위해 아래와 같이 처리를 위탁할 수 있습니다. <br>
+            회사는 서비스 향상을 위해 아래와 같이 개인정보 처리를 위탁할 수 있습니다. <br>
             - Google Analytics (웹사이트 방문 분석) <br>
             - Naver Search Advisor (사이트 통계) <br><br>
 
@@ -193,11 +210,11 @@
             이용자는 언제든지 자신의 개인정보 열람, 정정, 삭제를 요청할 수 있습니다. 개인정보 관련 문의는 아래 이메일로 연락해 주시기 바랍니다. <br><br>
 
             8. 개인정보 보호책임자 <br>
-            - 성명: [관리자 이름] <br>
+            - 성명: [관리자이름] <br>
             - 연락처: [이메일 주소] <br>
             - 담당부서: [부서명] <br><br>
 
-            9. 개인정보처리방침의 변경 <br>
+            9.개인정보처리방침의 변경 <br>
             이 개인정보처리방침은 법령 또는 회사 정책에 따라 변경될 수 있으며, 변경 시 홈페이지를 통해 공지합니다. <br><br>
 
             - 시행일자: 2025년 7월 23일 -
@@ -207,7 +224,7 @@
     </div>
     <!-- 모달창 끝 -->
 
-    <!-- 공지사항 리스트 자동 삽입되게 하는 스크립트 -->
+    <!--  공지사항 리스트 자동 삽입되게 하는 스크립트 -->
     <script>
     document.addEventListener("DOMContentLoaded", function () {
     const noticeList = document.querySelector(".notice-list");
@@ -233,6 +250,66 @@
         `;
         noticeList.appendChild(li);
     });
+    });
+    </script>
+
+    <!-- 제품 목록 페이지 스크립트 -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+    const pageSize = 8;
+    const pagesToShow = 4;
+    let currentPage = 1;
+    let groupStart = 1;
+
+    const products = document.querySelectorAll(".cbox01 a");
+    const nav = document.querySelector(".pagination");
+
+    function calculateTotalPages() {
+        return Math.ceil(products.length / pageSize) || 1;
+    }
+
+    function showProducts(page) {
+        currentPage = page;
+        const totalPages = calculateTotalPages();
+        if (currentPage > totalPages) currentPage = totalPages;
+        if (groupStart > totalPages) groupStart = Math.max(1, totalPages - pagesToShow + 1);
+
+        products.forEach((p, idx) => {
+        p.style.display = idx >= (currentPage-1)*pageSize && idx < currentPage*pageSize ? "inline-block" : "none";
+        });
+
+        renderPagination();
+    }
+
+    function renderPagination() {
+        const totalPages = calculateTotalPages();
+        nav.innerHTML = "";
+
+        if (groupStart > 1) {
+        const prev = document.createElement('button');
+        prev.textContent = '◀';
+        prev.onclick = () => { groupStart = Math.max(1, groupStart - pagesToShow); showProducts(groupStart); };
+        nav.appendChild(prev);
+        }
+
+        const end = Math.min(groupStart + pagesToShow - 1, totalPages);
+        for (let i = groupStart; i <= end; i++) {
+        const btn = document.createElement('button');
+        btn.textContent = i;
+        if (i === currentPage) btn.classList.add('active');
+        btn.onclick = () => showProducts(i);
+        nav.appendChild(btn);
+        }
+
+        if (end < totalPages) {
+        const next = document.createElement('button');
+        next.textContent = '▶';
+        next.onclick = () => { groupStart += pagesToShow; showProducts(groupStart); };
+        nav.appendChild(next);
+        }
+    }
+
+    showProducts(1);
     });
     </script>
 
@@ -268,3 +345,4 @@
     </script>
  </body>
 </html>
+     
