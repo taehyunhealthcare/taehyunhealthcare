@@ -72,13 +72,10 @@ header {
   position: relative;
 }
 
-.header-left {
-  width: 400px;
-}
-
 .logo-wrapper {
   width: 200px;
   height: 100px;
+  margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -90,17 +87,6 @@ header {
   object-fit: contain;
 }
 
-.search-form {
-  width: 400px !important;
-  display: block;
-}
-
-.search-input {
-  width: 100% !important;
-  padding: 8px 10px;
-  font-size: 15px;
-  box-sizing: border-box;
-}
 
 nav {
   width: 1200px;
@@ -117,32 +103,43 @@ nav {
   font-weight: bold;
 }
 
-.menu>li {
+.menu > li {
   width: 300px;
   height: 50px;
   line-height: 50px;
+  position: relative;
 }
 
-.menu>li>a {
-   border-bottom: 1px solid #000;
+.menu > li > a {
+  border-bottom: 1px solid #000;
 }
 
-
-
+/* 개선된 서브메뉴 */
 .submenu {
   width: 300px;
-  position: relative;
+  position: absolute; 
+  top: 50px;          
+  left: 0;
   z-index: 3;
   display: none;
-  background-color: #eee;
+  background-color: #f9f9f9; 
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
 }
 
-.submenu>li {
-  width: 300px;
+.submenu > li {
+  width: 100%;
 }
 
-.submenu>li>a:hover {
-  background-color: rgba(255, 255, 255, 0.6);
+.submenu > li > a {
+  display: block;
+  padding: 12px 16px;
+  background-color: #f9f9f9;
+  transition: background 0.3s ease;
+}
+
+.submenu > li > a:hover {
+  background-color: #f0f4ff; /* hover 시 은은한 블루톤 */
   font-weight: bold;
 }
 
@@ -397,13 +394,7 @@ body.modal-open {
   background-color: #fff;
 }
 
-/* searchResult.html CSS */
 
-#result {
-  width: 1200px;
-  margin: 0 auto;
-  height: 500px;
-}
 
 /* partnership.html CSS */
 
@@ -1146,7 +1137,7 @@ select {
   text-decoration: none;
 }
 
-/* about.html, jaepum1.html, jaepum2.html, jaepum3.html, searchResult.html 공용 CSS */
+/* about.html, jaepum1.html, jaepum2.html, jaepum3.html 공용 CSS */
 
 .n_contents1 {
   width: 1200px;
