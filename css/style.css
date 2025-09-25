@@ -1,4 +1,3 @@
-/*  기본 설정  */
 @charset "utf-8";
 
 * {
@@ -21,15 +20,14 @@ html, body {
   padding: 0;
   width: 100%;
 }
-body {
-  min-width: 1200px;
-}
+
 /* 기본 설정 끝 */
 
 /* 전체 공용 CSS */
 
 #wrap {
-  width: 1200px;
+  max-width: 1200px;
+  width: 100%;
   height: 50px;
   list-style: none;
   margin: 0 auto;
@@ -63,7 +61,8 @@ body {
 }
 
 header {
-  width: 1200px;
+  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -88,8 +87,9 @@ header {
 }
 
 
-nav {
-  width: 1200px;
+.menu-pc {
+  max-width: 1200px;
+  width: 100%;
   height: 120px;
   margin: 0 auto;
   padding-top: 50px;
@@ -97,7 +97,8 @@ nav {
 
 .menu {
   display: flex;
-  width: 1200px;
+  max-width: 1200px;
+  width: 100%;
   height: 50px;
   text-align: center;
   font-weight: bold;
@@ -116,7 +117,8 @@ nav {
 
 /* 개선된 서브메뉴 */
 .submenu {
-  width: 300px;
+  max-width: 300px;
+  width: 100%;
   position: absolute; 
   top: 50px;          
   left: 0;
@@ -144,7 +146,8 @@ nav {
 }
 
 #contents {
-  width: 1200px;
+  max-width: 1200px;
+  width: 100%;
   height: 300px;
   margin: 0 auto;
   display: flex;
@@ -201,20 +204,20 @@ nav {
   border-radius: 50px;
 }
 
-.qna-card {
+.memo-card {
   width: 100%;
   max-width: 600px;
   height: 250px;
   margin: 20px auto;               /* 위 여백 줄이기 */
   padding: 20px;
   background-color: #fff;       /* 박스 전체 배경 적용 */
-  color: #000;
+  color: rgba(0, 0, 0, 0.78);
   border-radius: 12px;
   box-shadow: 0 8px 8px rgba(0,0,0,0.1);
   font-family: 'Pretendard', sans-serif;
 }
 
-.qna-card-header {
+.memo-card-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -222,23 +225,23 @@ nav {
   background: transparent; /* 헤더에는 배경 제거 */
 }
 
-.qna-card-header>h3>a {
+.memo-card-header>h3>a {
   font-size: 18px;
   border-bottom: none;
   border-top: none;
 }
 
-.qna-card a {
+.memo-card a {
   line-height: 40px;
-  border-bottom: 1px dotted #000;
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.78);
   font-size: 14px;
 }
 
-.qna-date {
+.memo-date {
   float: right;
 }
 
-.qna-more-btn {
+.memo-more-btn {
   background: none;
   border: none;
   font-size: 20px;
@@ -248,30 +251,23 @@ nav {
   border-radius: 50px;
 }
 
+
+
 footer {
-  width: 1200px;
+  max-width: 1200px;
+  width: 100%;
   height: 250px;
   margin: 0 auto;
   margin-top: 50px;
 }
 
-#flogobox {
-  width: 100%;
-  height: 100px;
-  display: flex;
-}
-.flogoleft {
-  width: 500px;
-  height: 100px;
-}
+
 .flogo {
   width: 200px;
   height: 100px;
+  margin: 0 auto;
 }
-.flogoright {
-  width: 500px;
-  height: 100px;
-}
+
 .copy {
   width: 100%;
   height: 140px;
@@ -445,7 +441,8 @@ body.modal-open {
 /* partnership.html CSS */
 
 .partner-form-container {
-  width: 1200px;
+  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -771,7 +768,8 @@ select {
 /* 03_about.html CSS */
 
 .map {
-  width: 1200px;
+  max-width: 1200px;
+  width: 100%;
   display: flex;
   margin: 50px auto;
   gap: 50px;
@@ -819,7 +817,8 @@ select {
 /* 01, 02, 03_products.html 공용 CSS */
 
 .nav {
-  width: 1200px;
+  max-width: 1200px;
+  width: 100%;
   display: flex;
   align-items: center;
   font-family: sans-serif;
@@ -840,7 +839,8 @@ select {
  }
 
 .nav1 {
-  width: 1200px;
+  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   margin-top: 20px;
@@ -864,7 +864,8 @@ select {
 }
 
  .contents01 {
-  width: 1200px;
+  max-width: 1200px;
+  width: 100%;
   height: 600px;
   margin: 0 auto;
  }
@@ -964,7 +965,8 @@ select {
 /* jaepum1.html, jaepum2.html, jaepum3.html 공용 CSS */
 
 #j-contents {
-  width: 1200px;
+  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   margin-top: 50px;
   margin-bottom: 100px;
@@ -1186,7 +1188,8 @@ select {
 /* about.html, jaepum1.html, jaepum2.html, jaepum3.html 공용 CSS */
 
 .n_contents1 {
-  width: 1200px;
+  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
 
 }
@@ -1200,7 +1203,8 @@ select {
 /* memo.html, notice.html, talk.html 공용 CSS */
 
 .n_contents {
-  width: 1200px;
+  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -1222,7 +1226,8 @@ select {
 }
 
 .content-wrapper {
-  width: 1200px;
+  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -1249,7 +1254,8 @@ td.pin-icon {
 /* talk.html CSS */
 
 .qna-header {
-  width: 1200px;
+  max-width: 1200px;
+  width: 100%;
   position: relative;
 }
 
@@ -1279,7 +1285,8 @@ td.pin-icon {
 /* talk_1.html CSS */
 
 .write-container1 {
-  width: 1200px;
+  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   background: #fff;
   padding: 40px;
@@ -1412,7 +1419,8 @@ td.pin-icon {
 /* download.html, veiw.html, notice_view.html, memo_view.html 공용 CSS */
 
 #n_contents {
-  width: 1200px;
+  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -1532,7 +1540,8 @@ td.pin-icon {
 /* view.html CSS */
 
 #emailArea {
-  width: 1200px;
+  max-width: 1200px;
+  width: 100%;
   height: 40px;
   font-size: 14px;
   border-bottom: 1px solid #ccc;
@@ -1542,6 +1551,429 @@ td.pin-icon {
 /* download1,2,3.html 공용 css */
 
 .d-btn {
-  width: 1200px;
+  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
+}
+
+
+
+
+
+/* 모바일 메뉴 스타일 */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  max-width: 336px;
+  width: 70%;
+  height: 100%;
+  background: #fff;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.2);
+  transition: left 0.3s ease;
+  z-index: 999;
+  overflow-y: auto;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #333;
+  padding: 8px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.menu-toggle:hover,
+.menu-toggle:focus {
+  background: none !important; 
+  outline: none;              
+}
+
+.mobile-menu.active {
+  left: 0;
+}
+
+.mobile-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 20px;
+}
+
+.mobile-menu li {
+  border-bottom: 1px solid #ddd;
+}
+
+.mobile-menu a {
+  display: flex;            
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  font-size: 16px;
+  color: #000;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* 닫기 버튼 */
+.mobile-menu .close-btn {
+  display: block;
+  font-size: 24px;
+  text-align: right;
+  padding: 15px;
+  cursor: pointer;
+  color: #333;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+/* 서브메뉴 */
+.mobile-menu .submenu {
+  display: none;
+  background: #f9f9f9;
+  padding-left: 15px;
+  position: static;
+}
+
+.mobile-menu .submenu li a {
+  padding: 12px 15px;
+  font-size: 14px;
+  color: #333;
+  border-bottom: 1px solid #eee;
+}
+
+.mobile-menu .has-submenu.open .submenu {
+  display: block;   
+}
+
+/* 화살표 아이콘 */
+.submenu-toggle {
+  font-size: 12px;
+  margin-left: 6px;
+  transition: transform 0.3s;
+}
+
+/* 펼쳤을 때 아이콘 회전 */
+.mobile-menu .has-submenu.open > a .submenu-toggle {
+  transform: rotate(180deg);
+}
+
+
+.footer-second {
+  max-width: 1200px;
+  width: 100%;
+  height: 120px;
+  padding: 40px 50px;
+}
+.footer-second p {
+  font-size: 11px;
+  text-align: center;
+  color: #999;
+}
+span.s {
+  font-weight: bold;
+  color: #666;
+}
+
+.footer-second {
+  display: none;
+}
+
+.mobile_p { display: none; }
+
+.card-1 { display: none; }
+
+#mobile-map {display: none;}
+.mobile-map {display: none;}
+
+.mobile-nav {display: none;}
+
+
+
+/* index.html 미디어쿼리 */
+@media (max-width: 480px) {
+
+  #wrap {
+    display: none;
+  }
+
+  header {
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 5px;
+  }
+
+  .logo-wrapper {
+    width: 120px;   
+    margin: 0 auto;
+  }
+
+  .logo-wrapper img {
+    width: 100%;
+    height: auto;
+  }
+
+  .menu-pc {display: none;}
+  .menu-toggle {display: block; margin-left: 10px;}
+
+  #slide {
+    width: 100%;
+    max-width: 450px;
+    height: 200px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  #slide a{
+    width: 100%;
+    height: 100%;
+  }
+
+  #slide a img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  #slide button {
+    display: none;
+  }
+
+  #slide .indicators span {
+    width: 8px;
+    height: 8px;
+  }
+
+  #contents {
+    flex-direction: column; 
+    align-items: stretch;
+    min-height: 400px;
+    height: auto;
+    border-top: none;
+    position: relative;
+    padding-top: 10px;
+  }
+
+  #contents::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 10px;  
+    right: 10px; 
+    height: 1px;
+    background: #ddd; 
+  }
+
+  .notice-card,
+  .memo-card {
+    width: 90%;
+    max-height: 150px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    padding: 3px 20px;
+  }
+
+  .memo-card:last-child {
+    margin-bottom: 0;
+  }
+
+  footer {
+    display: none;
+  }
+
+  .footer-second {
+    display: block;
+  }
+}
+
+/* abuout.html 미디어쿼리 */
+@media (max-width: 480px) {
+
+.qna-header1 > h2 { border: none;}
+.pc_p {display: none;}
+.mobile_p {display: block;}
+
+  .n_box {
+    height: auto; 
+    padding: 15px;
+  }
+
+  .about-section {
+    line-height: 1.6;
+    font-size: 12px;
+  }
+
+  .about-section h2 {
+    font-size: 18px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+  }
+
+  .card {display: none;}
+  .card-1 {
+    display: block;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    text-align: center;
+  }
+
+  .section-title {
+    margin: 20px;      
+    font-weight: bold;
+    position: relative;
+    padding-bottom: 10px; 
+    font-size: 22px;   
+  }
+
+  .section-title::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: calc(100% - 0px); 
+    height: 1.5px;
+    background: #ccc;
+  }
+
+
+  .n_box section > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 40px;
+    row-gap: 40px;
+    justify-items: center;
+  }
+
+  .n_box .card-1 {
+    min-width: 200px;
+    width: 100%;
+    max-width: 160px;   
+    height: auto;
+    padding: 15px;
+    box-sizing: border-box;
+  }
+
+  .n_box .card-1 img {
+    width: 100%;
+    height: 180px;      
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+
+  .n_box .card-1 h3 {
+    font-size: 10px;
+    margin: 10px 0 8px;
+  }
+
+  .n_box .card-1 p {
+    font-size: 10px;
+    line-height: 1.4;
+  }
+
+  .n_box section > div .card-1:nth-child(3) {
+    grid-column: 1 / span 2;
+    max-width: 180px;
+    justify-self: center;
+  }
+
+  #mobile-map {display: block;}
+  .mobile-map {
+    display: block !important;  
+    width: 100%;
+  }
+
+  .mobile-map-container {
+    width: 100%;
+    margin-bottom: 15px;        
+  }
+
+  .mobile-map-info {
+    display: block;   
+    width: 450px;    
+    margin-top: 20px;   
+  }
+
+  .mobile-map-row {
+    display: flex;             
+    margin-bottom: 8px;
+  }
+
+  .mobile-map-row .label {
+    width: 80px;
+    font-weight: bold;
+    background: #f1f1f1;
+    text-align: center;
+    padding: 5px;
+    border: 1px solid #ddd;
+  }
+
+  .mobile-map-row .content {
+    flex: 1;
+    border: 1px solid #ddd;
+    border-left: none;
+    padding: 5px;
+  }
+}
+
+/* product.html 미디어쿼리 */
+@media (max-width: 480px) {
+
+  .nav {display: none;}
+  .nav1 {display: none;}
+
+  .mobile-nav {
+    width: 440px;
+    margin: 0 auto;
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding-top: 25px;
+    padding-bottom: 25px;
+  }
+
+  .mobile-nav h2 {font-size: 22px;}
+
+    .contents01 {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    justify-content: center; 
+  }
+
+  .cbox01 {
+    width: 450px;       
+    height: 100%;   
+    display: flex;
+    justify-content: space-between; 
+    gap: 10px;            
+    box-sizing: border-box;
+    padding: 0;
+    margin-top: 50px;
+  }
+
+  .cbox01 a {
+    height: 280px;
+    flex: 1;              
+    text-align: center;
+  }
+
+  .cbox01 img {
+    width: 100%;
+    height: 250px;
+    object-fit: contain;     
+  }
+  .cbox01 p {
+    font-size: 10px;
+  }
 }
