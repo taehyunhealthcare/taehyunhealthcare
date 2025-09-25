@@ -81,15 +81,18 @@
 
     <!-- 헤더 시작 -->
     <header>
+    <button class="menu-toggle" aria-label="모바일 메뉴 열기">
+        <i class="fas fa-bars"></i>
+    </button>
     <div class="logo-wrapper">
-        <img class="logo" src="img/logo.png" alt="태현 헬스케어 이미지" />
+        <img class="logo" src="img/logo.png" alt="LOGO" />
     </div>
     </header>
 
     <!-- 헤더 끝 -->
 
     <!-- 메뉴 시작 -->
-    <nav>
+    <nav class="menu-pc">
         <ul class="menu">
             <li>
                 <a href="#">회사소개</a>
@@ -111,6 +114,43 @@
             </li>
             <li>
                 <a href="#">COMMUNITY</a>
+                <ul class="submenu">
+                    <li><a href="talk.html">Q&A</a></li>
+                    <li><a href="memo.html">자료실</a></li>
+                    <li><a href="notice.html">공지사항</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <!-- 메뉴 끝 -->
+
+    <!-- 모바일용 메뉴 (기본 숨김) -->
+    <nav class="mobile-menu">
+        <span class="close-btn">&times;</span> 
+        <ul>
+            <li>
+                <a href="./">홈</a>
+            </li>
+            <li>
+                <a href="about.html">회사소개</a>
+            </li>
+            <li class="has-submenu">
+                <a href="01_products.html">
+                    제품소개 <i class="fas fa-chevron-down submenu-toggle"></i>
+                </a>
+                <ul class="submenu">
+                    <li><a href="01_products.html">Fetal Doppler</a></li>
+                    <li><a href="02_products.html">Nebulizer</a></li>
+                    <li><a href="03_products.html">Pulse Oximeter</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="partnership.html">B2B</a>
+            </li>
+            <li class="has-submenu">
+                <a href="#">
+                    COMMUNITY <i class="fas fa-chevron-down submenu-toggle"></i>
+                </a>
                 <ul class="submenu">
                     <li><a href="talk.html">Q&A</a></li>
                     <li><a href="memo.html">자료실</a></li>
@@ -152,22 +192,21 @@
         </ul>
         </div>
 
-        <div class="qna-card">
-            <div class="qna-card-header">
-                <h3><a href="talk.html">Q&A</a></h3>
-                <button class="qna-more-btn" onclick="location.href='talk.html'">›</button>
+        <div class="memo-card">
+            <div class="memo-card-header">
+                <h3><a href="memo.html">자료실</a></h3>
+                <button class="memo-more-btn" onclick="location.href='memo.html'">›</button>
             </div>
+            <ul class="memo-list">
+                <!-- JS로 자료실 글이 자동 삽입됨 -->
+            </ul>
         </div>
     </div>
     <!-- 콘텐츠 끝 --> 
 
     <!-- 푸터 시작 -->
     <footer>
-        <div id="flogobox">
-            <div class="flogoleft"></div>
-            <div class="flogo"><a href="#"><img src="img/flogo.png" alt="태현헬스케어 로고"></a></div>
-            <div class="flogoright"></div>
-        </div>
+        <div class="flogo"><a href="#"><img src="img/flogo.png" alt="태현헬스케어 로고"></a></div>
         <div class="copy">
             <p>
                 상호명: 태현헬스케어 사업자등록번호: 139-86-02746 <span class="n">대표번호: 062-233-6015</span> <br>
@@ -178,9 +217,17 @@
             </p>
         </div>
     </footer>
-
-
     <!-- 푸터 끝 -->
+
+    <!-- 모바일용 푸터 -->
+    <div class="footer-second">
+        <p>
+            상호명: 태현헬스케어 사업자등록번호: 139-86-02746 <span class="s">대표번호: 062-233-6015</span> <br>
+            본사 주소: 광주광역시 동구 천변우로 453 (코밀빌딩) 4층 413호  <br>
+            평일: 09:00 ~ 17:00 / 점심시간: 12:00 ~ 13:00 / 휴무일: 주말 및 공휴일  <br>
+            &copy; 2025 태현헬스케어. ALL rights reserved. 
+        </p>
+    </div>
 
     <!-- 모달창 시작 -->
     <div id="privacyModal" class="modal">
@@ -293,57 +340,111 @@
     
     </script>
 
-    
-    <!-- 모달 스크립트 -->
+    <!-- 자료실 리스트 자동 삽입 -->
     <script>
     document.addEventListener("DOMContentLoaded", function () {
+        const memoList = document.querySelector(".memo-list");
+        let memoPosts = JSON.parse(localStorage.getItem('memoPosts') || '[]');
+
+        // 날짜 우선, 동일하면 id로 정렬
+        memoPosts.sort((a, b) => {
+            const dateCompare = new Date(b.date) - new Date(a.date);
+            if (dateCompare !== 0) return dateCompare;
+            return b.id - a.id;
+        });
+
+        const latestMemos = memoPosts.slice(0, 4); // 최대 4개
+
+        memoList.innerHTML = "";
+
+        latestMemos.forEach((item, index) => {
+            const li = document.createElement("li");
+            li.innerHTML = `
+            <a href="memo_view.html?id=${item.id}" style="${index === 0 ? 'border-top: 1px dotted #000;' : ''}">
+                <span class="memo-title">${item.title}</span>
+                <span class="memo-date">${item.date}</span>
+            </a>
+            `;
+            memoList.appendChild(li);
+        });
+    });
+    </script>
+
+    
+    <!-- 모달 + 모바일 메뉴 통합 스크립트 -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    /** ========== 개인정보 모달 관련 ========== **/
     const modal = document.getElementById("privacyModal");
     const openBtn = document.getElementById("openModalBtn");
     const closeBtn = document.querySelector(".close");
 
-    // 모달 열기
-    openBtn.onclick = function (e) {
+    if (modal && openBtn && closeBtn) {
+        // 모달 열기
+        openBtn.onclick = function (e) {
         e.preventDefault();
         modal.style.display = "block";
-        modal.scrollTop = 0; //  모달 자체 스크롤 초기화
+        modal.scrollTop = 0; // 스크롤 초기화
         document.body.classList.add("modal-open");
-    };
+        };
 
-    // 모달 닫기
-    closeBtn.onclick = function () {
+        // 모달 닫기
+        closeBtn.onclick = function () {
         modal.style.display = "none";
         document.body.classList.remove("modal-open");
-    };
+        };
 
-    // 바깥 클릭 시 모달 닫기
-    window.onclick = function (event) {
+        // 바깥 클릭 시 닫기
+        window.onclick = function (event) {
         if (event.target === modal) {
-        modal.style.display = "none";
-        document.body.classList.remove("modal-open");
+            modal.style.display = "none";
+            document.body.classList.remove("modal-open");
         }
-    };
-    });
+        };
 
-    document.addEventListener('DOMContentLoaded', function () {
-    const modal = document.getElementById('privacyModal');
+        // 드래그/복사/우클릭 방지
+        modal.addEventListener("dragstart", e => e.preventDefault());
+        modal.addEventListener("copy", e => e.preventDefault());
+        modal.addEventListener("contextmenu", e => e.preventDefault());
+    }
 
-    // 마우스 드래그 방지
-    modal.addEventListener('dragstart', function (e) {
-        e.preventDefault();
-    });
+    /** ========== 모바일 메뉴 관련 ========== **/
+    const menuToggle = document.querySelector(".menu-toggle");
+    const mobileMenu = document.querySelector(".mobile-menu");
+    const closeMenuBtn = document.querySelector(".mobile-menu .close-btn");
 
-    // 텍스트 복사 방지
-    modal.addEventListener('copy', function (e) {
-        e.preventDefault();
-    });
+    if (menuToggle && mobileMenu && closeMenuBtn) {
+        // 메뉴 열기
+        menuToggle.addEventListener("click", () => {
+        mobileMenu.classList.add("active");
+        document.body.classList.add("no-scroll");
+        });
 
-    // 오른쪽 클릭 방지
-    modal.addEventListener('contextmenu', function (e) {
-        e.preventDefault();
+        // 메뉴 닫기
+        closeMenuBtn.addEventListener("click", () => {
+        mobileMenu.classList.remove("active");
+        document.body.classList.remove("no-scroll");
+        });
+    }
+
+    /** ========== 서브메뉴 토글 관련 ========== **/
+    const submenuParents = document.querySelectorAll(".mobile-menu .has-submenu > a");
+
+    submenuParents.forEach(link => {
+        link.addEventListener("click", (e) => {
+        e.preventDefault(); // 링크 이동 방지
+        const parentLi = link.parentElement;
+        const submenu = parentLi.querySelector(".submenu");
+
+        if (!submenu) return;
+
+        // 토글 방식 → 여러 개 동시에 펼칠 수 있음
+        const isOpen = submenu.style.display === "block";
+        submenu.style.display = isOpen ? "none" : "block";
+        parentLi.classList.toggle("open", !isOpen);
+        });
     });
     });
     </script>
-
-
 </body>
 </html>
