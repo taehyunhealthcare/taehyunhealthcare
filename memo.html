@@ -3,14 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>자료실</title>
+    <meta name="description" content="태현헬스케어의 자료실에서는 Fetal Doppler, Nebulizer, Pulse Oximeter 등 의료기기의 제품설명서, 품질검사서 및 관련 자료를 확인하고 다운로드할 수 있습니다.">
+    <meta name="robots" content="index, follow">
 
-    <link rel="canonical" href="https://taehyunhealthcare.github.io/taehyunhealthcare/memo.html">
+    <title>자료실 - 태현헬스케어 | 자료 다운로드</title>
+
+    <link rel="canonical" href="https://thhealthcare.co.kr/memo.html">
 
     <!-- css,js 연결 코드 -->
     <link rel="stylesheet" href="css/style.css">
     <script src="js/jquery-1.12.4.min.js"></script>
     <script src="js/common.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <!-- 시작 -->
@@ -23,18 +28,20 @@
     </div>
     <!-- 끝 -->
      
-
     <!-- 헤더 시작 -->
     <header>
+    <button class="menu-toggle" aria-label="모바일 메뉴 열기">
+        <i class="fas fa-bars"></i>
+    </button>
     <div class="logo-wrapper">
-        <img class="logo" src="logo.png" alt="태현 헬스케어 이미지" />
+        <img class="logo" src="img/logo.png" alt="LOGO" />
     </div>
     </header>
 
     <!-- 헤더 끝 -->
 
     <!-- 메뉴 시작 -->
-    <nav>
+    <nav class="menu-pc">
         <ul class="menu">
             <li>
                 <a href="#">회사소개</a>
@@ -66,9 +73,48 @@
     </nav>
     <!-- 메뉴 끝 -->
 
+    <!-- 모바일용 메뉴 (기본 숨김) -->
+    <nav class="mobile-menu">
+        <span class="close-btn">&times;</span> 
+        <ul>
+            <li>
+                <a href="./">홈</a>
+            </li>
+            <li>
+                <a href="about.html">회사소개</a>
+            </li>
+            <li class="has-submenu">
+                <a href="01_products.html">
+                    제품소개 <i class="fas fa-chevron-down submenu-toggle"></i>
+                </a>
+                <ul class="submenu">
+                    <li><a href="01_products.html">Fetal Doppler</a></li>
+                    <li><a href="02_products.html">Nebulizer</a></li>
+                    <li><a href="03_products.html">Pulse Oximeter</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="partnership.html">B2B</a>
+            </li>
+            <li class="has-submenu">
+                <a href="#">
+                    COMMUNITY <i class="fas fa-chevron-down submenu-toggle"></i>
+                </a>
+                <ul class="submenu">
+                    <li><a href="talk.html">Q&A</a></li>
+                    <li><a href="memo.html">자료실</a></li>
+                    <li><a href="notice.html">공지사항</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <!-- 메뉴 끝 -->
+
      <!-- content 시작 -->
      <div class="n_contents">
-       <h2>자료실</h2>
+        <div class="qna-header">
+            <h2>자료실</h2>
+        </div>
         <div id="write-btn">
         <button id="go-write" style="
             background-color: #aaa;
@@ -122,11 +168,14 @@
         </ul>
         </div>
 
-        <div class="qna-card">
-            <div class="qna-card-header">
-                <h3><a href="talk.html">Q&A</a></h3>
-                <button class="qna-more-btn" onclick="location.href='talk.html'">›</button>
+        <div class="memo-card">
+            <div class="memo-card-header">
+                <h3><a href="memo.html">자료실</a></h3>
+                <button class="memo-more-btn" onclick="location.href='memo.html'">›</button>
             </div>
+            <ul class="memo-list">
+                <!-- JS로 자료실 글이 자동 삽입됨 -->
+            </ul>
         </div>
     </div>
     <!-- 콘텐츠 끝 --> 
@@ -141,13 +190,21 @@
         <div class="copy">
             <p>
                 상호명: 태현헬스케어 사업자등록번호: 139-86-02746 <span class="n">대표번호: 062-233-6015</span> <br>
-                이메일: taehyunhealthcare@naver.com 본사 주소: 광주광역시 동구 천변우로 453 (코밀빌딩) 4층 413호 
+                이메일: thhealthcare@naver.com 본사 주소: 광주광역시 동구 천변우로 453 (코밀빌딩) 4층 413호 
                 평일: 09:00 ~ 17:00 / 점심시간: 12:00 ~ 13:00 / 휴무일: 주말 및 공휴일 <br>
                 <span id="openModalBtn"><a href="#">개인정보처리방침</a></span>
                 &copy; 2025 태현헬스케어. ALL rights reserved.
             </p>
         </div>
     </footer>
+
+    <!-- 모바일용 푸터 -->
+    <div class="footer-second">
+        <p>상호명: 태현헬스케어</p>
+        <p><strong>대표번호: 062-233-6015</strong></p>
+        <p>광주광역시 동구 천변우로 453 (코밀빌딩) 4층 413호</p>
+        <p>&copy; 2025 태현헬스케어. ALL rights reserved.</p>
+    </div>
 
     <!-- 모달창 시작 -->
     <div id="privacyModal" class="modal">
@@ -238,121 +295,124 @@
     <!-- 글 리스트 출력 및 삭제 스크립트 + 페이지 처리 스크립트-->
     <script>
     document.addEventListener("DOMContentLoaded", function(){
-    const isAdmin = localStorage.getItem('isAdmin') === 'true';
-    document.getElementById('write-btn').style.display = isAdmin ? 'block' : 'none';
-    document.getElementById('go-write').onclick = () => {
-        if (isAdmin) location.href = 'memo_write.html';
-        else alert("관리자만 작성 가능합니다.");
-    };
+        const isAdmin = localStorage.getItem('isAdmin') === 'true';
+        document.getElementById('write-btn').style.display = isAdmin ? 'block' : 'none';
+        document.getElementById('go-write').onclick = () => {
+            if (isAdmin) location.href = 'memo_write.html';
+            else alert("관리자만 작성 가능합니다.");
+        };
 
-    let memos = JSON.parse(localStorage.getItem('memos') || '[]').reverse();
-    const pageSize = 7, pagesToShow = 4;
-    let currentPage = 1, groupStart = 1;
-    const tbody = document.querySelector('table.board tbody');
-    const nav = document.querySelector('.pagination');
+        let memos = JSON.parse(localStorage.getItem('memoPosts') || '[]').reverse(); // ✅ key 변경
+        const pageSize = 7, pagesToShow = 4;
+        let currentPage = 1, groupStart = 1;
+        const tbody = document.querySelector('table.board tbody');
+        const nav = document.querySelector('.pagination');
 
-    function refreshMemos() {
-        memos = JSON.parse(localStorage.getItem('memos') || '[]').reverse();
-    }
+        function refreshMemos() {
+            memos = JSON.parse(localStorage.getItem('memoPosts') || '[]').reverse(); // ✅ key 변경
+        }
 
-    function getTotalPages() {
-        return Math.ceil(memos.length / pageSize) || 1;
-    }
+        function getTotalPages() {
+            return Math.ceil(memos.length / pageSize) || 1;
+        }
 
-    function renderMemos(page = 1) {
-        refreshMemos();
-        currentPage = page;
-        let totalPages = getTotalPages();
+        function renderMemos(page = 1) {
+            refreshMemos();
+            currentPage = page;
+            let totalPages = getTotalPages();
 
-        if (currentPage > totalPages) currentPage = totalPages;
-        if (groupStart > totalPages) groupStart = Math.max(1, totalPages - pagesToShow + 1);
+            if (currentPage > totalPages) currentPage = totalPages;
+            if (groupStart > totalPages) groupStart = Math.max(1, totalPages - pagesToShow + 1);
 
-        const startIdx = (currentPage - 1) * pageSize;
-        const subset = memos.slice(startIdx, startIdx + pageSize); 
+            const startIdx = (currentPage - 1) * pageSize;
+            const subset = memos.slice(startIdx, startIdx + pageSize); 
 
-        tbody.innerHTML = '';
+            tbody.innerHTML = '';
 
-        // ✅ 고정글 먼저 출력
-        fixedMemos.forEach(item => {
-        const tr = document.createElement('tr');
-        tr.classList.add('fixed-row'); // optional: 고정글에 스타일 입히기
-        tr.innerHTML = `
-            <td class="pin-icon" title="고정된 글입니다">📌</td>
-            <td><a href="${item.link}">${item.title}</a></td>
-            <td>${item.date}</td>
-            <td>${item.author}</td>
-        `;
-        tbody.appendChild(tr);
-        });
-
-        // ✅ 일반글 출력
-        subset.forEach((item, idx) => {
-        const tr = document.createElement('tr');
-        tr.style.position = 'relative';
-        tr.innerHTML = `
-            <td>${startIdx + idx + 1}</td>
-            <td><a href="memo_view.html?id=${item.id}">${item.title}</a></td>
-            <td>${item.date}</td>
-            <td>${item.author}</td>
-        `;
-        if (isAdmin) {
-            const btn = document.createElement('button');
-            btn.textContent = '삭제';
-            btn.style.cssText = 'position:absolute;right:-80px;top:50%;transform:translateY(-50%);padding:0 10px;background:#eee;border:1px solid #aaa;cursor:pointer;';
-            btn.onclick = () => {
-            if (confirm("정말 삭제하시겠습니까?")) {
-                memos.splice(startIdx + idx, 1);
-                localStorage.setItem('memos', JSON.stringify(memos.reverse()));
-                renderMemos(currentPage);
+            //  고정글 출력 
+            if (typeof fixedMemos !== "undefined") {
+                fixedMemos.forEach(item => {
+                    const tr = document.createElement('tr');
+                    tr.classList.add('fixed-row');
+                    tr.innerHTML = `
+                        <td class="pin-icon" title="고정된 글입니다">📌</td>
+                        <td><a href="${item.link}">${item.title}</a></td>
+                        <td>${item.date}</td>
+                        <td>${item.author}</td>
+                    `;
+                    tbody.appendChild(tr);
+                });
             }
-            };
-            tr.appendChild(btn);
-        }
-        tbody.appendChild(tr);
-        });
 
-        renderPagination();
-    }
+            //  일반글 출력
+            subset.forEach((item, idx) => {
+                const tr = document.createElement('tr');
+                tr.style.position = 'relative';
+                tr.innerHTML = `
+                    <td>${startIdx + idx + 1}</td>
+                    <td><a href="memo_view.html?id=${item.id}">${item.title}</a></td>
+                    <td>${item.date}</td>
+                    <td>${item.author}</td>
+                `;
+                if (isAdmin) {
+                    const btn = document.createElement('button');
+                    btn.textContent = '삭제';
+                    btn.style.cssText = 'position:absolute;right:-80px;top:50%;transform:translateY(-50%);padding:0 10px;background:#eee;border:1px solid #aaa;cursor:pointer;';
+                    btn.onclick = () => {
+                        if (confirm("정말 삭제하시겠습니까?")) {
+                            memos.splice(startIdx + idx, 1);
+                            localStorage.setItem('memoPosts', JSON.stringify(memos.reverse())); // ✅ key 변경
+                            renderMemos(currentPage);
+                        }
+                    };
+                    tr.appendChild(btn);
+                }
+                tbody.appendChild(tr);
+            });
 
-    function renderPagination() {
-        const totalPages = getTotalPages();
-        nav.innerHTML = '';
-
-        if (groupStart > 1) {
-        const prev = document.createElement('button');
-        prev.textContent = '◀';
-        prev.classList.add('nav-group');
-        prev.onclick = () => {
-            groupStart = Math.max(1, groupStart - pagesToShow);
-            renderMemos(groupStart);
-        };
-        nav.appendChild(prev);
-        }
-
-        const end = Math.min(groupStart + pagesToShow - 1, totalPages);
-        for (let i = groupStart; i <= end; i++) {
-        const btn = document.createElement('button');
-        btn.textContent = i;
-        if (i === currentPage) btn.classList.add('active');
-        btn.onclick = () => renderMemos(i);
-        nav.appendChild(btn);
+            renderPagination();
         }
 
-        if (end < totalPages) {
-        const next = document.createElement('button');
-        next.textContent = '▶';
-        next.classList.add('nav-group');
-        next.onclick = () => {
-            groupStart = groupStart + pagesToShow;
-            renderMemos(groupStart);
-        };
-        nav.appendChild(next);
-        }
-    }
+        function renderPagination() {
+            const totalPages = getTotalPages();
+            nav.innerHTML = '';
 
-    renderMemos(1);
+            if (groupStart > 1) {
+                const prev = document.createElement('button');
+                prev.textContent = '◀';
+                prev.classList.add('nav-group');
+                prev.onclick = () => {
+                    groupStart = Math.max(1, groupStart - pagesToShow);
+                    renderMemos(groupStart);
+                };
+                nav.appendChild(prev);
+            }
+
+            const end = Math.min(groupStart + pagesToShow - 1, totalPages);
+            for (let i = groupStart; i <= end; i++) {
+                const btn = document.createElement('button');
+                btn.textContent = i;
+                if (i === currentPage) btn.classList.add('active');
+                btn.onclick = () => renderMemos(i);
+                nav.appendChild(btn);
+            }
+
+            if (end < totalPages) {
+                const next = document.createElement('button');
+                next.textContent = '▶';
+                next.classList.add('nav-group');
+                next.onclick = () => {
+                    groupStart = groupStart + pagesToShow;
+                    renderMemos(groupStart);
+                };
+                nav.appendChild(next);
+            }
+        }
+
+        renderMemos(1);
     });
     </script>
+
 
     <!-- 공지사항 리스트 자동 삽입 스크립트 -->
     <script>
@@ -373,7 +433,7 @@
     latestNotices.forEach((item, index) => {
         const li = document.createElement("li");
         li.innerHTML = `
-        <a href="notice_view.html?id=${item.id}" style="${index === 0 ? 'border-top: 1px dotted #000;' : ''}">
+        <a href="notice_view.html?id=${item.id}" style="${index === 0 ? 'border-top: 1px solid #000;' : ''}">
             <span class="notice-title">${item.title}</span>
             <span class="notice-date">${item.date}</span>
         </a>
@@ -383,34 +443,133 @@
     });
     </script>
 
-    <!-- 모달 스크립트 -->
+    <!-- 자료실 리스트 자동 삽입 -->
     <script>
     document.addEventListener("DOMContentLoaded", function () {
+        const memoList = document.querySelector(".memo-list");
+        let memoPosts = JSON.parse(localStorage.getItem('memoPosts') || '[]');
+
+        // 날짜 우선, 동일하면 id로 정렬
+        memoPosts.sort((a, b) => {
+            const dateCompare = new Date(b.date) - new Date(a.date);
+            if (dateCompare !== 0) return dateCompare;
+            return b.id - a.id;
+        });
+
+        const latestMemos = memoPosts.slice(0, 4); // 최대 4개
+
+        memoList.innerHTML = "";
+
+        latestMemos.forEach((item, index) => {
+            const li = document.createElement("li");
+            li.innerHTML = `
+            <a href="memo_view.html?id=${item.id}" style="${index === 0 ? 'border-top: 1px solid #000;' : ''}">
+                <span class="memo-title">${item.title}</span>
+                <span class="memo-date">${item.date}</span>
+            </a>
+            `;
+            memoList.appendChild(li);
+        });
+    });
+    </script>
+
+    <!-- 모달 + 모바일 메뉴 통합 스크립트 -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    /** ========== 개인정보 모달 관련 ========== **/
     const modal = document.getElementById("privacyModal");
     const openBtn = document.getElementById("openModalBtn");
     const closeBtn = document.querySelector(".close");
 
-    // 모달 열기
-    openBtn.onclick = function (e) {
+    if (modal && openBtn && closeBtn) {
+        // 모달 열기
+        openBtn.onclick = function (e) {
         e.preventDefault();
         modal.style.display = "block";
-        modal.scrollTop = 0; //  모달 자체 스크롤 초기화
+        modal.scrollTop = 0; // 스크롤 초기화
         document.body.classList.add("modal-open");
-    };
+        };
 
-    // 모달 닫기
-    closeBtn.onclick = function () {
+        // 모달 닫기
+        closeBtn.onclick = function () {
         modal.style.display = "none";
         document.body.classList.remove("modal-open");
-    };
+        };
 
-    // 바깥 클릭 시 모달 닫기
-    window.onclick = function (event) {
+        // 바깥 클릭 시 닫기
+        window.onclick = function (event) {
         if (event.target === modal) {
-        modal.style.display = "none";
-        document.body.classList.remove("modal-open");
+            modal.style.display = "none";
+            document.body.classList.remove("modal-open");
         }
-    };
+        };
+
+        // 드래그/복사/우클릭 방지
+        modal.addEventListener("dragstart", e => e.preventDefault());
+        modal.addEventListener("copy", e => e.preventDefault());
+        modal.addEventListener("contextmenu", e => e.preventDefault());
+    }
+
+    /** ========== 모바일 메뉴 관련 ========== **/
+    const menuToggle = document.querySelector(".menu-toggle");
+    const mobileMenu = document.querySelector(".mobile-menu");
+    const closeMenuBtn = document.querySelector(".mobile-menu .close-btn");
+
+    // 서브메뉴 초기화 함수
+    function resetSubmenus() {
+        const submenuParents = document.querySelectorAll(".mobile-menu .has-submenu");
+        submenuParents.forEach(parent => {
+        parent.classList.remove("open");
+        const submenu = parent.querySelector(".submenu");
+        if (submenu) submenu.style.display = "none";
+        });
+    }
+
+    if (menuToggle && mobileMenu && closeMenuBtn) {
+        // 메뉴 열기
+        menuToggle.addEventListener("click", () => {
+        mobileMenu.classList.add("active");
+        document.body.classList.add("no-scroll");
+        });
+
+        // 메뉴 닫기 (X 버튼)
+        closeMenuBtn.addEventListener("click", () => {
+        mobileMenu.classList.remove("active");
+        document.body.classList.remove("no-scroll");
+        resetSubmenus(); // 서브메뉴 초기화
+        });
+    }
+
+    /** ========== 서브메뉴 토글 관련 ========== **/
+    const submenuParents = document.querySelectorAll(".mobile-menu .has-submenu > a");
+
+    submenuParents.forEach(link => {
+        link.addEventListener("click", (e) => {
+        e.preventDefault(); // 링크 이동 방지
+        const parentLi = link.parentElement;
+        const submenu = parentLi.querySelector(".submenu");
+
+        if (!submenu) return;
+
+        // 토글 방식
+        const isOpen = submenu.style.display === "block";
+        submenu.style.display = isOpen ? "none" : "block";
+        parentLi.classList.toggle("open", !isOpen);
+        });
+    });
+
+    // 메뉴 바깥 클릭 시 닫기
+    document.addEventListener("click", (e) => {
+        if (
+        mobileMenu.classList.contains("active") &&
+        !mobileMenu.contains(e.target) &&
+        !menuToggle.contains(e.target)
+        ) {
+        mobileMenu.classList.remove("active");
+        document.body.classList.remove("no-scroll");
+        resetSubmenus(); // 서브메뉴 초기화
+        }
+    });
     });
     </script>
 </body>
