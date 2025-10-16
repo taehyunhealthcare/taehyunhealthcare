@@ -141,7 +141,7 @@ header {
 }
 
 .submenu > li > a:hover {
-  background-color: #f0f4ff; /* hover 시 은은한 블루톤 */
+  background-color: #f0f4ff; 
   font-weight: bold;
 }
 
@@ -152,7 +152,7 @@ header {
   margin: 0 auto;
   display: flex;
   border-top: 1px solid rgba(0, 0, 0, 0.55);
-  margin-top: 100px;
+  margin-top: 50px;
   padding-top: 30px;
   gap: 10px;
 }
@@ -161,9 +161,9 @@ header {
   width: 100%;
   max-width: 600px;
   height: 250px;
-  margin: 20px auto;               /* 위 여백 줄이기 */
+  margin: 20px auto;              
   padding: 20px;
-  background-color: #fff;       /* 박스 전체 배경 적용 */
+  background-color: #fff;      
   color: rgba(0, 0, 0, 0.78);
   border-radius: 12px;
   box-shadow: 0 8px 8px rgba(0,0,0,0.1);
@@ -175,7 +175,7 @@ header {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 12px;
-  background: transparent; /* 헤더에는 배경 제거 */
+  background: transparent; 
 }
 
 .notice-card-header>h3>a {
@@ -467,7 +467,7 @@ body.modal-open {
   margin: 0;
   color: #666;
   font-size: 14px;
-  margin-top: 80px;
+  margin-top: 80px;  
 }
 .inquiry-header span {
   float: right;
@@ -485,7 +485,7 @@ fieldset {
   margin-bottom: 100px;
 }
 
-.section-divider,
+
 .form-divider {
   border-top: 1px solid #ccc;
   width: 100%;
@@ -520,12 +520,13 @@ fieldset {
 }
 
 .form-row label {
-  width: 150px; /* 원하는 너비로 조정 */
-  text-align: center; /* 라벨 텍스트를 오른쪽 정렬 */
-  padding-right: 10px; /* 라벨과 입력 필드 사이 간격 */  
+  width: 150px; 
+  text-align: center; 
+  padding-right: 10px; 
   font-size: 16px;
   font-weight: bold;
 }
+
 .form-row input[type="text"] {
   padding: 8px;
   border: 1px solid #ccc;
@@ -534,7 +535,7 @@ fieldset {
   font-size: 14px;
 }
 
-.form-row input[type="text"] { width: 1050px; }
+.form-row input[type="text"] { width: 100%; max-width: 1050px; }
 
 .textarea-wrapper {
   width: 1050px;
@@ -635,6 +636,42 @@ select {
   margin-top: 15px;
 }
 
+.custom-alert-overlay {
+  position: fixed;
+  inset: 8;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+}
+
+.custom-alert-box {
+  background: #fff;
+  width: min(420px, 90vw);
+  padding: 20px 22px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.custom-alert-text {
+  margin: 0 0 16px 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #111;
+}
+
+.custom-alert-btn {
+  padding: 6px 18px;
+  border: 1px solid #bbb;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+  transition: background-color 0.2 ease;
+}
+
+.custom-alert-btn:hover {background-color: #f0f0f0;}
 /* 01_partnership.html, 03_partnership.html CSS */
 
 .complete-container {
@@ -872,7 +909,7 @@ select {
 
 .cbox01 {
   display: flex;
-  justify-content: center; /* <-- 이것만 추가하면 됨 */
+  justify-content: center; 
   gap: 200px;
   padding-top: 100px;
 }
@@ -902,6 +939,47 @@ select {
   color: #000;
   position: static;
 }
+
+.contents02 {
+  max-width: 1200px;
+  width: 100%;
+  height: 600px;
+  margin: 0 auto;
+ }
+
+.cbox02 {
+  display: flex;
+  justify-content: center; 
+  gap: 200px;
+  padding-top: 50px;
+}
+
+.cbox02 > a {
+  display: inline-block;
+  position: relative;
+  width: 300px;
+  height: auto;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+.cbox02 img {
+  width: 300px;
+  height: 400px;
+  object-fit: cover;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  display: block;
+}
+
+.cbox02 p {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #000;
+  position: static;
+}
+
 /* 01,02,03_products.html, download.html, memo.html, notice.html, talk.html 공용 CSS */
 
 .pagination-container {
@@ -943,7 +1021,7 @@ select {
   background: #f0f0f0;
   border: 1px solid #ccc;
   color: #333;
-  padding: 4px 8px;           /* 버튼 크기를 줄임 */
+  padding: 4px 8px;
   margin: 0 2px;
   font-size: 14px;
   border-radius: 50%;      
@@ -977,7 +1055,7 @@ select {
 
 #jbox1 {
   position: relative;
-  width: 510px; /* 적당한 크기로 조정 가능 */
+  width: 510px;
   height: 510px;
   margin: 0 auto;
   border: 1px solid #999;
@@ -986,7 +1064,7 @@ select {
 .slider-container {
   position: relative;
   overflow: hidden;
-  height: 510px; /* 이미지 높이에 맞춰 조정 */
+  height: 510px;
   display: flex;
   align-items: center;
 }
@@ -1018,8 +1096,8 @@ select {
   transform: translateY(-50%);
   width: 40px;
   height: 40px;
-  border-radius: 50%; /* 원형 */
-  background: rgba(0, 0, 0, 0.4); /* 반투명한 어두운 배경 */
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.4);
   border: none;
   cursor: pointer;
   z-index: 10;
@@ -1034,7 +1112,7 @@ select {
 
 .prev-btn:hover,
 .next-btn:hover {
-  background: rgba(0, 0, 0, 0.8); /* 호버 시 조금 더 짙은 배경 */
+  background: rgba(0, 0, 0, 0.8);
 }
 
 /* 방향키 스타일 */
@@ -1059,9 +1137,9 @@ select {
 
 .indicator-container {
   position: absolute;
-  bottom: 10px;     /* 이미지 안쪽 하단에서 10px 위 */
+  bottom: 10px;     
   left: 50%;
-  transform: translateX(-50%); /* 수평 가운데 정렬 */
+  transform: translateX(-50%); 
   display: flex;
   gap: 8px;
   z-index: 10;       
@@ -1081,12 +1159,12 @@ select {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.3; /* 비활성 상태일 때 */
+  opacity: 0.3; 
   transition: opacity 0.3s;
 }
 
 .indicator.active img {
-  opacity: 1; /* 현재 슬라이드일 경우 */
+  opacity: 1; 
 }
 
 #jbox2 {
@@ -1121,21 +1199,46 @@ select {
 }
 
 /* 요약 텍스트 */
-.product-description .summary {
-  max-height: 6.9em;     /* 약 4줄 */
+.product-description .summary {  
   border: 1px solid #ccc;
   padding: 8px 12px;
   border-radius: 4px;
   background-color: #fff;
   margin-bottom: 8px;
   line-height: 1.7;
-  max-height: 6em; /* 3줄 높이 */
+  max-height: 8em;
   overflow: hidden;
   font-size: 14px;
 }
 
 .product-description .summary.expanded {
-  max-height: none; /* 전체 펼치기 */
+  max-height: none;
+}
+
+/* 네뷸라이저 제품 css */
+.summary-n {
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  border-radius: 4px;
+  background-color: #fff;
+  margin-bottom: 8px;
+  line-height: 1.7;
+  max-height: 9.6em;
+  overflow: hidden;
+  font-size: 14px;
+}
+
+/* 옥시미터 제품 css */
+.summary-p {
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  border-radius: 4px;
+  background-color: #fff;
+  margin-bottom: 8px;
+  line-height: 1.7;
+  max-height: 17em;
+  overflow: hidden;
+  font-size: 14px;
 }
 
 .more-text {
@@ -1306,6 +1409,10 @@ td.pin-icon {
   margin-bottom: 25px;
 }
 
+.form-group-1 {
+  margin-bottom: 25px;
+}
+
 #name1, #email1 {
   width: 100%;
   height: 40px;
@@ -1313,6 +1420,7 @@ td.pin-icon {
   border: 1px solid #ccc;
   font-size: 16px;
   box-sizing: border-box;
+  margin-top: 5px;
 }
 
 #title1,
@@ -1322,7 +1430,8 @@ td.pin-icon {
   font-size: 16px;
   box-sizing: border-box;
   border: 1px solid #ccc;
-  border-radius: 4px;
+
+  margin-top: 5px;
 }
 
 #content1 {
@@ -1332,9 +1441,9 @@ td.pin-icon {
 
 .file-upload-box1 {
   border: 1px solid #ccc;
-  border-radius: 4px;
   background-color: #f3f3f3;
   padding: 20px;
+  margin-top: 5px;
 }
 
 .file-label1 {
@@ -1360,7 +1469,7 @@ td.pin-icon {
 
 .form-group2 {
   display: flex;
-  justify-content: center; /* 수평 가운데 정렬 */
+  justify-content: center;
   margin-top: 20px;
 }
 
@@ -1415,6 +1524,26 @@ td.pin-icon {
 }
 .delete-btn1:hover{ background:#eef2f7; }
 
+.small {
+  color: #666;
+  font-size: 12px;
+}
+.small-1 {
+  color: #666;
+  font-size: 12px;
+}
+.content1-small {
+  color: #666;
+  font-size: 12px;
+  display: flex;
+  padding-top: 2px;
+}
+#small-span {
+  padding: 0 2px 5px 2px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
 
 /* download.html, veiw.html, notice_view.html, memo_view.html 공용 CSS */
 
@@ -1440,7 +1569,7 @@ td.pin-icon {
 .dboxbtn {
   width: 100%;
   display: flex;
-  justify-content: flex-end; /* 오른쪽 정렬 */
+  justify-content: flex-end;
   padding: 10px 0;
   margin: 60px 0 ;
 }
@@ -1462,6 +1591,37 @@ td.pin-icon {
   border: 1px solid #000;
   color: #000;
 }
+
+#download-view {
+  width: 100%;
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+#download-view h2 {margin-bottom: 10px;}
+
+.download-name {
+  font-size: 14px;
+  color: #555;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.download-file {
+  margin-bottom: 10px;
+  display: flex;
+}
+
+.download-text {
+  line-height: 1.8;
+  padding: 10px 0;
+}
+
+.mobile-download-text {display: none;}
 
 /* view.html, notice_view.html, memo_view.html 공용 CSS */
 
@@ -1533,7 +1693,7 @@ td.pin-icon {
   min-height: 500px;  
   padding: 20px;
   border: 1px solid #ddd;
-  white-space: pre-wrap; /* 줄바꿈 유지 */
+  white-space: pre-wrap;
   box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -1683,7 +1843,10 @@ span.s {
   display: none;
 }
 
-.mobile_p { display: none; }
+.mobile_p {
+  display: none;
+  padding: 10px;
+}
 
 .card-1 { display: none; }
 
@@ -1692,7 +1855,19 @@ span.s {
 
 .mobile-nav {display: none;}
 
+#mobile-jbox {display: none;}
 
+.qna_h2 {
+  font-size: 20px;
+  border-left: 4px solid #0a5c9f;
+  padding-left: 15px;
+  margin: 150px 0 30px 0;
+  height: 100%;
+  max-height: 25px;
+}
+
+#download-view-mobile {display: none;}
+.d-btn-mobile {display: none;}
 
 /* index.html 미디어쿼리 */
 @media (max-width: 480px) {
@@ -1706,11 +1881,12 @@ span.s {
     flex-direction: row; 
     align-items: center;
     justify-content: space-between;
-    padding: 10px 5px;
+    padding: 2% 4%;  
   }
 
   .logo-wrapper {
-    width: 120px;   
+    width: 35%;   
+    max-width: 120px;
     margin: 0 auto;
   }
 
@@ -1720,14 +1896,17 @@ span.s {
   }
 
   .menu-pc {display: none;}
-  .menu-toggle {display: block; margin-left: 10px;}
+  .menu-toggle {
+    display: block;
+    font-size: 1.4rem; 
+    padding: 8px 2px;
+  }
 
   #slide {
-    width: 100%;
-    max-width: 450px;
-    height: 200px;
+    width: 94%;
     margin: 0 auto;
     position: relative;
+    aspect-ratio: 16/9; 
   }
 
   #slide a{
@@ -1746,42 +1925,55 @@ span.s {
   }
 
   #slide .indicators span {
-    width: 8px;
-    height: 8px;
+    width: 0.5rem;
+    height: 0.5rem;
   }
 
   #contents {
     flex-direction: column; 
     align-items: stretch;
-    min-height: 400px;
+    min-height: auto; 
     height: auto;
     border-top: none;
-    position: relative;
-    padding-top: 10px;
-  }
-
-  #contents::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 10px;  
-    right: 10px; 
-    height: 1px;
-    background: #ddd; 
+    padding: 4% 0;   
   }
 
   .notice-card,
   .memo-card {
-    width: 90%;
-    max-height: 150px;
-    overflow: hidden;
-    margin-bottom: 20px;
-    box-sizing: border-box;
-    padding: 3px 20px;
+    width: 100%;
+    max-width: 440px;
+    margin: 10px auto;     
+    padding: 0;
+    background: none;
+    border: none;
+    box-shadow: none;
   }
 
-  .memo-card:last-child {
-    margin-bottom: 0;
+  .notice-card-header,
+  .memo-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;    
+    border-bottom: none;  
+    padding-bottom: 2px;
+  }
+
+  .notice-card-header > h3 > a {font-size: 16px;}
+  .memo-card-header > h3 > a {font-size: 16px;}
+
+  .notice-list li a,
+  .memo-list li a {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px; 
+    padding: 0.2rem 0;   
+    border-bottom: 1px solid #eee;
+  }
+
+  .notice-list li:last-child a,
+  .memo-list li:last-child a {
+    border-bottom: none;
   }
 
   footer {
@@ -1789,31 +1981,61 @@ span.s {
   }
 
   .footer-second {
+    display: block !important;
+    max-width: 92%;
+    margin: 1.2rem auto;
+    padding: 1rem;
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: #333;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    text-align: center;
+  }
+
+  .footer-second p {
+    margin: 0.3rem 0;
+    word-break: keep-all;
+  }
+
+  .footer-second strong {
     display: block;
+    font-size: 0.9rem;
+    color: #000;
   }
 }
 
 /* abuout.html 미디어쿼리 */
 @media (max-width: 480px) {
 
-.qna-header1 > h2 { border: none;}
-.pc_p {display: none;}
-.mobile_p {display: block;}
+  .pc_p {display: none;}
 
-  .n_box {
-    height: auto; 
-    padding: 15px;
-  }
-
-  .about-section {
-    line-height: 1.6;
+  .mobile_p {
+    display: block;
+    margin-top: 30px;
     font-size: 12px;
   }
 
+  .n_box {
+    width: 100%;
+    max-width: 440px;
+    height: auto; 
+    margin: 0 auto;
+  }
+  
+  .about-section {
+    font-size: 0.85rem;
+  }
+
   .about-section h2 {
-    font-size: 18px;
-    margin-top: 30px;
-    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 5rem 0 0 0;
+    line-height: 1.2;
   }
 
   .card {display: none;}
@@ -1825,64 +2047,51 @@ span.s {
     text-align: center;
   }
 
-  .section-title {
-    margin: 20px;      
-    font-weight: bold;
-    position: relative;
-    padding-bottom: 10px; 
-    font-size: 22px;   
-  }
-
-  .section-title::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: calc(100% - 0px); 
-    height: 1.5px;
-    background: #ccc;
-  }
-
-
   .n_box section > div {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 40px;
-    row-gap: 40px;
-    justify-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.2rem;
+    margin-top: 30px;
   }
 
   .n_box .card-1 {
-    min-width: 200px;
+    min-width: 160px;
     width: 100%;
-    max-width: 160px;   
+    max-width: 210px;   
     height: auto;
-    padding: 15px;
+    padding: 1rem;
     box-sizing: border-box;
   }
 
   .n_box .card-1 img {
     width: 100%;
-    height: 180px;      
+    height: auto;  
+    max-height: 180px;    
     object-fit: cover;
     border-radius: 8px;
-    margin-bottom: 10px;
+    margin-bottom: 0.5rem;
   }
 
   .n_box .card-1 h3 {
-    font-size: 10px;
-    margin: 10px 0 8px;
+    font-size: 0.65rem;
   }
 
   .n_box .card-1 p {
-    font-size: 10px;
-    line-height: 1.4;
+    font-size: 0.6rem;
+    line-height: 1.6;
+    margin-top: 0.5rem;
   }
 
   .n_box section > div .card-1:nth-child(3) {
     grid-column: 1 / span 2;
-    max-width: 180px;
+    max-width: 210px;
     justify-self: center;
+  }
+
+  .b_p {
+    margin-top: 30px;
+    font-size: 12px;
   }
 
   #mobile-map {display: block;}
@@ -1893,34 +2102,36 @@ span.s {
 
   .mobile-map-container {
     width: 100%;
-    margin-bottom: 15px;        
+    margin-bottom: 1rem;        
   }
 
   .mobile-map-info {
     display: block;   
-    width: 450px;    
-    margin-top: 20px;   
+    width: 100%;    
+    margin-top: 1rem;   
   }
 
   .mobile-map-row {
     display: flex;             
-    margin-bottom: 8px;
+    margin-bottom: 0.5rem;
   }
 
   .mobile-map-row .label {
-    width: 80px;
+    width: 5rem;
     font-weight: bold;
     background: #f1f1f1;
     text-align: center;
-    padding: 5px;
+    padding: 0.3rem;
     border: 1px solid #ddd;
+    font-size: 12px;
   }
 
   .mobile-map-row .content {
     flex: 1;
     border: 1px solid #ddd;
     border-left: none;
-    padding: 5px;
+    padding: 0.3rem;
+    font-size: 12px;
   }
 }
 
@@ -1931,7 +2142,8 @@ span.s {
   .nav1 {display: none;}
 
   .mobile-nav {
-    width: 440px;
+    width: 100%;
+    max-width: 440px;
     margin: 0 auto;
     display: block;
     margin-top: 20px;
@@ -1942,18 +2154,20 @@ span.s {
     padding-bottom: 25px;
   }
 
-  .mobile-nav h2 {font-size: 22px;}
+  .mobile-nav h2 {font-size: 18px;}
 
-    .contents01 {
+  .contents01 {
     width: 100%;
-    height: 300px;
+    height: 350px;
     display: flex;
     justify-content: center; 
   }
 
   .cbox01 {
-    width: 450px;       
-    height: 100%;   
+    width: 100%;
+    max-width: 450px;     
+    height: 100%;  
+    min-height: 300px;
     display: flex;
     justify-content: space-between; 
     gap: 10px;            
@@ -1970,10 +2184,869 @@ span.s {
 
   .cbox01 img {
     width: 100%;
-    height: 250px;
+    height: 100%;
+    max-height: 250px;
     object-fit: contain;     
   }
+
   .cbox01 p {
+    font-size: 12px;
+  }
+
+  .contents02 {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .cbox02 {
+    width: 100%;
+    max-width: 450px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    box-sizing: border-box;
+    padding: 0;
+    margin-top: 50px;
+  }
+
+  .cbox02 a {
+    height: 280px;
+    flex: 1;
+    text-align: center;
+  }
+
+  .cbox02 img {
+    width: 100%;
+    height: 100%;
+    max-height: 250px;
+    object-fit: contain;
+  }
+
+  .cbox02 p {
+    font-size: 12px;
+  }
+}
+
+/* jaepum.html 미디어 쿼리 */
+@media (max-width: 480px) {
+  
+  .n_contents1 {
+    width: 100%;
+    height: auto;
+  }
+
+  .qna-header1 > h2 {
+    font-size: 18px;
+    width: 100%;
+    max-width: 440px;
+    margin: 0 auto;
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding-top: 25px;
+    padding-bottom: 25px;
+    }
+
+  #j-contents {
+    flex-direction: column; 
+    padding: 10px;
+    gap: 20px;
+  }
+
+  #jbox1, 
+  #jbox2 {
+    width: 100%;             
+    max-width: 100%;
+    aspect-ratio: 1 / 1;
+    height: auto;            
+    position: relative;     
+    border: 1px solid #ddd;    
+  }
+  
+
+  .slider-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+  }
+
+  .slider-wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .slider-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;    
+    position: absolute;       
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  .slider-wrapper img.active {
+    opacity: 1;            
+  }
+
+  /* indicator 크기 축소 */
+  .indicator {
+    width: 30px;
+    height: 30px;
+  }
+  #jbox2 {display: none;}
+
+  #mobile-jbox {
+    width: 100%;     
+    border: 1px solid #ddd;
+    padding: 15px;
+    min-height: auto;
+    box-sizing: border-box;
+    display: block;
+  }
+
+  #mobile-jbox h3 {
+    font-size: 16px;
+    text-align: center;
+    padding-top: 20px;
+    margin-bottom: 15px;
+  }
+
+  .mobile-description {
+    padding: 10px;
+  }
+
+  .mobile-title {
+    font-size: 12px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    padding: 5px 15px;
+  }
+
+  .mobile-summary {
+    font-size: 12px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    padding: 15px;
+  }
+
+  .mobile-text {
+    font-size: 12px;
+    line-height: 1.6;
+    border: 1px solid #ddd;
+    padding: 15px;
+  }
+
+  .purchase-btn {
+    width: 100%;
+    max-width: 200px;
+    margin: 20px auto 0;
+    font-size: 14px;
+    padding: 12px 0;
+    border-radius: 8px;
+  }
+}
+
+/* partnership.html 미디어쿼리 */
+@media (max-width:480px) {
+
+  .partner-form-container {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .inquiry-header {
+    width: 100%;
+    max-width: 440px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    border-bottom: none;
+    border-top: 1px solid #ddd;
+    padding: 0;
+    margin-top: 20px;
+  }
+
+  .inquiry-header h2 {
+    font-size: 18px;
+    margin: 0;
+  }
+
+  .inquiry-header p {
     font-size: 10px;
+    margin: 0;
+    line-height: 1;
+    text-align: right;
+    max-width: 65%;
+  }
+
+  .inquiry-header span {
+    display: block;
+    margin-top: 5px;
+  }
+
+  .form-label-box {
+    width: 100%;
+    max-width: 440px;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    margin-left: 20px;
+    padding: 0;
+  }
+  .form-divider {border: none;}
+  .form-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    padding: 12px 0;
+    max-width: 440px;
+  }
+
+  .form-row label {
+    width: 100%;
+    text-align: left;
+    font-size: 12px;
+  }
+
+  .form-row input [type="text"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    font-size: 14px;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .form-label-box {font-size: 14px;}
+  .textarea-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    border: 1px solid #ccc;
+  }
+
+  textarea {
+    height: 150px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .submit-wrap button {font-size: 12px;}
+
+  .cookie-content {
+    width: 100%;
+    max-width: 440px !important;
+  }
+
+  .cookie-content h2 {font-size: 18px;}
+  .cookie-content p {font-size: 12px;}
+  #cookieAgree, #cookieDecline {
+    font-size: 12px;
+    width: 100%;
+    max-width: 60px;
+    padding: 0 5px 5px;
+  }
+
+  .custom-alert-box {
+    width: 85%;
+  }
+  .custom-alert-btn {font-size: 12px !important;}
+
+}
+
+/* Q&A 미디어 쿼리 */
+@media (max-width:480px) {
+  .qna-header {
+    width: 100%;
+    max-width: 440px;
+    margin: 20px auto;
+    padding: 25px 0 10px;
+    border-top: 1px solid #ccc;
+  }
+  .qna-header > h2 {
+    width: 100%;  
+    height: auto;
+    padding: 0;
+    font-size: 18px;
+  }
+
+  .m_span > a {
+    font-size: 11px;
+  }
+  .board {
+    width: 100%;
+    max-width: 440px;
+    margin: 0 auto;
+    font-size: 12px;
+  }
+
+  .board colgroup col:nth-child(1) {
+    width: 15% !important;
+  }
+
+  .board colgroup col:nth-child(2) {
+    width: 45% !important;
+  }
+
+  .board colgroup col:nth-child(3),
+  .board colgroup col:nth-child(4) {
+    width: 20% !important;
+  }
+
+
+  .board th,
+  .board td {
+    padding: 15px 8px;
+    font-size: 12px;
+  }
+
+  .pagination a,
+  .pagination span,
+  .pagination button {
+    font-size: 11px !important;
+    width: 25px;
+    height: 25px;
+  }
+}
+
+/* Q&A view  미디어 쿼리 */
+@media (max-width:480px) {
+  
+  #n_contents  {
+    width: 100%;
+    max-width: 440px;
+    margin: 0 auto;
+  }
+  
+  #qna-header {
+    width: 100%;
+    max-width: 440px;
+    margin: 20px auto;
+    padding: 25px 0 10px;
+    border-top: 1px solid #ccc;
+  }
+
+  #qna-header h2 {
+    width: 100%;
+    height: auto;
+    padding: 0;
+    font-size: 18px;
+  }
+
+  #titleArea {
+    font-size: 14px;
+    padding: 13px 10px;
+  }
+
+  #authorArea {
+    font-size: 12px;
+    padding: 9px 8px;
+  }
+
+  .date-wrap {
+    font-size: 12px;
+    padding: 9px 8px;
+  }
+
+  .file-item {
+    font-size: 12px;
+  }
+
+  #contentArea {
+    min-height: 250px;
+    font-size: 12px;
+  }
+
+  .dboxbtn {margin: 30px 0;}
+  .dboxbtn > a {
+    width: 40px;
+    height: 30px;
+    font-size: 9.5px;
+    padding: 7px 10px;
+    opacity: 0.7;
+  }
+}
+
+/* 다운로드 페이지 미디어쿼리 */
+@media (max-width: 480px) {
+
+  #download-view {display: none;}
+  .d-btn{display: none;}
+
+  #download-view-mobile {
+    display: block;
+    width: 100%;
+    max-width: 440px;
+    margin: 0 auto;
+  }
+
+  #download-header {
+    margin: 20px 0;
+    padding: 25px 0 25px 0;
+    border-top: 1px solid #bbb;
+    border-bottom: 1px solid #bbb;
+  }
+
+  #download-header h2 {
+    font-size: 18px;
+  }
+
+  .download-file-mobile {
+    display: flex;
+    font-size: 12px;
+    padding-bottom: 5px;
+    border: 1px solid #bbb;
+    border-bottom: none;
+    padding: 8px 10px 0;
+  }
+
+  .download-text-mobile {
+    font-size: 12px;
+    line-height: 1.5;
+    border: 1px solid #bbb;
+    border-top: none;
+    padding: 5px 10px;
+  }
+
+  .d-btn-mobile {
+    display: block;
+    float: right;
+    border: 1px solid #bbb;
+    padding: 5px;
+    margin-right: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 10px;
+    width: 40px;
+    height: 30px;
+    font-size: 9.5px;
+    padding: 7px 10px;
+  }
+
+}
+
+/* talk_1 미디어쿼리 */
+@media (max-width:480px) {
+
+  .write-container1 {
+    width: 100%;
+    max-width: 440px;
+  }
+
+  .heading1 {
+    font-size: 18px;
+    margin: 0 0 15px;
+    padding: 0 0 10px;
+  }
+
+  .form-group1 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.3rem 0.5rem;
+  }
+  .form-group1 .small-1 {
+    width: 100%;
+    margin-top: 0.3rem;
+    font-size: 10px;
+    color: #666;
+    line-height: 1.4;
+  }
+
+  .form-group1 label {
+    font-size: 14px;
+  }
+
+  .form-group-1 label {
+    font-size: 14px;
+  }
+
+  #name1, #email1 {
+    font-size: 12px;
+    width: 100%;
+    max-width: 360px;
+    height: 30px;
+  }
+
+  .small {font-size: 10px;}
+
+  #title1 {
+    font-size: 12px;
+    width: 100%;
+    height: 30px;
+  }
+
+  #content1 {
+    font-size: 12px;
+    width: 100%;
+    height: 90px;
+  }
+
+  .content1-small {
+    display: none;
+  }
+
+  .mobile-small {
+    font-size: 9.4px;
+    color: #666;
+  }
+
+  .file-upload-box1 .file-label1, #file-list1 {font-size: 12px;}
+
+  .submit-btn1 {
+    width: 100%;
+    max-width: 90px;
+    height: 40px;
+    font-size: 12px;
+  }
+
+  .form-group1 .form-gong {
+    font-size: 12px;
+  }
+
+  .form-group1 input {width: 8px; height: 8px;}
+}
+
+/* 360px 용 미디어쿼리 */
+@media (max-width: 360px) {
+
+  #slide {
+    width: 91%;
+    height: 400px;
+    aspect-ratio: unset;
+  }
+
+  #slide a img {
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .menu-toggle {
+    padding: 4px 2px;
+  }
+
+  .qna-header1 {
+    width: 100%;
+    max-width: 360px;
+    padding: 0 15px;
+  }
+
+  .qna-header1 h2 {font-size: 14px;}
+
+  .n_box {
+    width: 100%;
+    padding: 0 15px;
+    box-sizing: border-box;
+  }
+
+  .about-section h2 {
+    font-size: 12px;
+    padding: 0 0.3rem;
+  }
+
+  .n_box .card-1 h3 {
+    font-size: 10px;
+  }
+
+  .n_box .qna_h2 {
+    margin: 50px 0 30px 0;
+    padding-left: 10px;
+  }
+
+  .mobile_p {
+    font-size: 10px;
+  }
+
+  .n_box .card-1 p {
+    font-size: 9.5px;
+  }
+
+  .n_box section > div .card-1:nth-child(3) {
+    flex: 0 0 90%;
+    justify-content: center;
+  }
+
+  .mobile-map-row {
+    display: flex;
+    align-items: stretch;
+  }
+
+  .mobile-map-row .label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+    line-height: 1.2;
+  }
+
+  .notice-card, 
+  .memo-card {
+    width: 100%;
+    max-width: 330px;
+  }
+
+  .notice-card-header > h3 > a {font-size: 14px;}
+  .memo-card-header > h3 > a {font-size: 14px;}
+  .notice-title, .notice-date, .memo-title, .memo-date {font-size: 11px;}
+  .b_p {font-size: 10px;}
+  
+  .mobile-nav {
+    width: 100%;
+    max-width: 330px;
+  }
+
+  .cbox01 {  
+    height: 100%;
+    max-height: 230px;
+    padding: 0 15px;
+    margin-top: 30px;
+  }
+
+  .cbox01 > a {
+    width: 100%;
+    max-width: 160px;
+    height: 200px;
+  }
+
+  .cbox01  p {font-size: 10px;}
+  
+  .cbox02 {
+    height: 100%;
+    max-height: 230px;
+    padding: 0 15px;
+    margin-top: 30px;
+  }
+
+  .cbox02 > a {
+    width: 100%;
+    max-width: 160px;
+    height: 200px;
+  }
+
+  .cbox02 p {font-size: 10px;}
+
+  .inquiry-header {
+    width: 100%;
+    max-width: 330px;
+  }
+
+  .inquiry-header h2 {font-size: 14px;}
+
+  .inquiry-header span {display: none;}
+
+  .form-label-box {
+    margin: 0;
+    width: 100%;
+    max-width: 330px;
+  }
+
+  .form-label-box p {font-size: 12px;}
+
+  .form-row label {font-size: 10px;}
+
+  #company, #name, #phone {
+    width: 100%;
+    height: 20px;
+    padding: 0;
+  }
+
+  #message {
+    width: 100%;
+    height: 100px;
+  }
+
+  .submit-wrap button {
+    font-size: 10px;
+    width: 80px;
+    padding: 0;
+  }
+
+  fieldset {
+    width: 100%;
+    max-width: 330px;
+    margin: 0 15px;
+  }
+
+  .notice-card {
+    position: relative;
+  }
+
+  .notice-card::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 12px;
+    width: 100%;
+    height: 1px;
+    background-color: #000;
+    opacity: 0.8;
+  }
+
+  .memo-card {
+    position: relative;
+  }
+
+  .memo-card::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 12px; 
+    width: 100%;
+    height: 1px; 
+    background-color: #000; 
+    opacity: 0.8; 
+  }
+
+  .qna-header {
+    width: 100%;
+    max-width: 330px;
+  }
+
+  .qna-header h2 {font-size: 14px;}
+
+  .board {
+    width: 100%;
+    max-width: 330px;
+  }
+
+  .board colgroup col:nth-child(1) {
+    width: 15% !important;
+  }
+
+  .board colgroup col:nth-child(2) {
+    width: 45% !important;
+  }
+
+  .board colgroup col:nth-child(3),
+  .board colgroup col:nth-child(4) {
+    width: 20% !important;
+  }
+
+  .board th,
+  .board td {
+    font-size: 9.7px;
+  }
+
+  .mobile-map-row .label {
+    font-size: 0.59rem;
+  }
+
+  .mobile-map-row .content {font-size: 0.59rem;}
+
+  .mobile-nav h2 {font-size: 1rem;}
+
+  #n_contents {
+    width: 100%;
+    max-width: 330px;
+  }
+
+  #qna-header h2 {
+    font-size: 14px;
+  }
+
+  #mobile-jbox h3 {font-size: 12px;}
+  .mobile-title, .mobile-summary, .mobile-text {font-size: 10px;}
+  .purchase-btn {
+    width: 100%;
+    max-width: 90px;
+    font-size: 10px;
+  }
+
+  .dbox1, .dbox2, .dbox3 {height: 40px;}
+
+  #titleArea {font-size: 12px; padding: 11px 10px;}
+  #authorArea, #contentArea {font-size: 10px; padding: 11px 10px;}
+  #dateArea {font-size: 10px;}
+
+  #contentArea {
+    min-height: 150px;
+    height: auto;
+    padding: 15px;
+  }
+
+  .heading1 {font-size: 14px;}
+
+  .form-group1 > label {font-size: 12px;}
+  .form-group-1 > label {font-size: 12px;}
+
+  #name1, #email1, #title1 {
+    height: 25px;
+    font-size: 10px;
+  }
+
+  #content1 {
+    font-size: 10px;
+  }
+
+  .form-group1  .small-1,  .small {font-size: 8px;}
+  .mobile-small {font-size: 7.3px;}
+
+  .file-upload-box1 > .file-label1, #file-list1 {font-size: 10px;}
+
+  .submit-btn1 {font-size: 10px;}
+
+  #download-header {
+    width: 100%;
+    max-width: 330px;
+    margin: 0 auto;
+  }
+  #download-header h2 {font-size: 14px;}
+
+  .download-file-mobile {
+    width: 100%;
+    max-width: 330px;
+    margin: 20px auto 0;
+    font-size: 10px;
+  }
+
+  .download-text-mobile {
+    width: 100%;
+    max-width: 330px;
+    margin: 0 auto;
+  }
+  .download-text-mobile p {font-size: 10px;}
+
+  .d-btn-mobile {
+    margin: 15px;
+  }
+
+  .cookie-content {
+    width: 100%;
+    max-width: 330px !important;
+  }
+
+  .cookie-content br {display: none;}
+
+  .cookie-content p {
+    font-size: 10px;
+    padding: 5px 12px;
+  }
+
+  #cookieAgree, #cookieDecline {
+    font-size: 10px;
+  }
+
+  .custom-alert-box {
+    width: 96%;
+    padding: 14px 16px;
+  }
+
+  .custom-alert-text {
+    font-size: 12px !important;
+  }
+
+  .custom-alert-btn {
+    font-size: 12px;
+    padding: 0 14px !important;
   }
 }
