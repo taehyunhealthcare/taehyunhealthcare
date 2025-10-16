@@ -14,18 +14,16 @@
         <!-- Open Graph (SNS 공유 시 정보) -->
         <meta property="og:title" content="태현헬스케어 - 홈케어 의료기기 전문 브랜드">
         <meta property="og:description" content="도플러, 흡입기, 산소포화도 측정기 등 가정용 의료기기 전문 브랜드 | TEL: 062-233-6015">
-        <meta property="og:image" content="https://taehyunhealthcare.github.io/taehyunhealthcare/img/logo.png">
-        <meta property="og:url" content="https://taehyunhealthcare.github.io/taehyunhealthcare/">
+        <meta property="og:image" content="https://thhealthcare.co.kr///img/logo.png">
+        <meta property="og:url" content="https://thhealthcare.co.kr/">
         <meta property="og:type" content="website">
 
 
-        <link rel="canonical" href="https://taehyunhealthcare.github.io/taehyunhealthcare/">
+        <link rel="canonical" href="https://thhealthcare.co.kr/">
 
         
         <!-- 구글 서치콘솔 -->
         <meta name="google-site-verification" content="0UGIN-4-UxQ22XoXpMqVQQr8Ns0h8XXDVIXI4RViAiE" />
-        <!-- 네이버 메타태그  -->
-        <meta name="naver-site-verification" content="e47ec72381a139c8ed8aa52f8fccd11c98c227a5" />
 
         <!-- 구조화 데이터 (Organization schema) -->
         <script type="application/ld+json">
@@ -33,8 +31,8 @@
             "@context": "https://schema.org",
             "@type": "Organization",
             "name": "태현헬스케어",
-            "url": "https://taehyunhealthcare.github.io/taehyunhealthcare/",
-            "logo": "https://taehyunhealthcare.github.io/taehyunhealthcare/img/logo.png",
+            "url": "https://thhealthcare.co.kr/",
+            "logo": "https://thhealthcare.co.kr//img/logo.png",
             "contactPoint": {
             "@type": "ContactPoint",
             "telephone": "+82-62-233-6015",
@@ -223,12 +221,10 @@
 
     <!-- 모바일용 푸터 -->
     <div class="footer-second">
-        <p>
-            상호명: 태현헬스케어 사업자등록번호: 139-86-02746 <span class="s">대표번호: 062-233-6015</span> <br>
-            본사 주소: 광주광역시 동구 천변우로 453 (코밀빌딩) 4층 413호  <br>
-            평일: 09:00 ~ 17:00 / 점심시간: 12:00 ~ 13:00 / 휴무일: 주말 및 공휴일  <br>
-            &copy; 2025 태현헬스케어. ALL rights reserved. 
-        </p>
+        <p>상호명: 태현헬스케어</p>
+        <p><strong>대표번호: 062-233-6015</strong></p>
+        <p>광주광역시 동구 천변우로 453 (코밀빌딩) 4층 413호</p>
+        <p>&copy; 2025 태현헬스케어. ALL rights reserved.</p>
     </div>
 
     <!-- 모달창 시작 -->
@@ -331,7 +327,7 @@
     latestNotices.forEach((item, index) => {
         const li = document.createElement("li");
         li.innerHTML = `
-        <a href="notice_view.html?id=${item.id}" style="${index === 0 ? 'border-top: 1px dotted #000;' : ''}">
+        <a href="notice_view.html?id=${item.id}" style="${index === 0 ? 'border-top: 1px solid #000;' : ''}">
             <span class="notice-title">${item.title}</span>
             <span class="notice-date">${item.date}</span>
         </a>
@@ -339,7 +335,6 @@
         noticeList.appendChild(li);
     });
     });
-    
     </script>
 
     <!-- 자료실 리스트 자동 삽입 -->
@@ -362,7 +357,7 @@
         latestMemos.forEach((item, index) => {
             const li = document.createElement("li");
             li.innerHTML = `
-            <a href="memo_view.html?id=${item.id}" style="${index === 0 ? 'border-top: 1px dotted #000;' : ''}">
+            <a href="memo_view.html?id=${item.id}" style="${index === 0 ? 'border-top: 1px solid #000;' : ''}">
                 <span class="memo-title">${item.title}</span>
                 <span class="memo-date">${item.date}</span>
             </a>
@@ -415,6 +410,16 @@
     const mobileMenu = document.querySelector(".mobile-menu");
     const closeMenuBtn = document.querySelector(".mobile-menu .close-btn");
 
+    // 서브메뉴 초기화 함수
+    function resetSubmenus() {
+        const submenuParents = document.querySelectorAll(".mobile-menu .has-submenu");
+        submenuParents.forEach(parent => {
+        parent.classList.remove("open");
+        const submenu = parent.querySelector(".submenu");
+        if (submenu) submenu.style.display = "none";
+        });
+    }
+
     if (menuToggle && mobileMenu && closeMenuBtn) {
         // 메뉴 열기
         menuToggle.addEventListener("click", () => {
@@ -422,10 +427,11 @@
         document.body.classList.add("no-scroll");
         });
 
-        // 메뉴 닫기
+        // 메뉴 닫기 (X 버튼)
         closeMenuBtn.addEventListener("click", () => {
         mobileMenu.classList.remove("active");
         document.body.classList.remove("no-scroll");
+        resetSubmenus(); // 서브메뉴 초기화
         });
     }
 
@@ -440,14 +446,26 @@
 
         if (!submenu) return;
 
-        // 토글 방식 → 여러 개 동시에 펼칠 수 있음
+        // 토글 방식
         const isOpen = submenu.style.display === "block";
         submenu.style.display = isOpen ? "none" : "block";
         parentLi.classList.toggle("open", !isOpen);
         });
     });
+
+    // 메뉴 바깥 클릭 시 닫기
+    document.addEventListener("click", (e) => {
+        if (
+        mobileMenu.classList.contains("active") &&
+        !mobileMenu.contains(e.target) &&
+        !menuToggle.contains(e.target)
+        ) {
+        mobileMenu.classList.remove("active");
+        document.body.classList.remove("no-scroll");
+        resetSubmenus(); // 서브메뉴 초기화
+        }
+    });
     });
     </script>
 </body>
 </html>
-
