@@ -4,16 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="혈중 산소포화도와 맥박을 측정할 수 있는 Pulse Oximeter(산소포화도 측정기) 제품을 소개합니다. 건강 관리에 꼭 필요한 가정용 의료기기입니다.">
-    <title>제품소개</title>
+    <title>Pulse Oximeter - 태현헬스케어</title>
 
-    <link rel="canonical" href="https://taehyunhealthcare.github.io/taehyunhealthcare/03_products.html">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="canonical" href="https://thhealthcare.co.kr/03_products.html">
 
     <!-- css,js 연결 코드 -->
     <link rel="stylesheet" href="css/style.css">
     <script src="js/jquery-1.12.4.min.js"></script>
     <script src="js/common.js"></script>
     <script src="js/slide.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <!-- 시작 -->
@@ -73,7 +74,7 @@
 
     <!-- 모바일용 메뉴 (기본 숨김) -->
     <nav class="mobile-menu">
-        <span class="close-btn">&times;</span> <!-- 닫기 버튼 -->
+        <span class="close-btn">&times;</span> 
         <ul>
             <li>
                 <a href="./">홈</a>
@@ -126,7 +127,7 @@
           <span class="separator">&gt;</span>
 
          <select onchange="if(this.value) window.location.href=this.value;">
-             <option value="03_products.html">Pulse Oximerter</option>
+             <option value="03_products.html">Pulse Oximeter</option>
              <option value="01_products.html">Fetal Doppler</option>
              <option value="02_products.html">Nebulizer</option>
       </select>
@@ -149,21 +150,28 @@
         <div class="cbox01">
             <a href="jaepum3.html">
                 <img src="img/pulse_oximeter_jaepum3_1.jpg" alt="제품 이미지">
-                <p>Pulse Oximeter (CMS50-PRO) </p>
+                <p>Pulse Oximeter (CMS50-PRO-B) </p>
             </a>
+            <a href="jaepum7.html">
+                <img src="img/pulse_oximeter_jaepum7_1.jpg" alt="제품이미지">
+                <p>Pulse Oximeter (CMS50-PRO-W) </p>
+            </a>
+        </div>
+      </div>
+
+      <div class="contents02">
+        <div class="cbox02">
             <a href="jaepum5.html">
-                <img src="img/pulse_oximeter_jaepum5_1.jpg" alt="제품이미지">
-                <p>Pulse Oximeter (CMS50Q1) </p>
+                <img src="img/pulse_oximeter_jaepum5_1.jpg" alt="제품 이미지">
+                <p>Pulse Oximeter (CMS50Q1-A) </p>
+            </a>
+            <a href="jaepum6.html">
+                <img src="img/pulse_oximeter_jaepum6_1.jpg" alt="제품이미지">
+                <p>Pulse Oximeter (CMS50Q1-T) </p>
             </a>
         </div>
       </div>
     <!-- 상품 끝 -->
-      
-    <!-- PAGE NUMBER 시작 -->
-    <div class="pagination-container">
-    <div class="pagination"></div>
-    </div>
-    <!-- PAGE NUMBER 끝  -->
      
    <!-- 콘텐츠 시작 -->
     <div id="contents">
@@ -209,12 +217,10 @@
 
     <!-- 모바일용 푸터 -->
     <div class="footer-second">
-        <p>
-            상호명: 태현헬스케어 사업자등록번호: 139-86-02746 <span class="s">대표번호: 062-233-6015</span> <br>
-            본사 주소: 광주광역시 동구 천변우로 453 (코밀빌딩) 4층 413호  <br>
-            평일: 09:00 ~ 17:00 / 점심시간: 12:00 ~ 13:00 / 휴무일: 주말 및 공휴일  <br>
-            &copy; 2025 태현헬스케어. ALL rights reserved. 
-        </p>
+        <p>상호명: 태현헬스케어</p>
+        <p><strong>대표번호: 062-233-6015</strong></p>
+        <p>광주광역시 동구 천변우로 453 (코밀빌딩) 4층 413호</p>
+        <p>&copy; 2025 태현헬스케어. ALL rights reserved.</p>
     </div>
      
     <!-- 모달창 시작 -->
@@ -275,7 +281,7 @@
     </div>
     <!-- 모달창 끝 -->
 
-    <!-- 공지사항 리스트 자동 삽입되게 하는 스크립트 -->
+    <!-- 공지사항 리스트 자동 삽입 스크립트 -->
     <script>
     document.addEventListener("DOMContentLoaded", function () {
     const noticeList = document.querySelector(".notice-list");
@@ -294,7 +300,7 @@
     latestNotices.forEach((item, index) => {
         const li = document.createElement("li");
         li.innerHTML = `
-        <a href="notice_view.html?id=${item.id}" style="${index === 0 ? 'border-top: 1px dotted #000;' : ''}">
+        <a href="notice_view.html?id=${item.id}" style="${index === 0 ? 'border-top: 1px solid #000;' : ''}">
             <span class="notice-title">${item.title}</span>
             <span class="notice-date">${item.date}</span>
         </a>
@@ -324,72 +330,13 @@
         latestMemos.forEach((item, index) => {
             const li = document.createElement("li");
             li.innerHTML = `
-            <a href="memo_view.html?id=${item.id}" style="${index === 0 ? 'border-top: 1px dotted #000;' : ''}">
+            <a href="memo_view.html?id=${item.id}" style="${index === 0 ? 'border-top: 1px solid #000;' : ''}">
                 <span class="memo-title">${item.title}</span>
                 <span class="memo-date">${item.date}</span>
             </a>
             `;
             memoList.appendChild(li);
         });
-    });
-    </script>
-
-    <!-- 제품 목록 페이지 스크립트 -->
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-    const pageSize = 8;
-    const pagesToShow = 4;
-    let currentPage = 1;
-    let groupStart = 1;
-
-    const products = document.querySelectorAll(".cbox01 a");
-    const nav = document.querySelector(".pagination");
-
-    function calculateTotalPages() {
-        return Math.ceil(products.length / pageSize) || 1;
-    }
-
-    function showProducts(page) {
-        currentPage = page;
-        const totalPages = calculateTotalPages();
-        if (currentPage > totalPages) currentPage = totalPages;
-        if (groupStart > totalPages) groupStart = Math.max(1, totalPages - pagesToShow + 1);
-
-        products.forEach((p, idx) => {
-        p.style.display = idx >= (currentPage-1)*pageSize && idx < currentPage*pageSize ? "inline-block" : "none";
-        });
-
-        renderPagination();
-    }
-
-    function renderPagination() {
-        const totalPages = calculateTotalPages();
-        nav.innerHTML = "";
-        if (groupStart > 1) {
-        const prev = document.createElement('button');
-        prev.textContent = '◀';
-        prev.onclick = () => { groupStart = Math.max(1, groupStart - pagesToShow); showProducts(groupStart); };
-        nav.appendChild(prev);
-        }
-
-        const end = Math.min(groupStart + pagesToShow - 1, totalPages);
-        for (let i = groupStart; i <= end; i++) {
-        const btn = document.createElement('button');
-        btn.textContent = i;
-        if (i === currentPage) btn.classList.add('active');
-        btn.onclick = () => showProducts(i);
-        nav.appendChild(btn);
-        }
-
-        if (end < totalPages) {
-        const next = document.createElement('button');
-        next.textContent = '▶';
-        next.onclick = () => { groupStart += pagesToShow; showProducts(groupStart); };
-        nav.appendChild(next);
-        }
-    }
-
-    showProducts(1);
     });
     </script>
 
@@ -435,6 +382,16 @@
     const mobileMenu = document.querySelector(".mobile-menu");
     const closeMenuBtn = document.querySelector(".mobile-menu .close-btn");
 
+    // 서브메뉴 초기화 함수
+    function resetSubmenus() {
+        const submenuParents = document.querySelectorAll(".mobile-menu .has-submenu");
+        submenuParents.forEach(parent => {
+        parent.classList.remove("open");
+        const submenu = parent.querySelector(".submenu");
+        if (submenu) submenu.style.display = "none";
+        });
+    }
+
     if (menuToggle && mobileMenu && closeMenuBtn) {
         // 메뉴 열기
         menuToggle.addEventListener("click", () => {
@@ -442,10 +399,11 @@
         document.body.classList.add("no-scroll");
         });
 
-        // 메뉴 닫기
+        // 메뉴 닫기 (X 버튼)
         closeMenuBtn.addEventListener("click", () => {
         mobileMenu.classList.remove("active");
         document.body.classList.remove("no-scroll");
+        resetSubmenus(); // 서브메뉴 초기화
         });
     }
 
@@ -460,11 +418,24 @@
 
         if (!submenu) return;
 
-        // 토글 방식 → 여러 개 동시에 펼칠 수 있음
+        // 토글 방식
         const isOpen = submenu.style.display === "block";
         submenu.style.display = isOpen ? "none" : "block";
         parentLi.classList.toggle("open", !isOpen);
         });
+    });
+
+    // 메뉴 바깥 클릭 시 닫기
+    document.addEventListener("click", (e) => {
+        if (
+        mobileMenu.classList.contains("active") &&
+        !mobileMenu.contains(e.target) &&
+        !menuToggle.contains(e.target)
+        ) {
+        mobileMenu.classList.remove("active");
+        document.body.classList.remove("no-scroll");
+        resetSubmenus(); // 서브메뉴 초기화
+        }
     });
     });
     </script>
