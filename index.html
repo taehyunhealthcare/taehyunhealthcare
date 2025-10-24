@@ -198,25 +198,22 @@
      <!-- 중간 여백 끝 -->
 
    <!-- 콘텐츠 시작 -->
-    <div id="contents">
-        <div class="notice-card">
-        <div class="notice-card-header">
-            <h3><a href="notice.html">공지사항</a></h3>
-            <button class="notice-more-btn" onclick="location.href='notice.html'">›</button>
-        </div>
-        <ul class="notice-list">
-            <!-- JS로 공지글이 자동 삽입됨 -->
-        </ul>
+    <div id="contents" class="tab-container">
+        <div class="tab-header">
+            <button class="tab-button active" onclick="openTab(event, 'notice-content', 'notice.html')">공지사항</button>
+            <button class="tab-button" onclick="openTab(event, 'memo-content', 'memo.html')">자료실</button>
+            
+            <a id="more-link" href="notice.html" class="more-link">더보기 +</a>
         </div>
 
-        <div class="memo-card">
-            <div class="memo-card-header">
-                <h3><a href="memo.html">자료실</a></h3>
-                <button class="memo-more-btn" onclick="location.href='memo.html'">›</button>
-            </div>
+        <div id="notice-content" class="tab-content active">
+            <ul class="notice-list">
+                </ul>
+        </div>
+
+        <div id="memo-content" class="tab-content">
             <ul class="memo-list">
-                <!-- JS로 자료실 글이 자동 삽입됨 -->
-            </ul>
+                </ul>
         </div>
     </div>
     <!-- 콘텐츠 끝 --> 
@@ -325,63 +322,102 @@
     });
     </script>
 
-    <!-- 공지사항 리스트 자동 삽입 스크립트 -->
     <script>
-    document.addEventListener("DOMContentLoaded", function () {
-    const noticeList = document.querySelector(".notice-list");
-    let noticePosts = JSON.parse(localStorage.getItem('noticePosts') || '[]');
+        // 탭 전환 및 '더보기' 링크 업데이트 함수
+        function openTab(evt, tabContentId, moreLinkUrl) {
+            var i, tabcontent, tabbuttons;
+            
+            // 1. 모든 탭 콘텐츠 숨기기
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+                tabcontent[i].style.display = "none";
+            }
 
-    noticePosts.sort((a, b) => {
-        const dateCompare = new Date(b.date) - new Date(a.date);
-        if (dateCompare !== 0) return dateCompare;
-        return b.id - a.id;
-    });
+            // 2. 모든 탭 버튼에서 'active' 클래스 제거
+            tabbuttons = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].classList.remove("active");
+            }
 
-    const latestNotices = noticePosts.slice(0, 4); // 최대 4개
+            // 3. 현재 클릭된 탭 콘텐츠를 보여주고, 버튼에 'active' 클래스 추가
+            document.getElementById(tabContentId).style.display = "block";
+            document.getElementById(tabContentId).classList.add("active");
+            
+            if (evt) {
+                evt.currentTarget.classList.add("active");
+            } else {
+                // 초기 로드 시 첫 번째 탭 버튼 활성화
+                const initialButton = document.querySelector('.tab-header .tab-button');
+                if (initialButton) {
+                    initialButton.classList.add("active");
+                }
+            }
+            
+            // 4. '더보기' 링크 업데이트
+            const moreLink = document.getElementById('more-link');
+            if (moreLink) {
+                moreLink.href = moreLinkUrl;
+            }
+        }
 
-    noticeList.innerHTML = "";
+        document.addEventListener("DOMContentLoaded", function () {
+            // --- A. 공지사항 리스트 자동 삽입 (기존 로직) ---
+            const noticeList = document.querySelector(".notice-list");
+            let noticePosts = JSON.parse(localStorage.getItem('noticePosts') || '[]');
 
-    latestNotices.forEach((item, index) => {
-        const li = document.createElement("li");
-        li.innerHTML = `
-        <a href="notice_view.html?id=${item.id}" style="${index === 0 ? 'border-top: 1px solid #000;' : ''}">
-            <span class="notice-title">${item.title}</span>
-            <span class="notice-date">${item.date}</span>
-        </a>
-        `;
-        noticeList.appendChild(li);
-    });
-    });
-    </script>
+            // 정렬
+            noticePosts.sort((a, b) => {
+                const dateCompare = new Date(b.date) - new Date(a.date);
+                if (dateCompare !== 0) return dateCompare;
+                return b.id - a.id;
+            });
 
-    <!-- 자료실 리스트 자동 삽입 -->
-    <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const memoList = document.querySelector(".memo-list");
-        let memoPosts = JSON.parse(localStorage.getItem('memoPosts') || '[]');
+            const latestNotices = noticePosts.slice(0, 4); // 최대 4개
+            noticeList.innerHTML = "";
 
-        // 날짜 우선, 동일하면 id로 정렬
-        memoPosts.sort((a, b) => {
-            const dateCompare = new Date(b.date) - new Date(a.date);
-            if (dateCompare !== 0) return dateCompare;
-            return b.id - a.id;
+            latestNotices.forEach((item) => {
+                const li = document.createElement("li");
+                li.innerHTML = `
+                <a href="notice_view.html?id=${item.id}">
+                    <span class="notice-title">${item.title}</span>
+                    <span class="notice-date">${item.date}</span>
+                </a>
+                `;
+                noticeList.appendChild(li);
+            });
+
+
+            // --- B. 자료실 리스트 자동 삽입 (기존 로직) ---
+            const memoList = document.querySelector(".memo-list");
+            let memoPosts = JSON.parse(localStorage.getItem('memoPosts') || '[]');
+
+            // 정렬
+            memoPosts.sort((a, b) => {
+                const dateCompare = new Date(b.date) - new Date(a.date);
+                if (dateCompare !== 0) return dateCompare;
+                return b.id - a.id;
+            });
+
+            const latestMemos = memoPosts.slice(0, 4); // 최대 4개
+            memoList.innerHTML = "";
+
+            latestMemos.forEach((item) => {
+                const li = document.createElement("li");
+                li.innerHTML = `
+                <a href="memo_view.html?id=${item.id}">
+                    <span class="memo-title">${item.title}</span>
+                    <span class="memo-date">${item.date}</span>
+                </a>
+                `;
+                memoList.appendChild(li);
+            });
+            
+            
+            // --- C. 초기 탭 활성화 (새로운 로직) ---
+            // 페이지 로드 완료 후 공지사항 탭을 기본으로 활성화합니다.
+            openTab(null, 'notice-content', 'notice.html');
         });
-
-        const latestMemos = memoPosts.slice(0, 4); // 최대 4개
-
-        memoList.innerHTML = "";
-
-        latestMemos.forEach((item, index) => {
-            const li = document.createElement("li");
-            li.innerHTML = `
-            <a href="memo_view.html?id=${item.id}" style="${index === 0 ? 'border-top: 1px solid #000;' : ''}">
-                <span class="memo-title">${item.title}</span>
-                <span class="memo-date">${item.date}</span>
-            </a>
-            `;
-            memoList.appendChild(li);
-        });
-    });
     </script>
 
     
