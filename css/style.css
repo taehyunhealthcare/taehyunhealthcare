@@ -365,18 +365,18 @@ body.modal-open {
 
 #slide {
   width: 100%;
-  height: 550px;
+  height: 600px;
   overflow: hidden;
-  position: relative; /* 기준점 */
+  position: relative; 
 }
 
 #slide a {
-  position: absolute;  /* 전부 겹침 */
+  position: absolute;  
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  display: none;       /* 기본 숨김 */
+  display: none;      
 }
 
 #slide a img {
@@ -384,6 +384,7 @@ body.modal-open {
   height: 100%;
   object-fit: cover;
 }
+
 
 /* 버튼 스타일 */
 #slide button {
@@ -1869,6 +1870,30 @@ span.s {
 #download-view-mobile {display: none;}
 .d-btn-mobile {display: none;}
 
+#mobile-slide {
+  display: none;
+  position: relative;
+  overflow: hidden;
+}
+
+#mobile-slide a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: none;
+}
+
+#mobile-slide a:first-child {
+  display: block;
+}
+
+#mobile-slide img {
+  width: 100%;
+  display: block;
+  height: auto;
+}
+
 /* index.html 미디어쿼리 */
 @media (max-width: 480px) {
 
@@ -1901,33 +1926,31 @@ span.s {
     font-size: 1.4rem; 
     padding: 8px 2px;
   }
+  
+  #slide {display: none;}
+  #slide button {display: none;}
 
-  #slide {
-    width: 94%;
+  #mobile-slide {
+    display: block;
+    width: 100%;
+    max-width: 450px;
+    height: 600px;
+    overflow: hidden;
     margin: 0 auto;
-    position: relative;
-    aspect-ratio: 16/9; 
   }
 
-  #slide a{
+  #mobile-slide a {
     width: 100%;
     height: 100%;
   }
 
-  #slide a img {
+  #mobile-slide a img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
   }
 
-  #slide button {
-    display: none;
-  }
+  
 
-  #slide .indicators span {
-    width: 0.5rem;
-    height: 0.5rem;
-  }
 
   #contents {
     flex-direction: column; 
@@ -2448,7 +2471,7 @@ span.s {
     max-width: 440px !important;
   }
 
-  .cookie-content h2 {font-size: 18px;}
+  .cookie-content h2 {font-size: 16px;}
   .cookie-content p {font-size: 12px;}
   #cookieAgree, #cookieDecline {
     font-size: 12px;
@@ -2717,19 +2740,37 @@ span.s {
   .form-group1 input {width: 8px; height: 8px;}
 }
 
+/* 480px  안내메세지용 미디어쿼리 */
+@media (max-width: 480px) {
+  .custom-alert-text {
+    font-size: 12px !important;
+  }
+  
+  .custom-alert-button {
+    font-size: 10px !important;
+  }
+
+  .icon {
+    font-size: 32px;
+  }
+  .complete-box h1 {
+    font-size: 16px;
+  }
+  .complete-box p {
+    font-size: 12px;
+  }
+  .btn{
+    font-size: 12px;
+  }
+
+  .lock {font-size: 16px;}
+  #confirmBtn {font-size: 12px;}
+  #cancelBtn {font-size: 12px;}
+}
+
 /* 360px 용 미디어쿼리 */
 @media (max-width: 360px) {
 
-  #slide {
-    width: 91%;
-    height: 400px;
-    aspect-ratio: unset;
-  }
-
-  #slide a img {
-    height: 100%;
-    object-fit: cover;
-  }
 
   .menu-toggle {
     padding: 4px 2px;
@@ -3026,6 +3067,7 @@ span.s {
   }
 
   .cookie-content br {display: none;}
+  .cookie-content h2 {font-size: 14px;}
 
   .cookie-content p {
     font-size: 10px;
@@ -3034,6 +3076,8 @@ span.s {
 
   #cookieAgree, #cookieDecline {
     font-size: 10px;
+    width: 50px;
+    padding: 0;
   }
 
   .custom-alert-box {
@@ -3049,4 +3093,25 @@ span.s {
     font-size: 12px;
     padding: 0 14px !important;
   }
+
+  .custom-alert-button {
+    font-size: 10px;
+  }
+
+  .icon {
+    font-size: 24px;
+  }
+  .complete-box h1 { font-size: 12px; }
+  .complete-box p { font-size: 10px; }
+  .btn {font-size: 10px;}
+
+  .lock-box {
+    width: 100%;
+    max-width: 330px !important;
+  }
+  .lock {font-size: 14px;}
+  #modalName {font-size: 9px;}
+  #modalEmail {font-size: 9px;}
+  #confirmBtn {font-size: 10px;}
+  #cancelBtn {font-size: 10px;}
 }
