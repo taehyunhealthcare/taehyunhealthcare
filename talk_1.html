@@ -31,9 +31,6 @@
 
     <!-- 헤더 시작 -->
     <header>
-    <button class="menu-toggle" aria-label="모바일 메뉴 열기">
-        <i class="fas fa-bars"></i>
-    </button>
     <div class="logo-wrapper">
         <img class="logo" src="img/logo.png" alt="LOGO" />
     </div>
@@ -43,6 +40,7 @@
 
     <!-- 메뉴 시작 -->
     <nav class="menu-pc">
+        <div class="menu-bg"></div>
         <ul class="menu">
             <li>
                 <a href="#">회사소개</a>
@@ -74,43 +72,6 @@
     </nav>
     <!-- 메뉴 끝 -->
 
-    <!-- 모바일용 메뉴 (기본 숨김) -->
-    <nav class="mobile-menu">
-        <span class="close-btn">&times;</span> 
-        <ul>
-            <li>
-                <a href="./">홈</a>
-            </li>
-            <li>
-                <a href="about.html">회사소개</a>
-            </li>
-            <li class="has-submenu">
-                <a href="01_products.html">
-                    제품소개 <i class="fas fa-chevron-down submenu-toggle"></i>
-                </a>
-                <ul class="submenu">
-                    <li><a href="01_products.html">Fetal Doppler</a></li>
-                    <li><a href="02_products.html">Nebulizer</a></li>
-                    <li><a href="03_products.html">Pulse Oximeter</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="partnership.html">B2B</a>
-            </li>
-            <li class="has-submenu">
-                <a href="#">
-                    COMMUNITY <i class="fas fa-chevron-down submenu-toggle"></i>
-                </a>
-                <ul class="submenu">
-                    <li><a href="talk.html">Q&A</a></li>
-                    <li><a href="memo.html">자료실</a></li>
-                    <li><a href="notice.html">공지사항</a></li>
-                </ul>
-            </li>
-        </ul>
-    </nav>
-    <!-- 메뉴 끝 -->
-
      <!-- 글쓰기 영역 -->
       <div class="write-container1">
         <h2 class="heading1">문의 작성 (질문과답변)</h2>
@@ -118,14 +79,14 @@
           <!-- 이름 -->
       <div class="form-group1">
         <label for="name1">이름</label>
-        <input type="text" id="name1" placeholder="이름을 입력해주세요" required />
+        <input type="text" id="name1"/>
         <small class="small">※ 이름을 정확하게 입력해 주세요. 작성 글 확인 시 필요합니다.</small>
       </div>
 
       <!-- 이메일 -->
       <div class="form-group1">
         <label for="email1">이메일</label>
-        <input type="email" id="email1" placeholder="이메일을 입력해주세요" required />
+        <input type="email" id="email1" />
         <small class="small">※ 이메일을 정확하게 입력해 주세요. 본인 확인 및 문의 응답에 사용됩니다.</small>
       </div>
 
@@ -142,13 +103,13 @@
       <!-- 제목 -->
       <div class="form-group1">
         <label for="title1">제목</label>
-        <input type="text" id="title1" placeholder="제목을 입력해주세요" required />
+        <input type="text" id="title1"/>
       </div>
 
       <!-- 내용 -->
       <div class="form-group1">
         <label for="content1">내용 입력</label>
-        <textarea id="content1" placeholder="내용을 입력해주세요." required></textarea>
+        <textarea id="content1"></textarea>
         <small class="content1-small">
           ※ 첨부파일이 포함된 문의는 개인정보 보호를 위해 반드시 <div id="small-span">비공개</div> 글로 작성해주시기 바랍니다.
         </small>
@@ -176,55 +137,55 @@
   </div>
     <!-- 글쓰기 끝 -->
 
-   <!-- 콘텐츠 시작 -->
-    <div id="contents">
-        <div class="notice-card">
-        <div class="notice-card-header">
-            <h3><a href="notice.html">공지사항</a></h3>
-            <button class="notice-more-btn" onclick="location.href='notice.html'">›</button>
-        </div>
-        <ul class="notice-list">
-            <!-- JS로 공지글이 자동 삽입됨 -->
-        </ul>
-        </div>
-
-        <div class="memo-card">
-            <div class="memo-card-header">
-                <h3><a href="memo.html">자료실</a></h3>
-                <button class="memo-more-btn" onclick="location.href='memo.html'">›</button>
-            </div>
-            <ul class="memo-list">
-                <!-- JS로 자료실 글이 자동 삽입됨 -->
-            </ul>
-        </div>
-    </div>
-    <!-- 콘텐츠 끝 --> 
-
     <!-- 푸터 시작 -->
     <footer>
-        <div id="flogobox">
-            <div class="flogoleft"></div>
-            <div class="flogo"><a href="#"><img src="img/flogo.png" alt="태현헬스케어 로고"></a></div>
-            <div class="flogoright"></div>
+        <div class="footer_inner">   
+            <div class="footer_nav">
+                <div class="nav_col">
+                    <h3>태현헬스케어</h3>
+                    <ul>
+                        <li><a href="about.html">회사 소개</a></li>
+                        <li><a href="#">제품 소개</a></li>
+                        <li><a href="partnership.html">B2B</a></li>
+                    </ul>
+                </div>
+                <div class="nav_col">
+                    <h3>고객지원</h3>
+                    <ul>
+                        <li><a href="notice.html">공지사항</a></li>
+                        <li><a href="memo.html">자료실</a></li>
+                        <li><a href="talk.html">Q&A</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="flogo_info">
+                <div class="flogo">
+                    <a href="#" class="logo-link"><img src="img/flogo.png" alt="태현헬스케어 로고"></a>
+                    <div class="social_links">
+                        <a href="https://www.instagram.com/accumedi_/">
+                            <img src="img/insta.png" alt="인스타그램">
+                            <p>INSTAGRAM</p>
+                        </a>
+                    </div>
+                </div> 
+            </div>
+            <div class="footer_contact">
+                <p>
+                    대표번호: <span class="n">062-233-6015</span> (평일 09:00 ~ 17:00 / 점심시간: 12:00 ~ 13:00) <br>
+                    이메일: taehyunhealthcare@naver.com <br>
+                    주소: 광주광역시 동구 천변우로 453 (코밀빌딩) 4층 413호 <br>
+                    사업자등록번호: 139-86-02746 
+                </p>
+                <div class="policy_links">
+                    <a href="#" id="openModalBtn">개인정보처리방침</a>
+                </div>
+            </div>
         </div>
-        <div class="copy">
-            <p>
-                상호명: 태현헬스케어 사업자등록번호: 139-86-02746 <span class="n">대표번호: 062-233-6015</span> <br>
-                이메일: thhealthcare@naver.com 본사 주소: 광주광역시 동구 천변우로 453 (코밀빌딩) 4층 413호 
-                평일: 09:00 ~ 17:00 / 점심시간: 12:00 ~ 13:00 / 휴무일: 주말 및 공휴일 <br>
-                <span id="openModalBtn"><a href="#">개인정보처리방침</a></span>
-                &copy; 2025 태현헬스케어. ALL rights reserved.
-            </p>
+        <div class="footer_copyright">
+            &copy; 2025 태현헬스케어. All rights reserved.
         </div>
     </footer>
-
-    <!-- 모바일용 푸터 -->
-    <div class="footer-second">
-        <p>상호명: 태현헬스케어</p>
-        <p><strong>대표번호: 062-233-6015</strong></p>
-        <p>광주광역시 동구 천변우로 453 (코밀빌딩) 4층 413호</p>
-        <p>&copy; 2025 태현헬스케어. ALL rights reserved.</p>
-    </div>
+    <!-- 푸터 끝 -->
 
     <!-- 모달창 시작 -->
     <div id="privacyModal" class="modal">
@@ -342,9 +303,31 @@
       const cookieAgree   = document.getElementById('cookieAgree');
       const cookieDecline = document.getElementById('cookieDecline');
 
-      // 문의 등록 버튼 클릭 시: 모달만 띄움
+      // 문의 등록 버튼 클릭 시: 입력값 확인 후 모달 띄움
       inquiryForm.addEventListener('submit', function(e) {
         e.preventDefault();
+
+        const name  = document.getElementById('name1').value.trim();
+        const email = document.getElementById('email1').value.trim();
+        const title = document.getElementById('title1').value.trim();
+        const content = document.getElementById('content1').value.trim();
+
+        // 누락된 항목을 담을 배열
+        const missingFields = [];
+
+        if (!name) missingFields.push("이름");
+        if (!email) missingFields.push("이메일");
+        if (!title) missingFields.push("제목");
+        if (!content) missingFields.push("내용");
+
+        // 하나라도 비어있다면 안내
+        if (missingFields.length > 0) {
+          const message = "다음 항목을 입력해주세요:\n\n" + missingFields.join(", ");
+          showCustomAlert(message);
+          return;
+        }
+
+        // 모든 입력이 완료된 경우에만 쿠키 모달 열기
         cookieModal.style.display = 'flex';
       });
 
@@ -403,107 +386,76 @@
         window.location.href = '01_partnership.html';
       }
 
-      // ===== 커스텀 확인 모달 (확인/배경 클릭으로 닫힘) =====
-      function showCustomAlert(message) {
-        const overlay = document.createElement("div");
-        overlay.className = "custom-alert";
-        overlay.setAttribute("role","dialog");
-        overlay.setAttribute("aria-modal","true");
-        Object.assign(overlay.style, {
-          position:"fixed", inset:"0", background:"rgba(0,0,0,0.5)",
-          zIndex:"10000", display:"flex", alignItems:"center", justifyContent:"center"
-        });
+    // ===== 커스텀 확인 모달 (확인/배경 클릭으로 닫힘) =====
+    function showCustomAlert(message) {
+      const overlay = document.createElement("div");
+      overlay.className = "custom-alert";
+      overlay.setAttribute("role", "dialog");
+      overlay.setAttribute("aria-modal", "true");
+      Object.assign(overlay.style, {
+        position: "fixed",
+        inset: "0",
+        background: "rgba(0,0,0,0.5)",
+        zIndex: "10000",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center"
+      });
 
-        const box = document.createElement("div");
-        Object.assign(box.style, {
-          background:"#fff", width:"min(420px, 90vw)", padding:"20px 22px",
-          borderRadius:"12px", textAlign:"center", boxShadow:"0 10px 30px rgba(0,0,0,0.2)"
-        });
+      //  body 스크롤 방지
+      document.body.style.overflow = "hidden";
 
-        const text = document.createElement("p");
-        Object.assign(text.style, { margin:"0 0 16px 0", fontSize:"14px", lineHeight:"1.5", color:"#111" });
-        text.textContent = message;
+      const box = document.createElement("div");
+      Object.assign(box.style, {
+        background: "#fff",
+        width: "min(420px, 90vw)",
+        padding: "20px 22px",
+        borderRadius: "12px",
+        textAlign: "center",
+        boxShadow: "0 10px 30px rgba(0,0,0,0.2)"
+      });
 
-        const btn = document.createElement("button");
-        btn.type = "button";
-        btn.textContent = "확인";
-        Object.assign(btn.style, {
-          padding:"0px 18px", border:"1px solid #bbb", borderRadius:"8px",
-          background:"#fff", cursor:"pointer"
-        });
+      const text = document.createElement("p");
+      text.classList.add("custom-alert-text");
+      Object.assign(text.style, {
+        margin: "0 0 16px 0",
+        fontSize: "14px",
+        lineHeight: "1.5",
+        color: "#111",
+      });
+      text.textContent = message;
 
-        const closeModal = () => overlay.remove();
-        btn.addEventListener("click", closeModal);
-        overlay.addEventListener("click", (e) => { if (e.target === overlay) closeModal(); });
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.textContent = "확인";
+      btn.classList.add("custom-alert-button");
+      Object.assign(btn.style, {
+        border: "1px solid #bbb",
+        borderRadius: "8px",
+        background: "#fff",
+        cursor: "pointer"
+      });
 
-        box.appendChild(text);
-        box.appendChild(btn);
-        overlay.appendChild(box);
-        document.body.appendChild(overlay);
-        setTimeout(() => btn.focus(), 0);
-      }
+      const closeModal = () => {
+        overlay.remove();
+        document.body.style.overflow = "";
+      };
+
+      btn.addEventListener("click", closeModal);
+      overlay.addEventListener("click", (e) => {
+        if (e.target === overlay) closeModal();
+      });
+
+      box.appendChild(text);
+      box.appendChild(btn);
+      overlay.appendChild(box);
+      document.body.appendChild(overlay);
+
+      setTimeout(() => btn.focus(), 0);
+    }
     </script>
 
-    <!-- 공지사항 리스트 자동 삽입 스크립트 -->
-    <script>
-    document.addEventListener("DOMContentLoaded", function () {
-    const noticeList = document.querySelector(".notice-list");
-    let noticePosts = JSON.parse(localStorage.getItem('noticePosts') || '[]');
-
-    noticePosts.sort((a, b) => {
-        const dateCompare = new Date(b.date) - new Date(a.date);
-        if (dateCompare !== 0) return dateCompare;
-        return b.id - a.id;
-    });
-
-    const latestNotices = noticePosts.slice(0, 4); // 최대 4개
-
-    noticeList.innerHTML = "";
-
-    latestNotices.forEach((item, index) => {
-        const li = document.createElement("li");
-        li.innerHTML = `
-        <a href="notice_view.html?id=${item.id}" style="${index === 0 ? 'border-top: 1px solid #000;' : ''}">
-            <span class="notice-title">${item.title}</span>
-            <span class="notice-date">${item.date}</span>
-        </a>
-        `;
-        noticeList.appendChild(li);
-    });
-    });
-    </script>
-
-    <!-- 자료실 리스트 자동 삽입 -->
-    <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const memoList = document.querySelector(".memo-list");
-        let memoPosts = JSON.parse(localStorage.getItem('memoPosts') || '[]');
-
-        // 날짜 우선, 동일하면 id로 정렬
-        memoPosts.sort((a, b) => {
-            const dateCompare = new Date(b.date) - new Date(a.date);
-            if (dateCompare !== 0) return dateCompare;
-            return b.id - a.id;
-        });
-
-        const latestMemos = memoPosts.slice(0, 4); // 최대 4개
-
-        memoList.innerHTML = "";
-
-        latestMemos.forEach((item, index) => {
-            const li = document.createElement("li");
-            li.innerHTML = `
-            <a href="memo_view.html?id=${item.id}" style="${index === 0 ? 'border-top: 1px solid #000;' : ''}">
-                <span class="memo-title">${item.title}</span>
-                <span class="memo-date">${item.date}</span>
-            </a>
-            `;
-            memoList.appendChild(li);
-        });
-    });
-    </script>
-
-    <!-- 모달 + 모바일 메뉴 통합 스크립트 -->
+    <!-- 모달 통합 스크립트 -->
     <script>
     document.addEventListener("DOMContentLoaded", function () {
     /** ========== 개인정보 모달 관련 ========== **/
@@ -539,43 +491,6 @@
         modal.addEventListener("copy", e => e.preventDefault());
         modal.addEventListener("contextmenu", e => e.preventDefault());
     }
-
-    /** ========== 모바일 메뉴 관련 ========== **/
-    const menuToggle = document.querySelector(".menu-toggle");
-    const mobileMenu = document.querySelector(".mobile-menu");
-    const closeMenuBtn = document.querySelector(".mobile-menu .close-btn");
-
-    if (menuToggle && mobileMenu && closeMenuBtn) {
-        // 메뉴 열기
-        menuToggle.addEventListener("click", () => {
-        mobileMenu.classList.add("active");
-        document.body.classList.add("no-scroll");
-        });
-
-        // 메뉴 닫기
-        closeMenuBtn.addEventListener("click", () => {
-        mobileMenu.classList.remove("active");
-        document.body.classList.remove("no-scroll");
-        });
-    }
-
-    /** ========== 서브메뉴 토글 관련 ========== **/
-    const submenuParents = document.querySelectorAll(".mobile-menu .has-submenu > a");
-
-    submenuParents.forEach(link => {
-        link.addEventListener("click", (e) => {
-        e.preventDefault(); // 링크 이동 방지
-        const parentLi = link.parentElement;
-        const submenu = parentLi.querySelector(".submenu");
-
-        if (!submenu) return;
-
-        // 토글 방식 → 여러 개 동시에 펼칠 수 있음
-        const isOpen = submenu.style.display === "block";
-        submenu.style.display = isOpen ? "none" : "block";
-        parentLi.classList.toggle("open", !isOpen);
-        });
-    });
     });
     </script>
  </body>
