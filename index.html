@@ -54,6 +54,7 @@
         <script src="js/common.js"></script>
         <script src="js/form-validation.js"></script>
         <script src="js/slide.js"></script>
+        <script src="js/menu.js"></script>
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     </head>
@@ -77,22 +78,17 @@
         <button id="logoutBtn">관리자 로그아웃</button>
     </div>
 
-
-
     <!-- 헤더 시작 -->
     <header>
-    <button class="menu-toggle" aria-label="모바일 메뉴 열기">
-        <i class="fas fa-bars"></i>
-    </button>
-    <div class="logo-wrapper">
-        <img class="logo" src="img/logo.png" alt="LOGO" />
-    </div>
+        <div class="logo-wrapper">
+            <img class="logo" src="img/logo.png" alt="LOGO" />
+        </div>
     </header>
-
     <!-- 헤더 끝 -->
 
     <!-- 메뉴 시작 -->
     <nav class="menu-pc">
+        <div class="menu-bg"></div>
         <ul class="menu">
             <li>
                 <a href="#">회사소개</a>
@@ -123,43 +119,6 @@
         </ul>
     </nav>
     <!-- 메뉴 끝 -->
-
-    <!-- 모바일용 메뉴 (기본 숨김) -->
-    <nav class="mobile-menu">
-        <span class="close-btn">&times;</span> 
-        <ul>
-            <li>
-                <a href="./">홈</a>
-            </li>
-            <li>
-                <a href="about.html">회사소개</a>
-            </li>
-            <li class="has-submenu">
-                <a href="01_products.html">
-                    제품소개 <i class="fas fa-chevron-down submenu-toggle"></i>
-                </a>
-                <ul class="submenu">
-                    <li><a href="01_products.html">Fetal Doppler</a></li>
-                    <li><a href="02_products.html">Nebulizer</a></li>
-                    <li><a href="03_products.html">Pulse Oximeter</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="partnership.html">B2B</a>
-            </li>
-            <li class="has-submenu">
-                <a href="#">
-                    COMMUNITY <i class="fas fa-chevron-down submenu-toggle"></i>
-                </a>
-                <ul class="submenu">
-                    <li><a href="talk.html">Q&A</a></li>
-                    <li><a href="memo.html">자료실</a></li>
-                    <li><a href="notice.html">공지사항</a></li>
-                </ul>
-            </li>
-        </ul>
-    </nav>
-    <!-- 메뉴 끝 -->
      
     <!-- 이미지 슬라이드 시작 -->
     <div id="slide">
@@ -174,7 +133,6 @@
                 <span data-index="1"></span>
                 <span data-index="2"></span>
                 <span data-index="3"></span>
-                <span data-index="4"></span>
             </div>
     </div>
     <!-- 이미지 슬라이드 끝 -->
@@ -189,7 +147,6 @@
             <span data-index="1"></span>
             <span data-index="2"></span>
             <span data-index="3"></span>
-            <span data-index="4"></span>
         </div>
     </div>
 
@@ -220,26 +177,54 @@
 
     <!-- 푸터 시작 -->
     <footer>
-        <div class="flogo"><a href="#"><img src="img/flogo.png" alt="태현헬스케어 로고"></a></div>
-        <div class="copy">
-            <p>
-                상호명: 태현헬스케어 사업자등록번호: 139-86-02746 <span class="n">대표번호: 062-233-6015</span> <br>
-                이메일: taehyunhealthcare@naver.com 본사 주소: 광주광역시 동구 천변우로 453 (코밀빌딩) 4층 413호 
-                평일: 09:00 ~ 17:00 / 점심시간: 12:00 ~ 13:00 / 휴무일: 주말 및 공휴일 <br>
-                <span id="openModalBtn"><a href="#">개인정보처리방침</a></span>
-                &copy; 2025 태현헬스케어. ALL rights reserved.
-            </p>
+        <div class="footer_inner">   
+            <div class="footer_nav">
+                <div class="nav_col">
+                    <h3>태현헬스케어</h3>
+                    <ul>
+                        <li><a href="about.html">회사 소개</a></li>
+                        <li><a href="#">제품 소개</a></li>
+                        <li><a href="partnership.html">B2B</a></li>
+                    </ul>
+                </div>
+                <div class="nav_col">
+                    <h3>고객지원</h3>
+                    <ul>
+                        <li><a href="notice.html">공지사항</a></li>
+                        <li><a href="memo.html">자료실</a></li>
+                        <li><a href="talk.html">Q&A</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="flogo_info">
+                <div class="flogo">
+                    <a href="#" class="logo-link"><img src="img/flogo.png" alt="태현헬스케어 로고"></a>
+                    <div class="social_links">
+                        <a href="https://www.instagram.com/accumedi_/">
+                            <img src="img/insta.png" alt="인스타그램">
+                            <p>INSTAGRAM</p>
+                        </a>
+                    </div>
+                </div> 
+            </div>
+            <div class="footer_contact">
+                <p>
+                    대표번호: <span class="n">062-233-6015</span> (평일 09:00 ~ 17:00 / 점심시간: 12:00 ~ 13:00) <br>
+                    이메일: taehyunhealthcare@naver.com <br>
+                    주소: 광주광역시 동구 천변우로 453 (코밀빌딩) 4층 413호 <br>
+                    사업자등록번호: 139-86-02746 
+                </p>
+                <div class="policy_links">
+                    <a href="#" id="openModalBtn">개인정보처리방침</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer_copyright">
+            &copy; 2025 태현헬스케어. All rights reserved.
         </div>
     </footer>
     <!-- 푸터 끝 -->
 
-    <!-- 모바일용 푸터 -->
-    <div class="footer-second">
-        <p>상호명: 태현헬스케어</p>
-        <p><strong>대표번호: 062-233-6015</strong></p>
-        <p>광주광역시 동구 천변우로 453 (코밀빌딩) 4층 413호</p>
-        <p>&copy; 2025 태현헬스케어. ALL rights reserved.</p>
-    </div>
 
     <!-- 모달창 시작 -->
     <div id="privacyModal" class="modal">
@@ -300,6 +285,37 @@
     </div>
     <!-- 모달창 끝 -->
 
+    <!-- 모바일 메뉴 버튼 -->
+    <div class="menu-icon">
+        <a href="#"><img src="img/menu-bar.svg" alt="메뉴버튼"></a>
+    </div>
+
+    <!-- 모바일 메뉴 -->
+    <div class="menu-mobile">
+        <button id="menu-close-btn" >&times;</button>
+        <ul class="m-menu">
+            <li><a href="#">회사소개</a></li>
+            <li>
+                <a href="#">제품소개</a>
+                <ul class="m-submenu">
+                    <li><a href="01_products.html">Fetal Doppler</a></li>
+                    <li><a href="02_products.html">Nebulizer</a></li>
+                    <li><a href="03_products.html">Pulse Oximeter</a></li>
+                </ul>
+            </li>
+            <li><a href="partnership.html">B2B</a></li>
+            <li>
+                <a href="#">COMMUNITY</a>
+                <ul class="m-submenu">
+                    <li><a href="talk.html">Q&A</a></li>
+                    <li><a href="memo.html">자료실</a></li>
+                    <li><a href="notice.html">공지사항</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+
 
     <!-- 관리자 로그인 로그아웃 스크립트 -->
     <script>
@@ -326,7 +342,7 @@
         // 탭 전환 및 '더보기' 링크 업데이트 함수
         function openTab(evt, tabContentId, moreLinkUrl) {
             var i, tabcontent, tabbuttons;
-            
+
             // 1. 모든 탭 콘텐츠 숨기기
             tabcontent = document.getElementsByClassName("tab-content");
             for (i = 0; i < tabcontent.length; i++) {
@@ -343,7 +359,7 @@
             // 3. 현재 클릭된 탭 콘텐츠를 보여주고, 버튼에 'active' 클래스 추가
             document.getElementById(tabContentId).style.display = "block";
             document.getElementById(tabContentId).classList.add("active");
-            
+
             if (evt) {
                 evt.currentTarget.classList.add("active");
             } else {
@@ -353,7 +369,7 @@
                     initialButton.classList.add("active");
                 }
             }
-            
+
             // 4. '더보기' 링크 업데이트
             const moreLink = document.getElementById('more-link');
             if (moreLink) {
@@ -362,11 +378,11 @@
         }
 
         document.addEventListener("DOMContentLoaded", function () {
-            // --- A. 공지사항 리스트 자동 삽입 (기존 로직) ---
+            /* ===================== A. 공지사항 리스트 자동 삽입 ===================== */
             const noticeList = document.querySelector(".notice-list");
             let noticePosts = JSON.parse(localStorage.getItem('noticePosts') || '[]');
 
-            // 정렬
+            // 정렬 (날짜 → ID 순)
             noticePosts.sort((a, b) => {
                 const dateCompare = new Date(b.date) - new Date(a.date);
                 if (dateCompare !== 0) return dateCompare;
@@ -379,49 +395,65 @@
             latestNotices.forEach((item) => {
                 const li = document.createElement("li");
                 li.innerHTML = `
-                <a href="notice_view.html?id=${item.id}">
-                    <span class="notice-title">${item.title}</span>
-                    <span class="notice-date">${item.date}</span>
-                </a>
+                    <a href="notice_view.html?id=${item.id}">
+                        <span class="notice-title">${item.title}</span>
+                        <span class="notice-date">${item.date}</span>
+                    </a>
                 `;
                 noticeList.appendChild(li);
             });
 
 
-            // --- B. 자료실 리스트 자동 삽입 (기존 로직) ---
+            /* ===================== B. 자료실 리스트 자동 삽입 (고정글 포함) ===================== */
+
             const memoList = document.querySelector(".memo-list");
             let memoPosts = JSON.parse(localStorage.getItem('memoPosts') || '[]');
 
-            // 정렬
+            // 고정 게시물
+            const fixedMemos = [
+                { id: 9001, title: "Fetal Doppler 제품 설명서", date: "2025.06.04", link: "download1.html" },
+                { id: 9002, title: "Nebulizer 제품 설명서", date: "2025.06.04", link: "download2.html" },
+                { id: 9003, title: "Pulse Oximeter 제품 설명서", date: "2025.06.04", link: "download3.html" }
+            ];
+
+            // 최신글 정렬
             memoPosts.sort((a, b) => {
                 const dateCompare = new Date(b.date) - new Date(a.date);
                 if (dateCompare !== 0) return dateCompare;
                 return b.id - a.id;
             });
 
-            const latestMemos = memoPosts.slice(0, 4); // 최대 4개
-            memoList.innerHTML = "";
+            // fixedMemos와 겹치지 않는 최신글만 추가
+            const filteredMemos = memoPosts.filter(post =>
+                !fixedMemos.some(fixed => fixed.id === post.id)
+            );
 
-            latestMemos.forEach((item) => {
+            // 최종 출력: 고정글 3개 + 최신글 1개
+            const finalMemos = [...fixedMemos, ...filteredMemos.slice(0, 1)];
+
+            memoList.innerHTML = "";
+            finalMemos.forEach((item) => {
                 const li = document.createElement("li");
+                const url = item.link ? item.link : `memo_view.html?id=${item.id}`;
+
                 li.innerHTML = `
-                <a href="memo_view.html?id=${item.id}">
-                    <span class="memo-title">${item.title}</span>
-                    <span class="memo-date">${item.date}</span>
-                </a>
+                    <a href="${url}">
+                        <span class="memo-title">${item.title}</span>
+                        <span class="memo-date">${item.date}</span>
+                    </a>
                 `;
                 memoList.appendChild(li);
             });
-            
-            
-            // --- C. 초기 탭 활성화 (새로운 로직) ---
-            // 페이지 로드 완료 후 공지사항 탭을 기본으로 활성화합니다.
+
+
+            /* ===================== C. 초기 탭 활성화 ===================== */
             openTab(null, 'notice-content', 'notice.html');
         });
     </script>
 
+
     
-    <!-- 모달 + 모바일 메뉴 통합 스크립트 -->
+    <!-- 모달 통합 스크립트 -->
     <script>
     document.addEventListener("DOMContentLoaded", function () {
     /** ========== 개인정보 모달 관련 ========== **/
@@ -457,67 +489,6 @@
         modal.addEventListener("copy", e => e.preventDefault());
         modal.addEventListener("contextmenu", e => e.preventDefault());
     }
-
-    /** ========== 모바일 메뉴 관련 ========== **/
-    const menuToggle = document.querySelector(".menu-toggle");
-    const mobileMenu = document.querySelector(".mobile-menu");
-    const closeMenuBtn = document.querySelector(".mobile-menu .close-btn");
-
-    // 서브메뉴 초기화 함수
-    function resetSubmenus() {
-        const submenuParents = document.querySelectorAll(".mobile-menu .has-submenu");
-        submenuParents.forEach(parent => {
-        parent.classList.remove("open");
-        const submenu = parent.querySelector(".submenu");
-        if (submenu) submenu.style.display = "none";
-        });
-    }
-
-    if (menuToggle && mobileMenu && closeMenuBtn) {
-        // 메뉴 열기
-        menuToggle.addEventListener("click", () => {
-        mobileMenu.classList.add("active");
-        document.body.classList.add("no-scroll");
-        });
-
-        // 메뉴 닫기 (X 버튼)
-        closeMenuBtn.addEventListener("click", () => {
-        mobileMenu.classList.remove("active");
-        document.body.classList.remove("no-scroll");
-        resetSubmenus(); // 서브메뉴 초기화
-        });
-    }
-
-    /** ========== 서브메뉴 토글 관련 ========== **/
-    const submenuParents = document.querySelectorAll(".mobile-menu .has-submenu > a");
-
-    submenuParents.forEach(link => {
-        link.addEventListener("click", (e) => {
-        e.preventDefault(); // 링크 이동 방지
-        const parentLi = link.parentElement;
-        const submenu = parentLi.querySelector(".submenu");
-
-        if (!submenu) return;
-
-        // 토글 방식
-        const isOpen = submenu.style.display === "block";
-        submenu.style.display = isOpen ? "none" : "block";
-        parentLi.classList.toggle("open", !isOpen);
-        });
-    });
-
-    // 메뉴 바깥 클릭 시 닫기
-    document.addEventListener("click", (e) => {
-        if (
-        mobileMenu.classList.contains("active") &&
-        !mobileMenu.contains(e.target) &&
-        !menuToggle.contains(e.target)
-        ) {
-        mobileMenu.classList.remove("active");
-        document.body.classList.remove("no-scroll");
-        resetSubmenus(); // 서브메뉴 초기화
-        }
-    });
     });
     </script>
 </body>
