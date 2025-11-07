@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <title>자료 등록 - 관리자 전용</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
             font-family: '맑은 고딕', sans-serif;
@@ -86,30 +87,64 @@
         </form>
     </div>
 
+    <!-- 모바일 메뉴 버튼 -->
+    <div class="menu-icon">
+        <a href="#"><i class="fa-solid fa-bars"></i></a>
+    </div>
+
+    <!-- 모바일 메뉴 -->
+    <div class="menu-mobile">
+        <button id="menu-close-btn" >&times;</button>
+        <ul class="m-menu">
+            <li><a href="./">홈</a></li>
+            <li><a href="about.html">회사소개</a></li>
+
+            <li class="has-sub">
+                <a href="#">제품소개 <span class="arrow">&#9662;</span></a>
+                <ul class="m-submenu">
+                    <li><a href="01_products.html">Fetal Doppler</a></li>
+                    <li><a href="02_products.html">Nebulizer</a></li>
+                    <li><a href="03_products.html">Pulse Oximeter</a></li>
+                </ul>
+            </li>
+
+            <li><a href="partnership.html">B2B</a></li>
+
+            <li class="has-sub">
+                <a href="#">COMMUNITY <span class="arrow">&#9662;</span></a>
+                <ul class="m-submenu">
+                    <li><a href="talk.html">Q&A</a></li>
+                    <li><a href="memo.html">자료실</a></li>
+                    <li><a href="notice.html">공지사항</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+
     <!-- 자료실 작성 및 저장 기능 스크립트 -->
     <script>
     document.addEventListener("DOMContentLoaded", function(){
         const isAdmin = localStorage.getItem('isAdmin') === 'true';
 
-        // 관리자가 아닌 경우 접근 차단
+
         if (!isAdmin) {
             alert('접근 권한이 없습니다.');
             location.href = 'memo.html';
             return;
         }
 
-        // 폼 제출 시 로컬스토리지에 저장
         document.getElementById('memoForm').onsubmit = function(e) {
             e.preventDefault();
 
             const memos = JSON.parse(localStorage.getItem('memoPosts') || '[]'); 
 
             const newMemo = {
-                id: Date.now(),  // 고유 ID
+                id: Date.now(),  
                 title: document.getElementById('title').value,
                 author: document.getElementById('author').value,
                 content: document.getElementById('content').value,
-                date: new Date().toISOString().split('T')[0],  // yyyy-mm-dd 형식
+                date: new Date().toISOString().split('T')[0],  
                 views: 0
             };
 
@@ -118,6 +153,59 @@
             alert('등록 완료');
             location.href = 'memo.html';
         };
+    });
+    </script>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const menuOpenBtn = document.querySelector(".menu-icon a");    
+        const menuCloseBtn = document.getElementById("menu-close-btn"); 
+        const mobileMenu = document.querySelector(".menu-mobile");  
+        const subMenus = document.querySelectorAll(".has-sub");        
+
+        mobileMenu.style.display = "none";
+
+        menuOpenBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            mobileMenu.style.display = "block";
+            document.body.style.overflow = "hidden"; 
+        });
+
+        menuCloseBtn.addEventListener("click", function () {
+            mobileMenu.style.display = "none";
+            document.body.style.overflow = ""; 
+            resetSubMenus();  
+        });
+
+        subMenus.forEach(menu => {
+            const btn = menu.querySelector("a");
+            const submenu = menu.querySelector(".m-submenu");
+
+            btn.addEventListener("click", function (e) {
+                e.preventDefault(); 
+
+                const isOpen = submenu.classList.contains("open");
+                
+                document.querySelectorAll(".m-submenu.open").forEach(openMenu => {
+                    openMenu.classList.remove("open");
+                    openMenu.parentElement.classList.remove("open");
+                });
+
+                if (!isOpen) {
+                    submenu.classList.add("open");
+                    menu.classList.add("open");
+                }
+            });
+        });
+
+        function resetSubMenus() {
+            document.querySelectorAll(".m-submenu").forEach(submenu => {
+                submenu.classList.remove("open");
+            });
+            document.querySelectorAll(".has-sub").forEach(menu => {
+                menu.classList.remove("open");
+            });
+        }
     });
     </script>
 </body>
