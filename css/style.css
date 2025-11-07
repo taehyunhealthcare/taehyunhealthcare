@@ -2161,6 +2161,7 @@ span.s {
     top: 0;
     background-color: #dce9f1;
     color: #0f3d56;
+    z-index: 999;
   }
 
   #menu-close-btn {
