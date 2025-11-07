@@ -2328,7 +2328,23 @@ span.s {
 
   .mobile-map-container {
     width: 100%;
-    margin-bottom: 1rem;        
+    margin-bottom: 1rem;      
+    position: relative;  
+  }
+
+  .custom-map-overlay {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #fff;
+    padding: 15px 20px;
+    border-radius: 6px;
+    font-size: 12px;
+    line-height: 1.4;
+    z-index: 10;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 253px;
   }
 
   .mobile-map-info {
