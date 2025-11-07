@@ -239,27 +239,61 @@
     </div>
     <!-- 쿠키동의 모달 끝 -->
 
+    <!-- 모바일 메뉴 버튼 -->
+    <div class="menu-icon">
+        <a href="#"><i class="fa-solid fa-bars"></i></a>
+    </div>
+
+    <!-- 모바일 메뉴 -->
+    <div class="menu-mobile">
+        <button id="menu-close-btn" >&times;</button>
+        <ul class="m-menu">
+            <li><a href="./">홈</a></li>
+            <li><a href="about.html">회사소개</a></li>
+
+            <li class="has-sub">
+                <a href="#">제품소개 <span class="arrow">&#9662;</span></a>
+                <ul class="m-submenu">
+                    <li><a href="01_products.html">Fetal Doppler</a></li>
+                    <li><a href="02_products.html">Nebulizer</a></li>
+                    <li><a href="03_products.html">Pulse Oximeter</a></li>
+                </ul>
+            </li>
+
+            <li><a href="partnership.html">B2B</a></li>
+
+            <li class="has-sub">
+                <a href="#">COMMUNITY <span class="arrow">&#9662;</span></a>
+                <ul class="m-submenu">
+                    <li><a href="talk.html">Q&A</a></li>
+                    <li><a href="memo.html">자료실</a></li>
+                    <li><a href="notice.html">공지사항</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
 
     <!-- 쿠키 동의 모달 스크립트 & 이메일 전송 스크립트 -->
     <script>
     document.addEventListener("DOMContentLoaded", function () {
-      emailjs.init('uQovuRqpho-BUgMSv'); // Public Key
+      emailjs.init('uQovuRqpho-BUgMSv'); 
       const cookieModal   = document.getElementById("cookieModal");
       const cookieAgree   = document.getElementById("cookieAgree");
       const cookieDecline = document.getElementById("cookieDecline");
       const partnerForm   = document.getElementById("partner-form");
       const submitButton  = partnerForm.querySelector("button[type='submit']");
 
-      // form submit 이벤트 제거 (중복 방지)
+
       partnerForm.onsubmit = (e) => e.preventDefault();
 
-      // 문의하기 버튼 클릭 시 쿠키 동의 모달 열기
+
       submitButton.addEventListener("click", function (e) {
         e.preventDefault();
         cookieModal.style.display = "flex";
       });
 
-      // 쿠키 동의 시 이메일 전송
+
       cookieAgree.addEventListener("click", function () {
         cookieModal.style.display = "none";
 
@@ -273,22 +307,22 @@
           });
       });
 
-      // 쿠키 거절 시
+
       cookieDecline.addEventListener("click", function () {
         cookieModal.style.display = "none";
         showCustomAlert("쿠키 수집에 동의하지 않아 문의 접수가 제한됩니다.");
       });
 
-      // 모달 바깥 클릭 시 닫기
+
       window.addEventListener("click", function (e) {
         if (e.target === cookieModal) {
           cookieModal.style.display = "none";
         }
       });
 
-      // ===== 커스텀 확인 모달 =====
+
       function showCustomAlert(message) {
-        // 오버레이
+
         const overlay = document.createElement("div");
         overlay.classList.add("custom-alert-overlay");
         overlay.setAttribute("role", "dialog");
@@ -301,7 +335,7 @@
         overlay.style.alignItems = "center";
         overlay.style.justifyContent = "center";
 
-        // 박스
+
         const box = document.createElement("div");
         box.classList.add("custom-alert-box");
         box.style.background = "#fff";
@@ -338,12 +372,12 @@
           btn.style.backgroundColor = "#fff"; 
         });
 
-        // 닫기
+
         const closeModal = () => overlay.remove();
 
         btn.addEventListener("click", closeModal);
 
-        // 버튼 클릭 시 닫기
+
         overlay.addEventListener("click", (e) => {
           if (e.target === overlay) closeModal();
         });
@@ -353,7 +387,7 @@
         overlay.appendChild(box);
         document.body.appendChild(overlay);
 
-        // 접근성: 버튼에 포커스
+
         setTimeout(() => btn.focus(), 0);
       }
     });
@@ -362,27 +396,27 @@
     <!-- 모달 통합 스크립트 -->
     <script>
     document.addEventListener("DOMContentLoaded", function () {
-    /** ========== 개인정보 모달 관련 ========== **/
+
     const modal = document.getElementById("privacyModal");
     const openBtn = document.getElementById("openModalBtn");
     const closeBtn = document.querySelector(".close");
 
     if (modal && openBtn && closeBtn) {
-        // 모달 열기
+
         openBtn.onclick = function (e) {
         e.preventDefault();
         modal.style.display = "block";
-        modal.scrollTop = 0; // 스크롤 초기화
+        modal.scrollTop = 0; 
         document.body.classList.add("modal-open");
         };
 
-        // 모달 닫기
+
         closeBtn.onclick = function () {
         modal.style.display = "none";
         document.body.classList.remove("modal-open");
         };
 
-        // 바깥 클릭 시 닫기
+
         window.onclick = function (event) {
         if (event.target === modal) {
             modal.style.display = "none";
@@ -390,11 +424,63 @@
         }
         };
 
-        // 드래그/복사/우클릭 방지
         modal.addEventListener("dragstart", e => e.preventDefault());
         modal.addEventListener("copy", e => e.preventDefault());
         modal.addEventListener("contextmenu", e => e.preventDefault());
     }
+    });
+    </script>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const menuOpenBtn = document.querySelector(".menu-icon a");    
+        const menuCloseBtn = document.getElementById("menu-close-btn"); 
+        const mobileMenu = document.querySelector(".menu-mobile");  
+        const subMenus = document.querySelectorAll(".has-sub");        
+
+        mobileMenu.style.display = "none";
+
+        menuOpenBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            mobileMenu.style.display = "block";
+            document.body.style.overflow = "hidden"; 
+        });
+
+        menuCloseBtn.addEventListener("click", function () {
+            mobileMenu.style.display = "none";
+            document.body.style.overflow = ""; 
+            resetSubMenus();  
+        });
+
+        subMenus.forEach(menu => {
+            const btn = menu.querySelector("a");
+            const submenu = menu.querySelector(".m-submenu");
+
+            btn.addEventListener("click", function (e) {
+                e.preventDefault(); 
+
+                const isOpen = submenu.classList.contains("open");
+                
+                document.querySelectorAll(".m-submenu.open").forEach(openMenu => {
+                    openMenu.classList.remove("open");
+                    openMenu.parentElement.classList.remove("open");
+                });
+
+                if (!isOpen) {
+                    submenu.classList.add("open");
+                    menu.classList.add("open");
+                }
+            });
+        });
+
+        function resetSubMenus() {
+            document.querySelectorAll(".m-submenu").forEach(submenu => {
+                submenu.classList.remove("open");
+            });
+            document.querySelectorAll(".has-sub").forEach(menu => {
+                menu.classList.remove("open");
+            });
+        }
     });
     </script>
 </body>
