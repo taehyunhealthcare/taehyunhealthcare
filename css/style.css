@@ -2139,14 +2139,19 @@ span.s {
     font-size: 12px;
   }
 
-  .menu-icon{display: block;}
-  .menu-icon a {
-    width: 100%;
-    max-width: 32px;
+  .menu-icon{
+    display: block;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
-    top: 80px;
-    left: 15px;
+    top: 60px;
+    left: 10px;
   }
+
+  .menu-icon i {font-size: 24px;}
 
   .menu-mobile {
     display: block;
@@ -2154,8 +2159,8 @@ span.s {
     height: 100%;
     position: absolute;
     top: 0;
-    background-color: #F8F9FA;
-    color: #666;
+    background-color: #dce9f1;
+    color: #0f3d56;
   }
 
   #menu-close-btn {
@@ -2164,36 +2169,65 @@ span.s {
     top: 10px;
     border: none;
     background: none;
-    font-size: 24px;
+    font-size: 36px;
     color: #666;
   }
 
   .m-menu {
     width: 100%;
-    height: 200px;
     text-align: center;
     margin-top: 200px;
   }
 
+  /* 점선 제거 + 간격 추가 */
   .m-menu li {
-    height: 50px;
-    border-bottom: 1px dashed #ccc;
+    padding: 6px 0;          
+    border: none;            
   }
 
-  .m-menu li:first-child {
-    border-top: 1px dashed #ccc;
-  }
-
+  /* 메뉴 글자 */
   .m-menu li a {
-    line-height: 50px;
     text-align: center;
     display: block;
-    height: 50px;
+    font-size: 16px;
+    padding: 14px 0;
   }
 
-  .m-submenu {display: none;}
+  /* 서브메뉴 */
+  .m-submenu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .3s ease;
+    background: #e9f2f7;
+  }
 
+  /* 열릴 때 */
+  .m-submenu.open {
+    max-height: 300px;
+  }
 
+  /* 화살표 있는 메뉴 (제품소개 / COMMUNITY) */
+  .m-menu li.has-sub > a {
+    position: relative;
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+  }
+
+  /* 화살표 아이콘 */
+  .m-menu .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 6px;
+    font-size: 16px;
+    color: #555;
+  }
+
+  /* 열릴 때 화살표 회전 */
+  .has-sub.open .arrow {
+    transform: translateY(-50%) rotate(180deg);
+  }
 
 }
 
@@ -2446,7 +2480,7 @@ span.s {
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     padding-top: 25px;
     padding-bottom: 25px;
-    }
+  }
 
   #j-contents {
     flex-direction: column; 
@@ -2550,6 +2584,34 @@ span.s {
     font-size: 14px;
     padding: 12px 0;
     border-radius: 8px;
+  }
+
+  .page-box {
+    width: 100%;
+    max-width: 460px;
+  }
+
+  .side-icon-box {
+    top: 400px;           
+    right: 10px;     
+    width: 50px;      
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+
+  .side-icon-box a {
+    padding: 0 14px;
+    font-size: 12px;      
+    height: 50px;         
+    gap: 8px;
+  }
+
+  .side-icon-box i {
+    font-size: 18px;      
+  }
+
+  .side-icon-box > a > span {
+    display: none;   
   }
 }
 
@@ -2776,6 +2838,13 @@ span.s {
 /* 다운로드 페이지 미디어쿼리 */
 @media (max-width: 480px) {
 
+  body.download-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  body.download-page .main-wrap {flex: 1;}
   #download-view {display: none;}
   .d-btn{display: none;}
 
@@ -2815,14 +2884,10 @@ span.s {
   }
 
   .d-btn-mobile {
-    display: block;
-    float: right;
+    display: flex;
+    justify-content: flex-end;
     border: 1px solid #bbb;
-    padding: 5px;
-    margin-right: 20px;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    font-size: 10px;
+    margin: 30px 20px 30px auto;
     width: 40px;
     height: 30px;
     font-size: 9.5px;
@@ -3209,11 +3274,14 @@ span.s {
 
   .submit-btn1 {font-size: 10px;}
 
+
+
   #download-header {
     width: 100%;
     max-width: 330px;
     margin: 0 auto;
   }
+
   #download-header h2 {font-size: 14px;}
 
   .download-file-mobile {
@@ -3228,10 +3296,11 @@ span.s {
     max-width: 330px;
     margin: 0 auto;
   }
+
   .download-text-mobile p {font-size: 10px;}
 
   .d-btn-mobile {
-    margin: 15px;
+    margin: 20px 20px 20px 305px;
   }
 
   .cookie-content {
@@ -3359,4 +3428,31 @@ span.s {
     height: auto;
   }
 
+  .page-box {
+    width: 100%;
+    max-width: 340px;
+  }
+
+  .side-icon-box {
+    top: 400px;           
+    right: 10px;     
+    width: 50px;      
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+
+  .side-icon-box a {
+    padding: 0 14px;
+    font-size: 12px;      
+    height: 50px;         
+    gap: 8px;
+  }
+
+  .side-icon-box i {
+    font-size: 18px;      
+  }
+
+  .side-icon-box > a > span {
+    display: none;   
+  }
 }
