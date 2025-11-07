@@ -260,20 +260,54 @@
     </div>
     <!--  쿠키 동의 모달 끝 -->
 
+    <!-- 모바일 메뉴 버튼 -->
+    <div class="menu-icon">
+        <a href="#"><i class="fa-solid fa-bars"></i></a>
+    </div>
+
+    <!-- 모바일 메뉴 -->
+    <div class="menu-mobile">
+        <button id="menu-close-btn" >&times;</button>
+        <ul class="m-menu">
+            <li><a href="./">홈</a></li>
+            <li><a href="about.html">회사소개</a></li>
+
+            <li class="has-sub">
+                <a href="#">제품소개 <span class="arrow">&#9662;</span></a>
+                <ul class="m-submenu">
+                    <li><a href="01_products.html">Fetal Doppler</a></li>
+                    <li><a href="02_products.html">Nebulizer</a></li>
+                    <li><a href="03_products.html">Pulse Oximeter</a></li>
+                </ul>
+            </li>
+
+            <li><a href="partnership.html">B2B</a></li>
+
+            <li class="has-sub">
+                <a href="#">COMMUNITY <span class="arrow">&#9662;</span></a>
+                <ul class="m-submenu">
+                    <li><a href="talk.html">Q&A</a></li>
+                    <li><a href="memo.html">자료실</a></li>
+                    <li><a href="notice.html">공지사항</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
     <!--  쿠키 동의 및 문의 제출 스크립트 -->
     <script>
       const fileInput   = document.getElementById('file1');
       const fileListDiv = document.getElementById('file-list1');
       const selectedFiles = [];
 
-      // 파일 선택
+
       fileInput.addEventListener('change', () => {
         Array.from(fileInput.files).forEach(file => selectedFiles.push(file));
         renderFileList();
         fileInput.value = "";
       });
 
-      // 파일 리스트 렌더링
+
       function renderFileList() {
         if (selectedFiles.length === 0) {
           fileListDiv.textContent = "선택된 파일 없음";
@@ -297,13 +331,13 @@
         );
       }
 
-      // ===== 쿠키 모달 제어 & 제출 흐름 =====
+
       const inquiryForm   = document.getElementById('inquiryForm');
       const cookieModal   = document.getElementById('cookieModal');
       const cookieAgree   = document.getElementById('cookieAgree');
       const cookieDecline = document.getElementById('cookieDecline');
 
-      // 문의 등록 버튼 클릭 시: 입력값 확인 후 모달 띄움
+
       inquiryForm.addEventListener('submit', function(e) {
         e.preventDefault();
 
@@ -312,7 +346,7 @@
         const title = document.getElementById('title1').value.trim();
         const content = document.getElementById('content1').value.trim();
 
-        // 누락된 항목을 담을 배열
+
         const missingFields = [];
 
         if (!name) missingFields.push("이름");
@@ -320,35 +354,35 @@
         if (!title) missingFields.push("제목");
         if (!content) missingFields.push("내용");
 
-        // 하나라도 비어있다면 안내
+
         if (missingFields.length > 0) {
           const message = "다음 항목을 입력해주세요:\n\n" + missingFields.join(", ");
           showCustomAlert(message);
           return;
         }
 
-        // 모든 입력이 완료된 경우에만 쿠키 모달 열기
+
         cookieModal.style.display = 'flex';
       });
 
-      // 동의 시: 실제 저장 실행
+
       cookieAgree.addEventListener('click', function() {
         cookieModal.style.display = 'none';
-        doSubmit();                           // ← 실제 저장 함수 호출
+        doSubmit();                       
       });
 
-      // 거절 시: 안내 모달 (확인 또는 배경 클릭으로 닫힘)
+
       cookieDecline.addEventListener('click', function() {
         cookieModal.style.display = 'none';
         showCustomAlert("쿠키 수집에 동의하지 않아 문의 접수가 제한됩니다.");
       });
 
-      // 모달 바깥 클릭 시 닫기
+
       window.addEventListener('click', function(e) {
         if (e.target === cookieModal) cookieModal.style.display = 'none';
       });
 
-      // 실제 저장/이동 로직 (원래 submit에서 하던 것 그대로)
+
       function doSubmit() {
         const name  = document.getElementById('name1').value.trim();
         const email = document.getElementById('email1').value.trim();
@@ -386,7 +420,7 @@
         window.location.href = '01_partnership.html';
       }
 
-    // ===== 커스텀 확인 모달 (확인/배경 클릭으로 닫힘) =====
+
     function showCustomAlert(message) {
       const overlay = document.createElement("div");
       overlay.className = "custom-alert";
@@ -402,7 +436,7 @@
         justifyContent: "center"
       });
 
-      //  body 스크롤 방지
+
       document.body.style.overflow = "hidden";
 
       const box = document.createElement("div");
@@ -458,27 +492,27 @@
     <!-- 모달 통합 스크립트 -->
     <script>
     document.addEventListener("DOMContentLoaded", function () {
-    /** ========== 개인정보 모달 관련 ========== **/
+
     const modal = document.getElementById("privacyModal");
     const openBtn = document.getElementById("openModalBtn");
     const closeBtn = document.querySelector(".close");
 
     if (modal && openBtn && closeBtn) {
-        // 모달 열기
+
         openBtn.onclick = function (e) {
         e.preventDefault();
         modal.style.display = "block";
-        modal.scrollTop = 0; // 스크롤 초기화
+        modal.scrollTop = 0; 
         document.body.classList.add("modal-open");
         };
 
-        // 모달 닫기
+
         closeBtn.onclick = function () {
         modal.style.display = "none";
         document.body.classList.remove("modal-open");
         };
 
-        // 바깥 클릭 시 닫기
+
         window.onclick = function (event) {
         if (event.target === modal) {
             modal.style.display = "none";
@@ -486,11 +520,63 @@
         }
         };
 
-        // 드래그/복사/우클릭 방지
         modal.addEventListener("dragstart", e => e.preventDefault());
         modal.addEventListener("copy", e => e.preventDefault());
         modal.addEventListener("contextmenu", e => e.preventDefault());
     }
+    });
+    </script>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const menuOpenBtn = document.querySelector(".menu-icon a");    
+        const menuCloseBtn = document.getElementById("menu-close-btn"); 
+        const mobileMenu = document.querySelector(".menu-mobile");  
+        const subMenus = document.querySelectorAll(".has-sub");        
+
+        mobileMenu.style.display = "none";
+
+        menuOpenBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            mobileMenu.style.display = "block";
+            document.body.style.overflow = "hidden"; 
+        });
+
+        menuCloseBtn.addEventListener("click", function () {
+            mobileMenu.style.display = "none";
+            document.body.style.overflow = ""; 
+            resetSubMenus();  
+        });
+
+        subMenus.forEach(menu => {
+            const btn = menu.querySelector("a");
+            const submenu = menu.querySelector(".m-submenu");
+
+            btn.addEventListener("click", function (e) {
+                e.preventDefault(); 
+
+                const isOpen = submenu.classList.contains("open");
+                
+                document.querySelectorAll(".m-submenu.open").forEach(openMenu => {
+                    openMenu.classList.remove("open");
+                    openMenu.parentElement.classList.remove("open");
+                });
+
+                if (!isOpen) {
+                    submenu.classList.add("open");
+                    menu.classList.add("open");
+                }
+            });
+        });
+
+        function resetSubMenus() {
+            document.querySelectorAll(".m-submenu").forEach(submenu => {
+                submenu.classList.remove("open");
+            });
+            document.querySelectorAll(".has-sub").forEach(menu => {
+                menu.classList.remove("open");
+            });
+        }
     });
     </script>
  </body>
