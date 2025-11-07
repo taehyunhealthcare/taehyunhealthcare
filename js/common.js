@@ -1,55 +1,51 @@
 $(document).ready(function() {
-    let maxHeight = 0;
-
-
-    $(".submenu").each(function() {
-        $(this).css({
-            'display': 'block', 
-            'position': 'absolute', 
-            'visibility': 'hidden' 
-        });
-        
-        const currentHeight = $(this).outerHeight(); 
-        if (currentHeight > maxHeight) {
-            maxHeight = currentHeight;
-        }
-        
-        $(this).css({
-            'display': 'none', 
-            'position': 'absolute', 
-            'visibility': 'visible' 
-        });
-    });
-
-    const targetBgHeight = maxHeight + 10;
-
     $(".menu-pc").hover(
-        function() {
-            $(".submenu").stop(true, true).slideDown(250);
+        function () {
+            let maxHeight = 0;
+
+            // 각 submenu의 실제 높이를 계산
+            $(".submenu").each(function() {
+                $(this).css({
+                    'display': 'block',
+                    'visibility': 'hidden',
+                    'position': 'absolute'
+                });
+
+                const currentHeight = $(this).outerHeight();
+                if (currentHeight > maxHeight) {
+                    maxHeight = currentHeight;
+                }
+
+                $(this).css({
+                    'display': 'none',
+                    'visibility': 'visible',
+                    'position': 'absolute'
+                });
+            });
+
+            const targetBgHeight = maxHeight + 10;
+
+            // 서브메뉴 표시 (fade 방식)
+            $(".submenu").stop(true, true).fadeIn(200);
+
+            // 배경 높이 적용
             $(".menu-bg").stop(true, true).animate({
-                height: targetBgHeight + 'px'
-            }, 250);
-        },
-        function() {
-            $(".submenu").stop(true, true).slideUp(200);
-            $(".menu-bg").stop(true, true).animate({
-                height: '0'
+                height: targetBgHeight + "px"
             }, 200);
+        },
+        function () {
+            // 서브메뉴 숨김
+            $(".submenu").stop(true, true).fadeOut(150);
+
+            // 배경 닫기
+            $(".menu-bg").stop(true, true).animate({
+                height: "0"
+            }, 150);
         }
     );
 });
 
-    // app.post('/submit', (req, res) => {
-    // const { title, writer, content } = req.body;
-    // const date = new Date();
 
-    
-    // db.collection('inquiries').insertOne({
-    //     title, writer, content, date
-    // });
-
-    // res.redirect('/inquiries'); 
-    // });
 
       // 검색창 초기화 스크립트
     window.addEventListener('pageshow', function (event) {
