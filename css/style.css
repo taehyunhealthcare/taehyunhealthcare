@@ -2252,38 +2252,47 @@ span.s {
 
   .mobile_p {
     display: block;
-    margin-top: 30px;
-    font-size: 12px;
+    margin-top: 1.5rem;
+    font-size: 0.75rem;
+    padding: 0 1rem;
+    line-height: 1.5;
   }
 
   .n_box {
     width: 100%;
-    max-width: 440px;
     height: auto; 
     margin: 0 auto;
+    padding: 0 1rem;
+    box-sizing: border-box;
   }
   
-  .about-section {
-    font-size: 0.85rem;
-  }
+  .about-section {font-size: 0.85rem;}
 
   .about-section h2 {
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-size: 16px;
+    gap: 0.4rem;
+    font-size: 1.1rem;
     font-weight: 700;
-    margin: 5rem 0 0 0;
+    margin: 2.5rem 0 0 0;
     line-height: 1.2;
+    padding: 0 1rem;
   }
 
   .card {display: none;}
   .card-1 {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background-color: #f9f9f9;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     text-align: center;
+    width: calc(50% - 0.6rem);
+    margin: 0;
+    padding: 1rem;
+    box-sizing: border-box;
+    min-height: 200px;
   }
 
   .n_box section > div {
@@ -2291,46 +2300,52 @@ span.s {
     flex-wrap: wrap;
     justify-content: center;
     gap: 1.2rem;
-    margin-top: 30px;
+    margin-top: 1.5rem;
   }
 
-  .n_box .card-1 {
-    min-width: 160px;
-    width: 100%;
-    max-width: 210px;   
-    height: auto;
-    padding: 1rem;
-    box-sizing: border-box;
+  .n_box section > div::after {
+    display: none;
   }
+
 
   .n_box .card-1 img {
     width: 100%;
     height: auto;  
-    max-height: 180px;    
-    object-fit: cover;
+    max-height: 120px;    
+    object-fit: contain;
     border-radius: 8px;
     margin-bottom: 0.5rem;
+    align-self: center;
   }
 
-  .n_box .card-1 h3 {
-    font-size: 0.65rem;
-  }
+  .n_box .card-1 h3 {font-size: 0.68rem;}
 
   .n_box .card-1 p {
     font-size: 0.6rem;
-    line-height: 1.6;
+    line-height: 1.4;
     margin-top: 0.5rem;
   }
 
   .n_box section > div .card-1:nth-child(3) {
-    grid-column: 1 / span 2;
+    grid-column:  unset;
+    width: 100%;
     max-width: 210px;
-    justify-self: center;
+    margin-top: 1.2rem;
+    min-height: 200px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .b_p {
-    margin-top: 30px;
-    font-size: 12px;
+    margin-top: 1.5rem;
+    font-size: 0.75rem;
+    padding: 1rem;
+    line-height: 1.6;
+    margin-left: 0.5rem;
+    box-sizing: border-box;
+    margin: 1.5rem auto 0;
+    width: calc(100% - 2rem);
+    max-width: 440px;
   }
 
   #mobile-map {display: block;}
@@ -2342,55 +2357,60 @@ span.s {
   .mobile-map-container {
     width: 100%;
     margin-bottom: 1rem;      
-    position: relative;  
+    position: relative;
+    padding: 0 1rem;
+    box-sizing: border-box;
   }
 
   .custom-map-overlay {
     position: absolute;
-    top: 10px;
-    left: 10px;
+    top: 0.5rem;
+    left: 1.5rem;
     background: #fff;
-    padding: 15px 20px;
+    padding: 0.75rem 1rem;
     border-radius: 6px;
-    font-size: 12px;
-    line-height: 1.4;
+    font-size: 0.75rem;
+    line-height: 1.6;
     z-index: 10;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-    width: 100%;
-    max-width: 253px;
+    width: 80%;
+    max-width: 245px;
   }
 
   .mobile-map-info {
     display: block;   
     width: 100%;    
-    margin-top: 1rem;   
+    margin-top: 1rem;  
+    padding: 0 1rem; 
+    box-sizing: border-box;
   }
 
   .mobile-map-row {
     display: flex;             
     margin-bottom: 0.5rem;
+    font-size: 0.75rem;
   }
 
   .mobile-map-row .label {
-    width: 5rem;
+    width: 4rem;
     font-weight: bold;
     background: #f1f1f1;
     text-align: center;
-    padding: 0.3rem;
+    padding: 0.4rem;
     border: 1px solid #ddd;
-    font-size: 12px;
+    box-sizing: border-box;
   }
 
   .mobile-map-row .content {
     flex: 1;
     border: 1px solid #ddd;
     border-left: none;
-    padding: 0.3rem;
-    font-size: 12px;
+    padding: 0.4rem;
+    word-break: break-all;
   }
 
   .n_box .qna-h2 {
-    margin: 80px 0 0;
+    margin: 3rem 0 0;
     padding: 0 0 0 15px;
   }
 }
@@ -3036,25 +3056,8 @@ span.s {
   #cancelBtn {font-size: 12px;}
 }
 
-/* 320px 용 미디어쿼리 */
-@media (max-width: 320px) {
-  .menu-icon {
-    width: 2.5rem;
-    height: 2.5rem;
-    top: 4.5rem;
-    left: 0.5rem;
-  }
-  .menu-icon i {font-size: 1.25rem;}
-  .footer_contact p, .footer_contact p .n {font-size: 0.55rem;}
-
-  .notice-list li a, .memo-list li a, .notice-date, .memo-date, .footer_copyright {font-size: 0.55rem;}
-  .tab-button, .tab-button.active, .notice-card-header > h3 > a, .memo-card-header > h3 > a {font-size: 0.7rem;}
-  #more-link {font-size: 0.55rem;}
-  #openModalBtn {font-size: 0.55rem;}
-} 
-
 /* 360px 용 미디어쿼리 */
-/* @media (max-width: 360px) {
+@media (max-width: 360px) {
 
   .qna-header1 {
     width: 100%;
@@ -3076,7 +3079,7 @@ span.s {
   }
 
   .n_box .card-1 h3 {
-    font-size: 10px;
+    font-size: 7.5px;
   }
 
   .n_box .qna_h2 {
@@ -3094,12 +3097,14 @@ span.s {
   }
 
   .n_box .card-1 p {
-    font-size: 9.5px;
+    font-size: 7.5px;
   }
 
   .n_box section > div .card-1:nth-child(3) {
-    flex: 0 0 90%;
-    justify-content: center;
+    width: 100%;
+    max-width: 155.39px;
+    margin: 1.2rem auto 0;
+    min-height: 11.25rem;
   }
 
   .mobile-map-row {
@@ -3124,7 +3129,7 @@ span.s {
   .notice-card-header > h3 > a {font-size: 14px;}
   .memo-card-header > h3 > a {font-size: 14px;}
   .notice-title, .notice-date, .memo-title, .memo-date {font-size: 11px;}
-  .b_p {font-size: 10px;}
+  .b_p {font-size: 9px;}
   
   .mobile-nav {
     width: 100%;
@@ -3264,10 +3269,10 @@ span.s {
   }
 
   .mobile-map-row .label {
-    font-size: 0.59rem;
+    font-size: 0.54rem;
   }
 
-  .mobile-map-row .content {font-size: 0.59rem;}
+  .mobile-map-row .content {font-size: 0.54rem;}
 
   .mobile-nav h2 {font-size: 1rem;}
 
@@ -3510,4 +3515,123 @@ span.s {
 
   .modal-content h2 {font-size: 12px;}
   .modal-body p {font-size: 10px;}
-} */
+
+  .custom-map-overlay {
+    width: 100%;
+    max-width: 170px;
+    font-size: 8px;
+    min-height: 65px;
+    padding: 20px 16px;
+  }
+}
+
+/* 320px 용 미디어쿼리 */
+@media (max-width: 320px) {
+
+  .menu-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    top: 4.5rem;
+    left: 0.5rem;
+  }
+  .menu-icon i {font-size: 1.25rem;}
+  .footer_contact p, .footer_contact p .n {font-size: 0.55rem;}
+  footer {
+    margin-top: 50px;
+  }
+
+  .notice-list li a, .memo-list li a, .notice-date, .memo-date, .footer_copyright {font-size: 0.55rem;}
+  .tab-button, .tab-button.active, .notice-card-header > h3 > a, .memo-card-header > h3 > a {font-size: 0.7rem;}
+  #more-link {font-size: 0.55rem;}
+  #openModalBtn {font-size: 0.55rem;}
+
+  .qna-header1 {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .qna-header1 h2 {
+    padding: 0.938rem 0;
+    font-size: 0.875rem;
+  }
+
+  .mobile_p {
+    margin-top: 1rem;
+    font-size: 0.5rem;
+    padding: 0 0.8rem;
+  }
+
+  .n_box {padding: 0 0.5rem;}
+  .about-section {font-size: 0.8rem;}
+
+  .about-section h2 {
+    font-size: 0.75rem;
+    margin: 2rem 0 0 0;
+    padding: 0 0.5rem;
+  }
+
+  .n_box section > div {
+    gap: 0.8rem;
+    margin-top: 1.2rem;
+  }
+
+  .card-1 {
+    width: calc(50% - 0.4rem);
+    padding: 0.8rem;
+    min-height: 11.25rem;
+  }
+
+  .n_box .card-1 img {max-height: 6.25rem;}
+  .n_box .card-1 h3 {font-size: 0.46rem;}
+
+  .n_box .card-1 p {
+    font-size: 0.4rem;
+    line-height: 1.3;
+  }
+
+  .n_box section > div .card-1:nth-child(3) {
+    width: 100%;
+    max-width: 9.1rem;
+    margin: 0 auto;
+    min-height: 11.25rem;
+  }
+
+  .b_p {
+    margin-top: 1.2rem;
+    font-size: 0.5rem;
+    padding: 0.8rem;
+    width: calc(100% - 1.6rem);
+  }
+
+  .n_box .qna-h2 {
+    margin-left: 0.5rem;
+    padding-left: 0.5rem;
+  }
+  .mobile-map-container {padding: 0 0.5rem;}
+  .mobile-map-container iframe {height: 11.25rem;}
+
+  .custom-map-overlay {
+    top: 0.5rem;
+    left: 1rem;
+    font-size: 0.5rem;
+    padding: 0.9rem 0.8rem;
+    max-width: 6.25rem;
+  }
+
+  .mobile-map-info {padding: 0 0.5rem;}
+  .mobile-map-row {font-size: 0.7rem;}
+  .mobile-map-row .label {
+    width: 3.5rem;
+    padding: 0.3rem;
+    font-size: 0.5rem;
+  }
+  .mobile-map-row .content {
+    padding: 0.3rem;
+    font-size: 0.5rem;
+  }
+
+  .qna_h2 {
+    margin-left: 0.5rem !important;
+  }
+} 
+
