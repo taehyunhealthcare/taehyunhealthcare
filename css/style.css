@@ -3037,11 +3037,12 @@ span.s {
 
   .qna-header1 {
     width: 100%;
-    max-width: 360px;
-    padding: 0 15px;
   }
 
-  .qna-header1 h2 {font-size: 14px;}
+  .qna-header1 h2 {
+    width: 90%;
+    font-size: 14px;
+  }
 
   .n_box {
     width: 100%;
@@ -3079,7 +3080,7 @@ span.s {
   .n_box section > div .card-1:nth-child(3) {
     width: 100%;
     max-width: 155.39px;
-    margin: 1.2rem auto 0;
+    margin: 0 auto;
     min-height: 11.25rem;
   }
 
@@ -3524,8 +3525,7 @@ span.s {
 
   /* about.html css  */
   .qna-header1 {
-    width: 100%;
-    max-width: 300px;
+    width: 90%;
     margin: 0 auto;
     padding: 0;
   }
