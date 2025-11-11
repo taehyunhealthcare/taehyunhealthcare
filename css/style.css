@@ -3531,7 +3531,7 @@ span.s {
   }
 
   .qna-header1 h2 {
-    padding: 0.938rem 0.6rem;
+    padding: 15px 5px;
     font-size: 0.875rem;
   }
 
@@ -3626,7 +3626,6 @@ span.s {
     height: 300px !important;
   }
 
-  .contents01 .cbox01 {margin: 0;}
   .contents02 .cbox02 {margin: 0;}
 
   .cbox01 p {font-size: 0.55rem;}
