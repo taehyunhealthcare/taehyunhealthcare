@@ -2224,6 +2224,11 @@ span.s {
 
   .pc_p {display: none;}
 
+  .qna-header1 {
+    width: 100%;
+    padding: 15px;
+  }
+  
   .mobile_p {
     display: block;
     margin-top: 1.5rem;
@@ -2292,7 +2297,7 @@ span.s {
     align-self: center;
   }
 
-  .n_box .card-1 h3 {font-size: 0.68rem;}
+  .n_box .card-1 h3 {font-size: 0.6rem;}
 
   .n_box .card-1 p {
     font-size: 0.6rem;
@@ -2303,8 +2308,8 @@ span.s {
   .n_box section > div .card-1:nth-child(3) {
     grid-column:  unset;
     width: 100%;
-    max-width: 210px;
-    margin-top: 1.2rem;
+    max-width: 190px;
+
     min-height: 200px;
     margin-left: auto;
     margin-right: auto;
@@ -2362,7 +2367,7 @@ span.s {
   .mobile-map-row {
     display: flex;             
     margin-bottom: 0.5rem;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
   }
 
   .mobile-map-row .label {
