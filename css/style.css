@@ -2317,7 +2317,7 @@ span.s {
 
   .b_p {
     margin-top: 1.5rem;
-    font-size: 0.75rem;
+    font-size: 11.5px;
     padding: 1rem;
     line-height: 1.6;
     margin-left: 0.5rem;
@@ -3439,3 +3439,4 @@ span.s {
     padding: 20px 16px;
   }
 }
+
