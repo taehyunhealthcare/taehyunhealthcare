@@ -3654,12 +3654,3 @@ span.s {
     max-width: 300px;
   }
 } 
-
-@media (max-width:280px) {
-  .qna-header1 {
-    width: 20%;
-  }
-}
-
-
-
