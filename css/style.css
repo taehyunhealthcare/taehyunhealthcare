@@ -3513,7 +3513,7 @@ span.s {
   .menu-icon i {font-size: 1.25rem;}
   .footer_contact p, .footer_contact p .n {font-size: 0.55rem;}
   footer {
-    margin-top: 50px;
+    margin-top: 70px;
   }
 
   .notice-list li a, .memo-list li a, .notice-date, .memo-date, .footer_copyright {font-size: 0.55rem;}
@@ -3521,6 +3521,8 @@ span.s {
   #more-link {font-size: 0.55rem;}
   #openModalBtn {font-size: 0.55rem;}
 
+
+  /* about.html css  */
   .qna-header1 {
     width: 100%;
     max-width: 300px;
@@ -3610,6 +3612,47 @@ span.s {
 
   .qna_h2 {
     margin-left: 0.5rem !important;
+  }
+
+  /* products page css */
+  .mobile-nav {
+    width: 90%;
+    padding: 0.938rem 0.6rem;
+  }
+  
+  .mobile-nav h2 {font-size: 0.875rem;}
+
+  .contents01 {
+    height: 300px !important;
+  }
+
+  .contents01 .cbox01 {margin: 0;}
+  .contents02 .cbox02 {margin: 0;}
+
+  .cbox01 p {font-size: 0.55rem;}
+  .cbox02 p {font-size: 0.55rem;}
+
+  /*  jaepum page css  */
+  .prev-btn {
+    max-width: 24px !important;
+    max-height: 24px;
+    padding: 0 12px 0 8px;
+  }
+
+  .next-btn {
+    max-width: 24px;
+    max-height: 24px;
+    padding: 0 10px 0 12px;
+  }
+
+  .mobile-summary {font-size: 0.5rem;}
+  .mobile-text h4 {font-size: 0.5rem;}
+  .mobiler-feature-box {font-size: 0.45rem;}
+  .purchase-btn {font-size: 0.5rem;}
+
+  .page-box {
+    width: 100%;
+    max-width: 300px;
   }
 } 
 
