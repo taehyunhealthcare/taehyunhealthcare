@@ -1829,7 +1829,7 @@ span.s {
 
 .menu-icon {display: none;}
 .menu-mobile {display: none;}
-
+.mobile-small {display: none;}
 
 /* index.html 미디어쿼리 */
 @media (max-width: 480px) {
@@ -2589,19 +2589,18 @@ span.s {
   }
 
   .submit-wrap button {font-size: 12px;}
-
-  .cookie-content {
-    width: 100%;
-    max-width: 440px !important;
-  }
-
+  #cookieModal{width: 100%;}
+  .cookie-content {width: 90% !important;}
   .cookie-content h2 {font-size: 16px;}
-  .cookie-content p {font-size: 12px;}
+  .cookie-content p {font-size: 10.5px;}
+
+
   #cookieAgree, #cookieDecline {
-    font-size: 12px;
+    font-size: 10px;
     width: 100%;
     max-width: 60px;
     padding: 0 5px 5px;
+    border-radius: 4px;
   }
 
   .custom-alert-box {width: 85%;}
@@ -2827,6 +2826,7 @@ span.s {
   .content1-small {display: none;}
 
   .mobile-small {
+    display: block;
     font-size: 9px;
     color: #666;
   }
