@@ -27,11 +27,10 @@
 
     <!-- 헤더 시작 -->
     <header>
-    <div class="logo-wrapper">
-        <img class="logo" src="img/logo.png" alt="LOGO" />
-    </div>
+        <div class="logo-wrapper">
+           <a href="./"><img class="logo" src="img/logo.png" alt="LOGO" /></a> 
+        </div>
     </header>
-
     <!-- 헤더 끝 -->
 
     <!-- 메뉴 시작 -->
@@ -168,6 +167,18 @@
       </div>
     </div>
 
+    <!-- 제품 페이지 용 사이드 아이콘 -->
+    <div class="side-icon-box">
+        <a href="#" class="btn-up">
+            <i class="fa-solid fa-circle-up"></i>
+            <span>위로 스크롤</span>
+        </a>
+        <a href="#" class="btn-down">
+            <i class="fa-solid fa-circle-down"></i>
+            <span>아래로 스크롤</span>
+        </a>
+    </div>
+
     <!-- 푸터 시작 -->
     <footer>
         <div class="footer_inner">   
@@ -176,7 +187,6 @@
                     <h3>태현헬스케어</h3>
                     <ul>
                         <li><a href="about.html">회사 소개</a></li>
-                        <li><a href="#">제품 소개</a></li>
                         <li><a href="partnership.html">B2B</a></li>
                     </ul>
                 </div>
@@ -191,13 +201,7 @@
             </div>
             <div class="flogo_info">
                 <div class="flogo">
-                    <a href="#" class="logo-link"><img src="img/flogo.png" alt="태현헬스케어 로고"></a>
-                    <div class="social_links">
-                        <a href="https://www.instagram.com/accumedi_/">
-                            <img src="img/insta.png" alt="인스타그램">
-                            <p>INSTAGRAM</p>
-                        </a>
-                    </div>
+                    <a href="./" class="logo-link"><img src="img/flogo.png" alt="태현헬스케어 로고"></a>
                 </div> 
             </div>
             <div class="footer_contact">
@@ -398,6 +402,40 @@
             });
             document.querySelectorAll(".has-sub").forEach(menu => {
                 menu.classList.remove("open");
+            });
+        }
+    });
+    </script>
+
+    <!-- 우측 아이콘 스크립트 -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const box = document.querySelector(".side-icon-box");
+
+        if (box) {
+            document.addEventListener("scroll", function () {
+                if (window.scrollY > 0) {
+                    box.classList.add("show");
+                } else {
+                    box.classList.remove("show");
+                }
+            });
+        }
+
+        const btnUp = document.querySelector(".btn-up");
+        if (btnUp) {
+            btnUp.addEventListener("click", function(e) {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            });
+        }
+
+        const btnDown = document.querySelector(".btn-down");
+        if (btnDown) {
+            btnDown.addEventListener("click", function(e) {
+                e.preventDefault();
+                window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
             });
         }
     });
