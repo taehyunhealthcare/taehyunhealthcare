@@ -117,17 +117,6 @@
         </small>
       </div>
 
-      <!-- 첨부파일 -->
-      <div class="form-group-1">
-        <label>첨부 파일</label>
-        <div class="file-upload-box1">
-          <label class="file-label1">
-            <input type="file" id="file1" multiple />파일 선택
-          </label>
-          <div id="file-list1">선택된 파일 없음</div>
-        </div>
-      </div>
-
       <!-- 제출 -->
       <div class="form-group2">
         <button type="submit" class="submit-btn1">문의 등록</button>
@@ -288,197 +277,159 @@
 
     <!--  쿠키 동의 및 문의 제출 스크립트 -->
     <script>
-      const fileInput   = document.getElementById('file1');
-      const fileListDiv = document.getElementById('file-list1');
-      const selectedFiles = [];
+        const inquiryForm   = document.getElementById('inquiryForm');
+        const cookieModal   = document.getElementById('cookieModal');
+        const cookieAgree   = document.getElementById('cookieAgree');
+        const cookieDecline = document.getElementById('cookieDecline');
 
 
-      fileInput.addEventListener('change', () => {
-        Array.from(fileInput.files).forEach(file => selectedFiles.push(file));
-        renderFileList();
-        fileInput.value = "";
-      });
+        inquiryForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name  = document.getElementById('name1').value.trim();
+            const email = document.getElementById('email1').value.trim();
+            const title = document.getElementById('title1').value.trim();
+            const content = document.getElementById('content1').value.trim();
 
 
-      function renderFileList() {
-        if (selectedFiles.length === 0) {
-          fileListDiv.textContent = "선택된 파일 없음";
-          return;
-        }
-        fileListDiv.innerHTML = "";
-        selectedFiles.forEach((file, idx) => {
-          const item = document.createElement("div");
-          item.className = "file-item1";
-          item.innerHTML = `
-            <span class="file-name1">${idx + 1}. ${file.name}</span>
-            <button type="button" class="delete-btn1" data-index="${idx}">&times;</button>
-          `;
-          fileListDiv.appendChild(item);
-        });
-        document.querySelectorAll(".delete-btn1").forEach(btn =>
-          btn.addEventListener("click", () => {
-            selectedFiles.splice(parseInt(btn.dataset.index), 1);
-            renderFileList();
-          })
-        );
-      }
+            const missingFields = [];
+
+            if (!name) missingFields.push("이름");
+            if (!email) missingFields.push("이메일");
+            if (!title) missingFields.push("제목");
+            if (!content) missingFields.push("내용");
 
 
-      const inquiryForm   = document.getElementById('inquiryForm');
-      const cookieModal   = document.getElementById('cookieModal');
-      const cookieAgree   = document.getElementById('cookieAgree');
-      const cookieDecline = document.getElementById('cookieDecline');
+            if (missingFields.length > 0) {
+                const message = "다음 항목을 입력해주세요:\n\n" + missingFields.join(", ");
+                showCustomAlert(message);
+                return;
+            }
 
 
-      inquiryForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        const name  = document.getElementById('name1').value.trim();
-        const email = document.getElementById('email1').value.trim();
-        const title = document.getElementById('title1').value.trim();
-        const content = document.getElementById('content1').value.trim();
-
-
-        const missingFields = [];
-
-        if (!name) missingFields.push("이름");
-        if (!email) missingFields.push("이메일");
-        if (!title) missingFields.push("제목");
-        if (!content) missingFields.push("내용");
-
-
-        if (missingFields.length > 0) {
-          const message = "다음 항목을 입력해주세요:\n\n" + missingFields.join(", ");
-          showCustomAlert(message);
-          return;
-        }
-
-
-        cookieModal.style.display = 'flex';
-      });
-
-
-      cookieAgree.addEventListener('click', function() {
-        cookieModal.style.display = 'none';
-        doSubmit();                       
-      });
-
-
-      cookieDecline.addEventListener('click', function() {
-        cookieModal.style.display = 'none';
-        showCustomAlert("쿠키 수집에 동의하지 않아 문의 접수가 제한됩니다.");
-      });
-
-
-      window.addEventListener('click', function(e) {
-        if (e.target === cookieModal) cookieModal.style.display = 'none';
-      });
-
-
-      function doSubmit() {
-        const name  = document.getElementById('name1').value.trim();
-        const email = document.getElementById('email1').value.trim();
-        const title = document.getElementById('title1').value.trim();
-        const content = document.getElementById('content1').value.trim();
-        const visibility = document.querySelector('input[name="visibility"]:checked').value;
-
-        if (!name || !email || !title || !content) {
-          showCustomAlert('모든 항목을 입력해주세요.');
-          return;
-        }
-
-        const maskedName = name.length >= 2
-          ? name[0] + '*'.repeat(name.length - 2) + name[name.length - 1]
-          : name;
-
-        const fileNames = selectedFiles.map(f => f.name);
-        const posts = JSON.parse(localStorage.getItem('posts') || '[]');
-
-        posts.push({
-          id: posts.length,
-          type: 'talk',
-          name,
-          email,
-          maskedName,
-          title,
-          content,
-          visibility,
-          fileNames,
-          date: new Date().toLocaleDateString(),
-          answer: ''
+            cookieModal.style.display = 'flex';
         });
 
-        localStorage.setItem('posts', JSON.stringify(posts));
-        window.location.href = '01_partnership.html';
-      }
+
+        cookieAgree.addEventListener('click', function() {
+            cookieModal.style.display = 'none';
+            doSubmit(); 
+        });
 
 
-    function showCustomAlert(message) {
-      const overlay = document.createElement("div");
-      overlay.className = "custom-alert";
-      overlay.setAttribute("role", "dialog");
-      overlay.setAttribute("aria-modal", "true");
-      Object.assign(overlay.style, {
-        position: "fixed",
-        inset: "0",
-        background: "rgba(0,0,0,0.5)",
-        zIndex: "10000",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center"
-      });
+        cookieDecline.addEventListener('click', function() {
+            cookieModal.style.display = 'none';
+            showCustomAlert("쿠키 수집에 동의하지 않아 문의 접수가 제한됩니다.");
+        });
 
 
-      document.body.style.overflow = "hidden";
+        window.addEventListener('click', function(e) {
+            if (e.target === cookieModal) cookieModal.style.display = 'none';
+        });
 
-      const box = document.createElement("div");
-      Object.assign(box.style, {
-        background: "#fff",
-        width: "min(420px, 90vw)",
-        padding: "20px 22px",
-        borderRadius: "12px",
-        textAlign: "center",
-        boxShadow: "0 10px 30px rgba(0,0,0,0.2)"
-      });
 
-      const text = document.createElement("p");
-      text.classList.add("custom-alert-text");
-      Object.assign(text.style, {
-        margin: "0 0 16px 0",
-        fontSize: "14px",
-        lineHeight: "1.5",
-        color: "#111",
-      });
-      text.textContent = message;
+        function doSubmit() {
+            const name  = document.getElementById('name1').value.trim();
+            const email = document.getElementById('email1').value.trim();
+            const title = document.getElementById('title1').value.trim();
+            const content = document.getElementById('content1').value.trim();
+            const visibility = document.querySelector('input[name="visibility"]:checked').value;
 
-      const btn = document.createElement("button");
-      btn.type = "button";
-      btn.textContent = "확인";
-      btn.classList.add("custom-alert-button");
-      Object.assign(btn.style, {
-        border: "1px solid #bbb",
-        borderRadius: "8px",
-        background: "#fff",
-        cursor: "pointer"
-      });
+            if (!name || !email || !title || !content) {
+                showCustomAlert('모든 항목을 입력해주세요.');
+                return;
+            }
 
-      const closeModal = () => {
-        overlay.remove();
-        document.body.style.overflow = "";
-      };
+            const maskedName = name.length >= 2
+                ? name[0] + '*'.repeat(name.length - 2) + name[name.length - 1]
+                : name;
 
-      btn.addEventListener("click", closeModal);
-      overlay.addEventListener("click", (e) => {
-        if (e.target === overlay) closeModal();
-      });
+            const posts = JSON.parse(localStorage.getItem('posts') || '[]');
 
-      box.appendChild(text);
-      box.appendChild(btn);
-      overlay.appendChild(box);
-      document.body.appendChild(overlay);
+            posts.push({
+                id: posts.length,
+                type: 'talk',
+                name,
+                email,
+                maskedName,
+                title,
+                content,
+                visibility,
+                date: new Date().toLocaleDateString(),
+                answer: ''
+            });
 
-      setTimeout(() => btn.focus(), 0);
-    }
+            localStorage.setItem('posts', JSON.stringify(posts));
+            window.location.href = '01_partnership.html';
+        }
+
+
+        function showCustomAlert(message) {
+            const overlay = document.createElement("div");
+            overlay.className = "custom-alert";
+            overlay.setAttribute("role", "dialog");
+            overlay.setAttribute("aria-modal", "true");
+            Object.assign(overlay.style, {
+                position: "fixed",
+                inset: "0",
+                background: "rgba(0,0,0,0.5)",
+                zIndex: "10000",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center"
+            });
+
+
+            document.body.style.overflow = "hidden";
+
+            const box = document.createElement("div");
+            Object.assign(box.style, {
+                background: "#fff",
+                width: "min(420px, 90vw)",
+                padding: "20px 22px",
+                borderRadius: "12px",
+                textAlign: "center",
+                boxShadow: "0 10px 30px rgba(0,0,0,0.2)"
+            });
+
+            const text = document.createElement("p");
+            text.classList.add("custom-alert-text");
+            Object.assign(text.style, {
+                margin: "0 0 16px 0",
+                fontSize: "14px",
+                lineHeight: "1.5",
+                color: "#111",
+            });
+            text.textContent = message;
+
+            const btn = document.createElement("button");
+            btn.type = "button";
+            btn.textContent = "확인";
+            btn.classList.add("custom-alert-button");
+            Object.assign(btn.style, {
+                border: "1px solid #bbb",
+                borderRadius: "8px",
+                background: "#fff",
+                cursor: "pointer"
+            });
+
+            const closeModal = () => {
+                overlay.remove();
+                document.body.style.overflow = "";
+            };
+
+            btn.addEventListener("click", closeModal);
+            overlay.addEventListener("click", (e) => {
+                if (e.target === overlay) closeModal();
+            });
+
+            box.appendChild(text);
+            box.appendChild(btn);
+            overlay.appendChild(box);
+            document.body.appendChild(overlay);
+
+            setTimeout(() => btn.focus(), 0);
+        }
     </script>
 
     <!-- 모달 통합 스크립트 -->
