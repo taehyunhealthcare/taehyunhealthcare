@@ -1456,7 +1456,6 @@ td.pin-icon {
 }
 
 .form-group1 {margin-bottom: 25px;}
-.form-group-1 {margin-bottom: 25px;}
 
 #name1, #email1 {
   width: 100%;
@@ -1483,36 +1482,10 @@ td.pin-icon {
   resize: vertical;
 }
 
-.file-upload-box1 {
-  border: 1px solid #ccc;
-  background-color: #f3f3f3;
-  padding: 20px;
-  margin-top: 5px;
-}
-
-.file-label1 {
-  display: inline-block;
-  background-color: #eee;
-  padding: 8px 16px;
-  font-size: 14px;
-  border: 1px solid #aaa;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-bottom: 10px;
-}
-
-.file-label1 input {display: none;}
-
-#file-list1 {
-  font-size: 14px;
-  color: #333;
-  margin-top: 10px;
-}
-
 .form-group2 {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 80px;
 }
 
 .submit-btn1 {
@@ -2800,7 +2773,6 @@ span.s {
   }
 
   .form-group1 label {font-size: 14px;}
-  .form-group-1 label {font-size: 14px;}
 
   #name1, #email1 {
     font-size: 12px;
@@ -2831,8 +2803,6 @@ span.s {
     color: #666;
   }
 
-  .file-upload-box1 .file-label1, #file-list1 {font-size: 12px;}
-
   .submit-btn1 {
     width: 100%;
     max-width: 90px;
@@ -2842,6 +2812,7 @@ span.s {
 
   .form-group1 .form-gong {font-size: 12px;}
   .form-group1 input {width: 8px; height: 8px;}
+  .form-group2 {margin-top: 40px;}
 }
 
 /* 480px  안내메세지용 미디어쿼리 */
@@ -3075,7 +3046,6 @@ span.s {
 
   .heading1 {font-size: 14px;}
   .form-group1 > label {font-size: 12px;}
-  .form-group-1 > label {font-size: 12px;}
 
   #name1, #email1, #title1 {
     height: 25px;
@@ -3085,7 +3055,6 @@ span.s {
   #content1 {font-size: 10px;}
   .form-group1  .small-1,  .small {font-size: 8px;}
   .mobile-small {font-size: 7.3px;}
-  .file-upload-box1 > .file-label1, #file-list1 {font-size: 10px;}
   .submit-btn1 {font-size: 10px;}
 
   #download-header {
