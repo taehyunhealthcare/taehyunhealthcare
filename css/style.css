@@ -2211,7 +2211,7 @@ span.s {
   .mobile-map-row {
     display: flex;             
     margin-bottom: 0.5rem;
-    font-size: 0.67rem;
+    font-size: 0.66rem;
   }
 
   .mobile-map-row .label {
@@ -3229,3 +3229,4 @@ span.s {
     padding: 20px 16px;
   }
 }
+
