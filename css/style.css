@@ -2160,7 +2160,7 @@ span.s {
 
   .b_p {
     margin-top: 1.5rem;
-    font-size: 11.5px;
+    font-size: 10.5px;
     padding: 1rem;
     line-height: 1.6;
     margin-left: 0.5rem;
@@ -2432,7 +2432,7 @@ span.s {
   }
 
   .mobile-text {
-    font-size: 11px;
+    font-size: 10.5px;
     line-height: 1.6;
     border: 1px solid #ddd;
     padding: 15px;
@@ -3229,4 +3229,3 @@ span.s {
     padding: 20px 16px;
   }
 }
-
