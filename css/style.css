@@ -2444,7 +2444,7 @@ span.s {
   }
 
   .mobile-feature-box:last-child {
-    font-size: 10.5px;
+    font-size: 10px;
     padding: 2px 0;
   }  
 
@@ -2565,7 +2565,7 @@ span.s {
   #cookieModal{width: 100%;}
   .cookie-content {width: 90% !important;}
   .cookie-content h2 {font-size: 16px;}
-  .cookie-content p {font-size: 10.5px;}
+  .cookie-content p {font-size: 10px;}
 
 
   #cookieAgree, #cookieDecline {
@@ -2618,7 +2618,7 @@ span.s {
   .board th,
   .board td {
     padding: 15px 8px;
-    font-size: 12px;
+    font-size: 10px;
   }
 
   .pagination a,
@@ -2767,7 +2767,7 @@ span.s {
   .form-group1 .small-1 {
     width: 100%;
     margin-top: 0.3rem;
-    font-size: 10px;
+    font-size: 8.5px;
     color: #666;
     line-height: 1.4;
   }
@@ -2781,7 +2781,7 @@ span.s {
     height: 30px;
   }
 
-  .small {font-size: 10px;}
+  .small {font-size: 8.5px;}
 
   #title1 {
     font-size: 12px;
@@ -2799,7 +2799,7 @@ span.s {
 
   .mobile-small {
     display: block;
-    font-size: 9px;
+    font-size: 8.5px;
     color: #666;
   }
 
