@@ -1278,6 +1278,26 @@ select {
   display: block;
 }
 
+.image-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.base-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.overlay-gif {
+  position: absolute;
+  top: 95%;
+  left: 0;
+  width: 30%;
+  z-index: 10;
+}
+
 .j-icon {
   width: 80px;
   height: auto;
