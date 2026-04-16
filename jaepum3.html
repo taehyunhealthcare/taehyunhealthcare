@@ -38,7 +38,6 @@
 
     <!-- 메뉴 시작 -->
     <nav class="menu-pc">
-        <div class="menu-bg"></div>
         <ul class="menu">
             <li>
                 <a href="#">회사소개</a>
@@ -53,6 +52,9 @@
                     <li><a href="01_products.html">Fetal Doppler</a></li>
                     <li><a href="02_products.html">Nebulizer</a></li>
                     <li><a href="03_products.html">Pulse Oximeter</a></li>
+                    <li><a href="04_products.html">Nasal Aspirator</a></li>
+                    <li><a href="05_products.html">Insect Bite Healer</a></li>
+                    <li><a href="06_products.html">Wearable Digital Thermometer</a></li>
                 </ul>
             </li>
             <li>
@@ -157,7 +159,27 @@
                 <div class="mobile-feature-box">- 화면 방향 자동 전환 기능</div>
                 <div class="mobile-feature-box">※ 본 제품은 의료기기 인증을 받았으며 정기적 품질검수를 시행하고 있습니다.</div>
             </div>
-            <a href="https://shopping.naver.com" class="purchase-btn" target="_blank">구매하러가기</a>
+            <a href="#" class="purchase-btn">구매하러가기</a>
+        </div>
+    </div>
+
+    <div id="purchaseModal" class="modal-shop">
+        <div class="modal-shop-content">
+            <span class="purchase-close">&times;</span>
+            <h2>구매처 선택</h2>
+            <p>구매하실 쇼핑물을 선택해주세요</p>
+
+            <div class="shop-list">
+                <button class="shop-btn coupang" onclick="goCoupang()">
+                    <span class="coupang-text">coupang</span>
+                    쿠팡에서 구매
+                </button>
+
+                <button class="shop-btn naver" onclick="goNaver()">
+                    <span class="logo-box">N</span>
+                    네이버 스토어에서 구매
+                </button>
+            </div>
         </div>
     </div>
 
@@ -307,6 +329,9 @@
                     <li><a href="01_products.html">Fetal Doppler</a></li>
                     <li><a href="02_products.html">Nebulizer</a></li>
                     <li><a href="03_products.html">Pulse Oximeter</a></li>
+                    <li><a href="04_products.html">Nasal Aspirator</a></li>
+                    <li><a href="05_products.html">Insect Bite Healer</a></li>
+                    <li><a href="06_products.html">Wearable Digital Thermometer</a></li>
                 </ul>
             </li>
 
@@ -500,6 +525,58 @@
             });
         }
     });
+    </script>
+    <script>
+    /* 구매 팝업 스크립트 */
+        document.addEventListener("DOMContentLoaded", function () {
+
+        const buttons = document.querySelectorAll(".purchase-btn");
+        const modal = document.getElementById("purchaseModal");
+        const closeBtn = document.querySelector(".purchase-close");
+
+        function openModal() {
+            modal.classList.add("active");
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeModal() {
+            modal.classList.remove("active");
+            document.body.style.overflow = "";
+        }
+
+        // 구매 버튼 클릭
+        buttons.forEach(btn => {
+            btn.addEventListener("click", function(e) {
+            e.preventDefault();
+            openModal();
+            });
+        });
+
+        // X 버튼 닫기
+        if (closeBtn) {
+            closeBtn.addEventListener("click", function(e) {
+            e.stopPropagation();
+            closeModal();
+            });
+        }
+
+        // 🔥 바깥 클릭 닫기 (modal-shop-content 기준)
+        modal.addEventListener("click", function(e) {
+            if (!e.target.closest(".modal-shop-content")) {
+            closeModal();
+            }
+        });
+
+        });
+
+        /* 쇼핑몰 이동 */
+        function goCoupang() {
+        window.open("https://www.coupang.com/vp/products/9498234345?itemId=28294616798&searchId=93dfba0dc5eb4133ba538e7999b816fb&sourceType=brandstore_sdp_atf-baseline_list&storeId=262368&subSourceType=brandstore_sdp_atf-baseline_list&vendorId=A01488223&vendorItemId=95247481662", "_blank");
+        }
+
+        function goNaver() {
+        window.open("https://smartstore.naver.com/accumedi/products/13407484548", "_blank");
+        }
     </script>
   </body>
 </html>
