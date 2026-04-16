@@ -1,56 +1,15 @@
 $(document).ready(function() {
-    $(".menu-pc").hover(
+    // 1. 기존의 복잡한 높이 계산 및 .menu-bg 제어 코드는 삭제합니다.
+    // 2. 각 메뉴 항목(li)에 마우스를 올렸을 때의 동작만 정의합니다.
+
+    $(".menu > li").hover(
         function () {
-            let maxHeight = 0;
-
-            // 각 submenu의 실제 높이를 계산
-            $(".submenu").each(function() {
-                $(this).css({
-                    'display': 'block',
-                    'visibility': 'hidden',
-                    'position': 'absolute'
-                });
-
-                const currentHeight = $(this).outerHeight();
-                if (currentHeight > maxHeight) {
-                    maxHeight = currentHeight;
-                }
-
-                $(this).css({
-                    'display': 'none',
-                    'visibility': 'visible',
-                    'position': 'absolute'
-                });
-            });
-
-            const targetBgHeight = maxHeight + 10;
-
-            // 서브메뉴 표시 (fade 방식)
-            $(".submenu").stop(true, true).fadeIn(200);
-
-            // 배경 높이 적용
-            $(".menu-bg").stop(true, true).animate({
-                height: targetBgHeight + "px"
-            }, 200);
+            // 현재 마우스가 올라간 항목의 서브메뉴만 표시
+            $(this).find(".submenu").stop(true, true).fadeIn(200);
         },
         function () {
-            // 서브메뉴 숨김
-            $(".submenu").stop(true, true).fadeOut(150);
-
-            // 배경 닫기
-            $(".menu-bg").stop(true, true).animate({
-                height: "0"
-            }, 150);
+            // 마우스가 나가면 해당 서브메뉴만 숨김
+            $(this).find(".submenu").stop(true, true).fadeOut(150);
         }
     );
 });
-
-
-
-      // 검색창 초기화 스크립트
-    window.addEventListener('pageshow', function (event) {
-    if (event.persisted) {
-        const searchInput = document.querySelector('input[name="query"]');
-        if (searchInput) searchInput.value = '';
-    }
-    });
