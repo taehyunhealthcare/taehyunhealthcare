@@ -38,7 +38,6 @@
 
     <!-- 메뉴 시작 -->
     <nav class="menu-pc">
-        <div class="menu-bg"></div>
         <ul class="menu">
             <li>
                 <a href="#">회사소개</a>
@@ -53,6 +52,9 @@
                     <li><a href="01_products.html">Fetal Doppler</a></li>
                     <li><a href="02_products.html">Nebulizer</a></li>
                     <li><a href="03_products.html">Pulse Oximeter</a></li>
+                    <li><a href="04_products.html">Nasal Aspirator</a></li>
+                    <li><a href="05_products.html">Insect Bite Healer</a></li>
+                    <li><a href="06_products.html">Wearable Digital Thermometer</a></li>
                 </ul>
             </li>
             <li>
@@ -157,9 +159,34 @@
                 <div class="mobile-feature-box">- 화면 방향 자동 전환 기능</div>
                 <div class="mobile-feature-box">※ 본 제품은 의료기기 인증을 받았으며 정기적 품질검수를 시행하고 있습니다.</div>
             </div>
-            <a href="https://shopping.naver.com" class="purchase-btn" target="_blank">구매하러가기</a>
+            <a href="#" class="purchase-btn">구매하러가기</a>
         </div>
     </div>
+
+    <div id="purchaseModal" class="modal-shop">
+        <div class="modal-shop-content">
+            <span class="purchase-close">&times;</span>
+            <h2>구매처 선택</h2>
+            <p>구매하실 쇼핑물을 선택해주세요</p>
+
+            <div class="shop-list">
+                <button class="shop-btn coupang" onclick="goCoupang()">
+                    <span class="coupang-text">coupang</span>
+                    쿠팡에서 구매
+                </button>
+
+                <button class="shop-btn naver" onclick="goNaver()">
+                    <span class="logo-box">N</span>
+                    네이버 스토어에서 구매
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="page-box">
+        <img src="img/page7.png" alt="상세페이지2">
+    </div> -->
+
 
     <!-- 제품 페이지 용 사이드 아이콘 -->
     <div class="side-icon-box">
@@ -227,56 +254,56 @@
         <h2>&lt;태현헬스케어&gt; 개인정보 처리방침</h2>
         <div class="modal-body">
         <p>
-          태현헬스케어 (이하 "회사") 는 이용자의 개인정보를 중요하게 생각하며, 『 개인정보 보호법 』을 준수하고 있습니다. <br>
-          본 개인정보 처리방침은 회사가 운영하는 홈페이지를 통해 수집하는 개인정보 및 처리방침을 안내하기 위하여 마련되었습니다. <br><br>
+            태현헬스케어 (이하 "회사") 는 이용자의 개인정보를 중요하게 생각하며, 『 개인정보 보호법 』을 준수하고 있습니다. <br>
+            본 개인정보 처리방침은 회사가 운영하는 홈페이지를 통해 수집하는 개인정보 및 처리방침을 안내하기 위하여 마련되었습니다. <br><br>
 
-          1. 수집하는 개인정보 항목 <br>
-          회사는 아래와 같은 항목을 수집할 수 있습니다. <br>
-          - 문의하기 및 B2B 제휴문의 시: 이름, 이메일, 문의 내용 <br>
-          - 서비스 이용과정에서 자동으로 생성되는 정보: 접속 IP, 쿠키, 방문 기록, 브라우저 정보 등 <br><br>
+            1. 수집하는 개인정보 항목 <br>
+            회사는 아래와 같은 항목을 수집할 수 있습니다. <br>
+            - 문의하기 및 B2B 제휴문의 시: 이름, 이메일, 문의 내용 <br>
+            - 서비스 이용과정에서 자동으로 생성되는 정보: 접속 IP, 쿠키, 방문 기록, 브라우저 정보 등 <br><br>
 
-          2. 개인정보의 수집 및 이용 목적 <br>
-          회사는 수집한 개인정보를 다음의 목적을 위해 사용합니다. <br>
-          - 이용자 문의 응대 및 답변 처리 <br>
-          - 제품/서비스 제안 및 파트너십 응대 <br>
-          - 홈페이지 운영의 통계 분석 (Google Analytics 등) <br><br>
+            2. 개인정보의 수집 및 이용 목적 <br>
+            회사는 수집한 개인정보를 다음의 목적을 위해 사용합니다. <br>
+            - 이용자 문의 응대 및 답변 처리 <br>
+            - 제품/서비스 제안 및 파트너십 응대 <br>
+            - 홈페이지 운영의 통계 분석 (Google Analytics 등) <br><br>
 
-          3. 개인정보 보유 및 이용 기간 <br>
-          회사는 개인정보 수집 및 이용 목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다. <br>
-          단, 관련 법령에 따라 일정 기간 보관이 필요한 경우는 해당 기간 동안 보관합니다. <br>
-          - 소비자 불만 또는 분쟁처리에 관한 기록: 3년 (전자상거래법) <br><br>
+            3. 개인정보 보유 및 이용 기간 <br>
+            회사는 개인정보 수집 및 이용 목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다. <br>
+            단, 관련 법령에 따라 일정 기간 보관이 필요한 경우는 해당 기간 동안 보관합니다. <br> 
+            - 소비자 불만 또는 분쟁처리에 관한 기록: 3년 (전자상거래법) <br><br>
 
-          4. 개인정보의 제3자 제공 <br>
-          회사는 이용자의 개인정보를 원칙적으로 외부에 제공하지 않습니다. <br>
-          다만, 아래의 경우에는 예외로 합니다. <br>
-          - 이용자가 사전에 동의한 경우 <br>
-          - 법령에 의거하거나 수사기관의 요청이 있는 경우 <br><br>
+            4. 개인정보의 제3자 제공 <br>
+            회사는 이용자의 개인정보를 원칙적으로 외부에 제공하지 않습니다. <br>
+            다만, 아래의 경우에는 예외로 합니다. <br>
+            - 이용자가 사전에 동의한 경우 <br>
+            - 법령에 의거하거나 수사기관의 요청이 있는 경우 <br><br>
 
-          5. 개인정보의 처리 위탁 <br>
-          회사는 서비스 향상을 위해 아래와 같이 개인정보 처리를 위탁할 수 있습니다. <br>
-          - Google Analytics (웹사이트 방문 분석) <br>
-          - Naver Search Advisor (사이트 통계) <br><br>
+            5. 개인정보의 처리 위탁 <br>
+            회사는 서비스 향상을 위해 아래와 같이 개인정보 처리를 위탁할 수 있습니다. <br>
+            - Google Analytics (웹사이트 방문 분석) <br>
+            - Naver Search Advisor (사이트 통계) <br><br>
 
-          6. 쿠키의 설치/운영 및 거부 <br>
-          회사는 쿠키를 통해 이용자의 방문 기록을 분석합니다. 이용자는 웹 브라우저의 설정을 통해 쿠키 저장을 거부할 수 있습니다. <br><br>
+            6. 쿠키의 설치/운영 및 거부 <br>
+            회사는 쿠키를 통해 이용자의 방문 기록을 분석합니다. 이용자는 웹 브라우저의 설정을 통해 쿠키 저장을 거부할 수 있습니다. <br>
 
-          7. 이용자의 권리 <br>
-          이용자는 언제든지 자신의 개인정보 열람, 정정, 삭제를 요청할 수 있습니다. 개인정보 관련 문의는 아래 이메일로 연락해 주시기 바랍니다. <br><br>
+            7. 이용자의 권리 <br>
+            이용자는 언제든지 자신의 개인정보 열람, 정정, 삭제를 요청할 수 있습니다. 개인정보 관련 문의는 아래 이메일로 연락해 주시기 바랍니다. <br><br>
 
-          8. 개인정보 보호책임자 <br>
-          - 성명: 박준형 <br>
-          - 직책: 대표 <br><br>
+            8. 개인정보 보호책임자 <br>
+            - 성명: 박준형 <br>
+            - 직책: 대표 <br><br>
 
-          9. 개인정보 보호 담당부서 및 문의처 <br>
-          - 부서명: 마케팅부 <br>
-          - 담당자: 임선혁 담당자 <br>
-          - 연락처: 062-233-6015 <br>
-          - 이메일: thhealthcare@naver.com <br><br>
+            9. 개인정보 보호 담당부서 및 문의처 <br>
+            - 부서명: 마케팅부 <br>
+            - 담당자: 임선혁 담당자 <br>
+            - 연락처: 062-233-6015 <br>
+            - 이메일: thhealthcare@naver.com <br><br>
 
-          10. 개인정보처리방침의 변경 <br>
-          이 개인정보처리방침은 법령 또는 회사 정책에 따라 변경될 수 있으며, 변경 시 홈페이지를 통해 공지합니다. <br><br>
+            10. 개인정보처리방침의 변경 <br>
+            이 개인정보처리방침은 법령 또는 회사 정책에 따라 변경될 수 있으며, 변경 시 홈페이지를 통해 공지합니다. <br><br>
 
-          - 시행일자: 2025년 7월 23일 - 
+            - 시행일자: 2025년 7월 23일 -
         </p>
         </div>
     </div>
@@ -301,6 +328,9 @@
                     <li><a href="01_products.html">Fetal Doppler</a></li>
                     <li><a href="02_products.html">Nebulizer</a></li>
                     <li><a href="03_products.html">Pulse Oximeter</a></li>
+                    <li><a href="04_products.html">Nasal Aspirator</a></li>
+                    <li><a href="05_products.html">Insect Bite Healer</a></li>
+                    <li><a href="06_products.html">Wearable Digital Thermometer</a></li>
                 </ul>
             </li>
 
@@ -495,7 +525,57 @@
         }
     });
     </script>
+    <script>
+    /* 구매 팝업 스크립트 */
+        document.addEventListener("DOMContentLoaded", function () {
+
+        const buttons = document.querySelectorAll(".purchase-btn");
+        const modal = document.getElementById("purchaseModal");
+        const closeBtn = document.querySelector(".purchase-close");
+
+        function openModal() {
+            modal.classList.add("active");
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeModal() {
+            modal.classList.remove("active");
+            document.body.style.overflow = "";
+        }
+
+        // 구매 버튼 클릭
+        buttons.forEach(btn => {
+            btn.addEventListener("click", function(e) {
+            e.preventDefault();
+            openModal();
+            });
+        });
+
+        // X 버튼 닫기
+        if (closeBtn) {
+            closeBtn.addEventListener("click", function(e) {
+            e.stopPropagation();
+            closeModal();
+            });
+        }
+
+        // 🔥 바깥 클릭 닫기 (modal-shop-content 기준)
+        modal.addEventListener("click", function(e) {
+            if (!e.target.closest(".modal-shop-content")) {
+            closeModal();
+            }
+        });
+
+        });
+
+        /* 쇼핑몰 이동 */
+        function goCoupang() {
+        window.open("https://www.coupang.com/vp/products/9494626305?itemId=28280813624&vendorItemId=95233821535", "_blank");
+        }
+
+        function goNaver() {
+        window.open("https://smartstore.naver.com/accumedi/products/13398281633", "_blank");
+        }
+    </script>
  </body>
 </html>
-
-
