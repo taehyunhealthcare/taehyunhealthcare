@@ -1140,6 +1140,7 @@ select {
   border: 1px solid #ccc;
   border-radius: 50px;
   padding: 5px;
+  background-color: #fff;
 }
 
 .indicator img {
