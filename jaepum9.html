@@ -134,6 +134,18 @@
             <a href="https://shopping.naver.com" class="purchase-btn" target="_blank">구매하러가기</a>
         </div>
 
+        <div id="purchaseModal" class="modal-shop">
+            <div class="modal-shop-content" style="max-width: 500px; height: 180px;">
+                <span class="purchase-close">&times;</span>
+                <h2 style="font-size: 18px;">[구매안내]</h2>
+                <p style="font-size: 14px; margin-top: 15px;">
+                   본 제품은 현재 온라인 쇼핑몰(쿠팡,네이버 스토어) 등록 준비중인 상품입니다.
+                   해당 제품의 구매 및 견적 관련 문의는 고객센터 또는 홈페이지 내 B2B 문의 게시판을 이용해주시면 신속하고 친철하게 안내해 드리겠습니다. <br>
+                   이용에 불편을 드려 죄송합니다.
+                </p>
+            </div>
+        </div>
+
         <div id="mobile-jbox">
             <h3>[Insect Bite Healer] 가려움 완화기 </h3>
             <div class="mobile-description"></div>
@@ -153,26 +165,6 @@
                 <div class="mobile-feature-box">※ 본 제품은 의료기기 인증을 받았으며 정기적 품질검수를 시행하고 있습니다.</div>
             </div>
             <a href="#" class="purchase-btn">구매하러가기</a>
-        </div>
-    </div>
-
-    <div id="purchaseModal" class="modal-shop">
-        <div class="modal-shop-content">
-            <span class="purchase-close">&times;</span>
-            <h2>구매처 선택</h2>
-            <p>구매하실 쇼핑물을 선택해주세요</p>
-
-            <div class="shop-list">
-                <button class="shop-btn coupang" onclick="goCoupang()">
-                    <span class="coupang-text">coupang</span>
-                    쿠팡에서 구매
-                </button>
-
-                <button class="shop-btn naver" onclick="goNaver()">
-                    <span class="logo-box">N</span>
-                    네이버 스토어에서 구매
-                </button>
-            </div>
         </div>
     </div>
 
