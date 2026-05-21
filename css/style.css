@@ -270,12 +270,17 @@ footer {
 
 .footer_inner {
   max-width: 1200px; 
-  margin: 0 auto 25px;
+  margin: 0 auto;
   padding: 0 20px;
   display: flex;
   justify-content: space-between;
   gap: 30px; 
 }
+
+.flogo_info {
+  padding: 15px 0;
+}
+
 
 .footer_nav {
   display: flex;
