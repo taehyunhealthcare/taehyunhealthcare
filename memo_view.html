@@ -295,6 +295,7 @@
     });
     </script>
 
+    <!-- 모바일 메뉴 오픈 스크립트 -->
     <script>
     document.addEventListener("DOMContentLoaded", function () {
         const menuOpenBtn = document.querySelector(".menu-icon a");    
@@ -325,14 +326,20 @@
 
                 const isOpen = submenu.classList.contains("open");
                 
+                // 다른 열려있는 서브메뉴 닫기
                 document.querySelectorAll(".m-submenu.open").forEach(openMenu => {
                     openMenu.classList.remove("open");
                     openMenu.parentElement.classList.remove("open");
+                    openMenu.style.maxHeight = null; // 인라인 높이 초기화
                 });
 
                 if (!isOpen) {
                     submenu.classList.add("open");
                     menu.classList.add("open");
+                    // 실제 콘텐츠 높이만큼 동적으로 지정
+                    submenu.style.maxHeight = submenu.scrollHeight + "px";
+                } else {
+                    submenu.style.maxHeight = null;
                 }
             });
         });
@@ -340,6 +347,7 @@
         function resetSubMenus() {
             document.querySelectorAll(".m-submenu").forEach(submenu => {
                 submenu.classList.remove("open");
+                submenu.style.maxHeight = null; // 인라인 높이도 함께 초기화
             });
             document.querySelectorAll(".has-sub").forEach(menu => {
                 menu.classList.remove("open");
