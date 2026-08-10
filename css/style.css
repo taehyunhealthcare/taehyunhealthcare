@@ -2154,9 +2154,6 @@ span.s {
     background: #e9f2f7;
   }
 
-  /* 열릴 때 */
-  .m-submenu.open {max-height: 20rem;}
-
   /* 화살표 있는 메뉴 (제품소개 / COMMUNITY) */
   .m-menu li.has-sub > a {
     position: relative;
