@@ -1,15 +1,33 @@
 $(document).ready(function() {
-    // 1. 기존의 복잡한 높이 계산 및 .menu-bg 제어 코드는 삭제합니다.
-    // 2. 각 메뉴 항목(li)에 마우스를 올렸을 때의 동작만 정의합니다.
-
     $(".menu > li").hover(
         function () {
-            // 현재 마우스가 올라간 항목의 서브메뉴만 표시
-            $(this).find(".submenu").stop(true, true).fadeIn(200);
+            $(this).find(".submenu").addClass("show");
         },
         function () {
-            // 마우스가 나가면 해당 서브메뉴만 숨김
-            $(this).find(".submenu").stop(true, true).fadeOut(150);
+            $(this).find(".submenu").removeClass("show");
         }
     );
+});
+
+function syncProductSelect() {
+    var select = document.getElementById('productSelect');
+    if (!select) return;
+
+    // 현재 페이지 파일명 추출 (예: 01_products.html)
+    var currentFile = window.location.pathname.split('/').pop();
+
+    for (var i = 0; i < select.options.length; i++) {
+        if (select.options[i].value === currentFile) {
+            select.selectedIndex = i;
+            break;
+        }
+    }
+}
+
+// 처음 로드될 때
+document.addEventListener('DOMContentLoaded', syncProductSelect);
+
+// bfcache로 복원될 때 (뒤로가기/앞으로가기)
+window.addEventListener('pageshow', function (event) {
+    syncProductSelect();
 });
